@@ -1,0 +1,32 @@
+.main{
+    margin: 0 10%;
+    margin-top: calc(50px + var(--navbar-height));
+    width: -webkit-fill-available;
+    background-color: red;
+    height: 100vh;
+}
+
+.messages-container{
+    display: flex;
+    height: 100%;
+}
+
+.users-list{
+    padding: 20px;
+    background-color: green;
+    height: -webkit-fill-available;
+    flex-grow: .7;
+}
+
+.user-conversation{
+    background-color: blue;
+    flex-grow: 2;
+}
+
+.messages-label{
+    font-size: 20px;
+}
+
+@media (prefers-color-scheme: dark){
+    
+}
