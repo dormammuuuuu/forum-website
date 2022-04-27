@@ -1,0 +1,128 @@
+.card-container{
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 900px;
+    width: 100%;
+    max-height: 575px;
+    height: 100%;
+    background-color: var(--card-bg);
+    display: flex;
+}
+
+.field{
+    margin: 5px auto;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+}
+
+.field label{
+    display: block;
+    font-size: 11px;
+}
+
+.field input{
+    font-size: 12px;
+    padding-left: 4px;
+    margin: 10px 0;
+    width: 275px;
+    height: 25px;
+    border: 1px solid var(--input-border);
+}
+
+.card-right{
+    background-color: var(--primary);
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-left{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5%;
+    justify-content: center;
+}
+
+.card-left h1{
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-bottom: 1.3em;
+}
+
+.subheading{
+    font-size: .8em;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+#login-form{
+    width: -webkit-fill-available;
+    margin: 30px 0;
+}
+
+.terms-label{
+    font-size: 11px;
+}
+
+#login-submit, #google-button{
+    width: 275px;
+    border: none;
+    padding: 10px 20px;
+    margin: 0;
+    margin-top: 10px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 10px;
+    display: block;
+    cursor: pointer;
+}
+
+#google-button{
+    background: none;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terms-container{
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+}
+
+a{
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 10px;
+}
+
+.signup{
+    font-size: .7em;
+    margin-top: 20px;
+}
+
+.forgot-password{
+    align-self: flex-end;
+}
+
+.icon{
+    font-size: 15px;
+    padding-right: 10px;
+}
+
+.login-img{
+    width: 400px;
+    height: 400px;
+}

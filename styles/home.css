@@ -1,0 +1,171 @@
+.main{
+    margin: 0 10%;
+    margin-top: calc(50px + var(--navbar-height));
+    width: -webkit-fill-available;
+}
+
+.container {
+    display: grid; 
+    grid-template-columns: 1.3fr 0.7fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "content-area francis"
+      "content-area cielo"
+      "content-area tags"; 
+}
+
+.content-area { 
+    grid-area: content-area; 
+    padding: 10px 15px;
+    height: -webkit-fill-available;
+}
+.francis { grid-area: francis; }
+.cielo { grid-area: cielo; }
+.tags { grid-area: tags; }
+
+.create-thread{
+    width: -webkit-fill-available;
+    text-align: center;
+    font-size: 10px;
+    background-color: var(--light);
+    padding: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.divider{
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divider div{
+    width: 82%;
+}
+
+.threads-container{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100% - 220px);
+    position: fixed;
+    width: 50vw;
+}
+
+.thread{
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 7px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.thread-title{
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.thread-title:hover{
+    text-decoration: underline;
+}
+
+.thread-author{
+    margin: 20px 0;
+    display: flex;
+    align-items: center ;
+    width: -webkit-fill-available;
+}
+
+.thread-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.thread-details{
+    margin: 0 10px;
+}
+
+.thread-name{
+    font-size: 15px;
+}
+
+.thread-published{
+    font-size: 10px;
+    color: gray;
+}
+
+.thread-user{
+    display: flex;
+    align-items: center;
+}
+
+.thread-user-type{
+    font-size: 10px;
+    padding: 4px 10px;
+    margin: 0 10px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-dark)
+}
+
+.thread-content-text{
+    font-size: 14px;
+}
+
+.thread-buttons{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.thread-save, .thread-add-response{
+    height: 20px;
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background-color: var(--gray-light);
+    margin-right: 10px;
+    color: gray;
+}
+
+.thread-add-response{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.thread-add-response i,  .thread-save i{
+    color: gray;
+    font-size: 15px;
+}
+
+.thread-add-response i{
+    margin-right: 10px;
+}
+
+@media (prefers-color-scheme: dark){
+    .create-thread{
+        background-color: var(--dark-secondary);
+    }
+
+    .thread{
+        background-color: var(--dark-secondary);
+    }
+
+    .thread-user-type{
+        border: 1px solid var(--gray-light)
+    }
+
+    .thread-save, .thread-add-response{
+        background-color: var(--gray);
+    }
+
+    .thread-add-response i,  .thread-save i{
+        color: gray;
+
+    }
+}

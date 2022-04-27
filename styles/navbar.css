@@ -1,0 +1,125 @@
+:root{
+    --navbar-height: 80px;
+}
+
+nav{
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    justify-content: space-between;
+    padding: 0 10%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: -webkit-fill-available;
+}
+
+nav div{
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.search-bar{
+    display: flex;
+    max-width: 250px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--gray-light);
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin: 0 20px;
+}
+
+.nav-search{
+    border: none;
+}
+
+.search-icon{
+    background-color: var(--light);
+    padding: 0 3px;
+    border-radius: 5px;
+}
+
+.search-icon i {
+    color: var(--gray-lighter);
+}
+
+.nav-buttons{
+    height: 100%;
+}
+
+.nav-buttons ul{
+    list-style: none;
+    display: flex;
+    height: -webkit-fill-available;
+    align-items: center;
+}
+
+.nav-links{
+    height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+}
+
+.notification{
+    height: auto;
+    width: auto;
+    background: var(--gray-light);
+    padding: 3px 7px;
+    border-radius: 4px;
+    margin: 0 20px;
+}
+
+.notification span i {
+    color: var(--gray-lighter);
+}
+
+.user-avatar{
+    margin: 0 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.active{
+    border-bottom: 3px solid var(--primary);
+}
+
+
+/* DARK MODE */
+
+@media (prefers-color-scheme: dark){
+
+    .search-icon{
+        background-color: var(--dark-secondary);
+        padding: 0 3px;
+        border-radius: 5px;
+    }
+    
+    .search-icon i {
+        color: var(--gray-light);
+    }
+    
+    
+    .search-bar{
+        background-color: var(--gray);
+    }
+
+    .notification{
+        background: var(--gray);
+        padding: 3px 7px;
+        border-radius: 4px;
+        margin: 0 20px;
+    }
+}

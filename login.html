@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <section class="card-container">
+        <div class="card-left">
+            <h1>Hello Again!</h1>
+            <p class="terms-label">By continuing, you agree to our <a href="#">User Agreement</a> and <a href="#">Privacy Policy.</a></p>
+            <form id="login-form">
+                <div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" name="email">
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                        <a class="forgot-password" href="forgot.html">Forgot Password?</a>
+                    </div>
+                    <div class="field">
+                        <button id="login-submit" name="submit" type="submit">Login</button>
+                        <button id="google-button" name="google-login"><i class='icon bx bxl-google'></i>Sign in with Google</button>
+                    </div>
+                </div>
+            </form>
+            <p class="signup">Don't have an account yet? <a href="register.html">Sign Up</a></p>
+        </div>
+        <div class="card-right">
+            <img class="login-img" src="assets/images/login.png" alt="">
+        </div>
+            
+    </section>
+</body>
+</html>
