@@ -2,31 +2,238 @@
     margin: 0 10%;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
-    background-color: red;
-    height: 100vh;
+    height: 100%;
 }
 
-.messages-container{
+.message-container{
     display: flex;
-    height: 100%;
+    height: 80vh;
 }
 
 .users-list{
     padding: 20px;
-    background-color: green;
     height: -webkit-fill-available;
     flex-grow: .7;
+    flex-basis: 0vw;
 }
 
 .user-conversation{
-    background-color: blue;
+    position: relative;
+    background-color: var(--light);
     flex-grow: 2;
+    flex-basis: 0vw;
+    overflow: hidden;
 }
 
-.messages-label{
+.message-search{
+    display: flex;
+    align-items: center;
+    background-color: var(--light);
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.message-label{
     font-size: 20px;
 }
 
+.message-list{
+    overflow-y: scroll;
+    height: calc(99vh - 250px);
+}
+
+.message-list, .conversation {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.message-list::-webkit-scrollbar, .conversations::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.message-search-input{
+    width: 100%;
+    border: none;
+}
+
+.message-card{
+    max-height: 100px;
+    background-color: var(--light);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.message{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 11px;
+    color: var(--gray);
+    margin: 5px 0 0 40px;
+}
+
+.message-avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.message-name{
+    font-size: 13px;
+    margin: 0 10px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+}
+
+.message-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-datetime{
+    font-size: 10px;
+    color: var(--gray-lighter);
+}
+
+.conversation-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.conversation-details{
+    position: relative;
+    background-color: var(--light);
+    z-index: 12;
+    height: 12%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
+}
+
+.conversation-avatar{
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.conversation-header{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.conversation-name{
+    font-size: 13px;
+}
+
+.conversation-status{
+    font-size: 10px;
+}
+
+.conversation-form{
+    height: 70px;
+    width: -webkit-fill-available;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.conversation-form input{
+    width: 80%;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    background-color: var(--gray-light);
+}
+
+.send-button{
+    background-color: var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-button i {
+    color: white;
+}
+
+.conversations{
+    height: 75%;
+    overflow-y: scroll;
+}
+
+.bubble{
+    width: fit-content;
+    max-width: 50%;
+    font-size: 13px;
+    color: white;
+    padding: 10px 12px;
+    margin: 10px;
+    margin-bottom: 8px;
+    border-radius: 7px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 2px;
+    background-color: var(--primary);
+}
+
+.user{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.me{
+    background-color: var(--gray-lighter);
+    color: black;
+}
+
+.message-time{
+    font-size: 10px;
+    color: var(--gray-lighter);
+}
+
+.me .message-time{
+    color: gray;
+}
+
 @media (prefers-color-scheme: dark){
+    .message-card{
+        background-color: var(--dark-secondary);
+    }
+
+    .message{
+        color: var(--gray-lighter);
+    }
+
+    .message-search{
+        background-color: var(--dark-secondary);
+    }
+
+    .user-conversation{
+        background-color: var(--dark-secondary);
+    }
+
+    .conversation-details{
+        background-color: var(--dark-secondary);
+    }
+
+    .conversation-form input{
+        background-color: var(--dark);
+    }
     
 }
