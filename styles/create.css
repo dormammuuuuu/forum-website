@@ -1,0 +1,102 @@
+.main{
+    margin: 0 10%;
+    margin-top: calc(50px + var(--navbar-height));
+    width: -webkit-fill-available;
+    height: 100%;
+    position: fixed;
+}
+
+
+.create-containers{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.create-containers > div{
+    margin: 10px;
+    height: 100%;
+}
+
+.create-inputs{
+    background-color: var(--light);
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.inputs{
+    width: -webkit-fill-available;
+    height: 30px;
+    border: 1px solid var(--gray);
+    margin: 10px 0;
+}
+
+#input-body{
+    height: 250px;
+}
+
+.input-label{
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.input-sublabel{
+    font-size: 11px;
+    color: var(--gray-lighter);
+}
+
+.guide-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+    width: 100%;
+}
+
+.guide{
+    width: 100%;
+    background-color: var(--light);
+    cursor: pointer;
+    margin: 10px;
+    max-width: 25vw;
+}
+
+.guide-step{
+    font-size: 13px;
+}
+
+.guide-card{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-icon{
+    font-size: 20px;
+}
+
+.guide-expanded{
+    background-color: rgba(0,0,0,.3);
+    padding: 10px;
+}
+
+.guide-expanded p{
+    font-size: 12px;
+}
+
+.guide-expanded ul li{
+    font-size: 12px;
+    margin-left: 2em;
+}
+
+@media (prefers-color-scheme: dark){
+    .create-inputs{
+        background-color: var(--dark-secondary);
+    }
+
+    .guide{
+        background-color: var(--dark-secondary);
+    }
+}

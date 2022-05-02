@@ -49,17 +49,22 @@ input[type=checkbox] {
     accent-color: var(--primary);
 }
 
-input{
+input, textarea{
     background: transparent;
 }
 
-input:focus{
+input:focus, textarea:focus{
     outline: none;
 }
 
-input[type=text]{
+input[type=text], textarea{
     font-size: 12px;
     padding-left: 4px;
+}
+
+textarea{
+    padding: 4px;
+    resize: none;
 }
 
 hr{
