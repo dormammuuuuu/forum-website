@@ -9,6 +9,8 @@
     display: grid;
     grid-template-columns: 1.5fr .5fr;
     gap: 10px;
+    position: fixed;
+    margin-right: 2%;
 }
 
 .container-1{
@@ -19,14 +21,20 @@
     overflow-y: scroll;
 }
 
+.threads, .comments{
+    margin-right: 5px;
+}
 
 .titles{
-    padding: 2em;
-    background-color: var(--dark-secondary);
+    padding: 2em 2em 1em 2em;
+    border-radius: 10px;
+    background-color: var(--light);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
 }
 .thread-title{
-    color: #ededed;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .thread-avatar{
@@ -35,10 +43,11 @@
     border-radius: 5px;
 }
 
-.author{
+.author, .author-comment{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: .5em 0;
 }
 
 .details{
@@ -55,38 +64,93 @@
     padding: 4px 10px;
     margin: 0 10px;
     border-radius: 10px;
-    border: 1px solid var(--gray-dark)
+    border: 1px solid var(--gray-dark);
 }
 .name{
     font-size: 15px;
+}
+.date-published{
+    font-size: 10px;
 }
 
 .main-threads{
     display: flex;
     align-items: center;
-    padding: 1em;
-    background-color: antiquewhite;
+    padding: 2em 2em 1em 2em;
+    background-color: var(--light);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 .thread-content-text{
     font-size: 20px;
-    color: #000000;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
  
 }
+.divider{
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.divider div{
+    width: 90%;
+}
+.author-comment{
+    padding: 1em 1em 0 1em;
+}
 
-
-#title-comment, #main-comment{
-    margin: 2em;
+#main-answer{
+    padding: 1em;
     font-size: 15px;
 }
 
 .main-comment{
     background-color: pink;
-    margin: 5px;
     border-radius: 10px;
 }
+.your-comment{
+    margin: 1em 1em 0 0;
+}
+.submission{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.submit-btn{
+    width: 25%;
+    margin: 1em 1em 0 0;
+    padding: .5em;
+    background-color: var(--light);
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+}
+.submit-btn:hover{
+    color: #da0037;
+}
+
+.comment-box{
+    width: 100%;
+    background-color: var(--light);
+    color: var(--dark);
+    height: 25vh;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 1em;
+}
+
+
 .container-2{
     background-color: red;
 }
 
+@media (prefers-color-scheme: dark){
+   .titles, .main-threads, .main-comment, .submit-btn{
+    background-color: var(--dark-secondary);
+   }
+   .user-type{
+    border: 1px solid var(--gray-light);
+   }
+}
