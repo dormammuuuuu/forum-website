@@ -22,8 +22,12 @@
     height: -webkit-fill-available;
 }
 
-.francis { grid-area: francis; }
-.cielo { grid-area: cielo; }
+.francis {
+     grid-area: francis;
+     }
+.cielo {
+     grid-area: cielo; 
+    }
 
 .tags { 
     grid-area: tags; 
@@ -33,7 +37,7 @@
 .create-thread{
     width: -webkit-fill-available;
     text-align: center;
-    font-size: 10px;
+    font-size: 17px;
     background-color: var(--light);
     padding: 10px 0;
     cursor: pointer;
@@ -76,6 +80,7 @@
 
 .thread-title:hover{
     text-decoration: underline;
+    color: #dd0037;
 }
 
 .thread-author{
