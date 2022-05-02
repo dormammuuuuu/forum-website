@@ -70,6 +70,9 @@
 .thread-content-text{
     font-size: 20px;
     color: #000000;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+ 
 }
 
 

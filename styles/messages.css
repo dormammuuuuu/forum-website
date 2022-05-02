@@ -8,6 +8,8 @@
 .message-container{
     display: flex;
     height: 80vh;
+    width: 80vw;
+    position: fixed;
 }
 
 .users-list{
@@ -182,6 +184,7 @@
     width: fit-content;
     max-width: 50%;
     font-size: 13px;
+    font-weight: 300;
     color: white;
     padding: 10px 12px;
     margin: 10px;

@@ -23,11 +23,12 @@
 }
 
 .francis {
-     grid-area: francis;
-     }
+    grid-area: francis;
+}
+
 .cielo {
-     grid-area: cielo; 
-    }
+    grid-area: cielo; 
+}
 
 .tags { 
     grid-area: tags; 
@@ -37,7 +38,7 @@
 .create-thread{
     width: -webkit-fill-available;
     text-align: center;
-    font-size: 17px;
+    font-size: 10px;
     background-color: var(--light);
     padding: 10px 0;
     cursor: pointer;
@@ -121,6 +122,14 @@
     border-radius: 10px;
     border: 1px solid var(--gray-dark)
 }
+.thread-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 
 .thread-content-text{
     font-size: 14px;
