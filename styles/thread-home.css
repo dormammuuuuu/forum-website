@@ -25,12 +25,22 @@
     width: 70vw;
 }
 
-.threads, .comments{
-    margin-right: 5px;
+.container-1 {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.container-1::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.threads{
+    padding: 2em;
+    background-color: var(--light);
+    border-radius: 5px;
 }
 
 .titles{
-    padding: 2em 2em 1em 2em;
     border-radius: 10px;
     background-color: var(--light);
     border-bottom-left-radius: 0;
@@ -38,7 +48,8 @@
 
 }
 .thread-title{
-    font-size: 30px;
+    font-size: 20px;
+    margin-bottom: 1em;
 }
 
 .thread-avatar{
@@ -49,9 +60,7 @@
 
 .author, .author-comment{
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin: .5em 0;
 }
 
 .details{
@@ -80,16 +89,11 @@
 .main-threads{
     display: flex;
     align-items: center;
-    padding: 2em 2em 1em 2em;
     background-color: var(--light);
     border-radius: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
 .thread-content-text{
-    font-size: 20px;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    font-size: 17px;
  
 }
 .divider{
@@ -101,18 +105,23 @@
 .divider div{
     width: 90%;
 }
+
+.author{
+    margin-bottom: 1em;
+}
 .author-comment{
-    padding: 1em 1em 0 1em;
+    padding-bottom: 1em;
 }
 
-#main-answer{
-    padding: 1em;
-    font-size: 15px;
+.main-answer{
+    padding-top: 1em;
+    font-size: 13px;
 }
 
 .main-comment{
-    background-color: pink;
-    border-radius: 10px;
+    padding: 2em;
+    border-radius: 5px;
+    margin: 20px 0;
 }
 .your-comment{
     margin: 1em 1em 0 0;
@@ -136,7 +145,7 @@
 }
 
 .comment-box{
-    width: 100%;
+    width: -webkit-fill-available;
     height: 25vh;
     border-radius: 10px;
     font-size: 15px;
@@ -155,4 +164,8 @@
    .user-type{
     border: 1px solid var(--gray-light);
    }
+   
+.threads{
+    background-color: var(--dark-secondary);
+}
 }
