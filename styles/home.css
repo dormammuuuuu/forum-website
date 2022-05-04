@@ -83,7 +83,7 @@
 
 .thread-title:hover{
     text-decoration: underline;
-    color: #dd0037;
+    color: var(--secondary);
 }
 
 .thread-author{

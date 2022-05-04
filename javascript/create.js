@@ -7,6 +7,7 @@ $(function () {
 var globalGuide = 0;
 
 $('.guide').click(function () {
+    
     let current = $(this).attr("data-number");
     if(current != globalGuide){
         $(".guide-expanded").slideUp();
@@ -20,3 +21,4 @@ $('.guide').click(function () {
         }
     }
 });
+

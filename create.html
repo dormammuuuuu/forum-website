@@ -39,6 +39,26 @@
         <div class="create-containers">
             <div class="create-inputs">
                 <p class="input-label">Title</p>
+                <input type="checkbox" name="toggleMode" id="toggleMode"><label for="toggleMode"></label>
+                <script>//default to light mode
+                    var mode = 'light';
+                    if (localStorage.getItem("mode")){
+                       //check if there's a saved state already
+                       mode = localStorage.getItem("mode");
+                    } else if (window.matchMedia('(preferes-color-scheme:dark)')){
+                       //check if dark mode is preferred
+                       mode = "dark";
+                    }
+                    //update the class based on the mode
+                    document.documentElement.className = mode;
+                    
+                    //when the button is clicked, toggle the mode and save the change in local storage
+                    document.getElementById('toggleMode').onclick = function(){
+                        alert("CLicked");
+                       mode = (mode === 'dark') ? 'light' : 'dark';
+                       document.documentElement.className = mode;
+                       localStorage.setItem("mode", mode);
+                    }</script>
                 <p class="input-sublabel">Be specific and imagine you're asking a question to another person</p>
                 <input class="inputs" id="input-title" type="text" placeholder="e.g. Anong ulam natin mamaya?">
                 <p class="input-label">Body</p>
