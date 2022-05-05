@@ -13,6 +13,12 @@
     display: flex;
 }
 
+#status{
+    font-size: 10px;
+    color: rgb(252, 102, 102);
+    margin-bottom: 10px;
+}
+
 .field{
     margin: 5px 0;
 }
