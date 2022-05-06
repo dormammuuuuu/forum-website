@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2022 at 06:30 PM
+-- Generation Time: May 06, 2022 at 04:18 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,12 +38,17 @@ CREATE TABLE `users` (
   `birthdate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `users`
+-- Table structure for table `users_verification`
 --
 
-INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `birthdate`) VALUES
-(14, '727a4f04366dd09adb76417ad08f1112', 'Jerico', 'Victoria', 'supremood@gmail.com', '$2y$10$8wUnk5MtzeVNP3tIpLaIGeepRWeB6G3/3r9ACSbBQpEfNy9hhGAoS', 'assets/images/avatar/default.jpg', '1231-12-12');
+CREATE TABLE `users_verification` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -57,6 +62,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `uid` (`uid`);
 
 --
+-- Indexes for table `users_verification`
+--
+ALTER TABLE `users_verification`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -64,7 +75,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `users_verification`
+--
+ALTER TABLE `users_verification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
