@@ -7,7 +7,7 @@
     transform: translate(-50%,-50%);
     max-width: 900px;
     width: 100%;
-    max-height: 575px;
+    max-height: 600px;
     height: 100%;
     background-color: var(--card-bg);
     display: flex;
