@@ -86,6 +86,7 @@
                 <hr> <span>or</span> <hr>
             </div>
             <button onclick="location.href = '<?php $auth = $google_client->createAuthUrl(); echo $auth;?>'" id="google-signup" name="google-signup"><i class='icon bx bxl-google'></i>Sign up with google</button>
+            <p class="google-error">Account already exist.</p>
             <p class="login">Already have an account? <a href="login.html">Log in</a></p>
         </div>
     </section>

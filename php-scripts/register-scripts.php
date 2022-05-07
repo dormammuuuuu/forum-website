@@ -95,12 +95,13 @@
 
     //If the user's code and database code match, the function will proceed to the create account function.
     if(isset($_POST['verified_email'])){
-        $code = $_POST['code'];
-		$firstname = $_POST['firstname'];
-		$lastname = $_POST['lastname'];
-		$email = $_POST['verified_email'];
-		$birthdate = $_POST['birthdate'];
-		$password = $_POST['password'];
+        global $conn;
+        $code = mysqli_real_escape_string($conn, $_POST['code']);
+		$firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+		$lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+		$email = mysqli_real_escape_string($conn, $_POST['verified_email']);
+		$birthdate = mysqli_real_escape_string($conn, $_POST['birthdate']);
+		$password = mysqli_real_escape_string($conn, $_POST['password']);
         $uid = uniqid('u');
         $avatar = "assets/images/avatar/default.jpg";
         $encrypted_password = password_hash($password, PASSWORD_DEFAULT);

@@ -13,10 +13,15 @@
     display: flex;
 }
 
-#status, #verification-status{
+#status, #verification-status, .google-error{
     font-size: 10px;
     color: rgb(252, 102, 102);
     margin-bottom: 10px;
+}
+
+.google-error{
+    display: none;
+    margin: 0 auto;
 }
 
 #verification-status{
