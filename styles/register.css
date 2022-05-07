@@ -97,6 +97,7 @@
     font-size: 10px;
     display: block;
     width: -webkit-fill-available;
+    cursor: pointer;
 }
 
 #google-signup{

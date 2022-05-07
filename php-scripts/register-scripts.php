@@ -6,12 +6,19 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
-    //Load Composer's autoloader
     require 'vendor/autoload.php';
 
-    //Create an instance; passing `true` enables exceptions
+    $google_client = new Google_Client();
+    $google_client->setClientId('19064399980-57o0n2utlfolf736ler29oq4up435mvq.apps.googleusercontent.com');
+    $google_client->setClientSecret('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');
+    $google_client->setRedirectUri('http://localhost/register.php');
+    $google_client->addScope('email');
+    $google_client->addScope('profile');
+    session_start();
+
     $mail = new PHPMailer(true);
 
+    //Verify email via PHPMailer
     function verifyEmail($recipient, $code){
         global $mail;
         try {
@@ -42,9 +49,18 @@
         }
     }
 
-	function accountCreate($uid, $firstname, $lastname, $email, $encrypted_password, $birthdate){
+
+    function duplicateCheck($email){
+        global $conn;
+        $stat = mysqli_query($conn,"SELECT * FROM users WHERE email='$email'");
+        return mysqli_num_rows($stat);
+    }
+
+
+    //Function that will add the account to the database.
+	function accountCreate($uid, $firstname, $lastname, $email, $encrypted_password, $birthdate, $avatar){
 		global $conn;
-		$sql = "INSERT INTO `users`(`id`,`uid`, `firstname`, `lastname`, `email`, `password`, `birthdate`) VALUES (NULL,'$uid','$firstname','$lastname','$email','$encrypted_password', '$birthdate')";
+		$sql = "INSERT INTO `users`(`id`,`uid`, `firstname`, `lastname`, `email`, `password`, `birthdate`, `avatar`) VALUES (NULL,'$uid','$firstname','$lastname','$email','$encrypted_password', '$birthdate', '$avatar')";
 		if (mysqli_query($conn, $sql)) {
 			return 200;
 		} else {
@@ -52,12 +68,13 @@
 		}
 	}
 
+    //If an email wass posted, the function will generate a verification code in the database.
 	if(isset($_POST['email'])){
 		$email = $_POST['email'];
         $code = random_int(100000, 999999);
 		
-		$duplicate = mysqli_query($conn,"SELECT * FROM users WHERE email='$email'");
-		if (mysqli_num_rows($duplicate) > 0){
+		$duplicate = duplicateCheck($email); 
+		if ($duplicate > 0){
             $result_json['statusCode'] = 201;
 		}
 		else{
@@ -76,6 +93,7 @@
 		mysqli_close($conn);
 	}
 
+    //If the user's code and database code match, the function will proceed to the create account function.
     if(isset($_POST['verified_email'])){
         $code = $_POST['code'];
 		$firstname = $_POST['firstname'];
@@ -84,6 +102,7 @@
 		$birthdate = $_POST['birthdate'];
 		$password = $_POST['password'];
         $uid = uniqid('u');
+        $avatar = "assets/images/avatar/default.jpg";
         $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
 		
         $query = mysqli_query($conn, "SELECT * FROM users_verification WHERE email='$email'");
@@ -92,8 +111,8 @@
             $data = mysqli_fetch_array($query);
             $db_code = $data['code'];
             if($code == $db_code){
-			    $result_json['statusCode'] = accountCreate($uid, $firstname, $lastname, $email, $encrypted_password, $birthdate);
-                $query = mysqli_query($conn, "DELETE FROM `users_verification` WHERE email = '$email'");			
+			    $result_json['statusCode'] = accountCreate($uid, $firstname, $lastname, $email, $encrypted_password, $birthdate, $avatar);
+                mysqli_query($conn, "DELETE FROM `users_verification` WHERE email = '$email'");			
             } else {
                 $result_json['statusCode'] = 201;
             }
@@ -102,5 +121,29 @@
         echo json_encode($result_json);
 		mysqli_close($conn);
 	}
+
+    //
+    if(isset($_GET["code"])){
+        $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+        if(!isset($token['error'])){
+            $google_client->setAccessToken($token['access_token']);
+            $_SESSION['access_token'] = $token['access_token'];
+            $google_service = new Google_Service_Oauth2($google_client);
+            $data = $google_service->userinfo_v2_me->get();
+            if(!empty($data['given_name'])){
+                $email = $data['email'];
+                $duplicate = duplicateCheck($email);
+                if ($duplicate == 0){
+                    $uid = uniqid('u');
+                    $firstname = $data['given_name'];
+                    $lastname = $data['family_name'];
+                    $avatar = $data['picture']; 
+                    accountCreate($uid, $firstname, $lastname, $email, "", "", $avatar);
+                    header('Location: ../login.html');
+                }
+            }
+        }
+    }
 
 ?>
