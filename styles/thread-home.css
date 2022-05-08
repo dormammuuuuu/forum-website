@@ -165,7 +165,7 @@
     border: 1px solid var(--gray-light);
    }
    
-.threads{
-    background-color: var(--dark-secondary);
-}
+    .threads{
+        background-color: var(--dark-secondary);
+    }
 }

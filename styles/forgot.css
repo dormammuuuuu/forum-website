@@ -73,7 +73,7 @@
     margin: 0 10px;
 }
 
-#forgot-submit{
+#forgot-submit, #password-submit{
     border: none;
     padding: 10px 20px;
     margin: 0;
@@ -106,79 +106,62 @@ a{
     height: 400px;
 }
 
-.verification{
-    display: none;
-    width: calc(100% - 425px);
-    height: 100%;
-    background-color: var(--light);
-    position: absolute;
-    right: 0;
-    z-index: 2;
-    padding: 10px;
-}
-
-#verification-form{
-    padding: 30px;
-}
-
-.verification h1{
-    text-align: center;
-    margin: 50px 0 15px 0;
-}
-
-.verification p{
-    font-size: 10px;
-    text-align: center;
-}
-
-.verification label{
-    font-size: 12px;
-    margin: 35px 0 0 0;
-}
-
-.verification input[type=text]{
-    border: 2px solid var(--gray-lighter);
-    height: 25px;
-    margin: 10px 0;
-}
-
-#verification-form{
-    display: flex;
-    flex-direction: column;
-}
-
-#verification-submit{
-    border: none;
-    padding: 10px 20px;
-    margin: 0;
-    margin-top: 20px;
-    background: var(--primary);
-    color: var(--white);
-    border-radius: 5px;
-    font-size: 10px;
-    display: block;
-    width: -webkit-fill-available;
-    cursor: pointer;
-}
-
-#verification-status{
+#status{
     font-size: 10px;
     color: rgb(252, 102, 102);
     margin-bottom: 10px;
 }
 
-#verification-status{
-    text-align: left;
+.success{
+    position: absolute;
+    width: calc(100% - 425px);
+    height: 100%;
+    right: 0;
+    z-index: 10;
+    display: none;
+    background-color: var(--light);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.verification h1{
-    font-size: 1.2em;
+.success h1{
     font-weight: 400;
+    margin: 30px 0 5px 0;
 }
+
+.success p {
+    font-size: 13px;
+    text-align: center;
+}
+
+.check-container{
+    width: 200px;
+}
+
+.checkmark {
+    stroke: #da0037;
+    stroke-dashoffset: 745.74853515625;
+    stroke-dasharray: 745.74853515625;
+    animation: dash 2s ease-out forwards;
+}
+  
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 745.74853515625;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
 
 
 @media (prefers-color-scheme: dark){
     .verification{
+        background-color: var(--dark-secondary);
+    }
+
+    .success{
         background-color: var(--dark-secondary);
     }
 }
