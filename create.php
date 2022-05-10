@@ -1,3 +1,7 @@
+<?php
+    include('php-scripts/create-scripts.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +12,10 @@
     <link rel="stylesheet" href="styles/default.css">
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/create.css">
+    <link rel="stylesheet" href="styles/choices.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/choices.min.js"></script>
 </head>
 <body>
     
@@ -17,17 +23,23 @@
 
     <section class="main">
         <div class="create-containers">
-            <div class="create-inputs">
+            <form class="create-inputs" id="create-form" >
                 <p class="input-label">Title</p>
                 <p class="input-sublabel">Be specific and imagine you're asking a question to another person</p>
-                <input class="inputs" id="input-title" type="text" placeholder="e.g. Anong ulam natin mamaya?">
+                <input class="inputs" id="input-title" type="text" name="title" placeholder="e.g. Anong ulam natin mamaya?" required>
                 <p class="input-label">Body</p>
                 <p class="input-sublabel">Include all the information someone would need to answer your question</p>
-                <textarea class="inputs" id="input-body" rows="4" cols="50"></textarea>
+                <textarea class="inputs" id="input-body" rows="4" name="body" cols="50"  required></textarea>
                 <p class="input-label">Tags</p>
                 <p class="input-sublabel">Add upto 5 tags to describe what your question is about</p>
-                <input class="inputs" id="input-title" type="text" placeholder="e.g. (Computers, C programming)">
-            </div>
+                <select name="tags" id="tags" multiple required>
+                    <option value="Dropdown1">Dropdown item 1</option>
+                    <option value="Dropdown2">Dropdown item 2</option>
+                    <option value="Dropdown3">Dropdown item 3</option>
+                    <option value="Dropdown4">Dropdown item 4</option>
+                </select>
+                <input type="submit" id="create-submit" value="Submit Thread">
+            </form>
             <div class="guide-container">
                 <div class="guide" data-number="1">
                     <div class="guide-card">
