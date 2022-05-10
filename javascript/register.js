@@ -80,7 +80,7 @@ $("#verification-form").submit(function (e) {
             if(result.statusCode == 200){
                 $('.success').css('display', 'flex');
                 setTimeout(() => {
-                    location.href = "login.html";                    
+                    location.href = "login.php";                    
                 }, 3500);
             }
             else if(result.statusCode == 201){

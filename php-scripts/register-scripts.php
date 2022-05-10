@@ -14,7 +14,11 @@
     $google_client->setRedirectUri('http://localhost/register.php');
     $google_client->addScope('email');
     $google_client->addScope('profile');
+
     session_start();
+    if(isset($_SESSION['uid'])){
+        header('location: ../home.php');
+    }
 
     $mail = new PHPMailer(true);
 
@@ -123,7 +127,7 @@
 		mysqli_close($conn);
 	}
 
-    //
+    //Function that will save the user's google account details at the server
     if(isset($_GET["code"])){
         $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
 
@@ -141,7 +145,8 @@
                     $lastname = $data['family_name'];
                     $avatar = $data['picture']; 
                     accountCreate($uid, $firstname, $lastname, $email, "", "", $avatar);
-                    header('Location: ../login.html');
+                    mysqli_close($conn);
+                    header('Location: ../login.php');
                 }
             }
         }

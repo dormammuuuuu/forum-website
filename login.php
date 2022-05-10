@@ -1,3 +1,9 @@
+<?php
+
+    include('php-scripts/login-scripts.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,7 @@
     <link rel="stylesheet" href="styles/default.css">
     <link rel="stylesheet" href="styles/login.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="javascript/jquery-3.6.0.js"></script>
 </head>
 <body>
     <section class="card-container">
@@ -17,20 +24,22 @@
             <form id="login-form">
                 <div>
                     <div class="field">
+                        <p id="status"></p>
                         <label for="email">Email</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" id="email" required>
                     </div>
                     <div class="field">
                         <label for="password">Password</label>
-                        <input type="password" name="password">
+                        <input type="password" id="password" name="password" required>
                         <a class="forgot-password" href="forgot.php">Forgot Password?</a>
                     </div>
                     <div class="field">
                         <button id="login-submit" name="submit" type="submit">Login</button>
-                        <button id="google-button" name="google-login"><i class='icon bx bxl-google'></i>Sign in with Google</button>
                     </div>
                 </div>
             </form>
+            <button id="google-button" onclick="location.href = '<?php $auth = $google_client->createAuthUrl(); echo $auth;?>'" name="google-login"><i class='icon bx bxl-google'></i>Sign in with Google</button>
+
             <p class="signup">Don't have an account yet? <a href="register.php">Sign Up</a></p>
         </div>
         <div class="card-right">
@@ -38,5 +47,6 @@
         </div>
             
     </section>
+    <script src="javascript/login.js"></script>
 </body>
 </html>

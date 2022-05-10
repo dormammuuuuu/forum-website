@@ -1,3 +1,3 @@
 $('.create-thread').click(function () { 
-    window.location.href = "create.html"
+    window.location.href = "create.html";
 });
