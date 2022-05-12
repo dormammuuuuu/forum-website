@@ -32,7 +32,10 @@
         if($user_data){
             @session_start();
             $_SESSION['uid'] = $user_data['uid'];
-            header('location: ../home.php');
+            if($type == 2){
+                header('location: ../home.php');
+            }
+            return 200;
         } else {
             return 201;
         }
@@ -67,7 +70,7 @@
                 $email = $data['email'];
                 $duplicate = duplicateCheck($email);
                 if ($duplicate > 0){
-                    loginAccount($email, "", 2);
+                    $result_json['statusCode'] = loginAccount($email, "", 2);
                 }
             }
         }

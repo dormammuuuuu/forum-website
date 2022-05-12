@@ -17,12 +17,13 @@ $('#login-form').submit(function (e) {
                 location.href = 'home.php';
             }
             else if(result.statusCode == 201){
-                $("#status").show();
                 $('#status').html('POTANGINA NIYO UNITHIEVES');
             }
         },
         error: function (request, status, error) {
             console.log(request.responseText);
+            console.log(status);
+            console.log(error);
         }
     });
 });

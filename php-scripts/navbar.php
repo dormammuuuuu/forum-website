@@ -7,6 +7,7 @@
             </div>
         </div>
         <div class="nav-buttons">
+        <?php @session_start(); if(isset($_SESSION['uid'])){ ?>
             <ul>
                 <li class="nav-links active"><a href="home.php">Home</a></li>
                 <li class="nav-links"><a href="messages.php">Messages</a></li>
@@ -19,5 +20,13 @@
                 </span>
             </div>
             <img class="user-avatar" src="assets/images/avatar/default.jpg" alt="">
+        <?php } else { ?>
+            <ul>
+                <li class="nav-links"><a href="login.php">Login</a></li>
+                <li class="nav-links"><a href="register.php">Signup</a></li>
+            </ul>
+
+        <?php } ?>
+            
         </div>
     </nav>

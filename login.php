@@ -24,7 +24,8 @@
             <form id="login-form">
                 <div>
                     <div class="field">
-                        <p id="status"></p>
+                        <p id="status"><?php if (isset($_GET['code'])){ echo 'Account doesn\'t exist';} ?></p>
+
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" required>
                     </div>

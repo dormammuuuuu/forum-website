@@ -20,19 +20,20 @@
 <body>
     
     <?php include('php-scripts/navbar.php');?>
-
     <section class="main">
+        <div id="error"></div>
+
         <div class="create-containers">
-            <form class="create-inputs" id="create-form" >
+            <form class="create-inputs" id="create-form">
                 <p class="input-label">Title</p>
                 <p class="input-sublabel">Be specific and imagine you're asking a question to another person</p>
                 <input class="inputs" id="input-title" type="text" name="title" placeholder="e.g. Anong ulam natin mamaya?" required>
                 <p class="input-label">Body</p>
                 <p class="input-sublabel">Include all the information someone would need to answer your question</p>
-                <textarea class="inputs" id="input-body" rows="4" name="body" cols="50"  required></textarea>
+                <textarea class="inputs" id="input-body" rows="4" name="body" cols="50" type="text" required></textarea>
                 <p class="input-label">Tags</p>
                 <p class="input-sublabel">Add upto 5 tags to describe what your question is about</p>
-                <select name="tags" id="tags" multiple required>
+                <select name="tags" id="tags" multiple>
                     <option value="Dropdown1">Dropdown item 1</option>
                     <option value="Dropdown2">Dropdown item 2</option>
                     <option value="Dropdown3">Dropdown item 3</option>
@@ -80,7 +81,6 @@
             </div>
         </div>
     </section>
-
     <script src="javascript/create.js"></script>
 </body>
 </html>

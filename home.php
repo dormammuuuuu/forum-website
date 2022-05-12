@@ -1,7 +1,5 @@
 <?php
-
-    include('php-scripts/home.php');
-
+    include('php-scripts/home-scripts.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +14,12 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/navbar.css">
     <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/jquery.timeago.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     
     <?php include('php-scripts/navbar.php'); ?>
-
 
     <section class="main">
         <div class="container">
@@ -35,6 +33,9 @@
                 </div>
 
                 <div class="threads-container">
+
+                    <?php fetchThreads(); ?>
+
                     <div class="thread">
                         <div class="thread-title">Bakit walang ulam?</div>
                         <div class="thread-author">
