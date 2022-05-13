@@ -3,6 +3,8 @@ $('.create-thread').click(function () {
 });
 
 
-$(function () {
-    console.log(jQuery.timeago("2022-05-13 02:03:14")); 
+$('.thread').click(function (e) { 
+    e.preventDefault();
+    let tid = $(this).attr('data-thread');
+    location.href = "thread.php?threadid=" + tid;
 });

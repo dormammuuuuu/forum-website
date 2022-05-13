@@ -24,7 +24,11 @@
     <section class="main">
         <div class="container">
             <div class="content-area">
-                <div class="create-thread">+ Make Thread</div>
+                <?php
+                    if(isset($_SESSION['uid'])){ ?>
+                        <div class="create-thread">+ Make Thread</div>
+                <?php }
+                ?>
                 <div class="divider">
                     <p>Recent Threads </p>
                     <div>

@@ -1,3 +1,7 @@
+<?php
+    include('php-scripts/thread-scripts.php');  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,6 +13,8 @@
         <link rel="stylesheet" href="styles/thread-home.css">
         <link rel="stylesheet" href="styles/navbar.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <script src="javascript/jquery-3.6.0.js"></script>
+        <script src="javascript/jquery.timeago.js"></script>
     </head>
     <body>
         
@@ -20,47 +26,36 @@
                         <div class="threads">
                             <div class="titles">
                                 <div class="thread-title">
-                                    Bakit walang ulam? Sino kumain ng ulam? Ano yung ulam kanina? Ubos na yung ulam?
+                                    <?php echo $data['title']?>
                                 </div>
                                 <div class="author">
-                                    <img class="thread-avatar" src="assets/images/avatar/default.jpg" alt="">
+                                    <img class="thread-avatar" src="<?php echo $user_data['avatar']?>" alt="">
                                     <div class="details">
                                         <div class="user">
-                                            <p class="name">Ramino Santos</p>
+                                            <p class="name"><?php echo $user_data['firstname'] . " " . $user_data['lastname']?></p>
                                             <p class="user-type">Student</p>
                                         </div>
-                                        <p class="date-published"">December 25, 2013</p>
+                                        <p class="date-published"><script>document.write(jQuery.timeago('<?php echo $data['date_posted'] . " " . $data['time_posted'] ?>'))</script></p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="main-threads">
-                                <p class="thread-content-text">Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus. Kenade krokrore mubelt än deliga:
-                                    Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.   </p>
+                                <p class="thread-content-text"><?php echo $data['body'] ?></p>
                             </div>
-                    </div>
-
-                        <div class="comments">
-                            <div class="divider">
+                        </div>  
+                        <div class="divider">
                                 <p>Responses</p>
                                 <div>
                                     <hr>
                                 </div>
                             </div>
+                        <div id="comments">
+                            
 
-                            <div class="main-comment">
-                                <div class="author-comment">
-                                    <img class="thread-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                    <div class="details">
-                                        <div class="user">
-                                            <p class="name">Cielo Mae Dehino</p>
-                                            <p class="user-type">Student</p>
-                                        </div>
-                                        <p class="date-published"">December 26, 2013</p>
-                                    </div>
-                                </div>
-                                <p id="main-answer"> Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.</p>
-                            </div>
+                            <?php fetchComments($_GET['threadid']) ?>
+
+<!--
 
                             <div class="main-comment">
                                 <div class="author-comment">
@@ -76,19 +71,7 @@
                                 <p id="main-answer"> Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.</p>
                             </div>
 
-                            <div class="main-comment">
-                                <div class="author-comment">
-                                    <img class="thread-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                    <div class="details">
-                                        <div class="user">
-                                            <p class="name">Raymond T. Matullano</p>
-                                            <p class="user-type">Student</p>
-                                        </div>
-                                        <p class="date-published"">December 27, 2013</p>
-                                    </div>
-                                </div>
-                                <p id="main-answer"> Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.</p>
-                            </div>
+                             -->
 
 
                         </div>
@@ -100,12 +83,13 @@
                                     <hr>
                                 </div>
                             </div>
-                            <form action="/form/submit" method="POST">
+                            <form method="POST" id="comment-form">
                                 <div class="submission">
-                                    <textarea class="comment-box" placeholder="Add Response"></textarea>
-                                    <input type="submit" name="submit" value="Send" class="submit-btn">
+                                    <input type="hidden" name="thread-id" value="<?php echo $_GET['threadid']?>" id="thread-id">
+                                    <textarea id="user-comment" class="comment-box" placeholder="Add Response"></textarea>
+                                    <input type="submit" name="submit" value="Comment" class="submit-btn" id="submit-comment">
                                 </div>
-                              </form>                      
+                            </form>                      
                         </div>
 
                     </div>
@@ -115,6 +99,7 @@
                     </div>
                 </div>
         </section>
+        <script src="javascript/thread.js"></script>
     </body>
 
 

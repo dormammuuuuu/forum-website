@@ -2,6 +2,12 @@
 
     include('db.php');
 
+    session_start();
+    
+    if(!isset($_SESSION['uid'])){
+        header("location: ../home.php");
+    }
+
     if(isset($_POST["body"])){
         @session_start();
         $title = mysqli_real_escape_string($conn, $_POST['title']);

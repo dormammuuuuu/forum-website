@@ -5,8 +5,7 @@
 
     function fetchThreads(){
         global $conn;
-        $uid = $_SESSION['uid'];
-        $sql = "SELECT * FROM threads";
+        $sql = "SELECT * FROM threads ORDER BY id DESC";
         $thread = $conn->query($sql) or die ($conn->error);
         $row = $thread->fetch_assoc();
 
@@ -21,7 +20,7 @@
             
             do{ 
             ?>
-                <div class="thread">
+                <div class="thread" data-thread="<?php echo $row['thread_id'] ?>">
                     <div class="thread-title"><?php echo $row['title']?></div>
                     <div class="thread-author">
                         <img class="thread-avatar" src="<?php echo $author_avatar ?>" alt="">
