@@ -28,9 +28,16 @@ function verifyEmail($recipient, $token){
         $mail->addAddress($recipient);     //Add a recipient
 
         //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Forum: Reset Email Verification Code';
-        $mail->Body    = 'Link: <a href="http://localhost/forgot.php?token='.$token.'">Click the link to reset your password</a>';
+        $token_link = "http://localhost/forgot.php?token=" . $token;
+        $email_template = 'email/verification-forgot-email.html';
+        $mail->AddEmbeddedImage('../assets/images/forgot-2.png', 'resetimg');
+        $message = file_get_contents($email_template);
+        $message = str_replace('%link%', $token_link, $message);
+        $message = str_replace('%text%', 'Almost there! Press the button below to reset your password. Thank you!', $message);
+        //Content
+        $mail->isHTML(true);   
+        $mail->Subject = 'Forum: Reset Account Password';
+        $mail->MsgHTML($message);                               //Set email format to HTML
 
         $mail->send();
         return 200;

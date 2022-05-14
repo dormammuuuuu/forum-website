@@ -1,7 +1,9 @@
 <?php
 
-    include('db.php');
-
+    include('db.php');?>
+    <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/jquery.timeago.js"></script>
+    <?php
     function fetchComments($tid){
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM comments WHERE thread_id='$tid'");
@@ -25,10 +27,18 @@
                                 <p class="name">'. $author_given_name . " " . $author_family_name .'</p>
                                 <p class="user-type">Student</p>
                             </div>
-                            <p class="date-published"><script>document.write(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
+                            <p class="date-published" data-date="'.$data_comment['comment_id'].'"><script>$("[data-date='.$data_comment['comment_id'].']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
                         </div>
                     </div>
                     <p id="main-answer"> '.$data_comment['comment'].'</p>
+                    <div class="response">
+                        <div class="vote-button">
+                           <i class="bx bx-like"></i><span class="comment-upvote">0</span>
+                        </div>
+                        <div class="vote-button">
+                           <i class="bx bx-dislike"></i><span class="comment-downvote">0</span>
+                        </div>
+                     </div>
                 </div>
                 ';
             } while ($data_comment = $query->fetch_assoc());
@@ -45,6 +55,9 @@
         $tid = $_GET['threadid'];
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$tid'");
         $data = mysqli_fetch_array($query);
+        if(!$data){
+            header('location: ../404.php');
+        } 
 
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '{$data['author']}'");
         $user_data = mysqli_fetch_array($query);
@@ -67,7 +80,7 @@
                     $given_name = $data['firstname'];
                     $family_name = $data['lastname'];
                     $avatar = $data['avatar'];
-                }
+                } 
                 echo '
                 <div class="main-comment">
                     <div class="author-comment">
@@ -77,10 +90,19 @@
                                 <p class="name">'. $given_name . " " . $family_name .'</p>
                                 <p class="user-type">Student</p>
                             </div>
-                            <p class="date-published" data-datetime="'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"></p>
+                            <p class="date-published" data-date="'.$commentID.'"><script>$("[data-date='.$commentID.']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
+
                         </div>
                     </div>
                     <p id="main-answer"> '.$comment.'</p>
+                    <div class="response">
+                        <div class="vote-button">
+                           <i class="bx bx-like"></i><span class="comment-upvote">0</span>
+                        </div>
+                        <div class="vote-button">
+                           <i class="bx bx-dislike"></i><span class="comment-downvote">0</span>
+                        </div>
+                     </div>
                 </div>
                 ';
             }

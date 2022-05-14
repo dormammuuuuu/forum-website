@@ -40,12 +40,17 @@
             $mail->setFrom('forum.bsit@gmail.com', 'Forum Website');
             $mail->addAddress($recipient);     //Add a recipient
 
+            //Email Content
+            $email_template = 'email/code-register-email.html';
+            $mail->AddEmbeddedImage('../assets/images/email-verification.png', 'verifyimg');
+            $message = file_get_contents($email_template);
+            $message = str_replace('%code%', $code, $message);
+            $message = str_replace('%text%', 'Almost there! Enter the verification code below to continue. Thank you!', $message);
             //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->isHTML(true);   
+            $mail->MsgHTML($message);                               //Set email format to HTML
             $mail->Subject = 'Forum: Verification Code';
-            $mail->Body    = 'Verification Code:'. $code;
-            $mail->AltBody = 'Verification Code:'. $code;
-
+            
             $mail->send();
             return 200;
         } catch (Exception $e) {

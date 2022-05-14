@@ -152,6 +152,31 @@
     padding: 1em;
 }
 
+.response {
+    display: flex;
+    width: -webkit-fill-available;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.vote-button{
+    padding: 10px 15px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.vote-button:hover{
+    background-color: var(--gray-dark);
+}
+
+.vote-button span{
+    font-size: 10px;
+    color: var(--gray-lighter);
+    margin: 0 5px;
+}
 
 .container-2{
     background-color: red;
