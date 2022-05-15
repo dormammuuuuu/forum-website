@@ -101,6 +101,62 @@
     font-size: 10px;
 }
 
+#editorjs{
+    margin-top: 10px;
+    border: 1px solid var(--gray);
+    max-height: 30vh;
+    overflow-y: scroll;
+}
+
+.ce-block--selected .ce-block__content, .ce-inline-toolbar,
+.codex-editor--narrow .ce-toolbox,
+.ce-conversion-toolbar, .ce-settings, .ce-settings__button,
+.ce-toolbar__settings-btn, .cdx-button {
+    background: var(--gray);
+    color: black!important;
+}
+
+.ce-inline-tool-input::placeholder{
+    color: rgba(255,255,255,.3);
+}
+
+.ce-inline-tool, .ce-conversion-toolbar__label, .ce-toolbox__button, .cdx-settings-button, .ce-toolbar__plus {
+    color: white;
+}
+
+.ce-toolbar__plus:hover{
+    background: rgba(0,0,0,.3);
+
+}
+
+::selection {
+    background: var(--secondary);
+}
+
+.ce-popover__item:hover{
+    background: rgba(0,0,0,.3);
+}
+
+.cdx-settings-button:hover, .ce-settings__button:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover,
+.cdx-button:hover, .ce-inline-toolbar__dropdown:hover, .ce-inline-tool:hover {
+    background-color: var(--secondary);
+}
+
+.ce-popover{
+    background-color: var(--gray);
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 3px 3px rgba(0,0,0,.3);
+}
+
+.cdx-search-field{
+    display: none;
+}
+
+.ce-popover__item-icon{
+    background: transparent;
+}
+
 @media (prefers-color-scheme: dark){
     .create-inputs{
         background-color: var(--dark-secondary);

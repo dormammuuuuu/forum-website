@@ -8,4 +8,3 @@ $('.thread').click(function (e) {
     let tid = $(this).attr('data-thread');
     location.href = "thread.php?threadid=" + tid;
 });
-x

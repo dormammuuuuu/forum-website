@@ -46,7 +46,7 @@
                         <p id="status"></p>
                         <input id="forgot-submit" name="submit" type="submit" value="Reset Password">
                     </form>
-                    <p class="login"><a href="login.html">Back to log in</a></p>
+                    <p class="login"><a href="login.php">Back to log in</a></p>
             <?php } else { ?>
                     <h1>Password</h1>
                     <p class="subheading">Enter your new password</p>

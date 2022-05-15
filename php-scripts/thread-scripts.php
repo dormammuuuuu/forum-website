@@ -1,9 +1,7 @@
 <?php
 
-    include('db.php');?>
-    <script src="javascript/jquery-3.6.0.js"></script>
-    <script src="javascript/jquery.timeago.js"></script>
-    <?php
+    include('db.php');
+    
     function fetchComments($tid){
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM comments WHERE thread_id='$tid'");
@@ -45,6 +43,41 @@
         }
     }
 
+    function jsonToHtml($jsonStr) {
+        $obj = json_decode($jsonStr);
+
+        $html = '';
+        foreach ($obj->blocks as $block) {
+            switch ($block->type) {
+                case 'paragraph':
+                    $html .= '<p>' . $block->data->text . '</p>';
+                    break;
+                
+                case 'header':
+                    $html .= '<h'. $block->data->level .'>' . $block->data->text . '</h'. $block->data->level .'>';
+                    break;
+
+                case 'list':
+                    $lsType = ($block->data->style == 'ordered') ? 'ol' : 'ul';
+                    $html .= '<' . $lsType . '>';
+                    foreach($block->data->items as $item) {
+                        $html .= '<li>' . $item . '</li>';
+                    }
+                    $html .= '</' . $lsType . '>';
+                    break;
+                
+                case 'image':
+                    $html .= '<div class="img_pnl"><img src="'. $block->data->url .'" /></div>';
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+        
+        return $html;
+    }
+
     if(isset($_POST['commentLoad'])){
         $status = $_POST['commentLoad'];
         $threadID = mysqli_real_escape_string($conn, $_POST['threadID']);
@@ -57,7 +90,7 @@
         $data = mysqli_fetch_array($query);
         if(!$data){
             header('location: ../404.php');
-        } 
+        }
 
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '{$data['author']}'");
         $user_data = mysqli_fetch_array($query);

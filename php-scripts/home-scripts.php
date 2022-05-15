@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="thread-content">
-                        <p class="thread-content-text"><?php echo $row['body']?></p>
+                        <p class="thread-content-text"><?php echo jsonToHtml($row['body']) ?></p>
                     </div>
                     <div class="thread-buttons">
                         <div class="thread-save">
@@ -48,5 +48,27 @@
             <?php
             } while ($row = $thread->fetch_assoc());
         }
+    }
+
+    function jsonToHtml($jsonStr) {
+        $obj = json_decode($jsonStr);
+
+        $html = '';
+        foreach ($obj->blocks as $block) {
+            switch ($block->type) {
+                case 'paragraph':
+                    $html .= '<p>' . $block->data->text . '</p>';
+                    break;
+                
+                case 'header':
+                    $html .= '<p>' . $block->data->text . '</p>';
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+        
+        return $html;
     }
 ?>

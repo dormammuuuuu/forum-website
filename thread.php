@@ -9,9 +9,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Threads</title>
       <link rel="stylesheet" href="styles/default.css">
-      <link rel="stylesheet" href="styles/thread-home.css">
+      <link rel="stylesheet" href="styles/thread.css">
       <link rel="stylesheet" href="styles/navbar.css">
       <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+      <script src="javascript/jquery-3.6.0.js"></script>
+      <script src="javascript/jquery.timeago.js"></script>
      
    </head>
    <body>
@@ -38,7 +40,7 @@
                      </div>
                   </div>
                   <div class="main-threads">
-                     <p class="thread-content-text"><?php echo $data['body'] ?></p>
+                     <p class="thread-content-text"><?php echo jsonToHtml($data['body']) ?></p>
                   </div>
                </div>
                <div class="divider">

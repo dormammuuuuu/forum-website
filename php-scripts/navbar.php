@@ -7,7 +7,12 @@
             </div>
         </div>
         <div class="nav-buttons">
-        <?php @session_start(); if(isset($_SESSION['uid'])){ ?>
+        <?php 
+            @session_start(); 
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
+            $result = mysqli_fetch_array($query);
+            if(isset($_SESSION['uid'])){ 
+            ?>
             <ul>
                 <li class="nav-links active"><a href="home.php">Home</a></li>
                 <li class="nav-links"><a href="messages.php">Messages</a></li>
@@ -19,7 +24,7 @@
                     <i class='bx bxs-bell'></i>
                 </span>
             </div>
-            <img class="user-avatar" src="assets/images/avatar/default.jpg" alt="">
+            <img class="user-avatar" src="<?php echo $result['avatar'] ?>" alt="">
         <?php } else { ?>
             <ul>
                 <li class="nav-links"><a href="login.php">Login</a></li>
