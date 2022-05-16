@@ -6,7 +6,7 @@
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM comments WHERE thread_id='$tid'");
         $data_comment = $query->fetch_assoc();
-
+        @session_start();
         if (!empty($data_comment)){
             do{
                 $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$data_comment["comment_author"]}'");
@@ -16,6 +16,28 @@
                     $author_family_name = $data['lastname'];
                     $author_avatar = $data['avatar'];
                 }
+                $commentQuery = mysqli_query($conn, "SELECT * FROM votes WHERE comment_id = '{$data_comment['comment_id']}' and uid = '{$_SESSION['uid']}'");
+                $voteComment = mysqli_fetch_assoc($commentQuery);
+                if($voteComment){   
+                    $vStat = $voteComment['status'];
+                    if ( $vStat == "upvote"){
+                        $upvote_class = "bx bxs-like";
+                        $downvote_class = "bx bx-dislike";
+                    } else if ($vStat == "downvote"){
+                        $upvote_class = "bx bx-like";
+                        $downvote_class = "bx bxs-dislike";
+                    } 
+                } else{
+                    $upvote_class = "bx bx-like";
+                    $downvote_class = "bx bx-dislike";
+                }
+                $voteQuery = mysqli_query($conn, "SELECT COUNT(id) FROM `votes` WHERE status='upvote' and comment_id = '{$data_comment['comment_id']}'");
+                $data_votes = mysqli_fetch_assoc($voteQuery);
+                $upvotes = $data_votes['COUNT(id)'];
+
+                $voteQuery = mysqli_query($conn, "SELECT COUNT(id) FROM `votes` WHERE status='downvote' and comment_id = '{$data_comment['comment_id']}'");
+                $data_votes = mysqli_fetch_assoc($voteQuery);
+                $downvotes = $data_votes['COUNT(id)'];  
                 echo '
                 <div class="main-comment">
                     <div class="author-comment">
@@ -29,12 +51,12 @@
                         </div>
                     </div>
                     <p id="main-answer"> '.$data_comment['comment'].'</p>
-                    <div class="response">
-                        <div class="vote-button">
-                           <i class="bx bx-like"></i><span class="comment-upvote">0</span>
+                    <div class="response" data-comment="'.$data_comment['comment_id'].'">
+                        <div class="vote-button" data-vote="upvote">
+                           <i data-icon="u'.$data_comment['comment_id'].'" class="'.$upvote_class.'"></i><span class="comment-upvote">'.$upvotes.'</span>
                         </div>
-                        <div class="vote-button">
-                           <i class="bx bx-dislike"></i><span class="comment-downvote">0</span>
+                        <div class="vote-button" data-vote="downvote">
+                           <i data-icon="d'.$data_comment['comment_id'].'" class="'.$downvote_class.'"></i><span class="comment-downvote">'.$downvotes.'</span>
                         </div>
                      </div>
                 </div>
@@ -128,12 +150,12 @@
                         </div>
                     </div>
                     <p id="main-answer"> '.$comment.'</p>
-                    <div class="response">
-                        <div class="vote-button">
-                           <i class="bx bx-like"></i><span class="comment-upvote">0</span>
+                    <div class="response" data-comment="'.$data_comment['comment_id'].'">
+                        <div class="vote-button" data-vote="upvote">
+                           <i data-icon="u'.$data_comment['comment_id'].'" class="bx bx-like"></i><span class="comment-upvote">0</span>
                         </div>
-                        <div class="vote-button">
-                           <i class="bx bx-dislike"></i><span class="comment-downvote">0</span>
+                        <div class="vote-button" data-vote="downvote">
+                           <i data-icon="d'.$data_comment['comment_id'].'" class="bx bx-dislike"></i><span class="comment-downvote">0</span>
                         </div>
                      </div>
                 </div>
@@ -142,7 +164,42 @@
         } else {
            echo "ERROR";
         }
+        mysqli_close($conn);
+    }
 
+    if(isset($_POST['vote'])){
+        $vote = mysqli_real_escape_string($conn, $_POST['vote']);
+        $commentID = mysqli_real_escape_string($conn, $_POST['commentID']);
+        @session_start();
+        $uid = $_SESSION['uid'];
+        $query = mysqli_query($conn, "SELECT * FROM votes WHERE comment_id = '$commentID' AND uid='$uid'");
+        $data = mysqli_fetch_assoc($query);
+        if ($data){
+            $currentStatus = $data['status'];
+            if ($vote == $currentStatus){
+                $query = mysqli_query($conn, "DELETE FROM `votes` WHERE comment_id = '$commentID' AND uid='$uid'");
+                $result_json['message'] = "neutral"; 
+            } else{
+                $query = mysqli_query($conn, "UPDATE `votes` SET `status`='$vote' WHERE comment_id = '$commentID' AND uid='$uid'");
+                $result_json['message'] = $vote; 
+            }
+            $result_json['statusCode'] = 200; 
+        } else {
+            $query = mysqli_query($conn, "INSERT INTO `votes`(`comment_id`, `status`, `uid`) VALUES ('$commentID','$vote','$uid')");
+            if ($query){
+                $result_json['message'] = $vote; 
+                $result_json['statusCode'] = 200;
+            }
+        }
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `votes` WHERE status='upvote' and comment_id = '$commentID'");
+        $data = mysqli_fetch_assoc($query);
+        $result_json['upvotes'] = $data['COUNT(id)'];
+
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `votes` WHERE status='downvote' and comment_id = '$commentID'");
+        $data = mysqli_fetch_assoc($query);
+        $result_json['downvotes'] = $data['COUNT(id)'];  
+
+        echo json_encode($result_json);
         mysqli_close($conn);
     }
 

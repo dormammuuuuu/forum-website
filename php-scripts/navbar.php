@@ -8,10 +8,12 @@
         </div>
         <div class="nav-buttons">
         <?php 
+            include('db.php');
             @session_start(); 
-            $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
-            $result = mysqli_fetch_array($query);
-            if(isset($_SESSION['uid'])){ 
+
+            if(isset($_SESSION['uid'])){
+                $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
+                $result = mysqli_fetch_array($query);
             ?>
             <ul>
                 <li class="nav-links active"><a href="home.php">Home</a></li>
