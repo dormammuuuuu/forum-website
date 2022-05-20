@@ -19,24 +19,10 @@ $('#comment-form').submit(function (e) {
             }
             $('#comments').append(response);
         },
-        error: function(jqXHR, exception) {
-            let msg = '';
-            if (jqXHR.status === 0) {
-                msg = 'Not connect.\n Verify Network.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-            console.log(msg);
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
         }
     });
 });
@@ -63,26 +49,66 @@ $('.vote-button').click(function () {
         dataType: "JSON",
         success: function (response) {
             let result = JSON.parse(JSON.stringify(response));
-            console.log(result);
             if (result.message == "upvote"){
-                $('[data-icon=d' + commentID + ']').removeClass("bxs-dislike");
-                $('[data-icon=d' + commentID + ']').addClass("bx-dislike");
-                $('[data-icon=u' + commentID + ']').removeClass("bx-like");
-                $('[data-icon=u' + commentID + ']').addClass("bxs-like");
+                $('[data-icon=d' + commentID + ']').removeClass("bxs-dislike").addClass("bx-dislike");
+                $('[data-icon=u' + commentID + ']').removeClass("bx-like").addClass("bxs-like");
             } else if (result.message == "downvote") {
-                $('[data-icon=u' + commentID + ']').removeClass("bxs-like");
-                $('[data-icon=u' + commentID + ']').addClass("bx-like");
-                $('[data-icon=d' + commentID + ']').removeClass("bx-dislike");
-                $('[data-icon=d' + commentID + ']').addClass("bxs-dislike");
+                $('[data-icon=u' + commentID + ']').removeClass("bxs-like").addClass("bx-like");
+                $('[data-icon=d' + commentID + ']').removeClass("bx-dislike").addClass("bxs-dislike");
             } else {
-                $('[data-icon=u' + commentID + ']').removeClass("bxs-like");
-                $('[data-icon=u' + commentID + ']').addClass("bx-like");
-                $('[data-icon=d' + commentID + ']').removeClass("bxs-dislike");
-                $('[data-icon=d' + commentID + ']').addClass("bx-dislike");
+                $('[data-icon=u' + commentID + ']').removeClass("bxs-like").addClass("bx-like");
+                $('[data-icon=d' + commentID + ']').removeClass("bxs-dislike").addClass("bx-dislike");
             }
             $('[data-icon=u' + commentID + ']').next('.comment-upvote').html(result.upvotes);
             $('[data-icon=d' + commentID + ']').next('.comment-downvote').html(result.downvotes);
         },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+$('.correct-button').click(function () { 
+    let commentID = $(this).parent().attr('data-comment');
+
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/thread-scripts.php",
+        data: {
+            correct: commentID
+        },
+        dataType: "JSON",
+        success: function (response) {
+            let result = JSON.parse(JSON.stringify(response));
+            if (response.answer){
+                $('[data-correct=c' + commentID + ']').addClass('remove').html("<i class='bx bx-x'></i><span>Remove from correct answers</span>");
+            } else {
+                $('[data-correct=c' + commentID + ']').removeClass('remove').html("<i class='bx bx-check'></i><span>Mark as correct</span>");
+            }
+        }
+    });
+});
+
+$('.dropdown-button').click(function () { 
+    $('.dropdown-menu').toggle();
+});
+
+$('#close-thread').click(function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/thread-scripts.php",
+        data: {
+            close: threadID
+        },
+        dataType: "json",
+        success: function (response) {
+            if (response.statusCode == 200){
+                location.reload();
+            }
+        }, 
         error: function (request, status, error) {
             console.log(request.responseText);
             console.log(status);

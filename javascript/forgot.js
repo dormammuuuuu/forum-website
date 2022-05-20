@@ -60,16 +60,16 @@ $("#password-form").submit(function (e) {
                     $(".success").css('display','flex');
                     $(".success h1").html('Password changed!');
                     $(".success p").html('Your password was successfully changed');
+                    setTimeout(() => {
+                        location.href = "../login.php";
+                    }, 3500);     
                 } else {
                     $("#status").show();
                     $('#status').html("Something went wrong.");
                 }
             },
             complete:function(data){
-                $(".loader-container").fadeOut();  
-                setTimeout(() => {
-                    location.href = "login.html";
-                }, 3500);              
+                $(".loader-container").fadeOut();              
             },
             error: function (request, status, error) {
                 console.log(request.responseText);

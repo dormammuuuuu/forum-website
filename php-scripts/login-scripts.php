@@ -51,8 +51,9 @@
     if(isset($_POST['email'])){
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $encrypted_password = md5($password);
 
-        $result_json['statusCode'] = loginAccount($email, $password, 1);
+        $result_json['statusCode'] = loginAccount($email, $encrypted_password, 1);
         
         echo json_encode($result_json);
         mysqli_close($conn);

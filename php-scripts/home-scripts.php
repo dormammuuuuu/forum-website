@@ -10,6 +10,9 @@
         $row = $thread->fetch_assoc();
 
         if (!empty($row)){
+            
+            
+            do{ 
             $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$row["author"]}'");
             $data = mysqli_fetch_array($user);
             if ($data){
@@ -17,8 +20,6 @@
                 $author_family_name = $data['lastname'];
                 $author_avatar = $data['avatar'];
             }
-            
-            do{ 
             ?>
                 <div class="thread" data-thread="<?php echo $row['thread_id'] ?>">
                     <div class="thread-title"><?php echo $row['title']?></div>

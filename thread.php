@@ -27,15 +27,36 @@
                         <?php echo $data['title']?>
                      </div>
                      <div class="author">
-                        <img class="thread-avatar" src="<?php echo $user_data['avatar']?>" alt="">
-                        <div class="details">
-                           <div class="user">
-                              <p class="name"><?php echo $user_data['firstname'] . " " . $user_data['lastname']?></p>
-                              <p class="user-type">Student</p>
+                        <div class="author-details">
+                           <img class="thread-avatar" src="<?php echo $user_data['avatar']?>" alt="">
+                           <div class="details">
+                              <div class="user">
+                                 <p class="name"><?php echo $user_data['firstname'] . " " . $user_data['lastname']?></p>
+                                 <p class="user-type">Student</p>
+                              </div>
+                              <p class="date-published">
+                                 <script>document.write(jQuery.timeago('<?php echo $data['date_posted'] . " " . $data['time_posted'] ?>'))</script>
+                              </p>
                            </div>
-                           <p class="date-published">
-                              <script>document.write(jQuery.timeago('<?php echo $data['date_posted'] . " " . $data['time_posted'] ?>'))</script>
-                           </p>
+                        </div>
+                        <div class="dropdown-container">
+                           <button class="dropdown-button"><i class='bx bx-dots-horizontal-rounded bx-rotate-90'></i></button>
+                           <div class="dropdown-menu" data-thread='<?php echo $_GET['threadid']?>'>
+                           <?php 
+                              $select = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id='$tid'");
+                              $selectAuthor = mysqli_fetch_assoc($select);
+                              $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectAuthor['author']}'");
+                              $threadAuthor = mysqli_fetch_assoc($newQuery);
+                              if ($_SESSION['uid'] == $threadAuthor['uid']){ ?>
+                                 <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
+                                 <div id="close-thread" class="dropdown-item"><i class='bx bx-message-alt-x'></i><p>Close thread</p></div>
+                                 <div class="dropdown-item"><i class='bx bxs-trash-alt' ></i><p>Delete thread</p></div>
+                              <?php } else { ?>
+                                 <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
+                              <?php }
+                           ?>
+                              
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -73,8 +94,9 @@
                             </div>
                         </div>
                     </div> -->
+
                </div>
-               <?php if (isset($_SESSION['uid'])) { ?>
+               <?php if (isset($_SESSION['uid']) && $data['thread_status'] == "open") { ?>
                <div class="your-comment">
                   <div class="divider">
                      <p>Your Response</p>

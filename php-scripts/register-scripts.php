@@ -113,7 +113,7 @@
 		$password = mysqli_real_escape_string($conn, $_POST['password']);
         $uid = uniqid('u');
         $avatar = "assets/images/avatar/default.jpg";
-        $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+        $encrypted_password = md5($password);
 		
         $query = mysqli_query($conn, "SELECT * FROM users_verification WHERE email='$email'");
 

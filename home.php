@@ -26,7 +26,10 @@
             <div class="content-area">
                 <?php
                     if(isset($_SESSION['uid'])){ ?>
-                        <div class="create-thread">+ Make Thread</div>
+                        <div class="create-thread">
+                            <p>Add a new thread</p>
+                            <span>+</span>
+                        </div>
                 <?php }
                 ?>
                 <div class="divider">
@@ -37,7 +40,7 @@
                 </div>
 
                 <div class="threads-container">
-
+                    
                     <?php fetchThreads(); ?>
 
                     <!-- <div class="thread">
