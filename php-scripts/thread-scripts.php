@@ -10,8 +10,8 @@
 
 
         $select = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id='$tid'");
-        $selectAuthor = mysqli_fetch_assoc($select);
-        $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectAuthor['author']}'");
+        $selectThread = mysqli_fetch_assoc($select);
+        $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectThread['author']}'");
         $threadAuthor = mysqli_fetch_assoc($newQuery);
 
         @session_start();
@@ -69,6 +69,10 @@
                             if ($_SESSION['uid'] != $threadAuthor['uid'] && $data_comment['answer'] == 1){
                                 echo '<div class="correct-status">Correct</div>';
                             }    
+                        } else {
+                            if ($data_comment['answer'] == 1){
+                                echo '<div class="correct-status">Correct</div>';
+                            } 
                         }
                     
                     echo'
@@ -77,7 +81,7 @@
                     <div class="response" data-comment="'.$data_comment['comment_id'].'">';
                         
                         if(isset($_SESSION['uid'])){
-                            if ($_SESSION['uid'] == $threadAuthor['uid']){
+                            if ($_SESSION['uid'] == $threadAuthor['uid'] && $selectThread['thread_status'] == "open"){
                                 $status = ($data_comment['answer'] == 0) ? "correct-button" : "correct-button remove";
                                 $statusIcon = ($data_comment['answer'] == 0) ? "check" : "x";
                                 $statusMessage = ($data_comment['answer'] == 0) ? "Mark as correct" : "Remove from correct answers";
@@ -160,52 +164,59 @@
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$threadID'");
         $data = mysqli_fetch_assoc($query);
 
-        if ($data['thread_status'] == "open"){
-            $query = mysqli_query($conn, "INSERT INTO `comments`(`thread_id`, `comment_id`, `comment_author`, `comment`) VALUES ('$threadID','$commentID','{$_SESSION['uid']}','$comment')");
-        
-            if ($query){
-                $query = mysqli_query($conn, "SELECT * FROM comments WHERE comment_id='$commentID'");
-                $data_comment = mysqli_fetch_array($query);
-                if (!empty($data_comment)){
-                    $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
-                    $data = mysqli_fetch_array($user);
-                    if ($data){
-                        $given_name = $data['firstname'];
-                        $family_name = $data['lastname'];
-                        $avatar = $data['avatar'];
-                    } 
-                    echo '
-                    <div class="main-comment">
-                        <div class="author-comment">
-                            <div class="author-info">
-                                <img class="thread-avatar" src="'. $avatar .'" alt="">
-                                <div class="details">
-                                    <div class="user">
-                                        <p class="name">'. $given_name . " " . $family_name .'</p>
-                                        <p class="user-type">Student</p>
+        if ($data){
+            if ($data['thread_status'] == "open"){
+                $query = mysqli_query($conn, "INSERT INTO `comments`(`thread_id`, `comment_id`, `comment_author`, `comment`) VALUES ('$threadID','$commentID','{$_SESSION['uid']}','$comment')");
+            
+                if ($query){
+                    $query = mysqli_query($conn, "SELECT * FROM comments WHERE comment_id='$commentID'");
+                    $data_comment = mysqli_fetch_array($query);
+                    if (!empty($data_comment)){
+                        $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
+                        $data = mysqli_fetch_array($user);
+                        if ($data){
+                            $given_name = $data['firstname'];
+                            $family_name = $data['lastname'];
+                            $avatar = $data['avatar'];
+                        } 
+                        echo '
+                        <div class="main-comment">
+                            <div class="author-comment">
+                                <div class="author-info">
+                                    <img class="thread-avatar" src="'. $avatar .'" alt="">
+                                    <div class="details">
+                                        <div class="user">
+                                            <p class="name">'. $given_name . " " . $family_name .'</p>
+                                            <p class="user-type">Student</p>
+                                        </div>
+                                        <p class="date-published" data-date="'.$data_comment['comment_id'].'"><script>$("[data-date='.$data_comment['comment_id'].']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
                                     </div>
-                                    <p class="date-published" data-date="'.$data_comment['comment_id'].'"><script>$("[data-date='.$data_comment['comment_id'].']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
+                                </div>
+                            </div>
+                            <p id="main-answer"> '.$comment.'</p>
+                            <div class="response" data-comment="'.$data_comment['comment_id'].'">
+                                <div class="vote-button" data-vote="upvote">
+                                <i data-icon="u'.$data_comment['comment_id'].'" class="bx bx-like"></i><span class="comment-upvote">0</span>
+                                </div>
+                                <div class="vote-button" data-vote="downvote">
+                                <i data-icon="d'.$data_comment['comment_id'].'" class="bx bx-dislike"></i><span class="comment-downvote">0</span>
                                 </div>
                             </div>
                         </div>
-                        <p id="main-answer"> '.$comment.'</p>
-                        <div class="response" data-comment="'.$data_comment['comment_id'].'">
-                            <div class="vote-button" data-vote="upvote">
-                            <i data-icon="u'.$data_comment['comment_id'].'" class="bx bx-like"></i><span class="comment-upvote">0</span>
-                            </div>
-                            <div class="vote-button" data-vote="downvote">
-                            <i data-icon="d'.$data_comment['comment_id'].'" class="bx bx-dislike"></i><span class="comment-downvote">0</span>
-                            </div>
-                        </div>
-                    </div>
-                    ';
+                        ';
+                    }
                 }
+            } else {
+               echo '<div class="error">
+                        <p>Notice: Your response could not be submitted. The author had already closed or deleted this thread. Please reload the page.</p>
+                    </div>';
             }
         } else {
-           echo '<div class="error">
-                    <p>Notice: Your response could not be submitted. The author had already closed this thread. Please reload the page.</p>
-                </div>';
+            echo '<div class="error">
+                     <p>Notice: Your response could not be submitted. The author had already closed or deleted this thread. Please reload the page.</p>
+                 </div>';
         }
+        
         mysqli_close($conn);
     }
 
@@ -263,6 +274,18 @@
     if(isset($_POST['close'])){
         $closeID = mysqli_real_escape_string($conn, $_POST['close']);
         $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status`='close' WHERE thread_id='$closeID'");
+        if ($query){
+            $result_json['statusCode'] = 200;
+        } else {
+            $result_json['statusCode'] = 201;
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+    }
+
+    if(isset($_POST['delete'])){
+        $deleteID = mysqli_real_escape_string($conn, $_POST['delete']);
+        $query = mysqli_query($conn, "DELETE FROM `threads` WHERE thread_id='$deleteID'");
         if ($query){
             $result_json['statusCode'] = 200;
         } else {

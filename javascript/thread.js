@@ -116,3 +116,25 @@ $('#close-thread').click(function () {
         }
     });
 });
+
+$('#delete-thread').click(function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/thread-scripts.php",
+        data: {
+            delete: threadID
+        },
+        dataType: "json",
+        success: function (response) {
+            if (response.statusCode == 200){
+                location.href = "home.php";
+            }
+        }, 
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});

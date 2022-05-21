@@ -40,20 +40,28 @@
                            </div>
                         </div>
                         <div class="dropdown-container">
-                           <button class="dropdown-button"><i class='bx bx-dots-horizontal-rounded bx-rotate-90'></i></button>
+                           <?php if(isset($_SESSION['uid'])){?>
+                              <button class="dropdown-button"><i class='bx bx-dots-horizontal-rounded bx-rotate-90'></i></button>
+                           <?php } ?>
                            <div class="dropdown-menu" data-thread='<?php echo $_GET['threadid']?>'>
                            <?php 
                               $select = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id='$tid'");
-                              $selectAuthor = mysqli_fetch_assoc($select);
-                              $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectAuthor['author']}'");
+                              $selectThread = mysqli_fetch_assoc($select);
+                              $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectThread['author']}'");
                               $threadAuthor = mysqli_fetch_assoc($newQuery);
-                              if ($_SESSION['uid'] == $threadAuthor['uid']){ ?>
-                                 <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
-                                 <div id="close-thread" class="dropdown-item"><i class='bx bx-message-alt-x'></i><p>Close thread</p></div>
-                                 <div class="dropdown-item"><i class='bx bxs-trash-alt' ></i><p>Delete thread</p></div>
-                              <?php } else { ?>
+                              if(isset($_SESSION['uid'])){
+                                 if ($_SESSION['uid'] == $threadAuthor['uid']){ 
+                                    if ($selectThread['thread_status'] == "open"){?>
+                                       <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
+                                       <div id="close-thread" class="dropdown-item"><i class='bx bx-message-alt-x'></i><p>Close thread</p></div>
+                                 <?php    } ?>
                                  <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
-                              <?php }
+                                 <div id="delete-thread" class="dropdown-item"><i class='bx bxs-trash-alt' ></i><p>Delete thread</p></div>
+                                       <?php
+                                       } else { ?>
+                                    <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
+                                 <?php }
+                              }
                            ?>
                               
                            </div>
