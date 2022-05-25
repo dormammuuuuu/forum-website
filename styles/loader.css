@@ -10,6 +10,16 @@
 }
 
 
+.loader-superuser{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, .5);
+}
+
 #loader{
 	background: var(--primary);
 	position: relative;

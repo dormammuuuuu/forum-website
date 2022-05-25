@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="styles/default.css">
         <link rel="stylesheet" href="styles/superuser.css">
         <link rel="stylesheet" href="styles/navbar.css">
+        <link rel="stylesheet" href="styles/loader.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <script src="javascript/jquery-3.6.0.js"></script>
         <script src="javascript/jquery.timeago.js"></script>
@@ -18,6 +19,9 @@
         
     </head>
     <body>
+        <div class="loader-superuser">
+            <div id="loader"></div>
+        </div>
         <section class="main">
             <div class="tup-gif">
             </div>
@@ -72,7 +76,6 @@
                             </ul>
                             </div> -->
                         <div class="pending-threads">
-                            
                         </div>
                     </div>
                 </div>
@@ -80,9 +83,10 @@
                     <div class="list-user">
                         <h1 class="list-user-title">Manage</h1>
                         <ul id="list-cate">
-                            <li>Student</li>
-                            <li>Teacher</li>
-                            <li id="pending-button">Pending Restrictions of user</li>
+                            <li>Students</li>
+                            <li>Professors</li>
+                            <li>Administrators</li>
+                            <li id="pending-button">Pending Threads</li>
                         </ul>
                     </div>
                 </div>

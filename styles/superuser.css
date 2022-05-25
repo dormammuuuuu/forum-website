@@ -135,9 +135,9 @@
 
 .pending-thread-title h1 {
     color: var(--gray-dark);
-    font-size: 18px;
+    font-size: 1.5em;
     padding: 1em;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .pending-author {
@@ -257,6 +257,19 @@
 
 .pending-main-threads ol{
     padding: 30px;
+}
+
+#load-more-button{
+    width: -webkit-fill-available;
+    background-color: transparent;
+    padding: 10px 0;
+    border: 1px solid rgba(255, 255, 255, .4);
+    cursor: pointer;
+    margin: 15px;
+}
+
+#load-more-button:hover{
+    background-color: rgba(255, 255, 255, .2);
 }
 
 

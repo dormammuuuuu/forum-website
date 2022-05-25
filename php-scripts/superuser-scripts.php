@@ -57,9 +57,10 @@
         mysqli_close($conn);
     }
 
+    //Fetch Pending Threads (Initial = 2)
     if(isset($_POST['pending'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 0");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 0 LIMIT 0,2");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -74,6 +75,33 @@
                 'date' => $result['date_posted'], 
                 'time' => $result['time_posted']
             );
+        } while ($result = mysqli_fetch_assoc($query));
+
+        echo json_encode($json_response);
+        mysqli_close($conn);
+    }
+
+    //Fetch Pending Threads (+2 to initial displayed thread)
+    if(isset($_POST['loadmore'])){
+        $json_response = array();
+        $data = mysqli_real_escape_string($conn,$_POST['loadmore']);
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 0 LIMIT $data,2");
+        $result = mysqli_fetch_assoc($query);
+
+        do {
+            if (!empty($result)){
+                $userdata = getUserData($result['author']);
+                $json_response[] = array(
+                    'title' => $result['title'], 
+                    'firstname' => $userdata['firstname'],
+                    'lastname' => $userdata['lastname'],
+                    'avatar' => $userdata['avatar'],
+                    'thread_id' => $result['thread_id'], 
+                    'body' => $result['body'], 
+                    'date' => $result['date_posted'], 
+                    'time' => $result['time_posted']
+                );
+            }
         } while ($result = mysqli_fetch_assoc($query));
 
         echo json_encode($json_response);
