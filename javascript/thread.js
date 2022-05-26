@@ -79,7 +79,7 @@ $('.correct-button').click(function () {
         data: {
             correct: commentID
         },
-        dataType: "JSON",
+        dataType: "json",
         success: function (response) {
             let result = JSON.parse(JSON.stringify(response));
             if (response.answer){

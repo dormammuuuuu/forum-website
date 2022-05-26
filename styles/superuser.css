@@ -272,6 +272,77 @@
     background-color: rgba(255, 255, 255, .2);
 }
 
+.user-container{
+    background-color: var(--gray);
+    width: -webkit-fill-available;
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.user-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 7px;
+}
+
+.user-details{
+    display: flex;
+    align-items: center;
+}
+
+.user-info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;   
+}
+
+.user-thread-post{
+    font-size: 12px;
+}
+
+.user-name{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.user-btn{
+    display: flex;
+    align-items: center;
+}
+
+.user-btn button, .user-btn select{
+    background: transparent;
+    padding: 7px 13px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: var(--dark-secondary);
+}
+
+.restricted{
+    background: rgba(255, 0, 0, 0.3)!important;
+}
+
+select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* For IE (thanks to @SaiManoj) */
+select::-ms-expand {
+    display: none;  
+}
+
+.moved-notice{
+    font-size: 13px;
+    color:rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
 
 @media(prefers-color-scheme: dark) {
 

@@ -76,6 +76,7 @@
                             </ul>
                             </div> -->
                         <div class="pending-threads">
+                            <?php ?>
                         </div>
                     </div>
                 </div>
@@ -83,10 +84,11 @@
                     <div class="list-user">
                         <h1 class="list-user-title">Manage</h1>
                         <ul id="list-cate">
-                            <li>Students</li>
-                            <li>Professors</li>
-                            <li>Administrators</li>
+                            <li id="all-button">All Threads</li>
                             <li id="pending-button">Pending Threads</li>
+                            <li id="student-button">Students</li>
+                            <li id="teacher-button">Teachers</li>
+                            <li>Administrators</li>
                         </ul>
                     </div>
                 </div>
