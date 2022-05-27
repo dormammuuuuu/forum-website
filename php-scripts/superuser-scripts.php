@@ -3,6 +3,11 @@
     include('db.php');
     $user_number; $thread_number; $pending_number; $closed_number;
 
+    session_start();
+    if(!isset($_SESSION['uid'])){
+        header('location: ../home.php');
+    }
+
     function getUserData($userID){
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM `users` WHERE uid = '$userID'");
@@ -43,7 +48,6 @@
         $closed_number = $data['COUNT(id)'];
     }
 
-    session_start();
     if(isset($_SESSION['uid'])){
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$_SESSION['uid']}'");
         $result = mysqli_fetch_array($query);
@@ -54,15 +58,20 @@
         }
     }
 
-    //Fire continous request from the server
+    //Fire continuous request from the server
     if(isset($_POST['continuous'])){
-        getData();
-        $response = array(
-            'user' => $user_number, 
-            'thread' => $thread_number, 
-            'pending' => $pending_number, 
-            'closed' => $closed_number 
-        );
+        if(!isset($_SESSION['uid'])){
+            header('location: ../home.php');
+        } else {
+            getData();
+            $response = array(
+                'user' => $user_number, 
+                'thread' => $thread_number, 
+                'pending' => $pending_number, 
+                'closed' => $closed_number 
+            );
+        }
+        
 
         echo json_encode($response);
         mysqli_close($conn);
@@ -208,14 +217,16 @@
         mysqli_close($conn);
     }
 
-    if(isset($_POST['restrictID'])){
-        $data = mysqli_real_escape_string($conn,$_POST['restrictID']);
+    if(isset($_POST['restrict'])){
+        $data = mysqli_real_escape_string($conn,$_POST['restrict']);
+        $reason = mysqli_real_escape_string($conn,$_POST['reason']);
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='$data'");
         $response = mysqli_fetch_assoc($query);
 
         $restriction_type = $response['restricted'] == true ? false : true;
+        $reason = $response['restricted_reason'] == NULL ? $reason : NULL;
 
-        $query = mysqli_query($conn, "UPDATE `users` SET `restricted` = '$restriction_type' WHERE uid = '$data'");
+        $query = mysqli_query($conn, "UPDATE `users` SET `restricted` = '$restriction_type', `restricted_reason`='$reason' WHERE uid = '$data'");
         if ($query) {
             if ($restriction_type == true){
                 $result['type'] = "Restricted";

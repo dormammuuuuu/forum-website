@@ -12,9 +12,12 @@ $(function () {
                 $('#thread-number').html(response.thread);
                 $('#pending-number').html(response.pending);
                 $('#closed-number').html(response.closed);
+            },
+            error: function (request, status, error) {
+                location.href = "../expired.php";
             }
         });
-    }, 2000);
+    }, 1000);
     $('#student-button').click();
 });
 
@@ -71,11 +74,52 @@ function renderAccount(json_response, index, type){
                     '</div>' +
                     '<div class="user-btn" data-user="' + json_response[index].uid + '">' +
                         '<button class="view-btn">View Profile</button>' +
-                        '<button class="restrict-btn ' + restrictionClass +'">' + restrictionLabel + '</button>' +
+                        '<button class="restrict-btn ' + restrictionClass +'" data-restriction="' + json_response[index].restricted + '">' + restrictionLabel + '</button>' +
                         '<select name="select-user-type" class="user-type">' + accountType + '</select>' +
                     '</div>' +
                 '</div>';
     return layout;
+}
+
+function restriction(userID, reason){
+
+    let restrictReason = (reason == 0) ?  $('.restrict-select').val() : 0;
+    let restrict_obj = {
+        "restrict": userID,
+        "reason" : restrictReason
+    }
+
+    //get select dropdown value
+
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: restrict_obj,
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            if (reason == 0){
+                $('[data-user=' + userID +'] > .restrict-btn').addClass("restricted").text("Remove Account Restriction");
+            } else {
+                $('[data-user=' + userID +'] > .restrict-btn').removeClass("restricted").text("Restrict Account");
+            }
+            reason = reason == 0 ? 1 : 0;
+            $('[data-user=' + userID +'] > .restrict-btn').attr("data-restriction", reason);
+            $('#restrict-modal').hide();
+            $('#restrict-modal').remove();
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
 }
 
 $('#pending-button').click(function () { 
@@ -299,32 +343,48 @@ $(document).on("click", ".view-btn", function () {
 
 $(document).on("click", ".restrict-btn", function () { 
     let accountID = $(this).parent().attr('data-user');
-    $.ajax({
-        type: "post",
-        url: "../php-scripts/superuser-scripts.php",
-        data: {
-            restrictID: accountID
-        },
-        dataType: "json",
-        beforeSend: function(){
-            $(".loader-superuser").show();
-        },
-        success: function (response) {
-            if(response.type == "Restricted"){
-                $('[data-user=' + accountID +'] > .restrict-btn').addClass("restricted").text("Remove Account Restriction");
-            } else {
-                $('[data-user=' + accountID +'] > .restrict-btn').removeClass("restricted").text("Restrict Account");
-            }
-        },
-        complete:function(data){
-            $(".loader-superuser").fadeOut();                
-        },
-        error: function (request, status, error) {
-            console.log(request.responseText);
-            console.log(status);
-            console.log(error);
-        }
+    let restrictType = $(this).attr('data-restriction');
+    //create a modal with select box
+
+    if (restrictType == '0'){
+    let layout = `<div id="restrict-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Restrict Account</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="restrict-container">
+                                <div class="restrict-title">Select a reason to restrict</div>
+                                <select class="restrict-select">
+                                    <option value="1" selected>Account has been flagged</option>
+                                    <option value="2">Account has been flagged by another user</option>
+                                    <option value="3">Account has been flagged by admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-user="` + accountID + `" data-restriction= "` + restrictType + `" class="restrict-button">Restrict</button>
+                        </div>
+                    </div>
+                </div>`;
+    $('body').append(layout);
+    $('.restrict-button').attr('data-user', accountID);
+    $('#restrict-modal').show();
+
+    $('.close').click(function () { 
+        $('#restrict-modal').hide();
+        $('#restrict-modal').remove();
     });
+    } else {
+        restriction(accountID, restrictType);
+    }
+});
+
+$(document).on("click", ".restrict-button", function () { 
+    let accountID = $(this).attr('data-user');
+    let restrictType = $(this).attr('data-restriction');
+    restriction(accountID, restrictType);
 });
 
 $(document).on("change", ".user-type", function () {

@@ -344,6 +344,58 @@ select::-ms-expand {
     font-style: italic;
 }
 
+#restrict-modal{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: -webkit-fill-available;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.modal-content{
+    background-color: var(--gray);
+    width: fit-content;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.restrict-select{
+    background: var(--gray);
+    padding: 7px 13px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.restrict-button{
+    background: var(--primary);
+    padding: 7px 13px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.restrict-button:hover{
+    background: var(--primary-dark);
+}
+
+
+/*black background for select dropdown*/
+
 @media(prefers-color-scheme: dark) {
 
     .pending-container,
