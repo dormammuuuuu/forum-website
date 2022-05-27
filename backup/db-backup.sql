@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 08:10 PM
+-- Generation Time: May 27, 2022 at 08:34 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -51,7 +51,8 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (72, 'thrd62834f012bf4e', 'C6283d3c3e8e77', 'u627754a082c47', '2022-05-18', '00:56:35', 'Sample Comment #1', 0),
 (73, 'thrd62834f012bf4e', 'C6283d452e7cdc', 'u627754a082c47', '2022-05-18', '00:58:58', 'Sample Comment #2', 0),
 (74, 'thrd62834f012bf4e', 'C6283d47c6da92', 'u627754a082c47', '2022-05-18', '00:59:40', 'Sample Comment #3', 0),
-(75, 'thrd62834f012bf4e', 'C6283d48dc2ba7', 'u627754a082c47', '2022-05-18', '00:59:57', 'Sample Comment #4', 0);
+(75, 'thrd62834f012bf4e', 'C6283d48dc2ba7', 'u627754a082c47', '2022-05-18', '00:59:57', 'Sample Comment #4', 0),
+(76, 'thrd628138735a129', 'C6290bb7b62488', '', '2022-05-27', '19:52:27', 'AAAAAAAAAAAAAAAA', 0);
 
 -- --------------------------------------------------------
 
@@ -102,18 +103,19 @@ CREATE TABLE `users` (
   `birthdate` date NOT NULL,
   `privileged` tinyint(1) NOT NULL DEFAULT 0,
   `account_type` varchar(255) NOT NULL DEFAULT 'student',
-  `restricted` tinyint(1) NOT NULL DEFAULT 0
+  `restricted` tinyint(1) DEFAULT 0,
+  `restricted_reason` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `birthdate`, `privileged`, `account_type`, `restricted`) VALUES
-(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '2000-11-18', 1, 'student', 0),
-(59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', '0000-00-00', 0, 'student', 0),
-(61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', '0000-00-00', 0, 'teacher', 0),
-(62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '1231-12-03', 0, 'teacher', 0);
+INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `birthdate`, `privileged`, `account_type`, `restricted`, `restricted_reason`) VALUES
+(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '2000-11-18', 1, 'student', 0, '0'),
+(59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', '0000-00-00', 0, 'student', 0, NULL),
+(61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', '0000-00-00', 0, 'student', 0, ''),
+(62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '1231-12-03', 0, 'teacher', 0, '');
 
 -- --------------------------------------------------------
 
@@ -159,7 +161,8 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (24, 'C6283d452e7cdc', 'u627a6a0b58d37', 'downvote'),
 (25, 'C6283d3c3e8e77', 'u627a6a0b58d37', 'downvote'),
 (26, 'C628362209d88d', 'u627a6a0b58d37', 'upvote'),
-(27, 'C62836224b3f4f', 'u627a6a0b58d37', 'upvote');
+(27, 'C62836224b3f4f', 'u627a6a0b58d37', 'upvote'),
+(28, 'C62813d50c5d9e', 'u627754a082c47', 'upvote');
 
 --
 -- Indexes for dumped tables
@@ -205,7 +208,7 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -229,7 +232,7 @@ ALTER TABLE `users_verification`
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -51,8 +51,9 @@ function renderThreads(json_response, index, filter) {
                               '<button class="pending-btns">DECLINE</button>';
                 } else {
                     layout += '<button class="pending-btns">EDIT TAGS</button>' +
+                              '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
                               '<button class="pending-btns">CLOSE THREAD</button>' +
-                              '<button class="pending-btns">DUPLICATE THREAD</button>';
+                              '<button class="pending-btns">MARK AS DUPLICATE THREAD</button>';
                 }
                 layout += '</div>' +
                         '</div> ';
@@ -84,23 +85,18 @@ function renderAccount(json_response, index, type){
 function restriction(userID, reason){
 
     let restrictReason = (reason == 0) ?  $('.restrict-select').val() : 0;
-    let restrict_obj = {
-        "restrict": userID,
-        "reason" : restrictReason
-    }
-
-    //get select dropdown value
-
     $.ajax({
         type: "post",
         url: "../php-scripts/superuser-scripts.php",
-        data: restrict_obj,
+        data: {
+            restrict: userID,
+            reason: restrictReason
+        },
         dataType: "json",
         beforeSend: function(){
             $(".loader-superuser").show();
         },
         success: function (response) {
-            console.log(response);
             if (reason == 0){
                 $('[data-user=' + userID +'] > .restrict-btn').addClass("restricted").text("Remove Account Restriction");
             } else {
@@ -412,4 +408,10 @@ $(document).on("change", ".user-type", function () {
             console.log(error);
         }
     });
+});
+
+//onclick view thread
+$(document).on("click", ".viewthread-btn", function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    window.open('http://localhost/thread.php?threadid=' + threadID, '_blank');
 });
