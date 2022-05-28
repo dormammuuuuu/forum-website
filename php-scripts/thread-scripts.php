@@ -142,15 +142,16 @@
         return $html;
     }
 
-    //On-page load query that will check if the current thread id is existing or not
-    if(isset($_GET['threadid'])){
+    //if url parameter is empty redirect to 404.php
+    if (empty($_GET['threadid'])) {
+        header("Location: 404.php");
+    } else {
         $tid = $_GET['threadid'];
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$tid'");
         $data = mysqli_fetch_array($query);
         if(!$data){
             header('location: ../404.php');
         }
-
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '{$data['author']}'");
         $user_data = mysqli_fetch_array($query);
     }

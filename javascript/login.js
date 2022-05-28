@@ -1,6 +1,8 @@
 $('#login-form').submit(function (e) { 
     e.preventDefault();
     $('#status').empty();
+    $('.restricted-container').empty();
+    $('.restricted-container').hide();
     let inputEmail = $('#email').val();
     let inputPassword = $('#password').val();
     $.ajax({
@@ -12,12 +14,20 @@ $('#login-form').submit(function (e) {
         },
         dataType: "json",
         success: function (response) {
-            let result = JSON.parse(JSON.stringify(response));
-            if(result.statusCode == 200){
+            console.log(response);
+            if(response.statusCode == 200){
                 location.href = 'home.php';
             }
-            else if(result.statusCode == 201){
-                $('#status').html('POTANGINA NIYO UNITHIEVES');
+            else if(response.statusCode == 201){
+                $('#status').html('Account doesn\'t exist');
+            } else if (response.statusCode == 202){
+                //create a javascript array with strings
+                let restrictions = ["Posting Spam", "Using inappropriate words","Using plagiarized work","It's harmful/abusive","Spreading false information","Sexual Violence/Nudity"];
+                let layout = `<p>Account Restricted</p>
+                              <p class="reason"> Reason: ` + restrictions[response.reason - 1] + `</p>
+                              <p>Please contact the administrator for more information.</p>`;
+                $('.restricted-container').append(layout);
+                $('.restricted-container').show();
             }
         },
         error: function (request, status, error) {

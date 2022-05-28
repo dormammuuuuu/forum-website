@@ -49,11 +49,15 @@ function renderThreads(json_response, index, filter) {
                 if (filter == 0){
                     layout += '<button class="pending-btns approve">APPROVE</button>' +
                               '<button class="pending-btns">DECLINE</button>';
-                } else {
+                } else if (filter == 1){
                     layout += '<button class="pending-btns">EDIT TAGS</button>' +
                               '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
-                              '<button class="pending-btns">CLOSE THREAD</button>' +
+                              '<button class="pending-btns closethread-btn">CLOSE THREAD</button>' +
                               '<button class="pending-btns">MARK AS DUPLICATE THREAD</button>';
+                } else if (filter == 2){
+                    layout += '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
+                              '<button class="pending-btns openthread-btn">RE-OPEN THREAD</button>'; 
+
                 }
                 layout += '</div>' +
                         '</div> ';
@@ -63,7 +67,7 @@ function renderThreads(json_response, index, filter) {
 function renderAccount(json_response, index, type){
     let restrictionClass = (json_response[index].restricted == 1) ? "restricted" : "";
     let restrictionLabel = (json_response[index].restricted == 1) ? "Remove account restriction" : "Restrict Account";
-    let accountType = (json_response[index].account_type == "student") ? "<option value='student' selected>Student</option><option value='teacher'>Teacher</option>'" : "<option value='student'>Student</option><option value='teacher' selected>Teacher</option>'";
+    let accountType = (json_response[index].account_type == "student") ? "<option value='student' selected>Student</option><option value='teacher'>Teacher</option><option value='admin'>Admin</option>'" : (json_response[index].account_type == "teacher") ? "<option value='student'>Student</option><option value='teacher' selected>Teacher</option><option value='admin'>Admin</option>'" : "<option value='student'>Student</option><option value='teacher'>Teacher</option><option value='admin' selected>Admin</option>'";
 
     let layout = '<div class="user-container">' +
                     '<div class="user-details">' + 
@@ -353,9 +357,12 @@ $(document).on("click", ".restrict-btn", function () {
                             <div class="restrict-container">
                                 <div class="restrict-title">Select a reason to restrict</div>
                                 <select class="restrict-select">
-                                    <option value="1" selected>Account has been flagged</option>
-                                    <option value="2">Account has been flagged by another user</option>
-                                    <option value="3">Account has been flagged by admin</option>
+                                    <option value="1" selected>Posting Spam</option>
+                                    <option value="2">Using inappropriate words</option>
+                                    <option value="3">Using plagiarized work</option>
+                                    <option value="4">Posting harmful/abusive posts/threads</option>
+                                    <option value="5">Spreading false information</option>
+                                    <option value="6">Sexual Violence/Nudity</option>
                                 </select>
                             </div>
                         </div>
@@ -385,11 +392,13 @@ $(document).on("click", ".restrict-button", function () {
 
 $(document).on("change", ".user-type", function () {
     let accountID = $(this).parent().attr('data-user');
+    let type = $(this).val();
     $.ajax({
         type: "post",
         url: "../php-scripts/superuser-scripts.php",
         data: {
-            usertype: accountID
+            usertype: type,
+            uid: accountID
         },
         dataType: "json",
         beforeSend: function(){
@@ -397,7 +406,8 @@ $(document).on("change", ".user-type", function () {
         },
         success: function (response) {
             console.log(response);
-            $('[data-user=' + accountID +']').empty().append("<p class='moved-notice'>Account moved to Teacher's tab</p>");
+            let label = (type == "student") ? "Account moved to student list" : (type == "teacher") ? "Account moved to teacher's list" : "Account moved to admin's list";
+            $('[data-user=' + accountID +']').empty().append("<p class='moved-notice'>" + label + "</p>");
         },
         complete:function(data){
             $(".loader-superuser").fadeOut();                
@@ -414,4 +424,191 @@ $(document).on("change", ".user-type", function () {
 $(document).on("click", ".viewthread-btn", function () { 
     let threadID = $(this).parent().attr('data-thread');
     window.open('http://localhost/thread.php?threadid=' + threadID, '_blank');
+});
+
+//close thread btn
+$(document).on("click", ".closethread-btn", function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            closethread: threadID
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            $('[data-thread=' + threadID +']').empty().append("<p class='moved-notice'>Thread closed</p>");
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+$('#closed-button').click(function () {
+    let loadbutton = $('#load-more-button');
+    $('.pending-threads').empty();
+    $('.pending-title').text('List of Closed Threads');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            closed: 1
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            for (let index = 0; index < response.length; index++) {
+                let layout = renderThreads(response, index, 2);
+                $('.pending-threads').append(layout);    
+            }
+            if (loadbutton.length == 0){
+                $('.pending-container').append('<button data-num="4" id="load-more-button">Load more</button>');
+            } else {
+                $('#load-more-button').attr('data-num', 4);
+            }
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+//open thread btn
+$(document).on("click", ".openthread-btn", function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            openthread: threadID
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            $('[data-thread=' + threadID +']').empty().append("<p class='moved-notice'>Thread opened</p>");
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+//show list of admins button
+$('#admin-button').click(function () {
+    let loadbutton = $('#load-more-button');
+    $('.pending-threads').empty();
+    $('.pending-title').text('List of Admins');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            admin: 1
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            for (let index = 0; index < response.length; index++) {
+                let layout = renderAccount(response, index, 4);
+                $('.pending-threads').append(layout);    
+            }
+            if (loadbutton.length == 0){
+                $('.pending-container').append('<button data-num="4" id="load-more-button">Load more</button>');
+            } else {
+                $('#load-more-button').attr('data-num', 4);
+            }
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+//admin button
+$(document).on("click", ".admin-button", function () { 
+    let accountID = $(this).parent().attr('data-user');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            admin: accountID
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            $('[data-user=' + accountID +']').empty().append("<p class='moved-notice'>Account promoted to Admin</p>");
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+//unadmin button
+$(document).on("click", ".unadmin-button", function () { 
+    let accountID = $(this).parent().attr('data-user');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            unadmin: accountID
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            $('[data-user=' + accountID +']').empty().append("<p class='moved-notice'>Account demoted to Student</p>");
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
 });

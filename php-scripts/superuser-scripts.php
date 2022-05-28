@@ -241,13 +241,13 @@
     }
 
     if(isset($_POST['usertype'])){
-        $data = mysqli_real_escape_string($conn,$_POST['usertype']);
+        $data = mysqli_real_escape_string($conn,$_POST['uid']);
+        $type = mysqli_real_escape_string($conn,$_POST['usertype']);
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='$data'");
         $response = mysqli_fetch_assoc($query);
 
-        $user_type = $response['account_type'] == "student" ? "teacher" : "student";
+        $query = ($type == "admin") ? mysqli_query($conn, "UPDATE `users` SET `account_type` = '$type', `privileged` = 1 WHERE uid = '$data'") : mysqli_query($conn, "UPDATE `users` SET `account_type` = '$type',  `privileged` = 0 WHERE uid = '$data'");
 
-        $query = mysqli_query($conn, "UPDATE `users` SET `account_type` = '$user_type' WHERE uid = '$data'");
         if ($query) {
             $result['type'] = "Updated";
         } else {
@@ -257,4 +257,82 @@
         mysqli_close($conn);
     }
 
+    //Close thread
+    if(isset($_POST['closethread'])){
+        $data = mysqli_real_escape_string($conn,$_POST['closethread']);
+        $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'close' WHERE thread_id = '$data'");
+        if ($query) {
+            $result['type'] = "Closed";
+        } else {
+            $result['type'] = "Error closing thread";
+        }
+        echo json_encode($result);
+        mysqli_close($conn);
+    }
+
+    //load closed threads
+    if(isset($_POST['closed'])){
+        $json_response = array();
+        $data = mysqli_real_escape_string($conn,$_POST['closed']);
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'close' ORDER BY date_posted DESC LIMIT 0,5");
+        $result = mysqli_fetch_assoc($query);
+
+        do {
+            if (!empty($result)){
+                $userdata = getUserData($result['author']);
+                $json_response[] = array(
+                    'title' => $result['title'], 
+                    'firstname' => $userdata['firstname'],
+                    'lastname' => $userdata['lastname'],
+                    'avatar' => $userdata['avatar'],
+                    'thread_id' => $result['thread_id'], 
+                    'body' => $result['body'], 
+                    'date' => $result['date_posted'], 
+                    'time' => $result['time_posted']
+                );
+            }
+        } while ($result = mysqli_fetch_assoc($query));
+
+        echo json_encode($json_response);
+        mysqli_close($conn);
+    }
+
+    //open thread
+    if(isset($_POST['openthread'])){
+        $data = mysqli_real_escape_string($conn,$_POST['openthread']);
+        $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'open' WHERE thread_id = '$data'");
+        if ($query) {
+            $result['type'] = "Opened";
+        } else {
+            $result['type'] = "Error opening thread";
+        }
+        echo json_encode($result);
+        mysqli_close($conn);
+    }
+
+    //load admin accounts
+    if(isset($_POST['admin'])){
+        $json_response = array();
+        $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'admin' ORDER BY lastname ASC LIMIT 0,5");
+        $result = mysqli_fetch_assoc($query);
+
+        do {
+            if (!empty($result)){
+                $userdata = getOtherInfo($result['uid']);
+                $json_response[] = array(
+                    'uid' => $result['uid'], 
+                    'firstname' => $result['firstname'],
+                    'lastname' => $result['lastname'],
+                    'avatar' => $result['avatar'],
+                    'comments' => $userdata['comments'],
+                    'threads' => $userdata['threads'],
+                    'restricted' => $result['restricted'],
+                    'account_type' => $result['account_type']
+                );
+            }
+        } while ($result = mysqli_fetch_assoc($query));
+
+        echo json_encode($json_response);
+        mysqli_close($conn);
+    }
 ?>

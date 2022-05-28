@@ -23,9 +23,37 @@
             <p class="terms-label">By continuing, you agree to our <a href="#">User Agreement</a> and <a href="#">Privacy Policy.</a></p>
             <form id="login-form">
                 <div>
-                    <div class="field">
-                        <p id="status"><?php if (isset($_GET['code'])){ echo 'Account doesn\'t exist';} ?></p>
+                    <div class="restricted-container" <?php if(isset($_GET['restricted']) && $_GET['restricted'] == 1){ echo 'style="display: block"'; } ?>>
+                        <?php 
+                            if(isset($_GET['restricted'])){
+                                if ($_GET['restricted'] == 1){
+                                    //Create an array of reasons and select using index
+                                    $reasons = array(
+                                        'Posting Spam',
+                                        'Using inappropriate words',
+                                        'Using plagiarized work',
+                                        'Posting harmful/abusive posts/threads',
+                                        'Spreading false information',
+                                        'Sexual Violence/Nudity'
+                                    );
+                                    $reason = $reasons[$_GET['reason']];
 
+                                    echo '<p>Account Restricted</p>
+                                    <p class="reason"> Reason: ' . $reason . '</p>
+                                    <p>Please contact the administrator for more information.</p>';
+                                }
+                            }
+                        ?>
+                    </div>
+                    <p id="status">
+                        <?php 
+                            if (isset($_GET['account'])){ 
+                                if ($_GET['account'] == 0){
+                                    echo 'Account doesn\'t exist';
+                                }
+                            }
+                        ?></p>
+                    <div class="field">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" required>
                     </div>

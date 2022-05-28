@@ -393,6 +393,10 @@ select::-ms-expand {
     background: var(--primary-dark);
 }
 
+.moved-notice{
+    margin: 20px 0; 
+}
+
 
 /*black background for select dropdown*/
 

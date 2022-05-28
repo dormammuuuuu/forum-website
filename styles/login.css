@@ -14,9 +14,23 @@
 }
 
 #status{
+    text-align: center;
     font-size: 10px;
     color: rgb(252, 102, 102);
     margin-bottom: 10px;
+}
+
+.restricted-container{
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 1px solid rgba(255, 0, 0, 0.6);
+    padding: 10px;
+    display: none;
+    width: 275px;
+    margin: auto;
+}
+
+.restricted-container p{
+    font-size: 10px;
 }
 
 .field{

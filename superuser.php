@@ -84,11 +84,12 @@
                     <div class="list-user">
                         <h1 class="list-user-title">Manage</h1>
                         <ul id="list-cate">
-                            <li id="all-button">All Threads</li>
+                            <li id="all-button">Current Threads</li>
                             <li id="pending-button">Pending Threads</li>
+                            <li id="closed-button">Closed Threads</li>
                             <li id="student-button">Students</li>
                             <li id="teacher-button">Teachers</li>
-                            <li>Administrators</li>
+                            <li id="admin-button">Administrators</li>
                         </ul>
                     </div>
                 </div>

@@ -4,8 +4,6 @@
     
     require 'vendor/autoload.php';
 
-
-
     $google_client = new Google_Client();
     $google_client->setClientId('19064399980-57o0n2utlfolf736ler29oq4up435mvq.apps.googleusercontent.com');
     $google_client->setClientSecret('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');
@@ -30,14 +28,37 @@
         $user_data = mysqli_fetch_array($query);
 
         if($user_data){
-            @session_start();
-            $_SESSION['uid'] = $user_data['uid'];
-            if($type == 2){
-                header('location: ../home.php');
+            if($user_data['restricted'] == 0){
+                @session_start();
+                $_SESSION['uid'] = $user_data['uid'];
+                if($type == 2){
+                    header('location: ../home.php');
+                }
+                $out['statusCode'] = 200;
+                $out['message'] = "Login Successful";
+                return $out;
+            } else {
+                $out['statusCode'] = 202;
+                $out['message'] = "Account restricted";
+                $out['reason'] = $user_data['restricted_reason'];
+                if ($type == 2){
+                    $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                    $query = parse_url($url, PHP_URL_QUERY);
+                    // Returns a string if the URL has parameters or NULL if not
+                    if ($query) {
+                        $url .= '&restricted=1';
+                        $url .= '&reason=' . $user_data['restricted_reason'];
+                        $url .= '&account=1';
+                    } 
+                    header('location: ' . $url);
+                }
+                return $out;
             }
-            return 200;
         } else {
-            return 201;
+            $out['statusCode'] = 201;
+            $out['message'] = "Account doesn't exist";
+            
+            return $out;
         }
     }
 
@@ -53,7 +74,7 @@
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $encrypted_password = md5($password);
 
-        $result_json['statusCode'] = loginAccount($email, $encrypted_password, 1);
+        $result_json = loginAccount($email, $encrypted_password, 1);
         
         echo json_encode($result_json);
         mysqli_close($conn);
@@ -71,9 +92,19 @@
                 $email = $data['email'];
                 $duplicate = duplicateCheck($email);
                 if ($duplicate > 0){
-                    $result_json['statusCode'] = loginAccount($email, "", 2);
+                    $result_json = loginAccount($email, "", 2);
+                } else {
+                    $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                    $query = parse_url($url, PHP_URL_QUERY);
+                    // Returns a string if the URL has parameters or NULL if not
+                    if ($query) {
+                        $url .= '&restricted=0';
+                        $url .= '&reason=0';
+                        $url .= '&account=0';
+                    }
+                    header('location: ' . $url);
                 }
-            }
+            } 
         }
         mysqli_close($conn);    
     }
