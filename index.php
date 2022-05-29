@@ -50,8 +50,8 @@
                     </div>
                 </div>
 
-                <div class="third-div">
-                    <div class="third-obj">                       
+                <div class="objective-div">
+                    <div class="objective-container">                       
                         <img src="assets/images/comm.svg" id="comm-img"">               
                     </div>
 
@@ -61,19 +61,19 @@
                     </div>                    
                 </div>
             
-                <div class="fourth-div">
+                <div class="objective-div">
                     <div class="main-obj-desc">
                         <h1 class="obj-title">Teamwork</h1>
                         <p class="obj-desc">Members are allowed to share their files about their reviewers, studies, lectures, and other knowledge to help others so that they are able to grow and learn that may help them to be ready for their career in the near future. They have complete freedom to use facts to educate one another in a rightful manner.</p>
                     </div>
 
-                    <div class="fourth-obj">
+                    <div class="objective-container">
                       <img src="assets/images/teamwork.svg" id="teamwork-img">
                     </div>
                 </div>
 
-                <div class="fifth-div">
-                    <div class="fifth-obj">
+                <div class="objective-div">
+                    <div class="objective-container">
                         <img src="assets/images/friendly.svg" id="friendly-img">
                     </div>
                 
@@ -85,18 +85,82 @@
 
                 <div class="status-div">
                     <div class="status-container">
+                        <div class="status-card">
+                            <h1 class="status-number">16</h1>
+                            <p class="status-title">Active User</p>
+                        </div>
+
+                        <div class="status-card">
+                            <h1 class="status-number">12</h1>
+                            <p class="status-title">Students</p>
+                        </div>
+
+                        <div class="status-card">
+                            <h1 class="status-number">4</h1>
+                            <p class="status-title">Teachers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-us">
+                    <div class="container-contact-us">
+
+                        <div class="send-us">
+                            <p class="contact-title">Send us a message</p>
+
+                                <div class="message-detail">
+                                    <div class="contact-name">
+                                        <p>Name:</p>
+                                        <textarea  class="comment-box" placeholder="Add Name"></textarea>
+                                    </div>
+                                    <div class="contact-email">
+                                        <p>Contact Email:</p>
+                                        <textarea  class="comment-box" placeholder="Add Email"></textarea>
+                                    </div>
+
+                                </div>
+
+                            <div class="contact-message">
+                                <p>Message: </p>
+                                <textarea id="message-box"  placeholder="Add Message"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="contacts">
+                            <p class="contact-title">Contact Us</p>
+                            <div class="contact-details">
+                               <div class="address">
+                                   <p class="contact-sub-title">Address</p>
+                                   <p class="contact-desc">HXPM+RW7, Ayala Blvd, Ermita, Manila, 1000 Metro Manila</p>
+                               </div>
+
+                               <div class="email">
+                                    <p class="contact-sub-title">Email</p>
+                                    <p class="contact-desc" >forum.bsit@gmail.com</p>
+                               </div>
+
+                               <div class="contact-number">
+                                    <p class="contact-sub-title">Call us</p>
+                                    <p class="contact-desc">09292062242</p>
+                               </div>
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
 
+
+
             </div>    
         </section>
 
-        <script src="https://unpkg.com/scrollreveal"></script>
+        <!-- <script src="https://unpkg.com/scrollreveal"></script>
         <script src="javascript/index.js"></script>
         <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
  
-</script> -->
+</script> --> -->
 
     </body>
 </html>
