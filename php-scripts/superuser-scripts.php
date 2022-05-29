@@ -103,7 +103,7 @@
 
     if(isset($_POST['all'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 1 LIMIT 0,2");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT 0,2");
         $result = mysqli_fetch_assoc($query);
 
         do {
