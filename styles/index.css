@@ -1,15 +1,18 @@
 .main{
     height: 100vh;
     width: -webkit-fill-available;
+    
 }
 
 .container{
+   
     overflow-y: scroll;
     scroll-behavior: smooth;
     height: 100%;
 }
 
 .first-div{
+    position: relative;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,6 +61,7 @@
 }
 
 .second-div{ 
+    position: relative;
     background-color: var(--dark-secondary);
     height: 60%;
     padding: 0 1em 0 1em;
@@ -70,6 +74,7 @@
     align-items: center;
 }
 .cards{
+    
     display: flex;
     align-items: center;
     justify-content: center;

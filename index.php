@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/navbar.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+        <script src="javascript/jquery-3.6.0.js"></script>       
     </head>
     <body>
         
-       
-
         <section class="main"> 
            <div class="container">
                 <div class="first-div">
@@ -91,5 +91,12 @@
 
             </div>    
         </section>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="javascript/index.js"></script>
+        <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ 
+</script> -->
+
     </body>
 </html>
