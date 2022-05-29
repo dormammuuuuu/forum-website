@@ -8,21 +8,21 @@
         header("location: ../home.php");
     }
 
-    if(isset($_POST["title"])){
-        @session_start();
-        $title = mysqli_real_escape_string($conn, $_POST['title']);
-        $body = mysqli_real_escape_string($conn, $_POST['body']);   
-        $tags = $_POST['tags'];
-        $thread_id = uniqid('thrd');
+    if(isset($_POST['thread_data'])){
+        $thread = mysqli_query($conn, "SELECT * FROM `threads` WHERE `thread_id` = '{$_POST['thread_data']}'");
+        $thread_id = mysqli_fetch_assoc($thread);
 
-        $query = mysqli_query($conn,"INSERT INTO `threads`(`id`, `thread_id`, `author`,`title`, `body`, `tags`, `status`) VALUES (NULL,'$thread_id', '{$_SESSION['uid']}','$title','$body','$tags', 0)");
-        if ($query) {
-            $result_json['statusCode'] = 200;
-        } else {
-            $result_json['statusCode'] = 201;
-        }
-        
-        echo json_encode($result_json);;
+        //create an array
+        $thread_data = array(
+            'thread_id' => $thread_id['thread_id'],
+            'title' => $thread_id['title'],
+            'body' => $thread_id['body'],
+            'tags' => $thread_id['tags'],
+            'author' => $thread_id['author']
+        );
+
+        //sending json string through ajax and encoding array to json string and
+        echo json_encode($thread_data);
         mysqli_close($conn);
     }
 

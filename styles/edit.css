@@ -1,11 +1,30 @@
 .main{
-    margin: 0 10%;
+    margin: 0 10% 5% 10%;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
     height: 100%;
-    position: fixed;
+    position: relative;
+    z-index: 1;
 }
 
+html,body{
+    overflow-y: scroll;
+}
+
+/*invisible scrollbar*/
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/*invisible scrollbar*/
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/*invisible scrollbar*/
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
 
 .create-containers{
     display: flex;
@@ -104,7 +123,7 @@
 #editorjs{
     margin-top: 10px;
     border: 1px solid var(--gray);
-    max-height: 30vh;
+    max-height: 100vh;
     overflow-y: scroll;
 }
 
@@ -155,6 +174,10 @@
 
 .ce-popover__item-icon{
     background: transparent;
+}
+
+.codex-editor__redactor{
+    padding-bottom: 100px!important;
 }
 
 @media (prefers-color-scheme: dark){

@@ -25,6 +25,7 @@
     
     <?php include('php-scripts/navbar.php');?>
     <section class="main">
+        <input type="hidden" name="" id="thread" value="<?php echo $_GET['id'] ?>">
         <div id="error"></div>
         <div class="create-containers">
             <form class="create-inputs" id="create-form">
