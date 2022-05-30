@@ -26,19 +26,19 @@ html,body{
     background: transparent;
 }
 
-.create-containers{
+.edit-containers{
     display: flex;
     align-items: center;
     width: 100%;
     margin: auto;
 }
 
-.create-containers > div{
+.edit-containers > div{
     margin: 10px;
     height: 100%;
 }
 
-.create-inputs{
+.edit-inputs{
     background-color: var(--light);
     padding: 20px;
     flex-grow: 1;
@@ -110,7 +110,7 @@ html,body{
     margin-left: 2em;
 }
 
-#create-submit{
+#edit-submit{
     border: none;
     background-color: var(--primary);
     color: white;
@@ -118,6 +118,7 @@ html,body{
     padding: 10px;
     margin-top: 10px;
     font-size: 10px;
+    cursor: pointer;
 }
 
 #editorjs{
@@ -181,7 +182,7 @@ html,body{
 }
 
 @media (prefers-color-scheme: dark){
-    .create-inputs{
+    .edit-inputs{
         background-color: var(--dark-secondary);
     }
 

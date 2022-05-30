@@ -1,6 +1,6 @@
 $(function () {
-    
     let id = $('#thread').val();
+    let editor;
     $.ajax({
         type: "post",
         url: "../php-scripts/edit-scripts.php",
@@ -8,9 +8,11 @@ $(function () {
             thread_data: id
         },
         dataType: "json",
+        beforeSend: function(){
+            $(".loader-editor").show();
+        },
         success: function (response) {
             console.log(response);
-            console.log(JSON.parse(response.tags));
             var jsonData = JSON.parse(response.tags);
             for (var i = 0; i < jsonData.selected.length; i++) {
                 var counter = jsonData.selected[i];
@@ -25,7 +27,7 @@ $(function () {
             });
             $('#input-title').val(response.title);
             $('#tags').val(counter);
-            const editor = new EditorJS({
+            editor = new EditorJS({
                 holder: 'editorjs',
                 tools: { 
                     header: {
@@ -41,58 +43,62 @@ $(function () {
                 data: JSON.parse(response.body)
             });
         },
+        complete:function(data){
+            $(".loader-editor").fadeOut();                
+        },
         error: function (request, status, error) {
             console.log(request.responseText);
             console.log(status);
             console.log(error);
+            location.href = "../404.php";
         }
     });
 
-
-
-    // $('#create-form').submit(function (e) { 
-    //     e.preventDefault();
-    //     $('#error').empty();
-    //     let json_body;
-    //     let inputTitle = $('#input-title').val();
-    //     editor.save().then((outputData) => {
-    //         json_body = JSON.stringify(outputData);
-    //         $.ajax({
-    //             type: "post",
-    //             url: "../php-scripts/create-scripts.php",
-    //             data: {
-    //                 title: inputTitle,
-    //                 body: json_body
-    //             },
-    //             success: function (response) {
-    //                 console.log(response);
-    //                 location.href = 'home.php';
-    //             },
-    //             error: function(jqXHR, exception) {
-    //                 //Ajax request failed.
-    //                 var msg = '';
-    //                 if (jqXHR.status === 0) {
-    //                     msg = 'Not connect.\n Verify Network.';
-    //                 } else if (jqXHR.status == 404) {
-    //                     msg = 'Requested page not found. [404]';
-    //                 } else if (jqXHR.status == 500) {
-    //                     msg = 'Internal Server Error [500].';
-    //                 } else if (exception === 'parsererror') {
-    //                     msg = 'Requested JSON parse failed.';
-    //                 } else if (exception === 'timeout') {
-    //                     msg = 'Time out error.';
-    //                 } else if (exception === 'abort') {
-    //                     msg = 'Ajax request aborted.';
-    //                 } else {
-    //                     msg = 'Uncaught Error.\n' + jqXHR.responseText;
-    //                 }
-    //                 $('#error').html(msg);
-    //             }
-    //         });
-    //     });
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });   
+    $('#edit-form').submit(function (e) { 
+        e.preventDefault();
+        let json_body;
+        let inputTitle = $('#input-title').val();
+        let inputTags = $('#tags').val();
+        let tags = new Object();
+        tags.selected = inputTags;
+        let json_tags = JSON.stringify(tags);
+        editor.save().then((outputData) => {
+            json_body = JSON.stringify(outputData);
+            $.ajax({
+                type: "post",
+                url: "../php-scripts/edit-scripts.php",
+                data: {
+                    editID: id,
+                    title: inputTitle,
+                    body: json_body,
+                    tags: json_tags
+                },
+                success: function (response) {
+                    console.log(response);
+                    location.href = 'home.php';
+                },
+                error: function(jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    $('#error').html(msg);
+                }
+            });
+        });
+    });
 });
 
 

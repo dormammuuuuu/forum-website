@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/edit.css">
     <link rel="stylesheet" href="styles/choices.min.css">
+    <link rel="stylesheet" href="styles/loader.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="javascript/jquery-3.6.0.js"></script>
     <script src="javascript/choices.min.js"></script>
@@ -22,13 +23,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@1.4.1/dist/bundle.min.js"></script>
 </head>
 <body>
-    
+    <div class="loader-editor">
+        <div id="loader"></div>
+    </div>
     <?php include('php-scripts/navbar.php');?>
     <section class="main">
         <input type="hidden" name="" id="thread" value="<?php echo $_GET['id'] ?>">
         <div id="error"></div>
-        <div class="create-containers">
-            <form class="create-inputs" id="create-form">
+        <div class="edit-containers">
+            <form class="edit-inputs" id="edit-form">
                 <p class="input-label">Title</p>
                 <p class="input-sublabel">Be specific and imagine you're asking a question to another person</p>
                 <input class="inputs" id="input-title" type="text" name="title" placeholder="e.g. Anong ulam natin mamaya?" required>
@@ -54,7 +57,7 @@
                     <option value="lgbtq">LGBTQ+</option>
                     <option value="suspension">Suspension</option>
                 </select>
-                <input type="submit" id="create-submit" value="Submit Thread">
+                <input type="submit" id="edit-submit" value="Submit Thread">
             </form>
         </div>
     </section>
