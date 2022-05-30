@@ -4,12 +4,14 @@
 }
 
 html,body{
-    overflow-y: scroll!important;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 100vh;
 }
 
 .container{
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-y: visible;  
 }
 
 .first-div{
@@ -37,20 +39,6 @@ html,body{
     }
 }
 
-/*hide all scrollbars*/
-/*hide all scrollbars*/
-::-webkit-scrollbar{
-    width: 0;
-    height: 0;
-}
-
-::-webkit-scrollbar-track{
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb{
-    background: transparent;
-}
 
 #main-title{
     color: white;
@@ -158,7 +146,7 @@ html,body{
     transition: all 1s ease;
 }
 
-.objective-div.active{
+.objective-div.open{
     transform: translateY(0px);
     opacity: 1;
     z-index: 0;
@@ -214,7 +202,7 @@ html,body{
 }
 
 .status-div{
-    height: 30%;
+    height: 30vh;
     background-color: var(--dark-secondary);
     background-image: linear-gradient(to bottom, var(--dark-secondary),  var(--dark));
 }

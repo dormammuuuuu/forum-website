@@ -14,7 +14,7 @@
 
 
     </head>
-    <body>
+    <body class="container">
 
            <!-- <div class="container"> -->
                 <div class="first-div">
@@ -154,7 +154,7 @@
 
 
 
-            <!-- </div> -->
+           <!-- </div> -->
 
         <!-- <script src="https://unpkg.com/scrollreveal"></script>
         <script src="javascript/index.js"></script>
