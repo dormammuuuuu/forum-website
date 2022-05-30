@@ -1,4 +1,3 @@
-window.addEventListener('scroll', reveal);
 
 function reveal(){
     var rev = document.querySelectorAll('.objective-div');
@@ -7,12 +6,13 @@ function reveal(){
         console.log(height)
         var revealtop = rev[i].getBoundingClientRect().top;
         var revealpoint = 150;
-
+        console.log("RevealTop: " + revealtop);
+        console.log("Height: " + height);
         if(revealtop < height - revealpoint){
-            rev[i].classList.add('.active');
+            rev[i].classList.add('active');
         }
         else{
-            rev[i].classList.remove('.active');
+            rev[i].classList.remove('active');
         }
     }
 }
@@ -22,6 +22,11 @@ function reveal(){
 
 
 $(document).ready(function(){
+    setInterval(() => {
+        reveal();
+    }, 1000);
+    window.addEventListener('scroll', reveal);
+
     $("#main-title").delay(300).animate({
         opacity: 1
     }, "slow");

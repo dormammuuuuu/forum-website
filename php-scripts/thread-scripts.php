@@ -1,7 +1,6 @@
 <?php
 
     include('db.php');
-    
     //Load the Comments on page load.
     function fetchComments($tid){
         global $conn;
@@ -143,10 +142,8 @@
     }
 
     //if url parameter is empty redirect to 404.php
-    if (empty($_GET['threadid'])) {
-        header("Location: 404.php");
-    } else {
-        $tid = $_GET['threadid'];
+    if(isset($_GET['threadid'])){
+        $tid = (isset($_GET['threadid'])) ? $_GET['threadid'] : NULL;
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$tid'");
         $data = mysqli_fetch_array($query);
         if(!$data){
@@ -270,6 +267,8 @@
             $result_json['answer'] = $status;
         }
         echo json_encode($result_json);
+        mysqli_close($conn);
+
     }
 
     if(isset($_POST['close'])){

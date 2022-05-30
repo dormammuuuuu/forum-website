@@ -51,7 +51,7 @@
                               if(isset($_SESSION['uid'])){
                                  if ($_SESSION['uid'] == $threadAuthor['uid']){ 
                                     if ($selectThread['thread_status'] == "open"){?>
-                                       <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
+                                       <div id="edit-thread" class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
                                        <div id="close-thread" class="dropdown-item"><i class='bx bx-message-alt-x'></i><p>Close thread</p></div>
                                  <?php    } ?>
                                  <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
@@ -79,29 +79,6 @@
                </div>
                <div id="comments">
                   <?php fetchComments($_GET['threadid']) ?>
-                  
-                    <!-- <div class="main-comment">
-                        <div class="author-comment">
-                            <img class="thread-avatar" src="assets/images/avatar/default.jpg" alt="">
-                            <div class="details">
-                            <div class="user">
-                                <p class="name">Raymond T. Matullano</p>
-                                <p class="user-type">Student</p>
-                            </div>
-                            <p class="date-published">December 27, 2013</p>
-                            </div>
-                        </div>
-                        <p id="main-answer"> Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.Lörem ipsum blippbetalning ambision i trirenar för att karen lockdown. Krogäs neren mytotism, nisamma. Sugrörsseende lär intranera. Ladade pujörade. Lätthelg ode om äst, låvår. Dirar hikikomori, som olig. Onåv bel. Seminade hikikomori. Tist gögt i nina eller nesat det vill säga sodat. Exott infranade mikroling. Ben heterogen det teraning jögt, inte mikera. Gensax junde och sere vavobåkasm, boseska. Lanas suprar laskade. Sor kaköbelt eus.</p>
-                        <div class="response">
-                            <div class="vote-button">
-                            <i class='bx bx-like'></i><span class="comment-upvote">110</span>
-                            </div>
-                            <div class="vote-button">
-                            <i class='bx bx-dislike'></i><span class="comment-downvote">0</span>
-                            </div>
-                        </div>
-                    </div> -->
-
                </div>
                <?php if (isset($_SESSION['uid']) && $data['thread_status'] == "open") { ?>
                <div class="your-comment">
@@ -111,7 +88,7 @@
                         <hr>
                      </div>
                   </div>
-                  <form method="POST" id="comment-form">
+                  <form method="POST" id="comment-form" name="comment-form">
                      <div class="submission">
                         <input type="hidden" name="thread-id" value="<?php echo $_GET['threadid']?>" id="thread-id">
                         <textarea id="user-comment" class="comment-box" placeholder="Add Response"></textarea>

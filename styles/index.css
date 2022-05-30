@@ -3,17 +3,18 @@
     width: -webkit-fill-available;   
 }
 
+html,body{
+    overflow-y: scroll!important;
+}
 
 .container{
-    overflow-y: scroll;
     scroll-behavior: smooth;
-    height: 100%;
     overflow-x: hidden;
 }
 
 .first-div{
     position: relative;
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-image: linear-gradient(to bottom, var(--dark), var(--dark), var(--dark-secondary));
@@ -87,7 +88,7 @@
 .second-div{ 
     position: relative;
     background-color: var(--dark-secondary);
-    height: 60%;
+    height: 60vh;
     padding: 0 1em 0 1em;
 }
 
@@ -128,7 +129,6 @@
     grid-template-columns: 1fr 1fr;
     padding: 1em 2em 0 2em;
     background-color: var(--dark);
-    height: 60%;
 }
 
 .objective-div{
@@ -136,7 +136,7 @@
     grid-template-columns: 1fr 1fr;
     padding: 1em 2em 0 2em;
     background-color: var(--dark-secondary);
-    height: 60%;
+    height: 60vh;
     opacity: 0;
     position: relative;
     transform: translateY(50px);
