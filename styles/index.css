@@ -37,6 +37,21 @@ html,body{
     }
 }
 
+/*hide all scrollbars*/
+/*hide all scrollbars*/
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background: transparent;
+}
+
 #main-title{
     color: white;
     font-size: 55px;
