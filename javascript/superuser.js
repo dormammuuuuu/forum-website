@@ -48,7 +48,7 @@ function renderThreads(json_response, index, filter) {
 
                 if (filter == 0){
                     layout += '<button class="pending-btns approve">APPROVE</button>' +
-                              '<button class="pending-btns">DECLINE</button>';
+                              '<button class="pending-btns decline">DECLINE</button>';
                 } else if (filter == 1){
                     layout += '<button class="pending-btns">EDIT TAGS</button>' +
                               '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
@@ -612,3 +612,5 @@ $(document).on("click", ".unadmin-button", function () {
         }
     });
 });
+
+//decline thread with modal

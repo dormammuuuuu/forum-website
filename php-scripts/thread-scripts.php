@@ -2,6 +2,7 @@
 
     include('db.php');
     //Load the Comments on page load.
+    $firstCheck = true;
     function fetchComments($tid){
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM comments WHERE thread_id='$tid' ORDER BY answer DESC");
@@ -143,14 +144,20 @@
 
     //if url parameter is empty redirect to 404.php
     if(isset($_GET['threadid'])){
-        $tid = (isset($_GET['threadid'])) ? $_GET['threadid'] : NULL;
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$tid'");
-        $data = mysqli_fetch_array($query);
-        if(!$data){
-            header('location: ../404.php');
+        if ($firstCheck == true){
+            $tid = (isset($_GET['threadid'])) ? $_GET['threadid'] : NULL;
+            if ($tid == NULL){
+                header("Location: 404.php");
+            }
+            $firstCheck = false;
+            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$tid'");
+            $data = mysqli_fetch_array($query);
+            if(!$data){
+                header('location: ../404.php');
+            }
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '{$data['author']}'");
+            $user_data = mysqli_fetch_array($query);
         }
-        $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '{$data['author']}'");
-        $user_data = mysqli_fetch_array($query);
     }
 
     //Insert Comment to database

@@ -2,24 +2,24 @@ $(function () {
     if ($('#comments').children().length == 0 ) {
         $('#comments').html('<div class="no-comment">Be the first to answer the question.</div>');
     }
-    // $.ajax({
-    //     type: "post",
-    //     url: "../php-scripts/session.php",
-    //     data: {
-    //         session: 1
-    //     },
-    //     dataType: "json",
-    //     success: function (response) {
-    //         if(response.status == "Session Available"){
-    //             $('head').append('<script src="../javascript/session.js"></script>');
-    //         }
-    //     },
-    //     error: function (request, status, error) {
-    //         console.log(request.responseText);
-    //         console.log(status);
-    //         console.log(error);
-    //     }
-    // });
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/session.php",
+        data: {
+            session: 1
+        },
+        dataType: "json",
+        success: function (response) {
+            if(response.status == "Session Available"){
+                $('head').append('<script src="../javascript/session.js"></script>');
+            }
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
 });
 
 $('#comment-form').submit(function (e) { 
@@ -65,7 +65,7 @@ $('.vote-button').click(function () {
 
     $.ajax({
         type: "post",
-        url: "php-scripts/thread-scripts.php",
+        url: "../php-scripts/thread-scripts.php",
         data: {
             commentID: commentID,
             vote: vote

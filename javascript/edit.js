@@ -22,8 +22,7 @@ $(function () {
                 maxItemCount: 5,
                 allowHTML: false,
                 removeItems: true,
-                removeItemButton: true,
-                item: counter
+                removeItemButton: true
             });
             $('#input-title').val(response.title);
             $('#tags').val(counter);

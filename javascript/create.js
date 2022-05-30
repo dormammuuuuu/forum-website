@@ -3,7 +3,12 @@ $(function () {
     $(".guide-expanded").hide();
     var globalGuide = 1;
     $('.guide')[0].click(); 
-    let secondElement = new Choices('#tags');
+    let secondElement = new Choices('#tags', {
+        maxItemCount: 5,
+        allowHTML: false,
+        removeItems: true,
+        removeItemButton: true
+    });
 
     const editor = new EditorJS({
         holder: 'editorjs',
