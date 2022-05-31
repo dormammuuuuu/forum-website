@@ -74,7 +74,7 @@ $(function () {
                 },
                 success: function (response) {
                     console.log(response);
-                    location.href = 'home.php';
+                        location.href = "thread.php?threadid=" + id;
                 },
                 error: function(jqXHR, exception) {
                     var msg = '';

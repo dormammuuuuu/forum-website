@@ -35,11 +35,11 @@
         $data = mysqli_fetch_assoc($query);
         $user_number = $data['COUNT(id)'];
 
-        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `threads` WHERE status = 1");
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `threads`");
         $data = mysqli_fetch_assoc($query);
         $thread_number = $data['COUNT(id)'];
 
-        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `threads` WHERE status = 0");
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM `threads` WHERE thread_status = 'pending'");
         $data = mysqli_fetch_assoc($query);
         $pending_number = $data['COUNT(id)'];
 
@@ -80,7 +80,7 @@
     //Fetch Pending Threads (Initial = 2)
     if(isset($_POST['pending'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 0 LIMIT 0,2");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT 0,2");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -130,9 +130,9 @@
         $filter = mysqli_real_escape_string($conn, $_POST['type']);
         $data = mysqli_real_escape_string($conn,$_POST['loadmore']);
         if ($filter == 0){
-            $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 0 LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT $data,2");
         } else if ($filter == 1) {
-            $query = mysqli_query($conn, "SELECT * FROM threads WHERE status = 1 LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT $data,2");
         } else if ($filter == 2) {
             $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'student' ORDER BY lastname ASC LIMIT $data,2");
         } else if ($filter == 3) {
@@ -177,7 +177,7 @@
 
     if(isset($_POST['approve'])){
         $approve = mysqli_real_escape_string($conn, $_POST['approve']);
-        $query = mysqli_query($conn, "UPDATE `threads` SET `status` = 1 WHERE thread_id = '$approve'");
+        $query = mysqli_query($conn, "UPDATE `threads` SET `status` = 1, `thread_status` = 'open' WHERE thread_id = '$approve'");
         if ($query){
             $response['message_console'] = "Complete";
         } else {
@@ -328,6 +328,59 @@
                     'threads' => $userdata['threads'],
                     'restricted' => $result['restricted'],
                     'account_type' => $result['account_type']
+                );
+            }
+        } while ($result = mysqli_fetch_assoc($query));
+
+        echo json_encode($json_response);
+        mysqli_close($conn);
+    }
+
+    //decline a thread
+    if(isset($_POST['declinethread'])){
+        $data = mysqli_real_escape_string($conn,$_POST['decline']);
+        $reason = mysqli_real_escape_string($conn,$_POST['reason']);
+        $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'declined' WHERE thread_id = '$data'");
+        if ($query) {
+            $query = mysqli_query($conn, "INSERT INTO `declined` (`thread_id`, `message`) VALUES ('$data', '$reason')");
+            if ($query) {
+                $result['type'] = "Thread declined successfully";
+            }
+        } else {
+            $result['type'] = "Error declining thread";
+        }
+        echo json_encode($result);
+        mysqli_close($conn);
+    }
+
+    function getDeclineReason($thread_id){
+        global $conn;
+        $query = mysqli_query($conn, "SELECT * FROM declined WHERE thread_id = '$thread_id'");
+        $result = mysqli_fetch_assoc($query);
+        return $result['message'];
+    }
+
+    //load declined threads
+    if(isset($_POST['decline'])){
+        $json_response = array();
+        $data = mysqli_real_escape_string($conn,$_POST['decline']);
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'declined' ORDER BY date_posted DESC LIMIT 0,5");
+        $result = mysqli_fetch_assoc($query);
+
+        do {
+            if (!empty($result)){
+                $declinereason = getDeclineReason($result['thread_id']);
+                $userdata = getUserData($result['author']);
+                $json_response[] = array(
+                    'title' => $result['title'], 
+                    'firstname' => $userdata['firstname'],
+                    'lastname' => $userdata['lastname'],
+                    'avatar' => $userdata['avatar'],
+                    'thread_id' => $result['thread_id'], 
+                    'body' => $result['body'], 
+                    'date' => $result['date_posted'], 
+                    'time' => $result['time_posted'],
+                    'decline_message' => $declinereason
                 );
             }
         } while ($result = mysqli_fetch_assoc($query));

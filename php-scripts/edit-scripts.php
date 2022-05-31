@@ -53,11 +53,12 @@
         $sql = "UPDATE `threads` SET `title` = '$title', `body` = '$body', `tags` = '$tags' WHERE `thread_id` = '$thread_id'";
         $query = mysqli_query($conn, $sql);
         if($query){
-            echo "<script>alert('Thread updated successfully!');</script>";
-            header("location: ../threads.php?threadid=$thread_id");
+            $response['status'] = "success";
         } else {
-            echo "<script>alert('Something went wrong!');</script>";
+            $response['status'] = "failed";
         }
+        echo json_encode($response);
+        mysqli_close($conn);
     }
 
 ?>

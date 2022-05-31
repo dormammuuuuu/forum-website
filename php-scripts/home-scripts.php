@@ -3,9 +3,9 @@
     include('db.php');
     session_start();
 
-    function fetchThreads(){
+    function fetchThreads($limit){
         global $conn;
-        $sql = "SELECT * FROM threads ORDER BY id DESC";
+        $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') ORDER BY id DESC LIMIT $limit, 3";
         $thread = $conn->query($sql) or die ($conn->error);
         $row = $thread->fetch_assoc();
 
@@ -20,6 +20,9 @@
                 $author_family_name = $data['lastname'];
                 $author_avatar = $data['avatar'];
             }
+            $thread_status = ($row['thread_status'] == "open") ? "Open for discussion" : "Thread Closed";
+            $thread_icon = ($row['thread_status'] == "open") ? "bxs-message-square-add" : "bxs-message-square-x"; 
+            $thread_class = ($row['thread_status'] == "open") ? "open" : "closed";
             ?>
                 <div class="thread" data-thread="<?php echo $row['thread_id'] ?>">
                     <div class="thread-title"><?php echo $row['title']?></div>
@@ -30,7 +33,7 @@
                                 <p class="thread-name"><?php echo $author_given_name . " " . $author_family_name ?></p>
                                 <p class="thread-user-type">Student</p>
                             </div>
-                            <p class="thread-published"><script>document.write(jQuery.timeago('<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>'));</script></p>
+                            <p class="thread-published" data-date="<?php echo $row['thread_id'] ?>"><script>$("[data-date=<?php echo $row['thread_id'] ?>]").html(jQuery.timeago("<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>"))</script></p>
                         </div>
                     </div>
                     <div class="thread-content">
@@ -40,9 +43,9 @@
                         <div class="thread-save">
                             <i class='bx bx-star'></i>
                         </div>
-                        <div class="thread-add-response">
-                            <i class='bx bxs-message'></i>
-                            <p>Add response</p>
+                        <div class="thread-add-response <?php echo $thread_class ?>">
+                            <i class='bx <?php echo $thread_icon ?>'></i>
+                            <p><?php echo $thread_status ?></p>
                         </div>
                     </div>
                 </div>
@@ -71,5 +74,14 @@
         }
         
         return $html;
+
     }
+
+    //load more threads
+    if (isset($_POST['loadmore'])){
+        $limit = mysqli_real_escape_string($conn, $_POST['loadmore']);
+        fetchThreads($limit);
+    }
+
+
 ?>

@@ -77,7 +77,7 @@
     flex-direction: column;
     overflow-y: scroll;
     width: 100%;
-    height: calc(100% - 220px);
+    height: calc(100% - 270px);
     position: fixed;
     width: 50vw;
 }
@@ -203,6 +203,42 @@
     border-radius: 1em;
     margin-top: 5px;
     border: 1px solid var(--gray); 
+}
+
+.closed i {
+    color: rgb(130, 230, 97)!important;
+}
+
+.closed {
+    border: 1px solid rgb(130, 230, 97)!important;
+}
+
+.closed p{
+    color: rgb(130, 230, 97)!important;
+}
+
+.open i {
+    color: rgba(255, 255, 255, 0.65)!important;
+}
+
+.open {
+    border: 1px solid rgba(255, 255, 255, 0.65)!important;
+}
+
+.open p{
+    color: rgba(255, 255, 255, 0.65)!important;
+}
+
+#load-more{
+    width: -webkit-fill-available;
+    text-align: center;
+    font-size: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid var(--gray);
+    background-color: transparent;
+    margin-right:10px; 
 }
 
 

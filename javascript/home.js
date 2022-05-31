@@ -30,3 +30,30 @@ $('.thread').click(function (e) {
     let tid = $(this).attr('data-thread');
     location.href = "thread.php?threadid=" + tid;
 });
+
+    //load more button
+$(document).on("click", "#load-more", (function () { 
+    let loadmore_btn = $('#load-more');
+    if (loadmore_btn.length > 0){
+        loadmore_btn.remove();
+    }
+    let count = $('.threads-container').children().length;
+    console.log(count);
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/home-scripts.php",
+        data: {
+            loadmore: count
+        },
+        dataType: "html",
+        success: function (response) {
+            $('.threads-container').append(response);
+            $('.threads-container').append('<button id="load-more">Load More</button>');
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+}));

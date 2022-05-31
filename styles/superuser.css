@@ -397,8 +397,66 @@ select::-ms-expand {
     margin: 20px 0; 
 }
 
+/*decline modal*/
+.modal-decline{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: -webkit-fill-available;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 
-/*black background for select dropdown*/
+.modal-decline-content{
+    background-color: var(--gray);
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+}
+
+#decline-reason{
+    width: -webkit-fill-available;
+    height: 200px;
+    margin: 20px 0;
+}
+
+.close-decline-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    margin: 20px;
+    cursor: pointer;
+}
+
+#decline-thread-btn{
+    background: var(--primary);
+    padding: 7px 13px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#decline-thread-btn:hover{
+    background: var(--primary-dark);
+}
+
+.decline-reason{
+    margin: 10px;
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+.decline-reason span{
+    color: var(--secondary);
+
+}
 
 @media(prefers-color-scheme: dark) {
 

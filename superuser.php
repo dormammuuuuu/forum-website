@@ -87,6 +87,7 @@
                             <li id="all-button">Current Threads</li>
                             <li id="pending-button">Pending Threads</li>
                             <li id="closed-button">Closed Threads</li>
+                            <li id="declined-button">Declined Threads</li>
                             <li id="student-button">Students</li>
                             <li id="teacher-button">Teachers</li>
                             <li id="admin-button">Administrators</li>

@@ -41,7 +41,7 @@
 
                 <div class="threads-container">
                     
-                    <?php fetchThreads(); ?>
+                    <?php fetchThreads(0); ?>
 
                     <!-- <div class="thread">
                         <div class="thread-title">Bakit walang ulam?</div>
@@ -68,6 +68,7 @@
                             </div>
                         </div>
                     </div> -->
+                    <button id="load-more">Load more</button>
 
                 </div>
             </div>

@@ -18,7 +18,7 @@ $(function () {
             }
         });
     }, 1000);
-    $('#student-button').click();
+    $('#pending-button').click();
 });
 
 function renderThreads(json_response, index, filter) {
@@ -26,41 +26,46 @@ function renderThreads(json_response, index, filter) {
     let body_data = edjsParser.parse(JSON.parse(json_response[index].body));
     let final_body = body_data.join(" ");
     let datetime = jQuery.timeago(json_response[index].date + ' ' + json_response[index].time);
-    let layout = '<div class="pending-content" data-mainthread="' + json_response[index].thread_id + '" >' +
-                '<div class="pending-thread-title">' +
-                    '<h1>' + json_response[index].title + '</h1>' +
-                '</div>' +
-                '<div class="pending-author">' +
-                    '<img class="pending-thread-avatar" src="' + json_response[index].avatar + '" alt="">' +
-                    '<div class="pending-details">' +
-                        '<div class="pending-user">' +
-                            '<p class="pending-name">' + json_response[index].firstname + ' ' + json_response[index].lastname + '</p>' +
-                            '<p class="pending-user-type">Student</p>' +
-                        '</div>' +
-                        '<p class="pending-date-published">' + datetime + '</p>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="pending-content-text">' +
-                    '<div class="pending-main-threads">' + final_body +
-                    '</div>' +
-                '</div>' +
-                '<div class="pending-btn" data-thread="'+ json_response[index].thread_id +'" >';
+    let layout = `<div class="pending-content" data-mainthread="` + json_response[index].thread_id + `" >
+                <div class="pending-thread-title">
+                    <h1>` + json_response[index].title + `</h1>
+                </div>
+                <div class="pending-author">
+                    <img class="pending-thread-avatar" src="` + json_response[index].avatar + `" alt="">
+                    <div class="pending-details">
+                        <div class="pending-user">
+                            <p class="pending-name">` + json_response[index].firstname + ` ` + json_response[index].lastname + `</p>
+                            <p class="pending-user-type">Student</p>
+                        </div>
+                        <p class="pending-date-published">` + datetime + `</p>
+                    </div>
+                </div>
+                <div class="pending-content-text">
+                    <div class="pending-main-threads">` + final_body +`</div>
+                </div>
+                <hr>`;
+                if (filter == 6){
+                    layout += `<p class="decline-reason"><span style="font-weight: 600">Reason: </span> ` + json_response[index].decline_message + `</p>`;
+                    
+                }
+                layout += ` <div class="pending-btn" data-thread="`+ json_response[index].thread_id +`" >`;
 
                 if (filter == 0){
-                    layout += '<button class="pending-btns approve">APPROVE</button>' +
-                              '<button class="pending-btns decline">DECLINE</button>';
+                    layout += `<button class="pending-btns approve">APPROVE</button>
+                              <button class="pending-btns decline">DECLINE</button>`;
                 } else if (filter == 1){
-                    layout += '<button class="pending-btns">EDIT TAGS</button>' +
-                              '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
-                              '<button class="pending-btns closethread-btn">CLOSE THREAD</button>' +
-                              '<button class="pending-btns">MARK AS DUPLICATE THREAD</button>';
+                    layout += `<button class="pending-btns">EDIT TAGS</button>
+                              <button class="pending-btns viewthread-btn">VIEW THREAD</button>
+                              <button class="pending-btns closethread-btn">CLOSE THREAD</button>
+                              <button class="pending-btns">MARK AS DUPLICATE THREAD</button>`;
                 } else if (filter == 2){
-                    layout += '<button class="pending-btns viewthread-btn">VIEW THREAD</button>' +
-                              '<button class="pending-btns openthread-btn">RE-OPEN THREAD</button>'; 
-
+                    layout += `<button class="pending-btns viewthread-btn">VIEW THREAD</button>
+                              <button class="pending-btns openthread-btn">RE-OPEN THREAD</button>`; 
+                } else if (filter == 6){
+                    layout += `<button class="pending-btns approve">APPROVE</button>`; 
                 }
-                layout += '</div>' +
-                        '</div> ';
+                layout += `</div>
+                        </div> `;
     return layout;
 }
 
@@ -69,20 +74,20 @@ function renderAccount(json_response, index, type){
     let restrictionLabel = (json_response[index].restricted == 1) ? "Remove account restriction" : "Restrict Account";
     let accountType = (json_response[index].account_type == "student") ? "<option value='student' selected>Student</option><option value='teacher'>Teacher</option><option value='admin'>Admin</option>'" : (json_response[index].account_type == "teacher") ? "<option value='student'>Student</option><option value='teacher' selected>Teacher</option><option value='admin'>Admin</option>'" : "<option value='student'>Student</option><option value='teacher'>Teacher</option><option value='admin' selected>Admin</option>'";
 
-    let layout = '<div class="user-container">' +
-                    '<div class="user-details">' + 
-                        '<img class="user-icon" src="' + json_response[index].avatar + '" alt="">' +
-                        '<div class="user-info">' +
-                            '<p class="user-name">' + json_response[index].lastname + ", " + json_response[index].firstname + '</p>' +
-                            '<p class="user-thread-post">Threads: ' + json_response[index].threads +', Comments: ' + json_response[index].comments +'</p>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="user-btn" data-user="' + json_response[index].uid + '">' +
-                        '<button class="view-btn">View Profile</button>' +
-                        '<button class="restrict-btn ' + restrictionClass +'" data-restriction="' + json_response[index].restricted + '">' + restrictionLabel + '</button>' +
-                        '<select name="select-user-type" class="user-type">' + accountType + '</select>' +
-                    '</div>' +
-                '</div>';
+    let layout = `<div class="user-container">
+                    <div class="user-details"> 
+                        <img class="user-icon" src="` + json_response[index].avatar + `" alt="">
+                        <div class="user-info">
+                            <p class="user-name">` + json_response[index].lastname + ", " + json_response[index].firstname + `</p>
+                            <p class="user-thread-post">Threads: ` + json_response[index].threads +`, Comments: ` + json_response[index].comments +`</p>
+                        </div>
+                    </div>
+                    <div class="user-btn" data-user="` + json_response[index].uid + `">
+                        <button class="view-btn">View Profile</button>
+                        <button class="restrict-btn ` + restrictionClass +`" data-restriction="` + json_response[index].restricted + `">` + restrictionLabel + `</button>
+                        <select name="select-user-type" class="user-type">` + accountType + `</select>
+                    </div>
+                </div>`;        
     return layout;
 }
 
@@ -216,7 +221,7 @@ $(document).on('click', '#load-more-button', function () {
                 $('#load-more-button').remove();
             }
             for (let index = 0; index < response.length; index++) {
-                if (type == 2 || type == 3){
+                if (type == 2 || type == 3 || type == 4){
                     layout = renderAccount(response, index, 0);
                 } else {
                     layout = renderThreads(response, index, type);
@@ -475,9 +480,9 @@ $('#closed-button').click(function () {
                 $('.pending-threads').append(layout);    
             }
             if (loadbutton.length == 0){
-                $('.pending-container').append('<button data-num="4" id="load-more-button">Load more</button>');
+                $('.pending-container').append('<button data-num="5" id="load-more-button">Load more</button>');
             } else {
-                $('#load-more-button').attr('data-num', 4);
+                $('#load-more-button').attr('data-num', 5);
             }
         },
         complete:function(data){
@@ -585,14 +590,41 @@ $(document).on("click", ".admin-button", function () {
     });
 });
 
-//unadmin button
-$(document).on("click", ".unadmin-button", function () { 
-    let accountID = $(this).parent().attr('data-user');
+//create a modal for decline threads with select and textarea
+$(document).on("click", ".decline", function () { 
+    let modal = `<div class="modal-decline">
+                    <div class="modal-decline-content">
+                        <div class="modal-decline-header">
+                            <span class="close-decline-btn">&times;</span>
+                            <h2>Decline Thread</h2>
+                        </div>
+                        <div class="modal-decline-body">
+                            <p>Reason for declining thread:</p>
+                            <textarea id="decline-reason" placeholder="Reason for declining thread"></textarea>
+                        </div>
+                        <div class="modal-decline-footer">
+                            <button id="decline-thread-btn" data-thread="' + threadID + '">Decline thread</button>
+                        </div>
+                    </div>
+                </div>`;
+    $('body').append(modal);
+});
+
+//close decline 
+$(document).on("click", ".close-decline-btn", function () { 
+    $('.modal-decline').remove();
+});
+
+//decline thread btn
+$(document).on("click", "#decline-thread-btn", function () { 
+    let threadID = $(this).attr('data-thread');
+    let reason = $('#decline-reason').val();
     $.ajax({
         type: "post",
         url: "../php-scripts/superuser-scripts.php",
         data: {
-            unadmin: accountID
+            declinethread: threadID,
+            reason: reason
         },
         dataType: "json",
         beforeSend: function(){
@@ -600,7 +632,9 @@ $(document).on("click", ".unadmin-button", function () {
         },
         success: function (response) {
             console.log(response);
-            $('[data-user=' + accountID +']').empty().append("<p class='moved-notice'>Account demoted to Student</p>");
+            $('.modal-decline').remove();
+
+            $('[data-thread=' + threadID +']').empty().append("<p class='moved-notice'>Thread declined</p>");
         },
         complete:function(data){
             $(".loader-superuser").fadeOut();                
@@ -613,4 +647,40 @@ $(document).on("click", ".unadmin-button", function () {
     });
 });
 
-//decline thread with modal
+//fetch decline threads
+$('#declined-button').click(function () {
+    let loadbutton = $('#load-more-button');
+    $('.pending-threads').empty();
+    $('.pending-title').text('List of Declined Threads');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/superuser-scripts.php",
+        data: {
+            decline: 1
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            console.log(response);
+            for (let index = 0; index < response.length; index++) {
+                let layout = renderThreads(response, index, 6);
+                $('.pending-threads').append(layout);    
+            }
+            if (loadbutton.length == 0){
+                $('.pending-container').append('<button data-num="6" id="load-more-button">Load more</button>');
+            } else {
+                $('#load-more-button').attr('data-num', 6);
+            }
+        },
+        complete:function(data){
+            $(".loader-superuser").fadeOut();                
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
