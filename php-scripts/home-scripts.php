@@ -27,13 +27,52 @@
                 <div class="thread" data-thread="<?php echo $row['thread_id'] ?>">
                     <div class="thread-title"><?php echo $row['title']?></div>
                     <div class="thread-author">
-                        <img class="thread-avatar" src="<?php echo $author_avatar ?>" alt="">
-                        <div class="thread-details">
-                            <div class="thread-user">
-                                <p class="thread-name"><?php echo $author_given_name . " " . $author_family_name ?></p>
-                                <p class="thread-user-type">Student</p>
+                        <div class="thread-author-details">
+                            <img class="thread-avatar" src="<?php echo $author_avatar ?>" alt="">
+                            <div class="thread-details">
+                                <div class="thread-user">
+                                    <p class="thread-name"><?php echo $author_given_name . " " . $author_family_name ?></p>
+                                    <p class="thread-user-type">Student</p>
+                                </div>
+                                <p class="thread-published" data-date="<?php echo $row['thread_id'] ?>"><script>$("[data-date=<?php echo $row['thread_id'] ?>]").html(jQuery.timeago("<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>"))</script></p>
                             </div>
-                            <p class="thread-published" data-date="<?php echo $row['thread_id'] ?>"><script>$("[data-date=<?php echo $row['thread_id'] ?>]").html(jQuery.timeago("<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>"))</script></p>
+                        </div>
+                        <div>
+                            <?php
+                                $array = json_decode($row['tags']);
+                                foreach($array as $key => $value){
+                                    for($i = 0; $i < count($value); $i++){
+                                        switch ($value[$i]) {
+                                            case 'cos':
+                                                $out = "COS";
+                                                break;
+                                            case 'coe':
+                                                $out = "COE";
+                                                break;
+                                            case 'cafa':
+                                                $out = "CAFA";
+                                                break;
+                                            case 'cie':
+                                                $out = "CIE";
+                                                break;
+                                            case 'cit':
+                                                $out = "CIT";
+                                                break; 
+                                            case 'lgbtq':
+                                                $out = "LGBTQ+";
+                                                break;
+                                            case 'missingitem':
+                                                $out = "Missing Item";
+                                                break;      
+                                                
+                                            default:
+                                                $out = ucfirst($value[$i]);
+                                                break;
+                                        }
+                                        echo '<span class="thread-tags">'.$out.'</span>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                     <div class="thread-content">

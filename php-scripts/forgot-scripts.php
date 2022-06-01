@@ -26,9 +26,9 @@ function verifyEmail($recipient, $token){
         //Recipients
         $mail->setFrom('forum.bsit@gmail.com', 'Forum Website');
         $mail->addAddress($recipient);     //Add a recipient
-
+        $link = $_SERVER['SERVER_NAME'];
         //Content
-        $token_link = "http://localhost/forgot.php?token=" . $token;
+        $token_link = $link . "/forgot.php?token=" . $token;
         $email_template = 'email/verification-forgot-email.html';
         $mail->AddEmbeddedImage('../assets/images/forgot-2.png', 'resetimg');
         $message = file_get_contents($email_template);

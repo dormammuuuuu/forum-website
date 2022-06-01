@@ -77,7 +77,7 @@
     flex-direction: column;
     overflow-y: scroll;
     width: 100%;
-    height: calc(100% - 270px);
+    height: calc(100% - 260px);
     position: fixed;
     width: 50vw;
 }
@@ -101,6 +101,7 @@
     margin: 20px 0;
     display: flex;
     align-items: center ;
+    justify-content: space-between  ;
     width: -webkit-fill-available;
 }
 
@@ -126,6 +127,14 @@
 .thread-user{
     display: flex;
     align-items: center;
+}
+
+.thread-tags{
+    font-size: 10px;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-right: 5px;
 }
 
 .thread-user-type{
@@ -239,6 +248,11 @@
     border: 1px solid var(--gray);
     background-color: transparent;
     margin-right:10px; 
+}
+
+.thread-author-details{
+    display: flex;
+    align-items: center;
 }
 
 

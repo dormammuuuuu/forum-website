@@ -25,7 +25,7 @@ $('.create-thread').click(function () {
 });
 
 
-$('.thread').click(function (e) { 
+$(document).on('click','.thread',function (e) { 
     e.preventDefault();
     let tid = $(this).attr('data-thread');
     location.href = "thread.php?threadid=" + tid;
