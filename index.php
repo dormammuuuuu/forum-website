@@ -9,19 +9,18 @@
         <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/navbar.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
         <script src="javascript/jquery-3.6.0.js"></script>
 
 
     </head>
     <body class="container">
 
-           <!-- <div class="container"> -->
+           
                 <div class="first-div">
                    <div class="main-intro">
                         <h1 id="main-title">TUP Speak</h1>
                         <p>TUP-Speak is a free forum website for TUP students and faculty members. It contains communication, teamwork, and a healthy environment</p>
-                        <button type="button" id="btn_start">Get Started!</button>
+                        <button type="button" class="btn_start">Get Started!</button>
                     </div>
 
                    <div class="main-img">
@@ -30,20 +29,20 @@
 
                 <div class="second-div">
                     <div class="second-obj-desc">
-                        <div class="cards">
-                            <img src="assets/images/sending-thread.svg" class="card-img">
+                        <div class="cards" id="card-1">
+                            <img src="assets/images/sending-thread.png" class="card-img">
                             <h1>Creating Threads</h1>
                             <p>Share your ideas</p>
                         </div>
 
-                        <div class="cards">
-                            <img src="assets/images/thread-proc.svg" class="card-img">
+                        <div class="cards" id="card-2">
+                            <img src="assets/images/thread-proc.png" class="card-img">
                             <h1>Admin's Approval</h1>
                             <p>Wait for the admin's approval for your created threads</p>
                         </div>
 
-                        <div class="cards">
-                            <img src="assets/images/approve.svg" class="card-img">
+                        <div class="cards" id="card-3">
+                            <img src="assets/images/approve.png" class="card-img">
                             <h1>Thread Published</h1>
                             <p>Let the other hear your concern</p>
                         </div>
@@ -53,7 +52,9 @@
 
                 <div class="objective-div">
                     <div class="objective-container">
-                        <img src="assets/images/comm.svg" id="comm-img"">
+                        
+                        <img src="assets/images/comm.png" id="comm-img"">
+                      
                     </div>
 
                     <div class="main-obj-desc">
@@ -69,13 +70,13 @@
                     </div>
 
                     <div class="objective-container">
-                      <img src="assets/images/teamwork.svg" id="teamwork-img">
+                      <img src="assets/images/teamwork.png" id="teamwork-img">
                     </div>
                 </div>
 
                 <div class="objective-div">
                     <div class="objective-container">
-                        <img src="assets/images/friendly.svg" id="friendly-img">
+                        <img src="assets/images/friendly.png" id="friendly-img">
                     </div>
 
                     <div class="main-obj-desc">
@@ -112,11 +113,11 @@
                                 <div class="message-detail">
                                     <div class="contact-name">
                                         <p>Name:</p>
-                                        <textarea  class="comment-box" placeholder="Add Name"></textarea>
+                                        <input  class="comment-box" placeholder="Add Name"></textarea>
                                     </div>
                                     <div class="contact-email">
                                         <p>Contact Email:</p>
-                                        <textarea  class="comment-box" placeholder="Add Email"></textarea>
+                                        <input  class="comment-box" placeholder="Add Email"></textarea>
                                     </div>
 
                                 </div>
@@ -124,6 +125,7 @@
                             <div class="contact-message">
                                 <p>Message: </p>
                                 <textarea id="message-box"  placeholder="Add Message"></textarea>
+                                <button type="button" class="btn_start">Submit</button>
                             </div>
 
                         </div>
@@ -152,16 +154,22 @@
                     </div>
                 </div>
 
+                <footer class="footer-container">
+                    <div class="footer-socmed">
+                        <i class='bx bxl-facebook-circle'></i>
+                        <i class='bx bxl-twitter'></i>
+                        <i class='bx bxl-instagram-alt' ></i>
+                        <i class='bx bxl-github' ></i>                        
+                    </div>
+
+                    <div>
+                        <p>&copyTUP-SPEAK 2022</p>
+                    </div>
+                </footer>
 
 
-           <!-- </div> -->
-
-        <!-- <script src="https://unpkg.com/scrollreveal"></script>
-        <script src="javascript/index.js"></script>
-        <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-</script> -->
-
+          
+        
         <script src="javascript/index.js"></script>
 
     </body>
