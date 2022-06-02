@@ -1,3 +1,4 @@
+    <script src="javascript/navbar.js"></script>
     <nav>
         <div>
             <p>Logo</p>
@@ -23,14 +24,21 @@
                 <li class="nav-links active"><a href="home.php">Home</a></li>
                 <li class="nav-links"><a href="messages.php">Messages</a></li>
                 <li class="nav-links"><a href="#">Saved</a></li>
-                <li class="nav-links"><a href="logout.php">Logout</a></li>
+                <div class="notification">
+                    <span>
+                        <i class='bx bxs-bell'></i>
+                    </span>
+                </div>
+                <div class="dropdown">
+                    <img class="user-avatar" src="<?php echo $result['avatar'] ?>">
+                    <div class="dropdown-content">
+                        <a href="profile.php?view=<?php echo $_SESSION['uid'] ?>">My profile</a>
+                        <a href="logout.php">Logout</a>
+                    </div>
+                </div>                
             </ul>
-            <div class="notification">
-                <span>
-                    <i class='bx bxs-bell'></i>
-                </span>
-            </div>
-            <img class="user-avatar" src="<?php echo $result['avatar'] ?>" alt="">
+            
+            
         <?php } else { ?>
             <ul>
                 <li class="nav-links"><a href="login.php">Login</a></li>

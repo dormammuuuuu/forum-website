@@ -1,3 +1,27 @@
+:root{
+    --general: #4CC9F0;
+    --event: #F72585;
+    --registrar: #4895EF;
+    /* --cos: #7209B7;
+    --coe: #560BAD;
+    --cafa: #480CA8;
+    --cie: #3A0CA3;
+    --cit: #3F37C9; */
+    --cos: #F94144;
+    --coe: #F3722C;
+    --cafa: #F8961E;
+    --cie: #F9844A;
+    --cit: #F9C74F;
+    --library: #4361EE;
+    --vandalism: #E57A44;
+    /* --bullying: #361134;
+    --missing-item: #362417; */
+    --bullying: #988F2A;
+    --missing-item: #FBF7F4;
+    --lgbtq: #A799B7;
+    --suspension: #E8D9A6;
+}
+
 .main{
     margin: 0 10%;
     margin-top: calc(50px + var(--navbar-height));
@@ -255,6 +279,81 @@
     align-items: center;
 }
 
+.general{
+    color: var(--general);
+    border: 1px solid var(--general);
+}
+
+.event{
+    color: var(--event);
+    border: 1px solid var(--event);
+}
+
+.registrar{
+    color: var(--registrar);
+    border: 1px solid var(--registrar);
+}
+
+.cos{
+    color: var(--cos);
+    border: 1px solid var(--cos);
+}
+
+.coe{
+    color: var(--coe);
+    border: 1px solid var(--coe);
+}
+
+.cafa{
+    color: var(--cafa);
+    border: 1px solid var(--cafa);
+}
+
+.cie{
+    color: var(--cie);
+    border: 1px solid var(--cie);
+}
+
+.cit{
+    color: var(--cit);
+    border: 1px solid var(--cit);
+}
+
+.library{
+    color: var(--library);
+    border: 1px solid var(--library);
+}
+
+.vandalism{
+    color: var(--vandalism);
+    border: 1px solid var(--vandalism);
+}
+
+.bullying{
+    color: var(--bullying);
+    border: 1px solid var(--bullying);
+}
+
+.missingitem{
+    color: var(--missing-item);
+    border: 1px solid var(--missing-item);
+}
+
+.lgbtq{
+    color: var(--lgbtq);
+    border: 1px solid var(--lgbtq);
+}
+
+.suspension{
+    color: var(--suspension);
+    border: 1px solid var(--suspension);
+}
+
+.tags-container{
+    height: 40px;
+    display: flex;
+    align-items: flex-start;
+}
 
 @media (prefers-color-scheme: dark){
     .create-thread{

@@ -19,6 +19,7 @@
                 $author_given_name = $data['firstname'];
                 $author_family_name = $data['lastname'];
                 $author_avatar = $data['avatar'];
+                $author_type = $data['account_type'];
             }
             $thread_status = ($row['thread_status'] == "open") ? "Open for discussion" : "Thread Closed";
             $thread_icon = ($row['thread_status'] == "open") ? "bxs-message-square-add" : "bxs-message-square-x"; 
@@ -32,16 +33,17 @@
                             <div class="thread-details">
                                 <div class="thread-user">
                                     <p class="thread-name"><?php echo $author_given_name . " " . $author_family_name ?></p>
-                                    <p class="thread-user-type">Student</p>
+                                    <p class="thread-user-type"><?php echo ucfirst($author_type) ?></p>
                                 </div>
                                 <p class="thread-published" data-date="<?php echo $row['thread_id'] ?>"><script>$("[data-date=<?php echo $row['thread_id'] ?>]").html(jQuery.timeago("<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>"))</script></p>
                             </div>
                         </div>
-                        <div>
+                        <div class="tags-container">
                             <?php
                                 $array = json_decode($row['tags']);
                                 foreach($array as $key => $value){
                                     for($i = 0; $i < count($value); $i++){
+                                        $class = $value[$i];
                                         switch ($value[$i]) {
                                             case 'cos':
                                                 $out = "COS";
@@ -69,7 +71,7 @@
                                                 $out = ucfirst($value[$i]);
                                                 break;
                                         }
-                                        echo '<span class="thread-tags">'.$out.'</span>';
+                                        echo '<span class="thread-tags '.$class.'">'.$out.'</span>';
                                     }
                                 }
                             ?>

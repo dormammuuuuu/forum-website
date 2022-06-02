@@ -1,3 +1,6 @@
+<?php
+    include('php-scripts/profile-scripts.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +29,8 @@
                     </div>
                     <div class="user-profile">
                         <div class="user-main">
-                            <p class="profile-name">Princess Dianne Panaligan</p>
-                            <p class="profile-type">Student</p>
+                            <p class="profile-name"><?php echo $result['firstname'] . ' ' . $result['lastname'] ?></p>
+                            <p class="profile-type"><?php echo ucfirst($result['account_type']) ?></p>
                         </div>
                         <p class="profile-course">Bachelor of Science in Information Technology</p>
                         <p class="profile-campus">TUP - Manila</p>
