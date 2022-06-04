@@ -24,13 +24,13 @@
                 <div class="profile-details">
                     <div class="profile-images">
                         <img class="profile-cover" src="assets/images/avatar/default-cover.jpg" alt="">
-                        <img class="profile-avatar" src="assets/images/avatar/default.jpg" alt="">
+                        <img class="profile-avatar" src="<?php echo $data['avatar'] ?>" alt="">
 
                     </div>
                     <div class="user-profile">
                         <div class="user-main">
-                            <p class="profile-name"><?php echo $result['firstname'] . ' ' . $result['lastname'] ?></p>
-                            <p class="profile-type"><?php echo ucfirst($result['account_type']) ?></p>
+                            <p class="profile-name"><?php echo $data['firstname'] . ' ' . $data['lastname'] ?></p>
+                            <p class="profile-type"><?php echo ucfirst($data['account_type']) ?></p>
                         </div>
                         <p class="profile-course">Bachelor of Science in Information Technology</p>
                         <p class="profile-campus">TUP - Manila</p>
