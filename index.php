@@ -19,7 +19,7 @@
                 <div class="first-div">
                    <div class="main-intro">
                         <h1 id="main-title">TUP Speak</h1>
-                        <p>TUP-Speak is a free forum website for TUP students and faculty members. It contains communication, teamwork, and a healthy environment</p>
+                        <p>A platform for learning and sharing information. A place where you can ask questions and interact with others who can provide insightful responses.</p>
                         <button type="button" class="btn_start">Get Started!</button>
                     </div>
 

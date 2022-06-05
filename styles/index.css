@@ -23,19 +23,21 @@ html,body{
 }
 
 .main-intro{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2em;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    transform: translate(-10%, -60%);
+    max-width: 500px;
     animation: FadeIn 1s;
 }
 
 @keyframes FadeIn{
     from{
-        transform: translateX(-20%);
+        transform: translate(-30%, -60%);
+
     }
     to{
-        transform: translateX(0);
+        transform: translate(-10%, -60%);
     }
 }
 
@@ -48,16 +50,17 @@ html,body{
 .main-intro p{
     font-size: 20px;
     text-align:left;
-    width: 80%;
+    margin-top: 20px;
     opacity: 0;
 }
 
 .btn_start{
-    width: 20%;
     margin-top: 2.5em;
-    padding: .9em .7em;
-    color: var(--primary);
+    padding: 12px 15px;
+    background-color: var(--primary);
     border-radius: 5px;
+    width: fit-content;
+    min-width: 100px;
     border: none;
     font-weight: 600;
     cursor: pointer;
@@ -70,21 +73,27 @@ html,body{
 
 
 .main-img{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -10%;
     background-image: url(../assets/images/logo.png);
-    min-height: 400px; 
-    background-position: left;
+    min-height: 100%; 
+    width: 100%;
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: 850px;
+    background-size: 1000px;
     opacity: 0;
     animation: FadeInImg 2s;
 }
 
 @keyframes FadeInImg{
     from{
-        transform: translateX(20%);
+        transform: translate(10%, -50%);
     }
     to{
         transform: translateX(0);
+        transform: translate(0, -50%);
     }
 }
 
@@ -179,23 +188,21 @@ html,body{
     font-size: 17px;
 }
 
-.objective-div:nth-child(odd){
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1em 2em 0 2em;
-    background-color: var(--dark);
-}
-
 .objective-div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1em 2em 0 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1em 0;
     background-color: var(--dark-secondary);
-    height: 60vh;
+    height: 55vh;
     opacity: 0;
     position: relative;
     transform: translateY(50px);
     transition: all 1s ease;
+}
+
+.objective-div:nth-child(odd){
+    background-color: var(--dark);
 }
 
 .objective-div.open{
@@ -218,7 +225,8 @@ html,body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 2em;
+    max-width: 550px;
+    
 }
 
 .obj-title{
@@ -239,17 +247,13 @@ html,body{
     margin: 1em;
     background-color: var(--dark);
     border-radius: 100%;
-    overflow: hidden ;
+    overflow: visible ;
+    width: 400px;
+    height: 400px;
 }
 
 .objective-container:nth-child(odd){
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    margin: 1em;    
     background-color: var(--dark-secondary);
-    border-radius: 100%;
 }
 
 .status-div{
