@@ -10,8 +10,6 @@
         <link rel="stylesheet" href="styles/navbar.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <script src="javascript/jquery-3.6.0.js"></script>
-
-
     </head>
     <body class="container">
 
@@ -20,7 +18,7 @@
                    <div class="main-intro">
                         <h1 id="main-title">TUP Speak</h1>
                         <p>A platform for learning and sharing information. A place where you can ask questions and interact with others who can provide insightful responses.</p>
-                        <button type="button" class="btn_start">Get Started!</button>
+                        <button type="button" id="index" class="btn_start">Get Started!</button>
                     </div>
 
                    <div class="main-img">

@@ -26,6 +26,10 @@ $(document).ready(function(){
 
 });
 
+$('#index').click(function (e) { 
+    location.href="../login.php";    
+});
+
 window.addEventListener('scroll', reveal);
 function reveal(){  
     let rev = document.querySelectorAll('.objective-div');
