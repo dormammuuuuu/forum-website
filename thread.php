@@ -69,6 +69,44 @@
                   </div>
                   <div class="main-threads">
                      <p class="thread-content-text"><?php echo jsonToHtml($data['body']) ?></p>
+                     <p class="tags">Tags: 
+                     <?php
+                        $array = json_decode($data['tags']);
+                        foreach($array as $key => $value){
+                           for($i = 0; $i < count($value); $i++){
+                                 $class = $value[$i];
+                                 switch ($value[$i]) {
+                                    case 'cos':
+                                       $out = "COS";
+                                       break;
+                                    case 'coe':
+                                       $out = "COE";
+                                       break;
+                                    case 'cafa':
+                                       $out = "CAFA";
+                                       break;
+                                    case 'cie':
+                                       $out = "CIE";
+                                       break;
+                                    case 'cit':
+                                       $out = "CIT";
+                                       break; 
+                                    case 'lgbtq':
+                                       $out = "LGBTQ+";
+                                       break;
+                                    case 'missingitem':
+                                       $out = "Missing Item";
+                                       break;      
+                                       
+                                    default:
+                                       $out = ucfirst($value[$i]);
+                                       break;
+                                 }
+                                 echo '<span class="thread-tags '.$class.'">'.$out.'</span>';
+                           }
+                        }
+                     ?>
+                     </p>
                   </div>
                </div>
                <div class="divider">

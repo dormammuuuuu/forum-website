@@ -33,6 +33,7 @@
                     <img class="user-avatar" src="<?php echo $result['avatar'] ?>">
                     <div class="dropdown-content">
                         <a href="profile.php?view=<?php echo $_SESSION['uid'] ?>">My profile</a>
+                        <a href="settings.php">Account Settings</a>
                         <a href="logout.php">Logout</a>
                     </div>
                 </div>                

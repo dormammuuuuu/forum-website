@@ -1,0 +1,91 @@
+.main{
+    margin: auto;
+    margin-top: calc(50px + var(--navbar-height));
+    width: -webkit-fill-available;
+    max-width: 1000px;
+    height: 70vh;
+    background-color: var(--dark-secondary);
+    padding: 30px;
+}
+
+.account-container{
+    display: flex;
+    align-items: flex-start;
+}
+
+.acct-navigation{
+    width: 250px;
+    height: -webkit-fill-available;
+    border-right: 1px solid white;
+}
+
+.nav-btn{
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+
+.heading-details{
+    margin-bottom: 2em;
+}
+
+.icons{
+    margin-right: 10px;
+    font-size: 17px;
+}
+
+/* .account-container{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "user-details security avatar";   
+} */
+
+.user-details { 
+    grid-area: user-details; 
+    padding: 15px;
+} 
+
+.security { 
+    grid-area: security; 
+    padding: 15px;
+}
+
+.avatar {
+    grid-area: avatar; 
+    padding: 15px;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label{
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.input-field input{
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 2px 5px;
+    height: 20px;
+}
+
+.avatar-form{
+    position: relative;
+    text-align: center;
+}
+
+.avatar-form img{
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+}

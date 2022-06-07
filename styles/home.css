@@ -2,11 +2,6 @@
     --general: #4CC9F0;
     --event: #F72585;
     --registrar: #4895EF;
-    /* --cos: #7209B7;
-    --coe: #560BAD;
-    --cafa: #480CA8;
-    --cie: #3A0CA3;
-    --cit: #3F37C9; */
     --cos: #F94144;
     --coe: #F3722C;
     --cafa: #F8961E;
@@ -14,8 +9,6 @@
     --cit: #F9C74F;
     --library: #4361EE;
     --vandalism: #E57A44;
-    /* --bullying: #361134;
-    --missing-item: #362417; */
     --bullying: #988F2A;
     --missing-item: #FBF7F4;
     --lgbtq: #A799B7;
@@ -59,7 +52,7 @@
     padding: 10px 15px;
 }
 
-.create-thread{
+.create-thread, .login{
     width: -webkit-fill-available;
     text-align: center;
     font-size: 10px;
@@ -72,6 +65,11 @@
     align-items: center;
     padding-right: 10px;
     padding-left: 15px;
+}
+
+.login{
+    justify-content: center;
+    height: 20px;
 }
 
 .create-thread span{
@@ -356,7 +354,7 @@
 }
 
 @media (prefers-color-scheme: dark){
-    .create-thread{
+    .create-thread, .login{
         background-color: var(--dark-secondary);
     }
 

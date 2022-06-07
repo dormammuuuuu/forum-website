@@ -58,6 +58,17 @@
     border-radius: 5px;
 }
 
+.tags{
+    font-size: 12px;
+}
+
+.thread-tags{
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 5px;
+    color: rgba(255,255,255, .5);
+}
+
 .author{
     display: flex;
     align-items: center;

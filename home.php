@@ -30,8 +30,11 @@
                             <p>Add a new thread</p>
                             <span>+</span>
                         </div>
-                <?php }
-                ?>
+                <?php } else { ?>
+                    <div class="login">
+                        <p style="text-align: center">Log in to create a thread</p>
+                    </div>
+                <?php } ?>
                 <div class="divider">
                     <p>Recent Threads </p>
                     <div>
