@@ -62,7 +62,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: FadeIn 2s;
 }
+@keyframes FadeIn {
+    from{
+        transform: translateX(250px);
+        opacity: 0;
+        width: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+        width: 100%;
+    }
+}
+
 
 .card-left{
     width: 100%;
@@ -147,4 +161,71 @@ a{
 .login-img{
     width: 400px;
     height: 400px;
+}
+
+
+@media (max-width: 915px) {
+    
+    .card-right{
+        animation: FadeOut 2s;
+        opacity: 0;
+        width: 0;
+    }
+    @keyframes FadeOut {
+        from{
+            transform: translateX(0px);
+            opacity: 1;
+            width: 100%;
+        }
+        to{
+            transform: translateX(250px);
+            opacity: 0;
+            width: 0;
+        }
+    }
+
+    .login-img{
+        display: none;
+    }
+    
+    .card-container{
+        width: 75%; 
+        animation: FadeConOut 2s;
+    }
+
+    @keyframes FadeConOut {
+        from{
+            width: 100%;
+        }
+        to{
+            width: 75%;
+        }
+    }
+
+}
+
+@media (max-width: 900px) and (min-width: 351px){
+
+    .card-container{
+        width: 75%;
+    }
+
+
+}
+
+@media (max-width: 350px){
+    
+    .card-container{
+        width: 100%;
+        animation: FadeConOut 2s;
+    }
+    @keyframes FadeConOut{
+        from{
+            width: 75%;
+        }
+        to{
+            width: 100%;
+        }
+    }
+
 }

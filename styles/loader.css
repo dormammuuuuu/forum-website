@@ -158,3 +158,10 @@
         background: white;
     }
 }
+
+@media (max-width: 915px) and (min-width: 350px) {
+
+    .loader-container{
+        width: 100%;
+    }
+}

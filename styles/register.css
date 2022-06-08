@@ -54,6 +54,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: FadeIn 2s;
+}
+
+@keyframes FadeIn{
+
+    from{
+        transform: translateX(-250px);
+        opacity: 0;
+        width: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+        width: 100%;
+    }
 }
 
 .card-right{
@@ -105,6 +120,14 @@
     cursor: pointer;
 }
 
+.google-btn{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: -webkit-fill-available;
+}
+
 #google-signup{
     margin: 0;
     margin-bottom: 20px;
@@ -143,6 +166,7 @@ a{
     margin: 10px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: -webkit-fill-available;
 }
 
@@ -172,9 +196,6 @@ a{
     padding: 10px;
 }
 
-#verification-form{
-    padding: 30px;
-}
 
 .verification h1{
     text-align: center;
@@ -200,6 +221,7 @@ a{
 #verification-form{
     display: flex;
     flex-direction: column;
+    padding: 30px;
 }
 
 .success{
@@ -255,5 +277,133 @@ a{
 
     .success{
         background-color: var(--dark-secondary);
+    }
+}
+
+@media (max-width: 915px){
+
+    .card-left{
+        animation: FadeOut 2s;
+        opacity: 0;
+        width: 0;
+    }
+    @keyframes FadeOut {
+        
+        from{
+            transform: translateX(0px);
+            opacity: 1;
+            width: 100%;
+        }
+        to{
+            transform: translateX(-250px);
+            opacity: 0;
+            width: 0;
+        }
+    }
+
+    .register-img{
+        display: none;
+    }
+
+    #registration-form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+    #registration-submit{
+        width: 69%;
+    }
+
+    .card-container{
+
+        width: 75%;
+        animation: FadeConOut 2s;
+    }
+
+    @keyframes FadeConOut {
+        from{
+            width: 100%;
+        }
+        to{
+            width: 75%;
+        }
+    }
+
+    
+
+    .verification{
+        width: 100%;
+        right: auto;
+    }
+
+    #verification-form{
+        align-items: center;
+    }
+
+    .verification input[type=text], #verification-submit{
+        width: 50%;
+    }
+  
+
+    .field{
+        
+        margin: 5px 10px;
+    }
+
+    .google-btn{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    #google-signup{
+        width: 69%;
+    }
+
+    .divider hr{
+        flex-grow: .3;
+    }
+}
+
+@media (max-width: 610px) and (min-width: 351px){
+
+    .card-container{
+        width: 75%;
+    }
+
+    #registration-form > div{
+        justify-content: center;
+        width: 50%;
+    }
+
+    .card-right{
+        width: -webkit-fill-available;
+    }
+
+    .field input{
+        width: 150px;
+    }
+
+   
+}
+
+@media (max-width: 350px){
+    
+    .card-container{
+        width: 100%;
+        animation: FadeConOut 2s;
+    }
+    @keyframes FadeConOut{
+        from{
+            width: 75%;
+        }
+        to{
+            width: 100%;
+        }
     }
 }
