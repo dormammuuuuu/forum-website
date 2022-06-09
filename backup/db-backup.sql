@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 08:06 PM
+-- Generation Time: Jun 09, 2022 at 08:57 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -67,7 +67,9 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (88, 'thrd6294d8c4c9e4b', 'C6294e9d441909', 'u627a6a0b58d37', '2022-05-30', '23:59:16', 'S', 0),
 (89, 'thrd6294d8c4c9e4b', 'C6294e9d471d20', 'u627a6a0b58d37', '2022-05-30', '23:59:16', 'S', 0),
 (90, 'thrd6294d8c4c9e4b', 'C62950681a916f', 'u627a6a0b58d37', '2022-05-31', '02:01:37', 'AAA', 0),
-(91, 'thrd629643d4e50ea', 'C62964ec6046eb', 'u627754a082c47', '2022-06-01', '01:22:14', 'Wow galing\n', 1);
+(91, 'thrd629643d4e50ea', 'C62964ec6046eb', 'u627754a082c47', '2022-06-01', '01:22:14', 'Wow galing\n', 1),
+(92, 'thrd6298f42a3ec79', 'C6298f45a3ff3b', 'u6298f3dcd7288', '2022-06-03', '01:33:14', 'ang bastos mo naman', 1),
+(93, 'thrd6298f42a3ec79', 'C6298f461a02f5', 'u627754a082c47', '2022-06-03', '01:33:21', 'YAAAAk\n', 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,12 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 (31, 'thrd628e630899566', 'u627754a082c47', 'NEW', '{\"time\":1653498632604,\"blocks\":[{\"id\":\"3FzFQhQtCf\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdaddd\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"vandalism\"]}', 1, 'open', '2022-05-26', '01:10:32'),
 (32, 'thrd628e63c369854', 'u627754a082c47', 'Editted Thread', '{\"time\":1653919992441,\"blocks\":[{\"id\":\"GD-Q2boFVf\",\"type\":\"paragraph\",\"data\":{\"text\":\"Ito ang thread na inedit ko.\"}},{\"id\":\"YgOt53Qijh\",\"type\":\"paragraph\",\"data\":{\"text\":\"Thank you &lt;3\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\",\"lgbtq\",\"cos\"]}', 0, 'pending', '2022-05-26', '01:13:39'),
 (33, 'thrd6294d8c4c9e4b', 'u627754a082c47', 'New Thread Wow ', '{\"time\":1653987520357,\"blocks\":[{\"id\":\"Whv56xWkax\",\"type\":\"paragraph\",\"data\":{\"text\":\"Latest Thread&nbsp;\"}},{\"id\":\"h5BQeSfBt0\",\"type\":\"paragraph\",\"data\":{\"text\":\"WOWOWOW Latest\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 0, 'declined', '2022-05-30', '22:46:28'),
-(34, 'thrd629643d4e50ea', 'u627754a082c47', '6/1/2022', '{\"time\":1654014932932,\"blocks\":[{\"id\":\"0EBTD2ICG-\",\"type\":\"paragraph\",\"data\":{\"text\":\"New Sample\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"event\"]}', 1, 'close', '2022-06-01', '00:35:32');
+(34, 'thrd629643d4e50ea', 'u627754a082c47', '6/1/2022', '{\"time\":1654014932932,\"blocks\":[{\"id\":\"0EBTD2ICG-\",\"type\":\"paragraph\",\"data\":{\"text\":\"New Sample\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"event\"]}', 1, 'close', '2022-06-01', '00:35:32'),
+(35, 'thrd62986a5934109', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS', '{\"time\":1654155865196,\"blocks\":[{\"id\":\"bdSbLlsbH_\",\"type\":\"paragraph\",\"data\":{\"text\":\"\\\"Lupang Hinirang\\\", originally titled in Spanish as \\\"Marcha Nacional Filipina\\\" and commonly known by its incipit \\\"Bayang Magiliw\\\", is the national anthem of the Philippines. Its music was composed in 1898 by Julián Felipe, and the lyrics were adopted from the Spanish poem \\\"Filipinas\\\", written by José Palma in 1899.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"bullying\",\"cafa\",\"cie\",\"cit\",\"coe\"]}', 1, 'open', '2022-06-02', '15:44:25');
+INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `status`, `thread_status`, `date_posted`, `time_posted`) VALUES
+(36, 'thrd62986aed369f2', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 2', '{\"time\":1654156013212,\"blocks\":[{\"id\":\"YbNR3YN6EV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pilipinas Kong Mahal is one of the most popular patriotic songs in the Philippines. The song was composed by Filipino musician, Francisco Santiago and lyrics by Ildefonso Santos. The English text was written by Prescott Ford Jernegan.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\",\"general\",\"lgbtq\",\"library\"]}', 1, 'open', '2022-06-02', '15:46:53'),
+(37, 'thrd62986b338d7e0', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 3', '{\"time\":1654589778146,\"blocks\":[{\"id\":\"NTuvbj99z3\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa ugoy ng Duyan\"}},{\"id\":\"pfazDYMuf_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa Ugoy ng Duyan is a Filipino lullaby. The music was composed by Lucio San Pedro while the lyrics was written by Levi Celerio. Both of them were National Artists of the Philippines and this song was their most popular collaboration.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"missingitem\",\"vandalism\"]}', 1, 'open', '2022-06-02', '15:48:03'),
+(38, 'thrd6298f42a3ec79', 'u6298f3dcd7288', 'bakit ang laki ng etits ko?', '{\"time\":1654191399654,\"blocks\":[{\"id\":\"xo2AIP58AC\",\"type\":\"header\",\"data\":{\"text\":\"wasted nanaman ako mah gang gang\",\"level\":2}},{\"id\":\"7L-HwcYPsb\",\"type\":\"paragraph\",\"data\":{\"text\":\"baby baby u r my sun and moon u make my world starts collide\"}},{\"id\":\"kjJ1VCW7Es\",\"type\":\"paragraph\",\"data\":{\"text\":\"123&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-06-03', '01:32:26');
 
 -- --------------------------------------------------------
 
@@ -136,8 +143,11 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `avatar` varchar(255) NOT NULL DEFAULT 'assets/images/avatar/default.jpg',
+  `cover` varchar(255) NOT NULL DEFAULT 'assets/images/avatar/default-cover.jpg',
   `birthdate` date NOT NULL,
   `privileged` tinyint(1) NOT NULL DEFAULT 0,
+  `campus` varchar(100) NOT NULL DEFAULT 'Manila',
+  `bio` text NOT NULL,
   `account_type` varchar(255) NOT NULL DEFAULT 'student',
   `restricted` tinyint(1) DEFAULT 0,
   `restricted_reason` varchar(255) DEFAULT NULL
@@ -147,11 +157,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `birthdate`, `privileged`, `account_type`, `restricted`, `restricted_reason`) VALUES
-(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '2000-11-18', 1, 'admin', 0, '0'),
-(59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', '0000-00-00', 0, 'student', 0, NULL),
-(61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', '0000-00-00', 0, 'teacher', 0, ''),
-(62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', '1231-12-03', 0, 'student', 0, '');
+INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `cover`, `birthdate`, `privileged`, `campus`, `bio`, `account_type`, `restricted`, `restricted_reason`) VALUES
+(58, 'u627754a082c47', 'Anjo', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.png', '../assets/images/avatar/u627754a082c47-cover.png', '2000-11-18', 1, 'Manila', '', 'admin', 0, '0'),
+(59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
+(61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
+(62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1231-12-03', 0, 'Manila', '', 'student', 0, ''),
+(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -213,7 +224,9 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (59, 'C6294db944b494', 'u627754a082c47', 'upvote'),
 (60, 'C6294dab16fcc1', 'u627754a082c47', 'upvote'),
 (61, 'C6294d9de15f1e', 'u627754a082c47', 'downvote'),
-(62, 'C6294dab180e4f', 'u627754a082c47', 'upvote');
+(62, 'C6294dab180e4f', 'u627754a082c47', 'upvote'),
+(64, 'C6298f45a3ff3b', 'u6298f3dcd7288', 'upvote'),
+(65, 'C6298f461a02f5', 'u6298f3dcd7288', 'upvote');
 
 --
 -- Indexes for dumped tables
@@ -265,7 +278,7 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `declined`
@@ -277,25 +290,25 @@ ALTER TABLE `declined`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `users_verification`
 --
 ALTER TABLE `users_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
