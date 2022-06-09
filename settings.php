@@ -1,3 +1,7 @@
+<?php
+    include('php-scripts/settings-scripts.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +18,9 @@
 </head>
 <body>
     <?php include('php-scripts/navbar.php'); ?>
+    <div class="loader-superuser">
+        <div id="loader"></div>
+    </div>
     <section class="main">
         <div class="heading-details">
             <h1>Account Settings</h1>
@@ -22,58 +29,15 @@
 
         <div class="account-container">
             <div class="acct-navigation">
-                <p class="nav-btn acct-image"><i class='icons bx bxs-user'></i> Profile</p>
-                <p class="nav-btn acct-details"><i class='icons bx bxs-user-account'></i>Account Details</p>
-                <p class="nav-btn acct-security"><i class='icons bx bxs-lock' ></i>Security</p>
+                <p data-btn="image" class="nav-btn acct-image"><i class='icons bx bxs-user'></i> Profile</p>
+                <p data-btn="acct" class="nav-btn acct-details"><i class='icons bx bxs-user-account'></i>Account Details</p>
+                <p data-btn="security" class="nav-btn acct-security"><i class='icons bx bxs-lock' ></i>Security</p>
             </div>
-            <div class="acct-menu">
-                    <h4>Account Details</h4>
-                <div class="user-details">             
-                    <div class="input-field">
-                        <label class="input-label" for="fname"> First Name</label>
-                        <input type="text" name="fname">
-                    </div>
-
-                    <div class="input-field">
-                        <label class="input-label" for="lname"> Last Name</label>
-                        <input type="text" name="lname">
-                    </div>
-
-                    <div class="input-field">
-                        <label class="input-label" for="email"> Email</label>
-                        <input type="text" name="email">
-                    </div>
-
-                    <div class="input-field">
-                        <label class="input-label" for="bdate"> Birthdate</label>
-                        <input type="date" name="bdate">
-                    </div>
-                    
-                </div>
+            <div class="settings-interface">
             </div>
-            <!-- 
-            <div class="security">
-                <h4>Security</h4>
-                <div class="input-field">
-                    <label class="input-label" for="password"> Password</label>
-                    <input type="password" name="password">
-                </div>
-                <div class="input-field">
-                    <label class="input-label" for="npassword"> New Password</label>
-                    <input type="password" name="npassword">
-                </div>
-                <div class="input-field">
-                    <label class="input-label" for="cpassword"> Confirm Password</label>
-                    <input type="password" name="cpassword">
-                </div>
-            </div>
-            <div class="avatar">
-                <div class="avatar-form">
-                    <img class="user-avatar" src="assets/images/avatar/default.jpg" alt="Avatar">
-                </div>
-            </div> -->
         </div>
 
     </section>
+    <script src="javascript/settings.js"></script>
 </body>
 </html>

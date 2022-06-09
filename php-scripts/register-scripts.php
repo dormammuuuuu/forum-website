@@ -31,7 +31,7 @@
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'forum.bsit@gmail.com';                     //SMTP username
-            $mail->Password   = 'forum.bsit123';                               //SMTP password
+            $mail->Password   = 'ikpltsgpfjtzsoun';     //forum.bsit123                          //SMTP password
             $mail->SMTPSecure = "tls";            
             $mail->SMTPAutoTLS = false;
             $mail->Port       = 587;                                   
@@ -52,7 +52,6 @@
             $mail->Subject = 'Forum: Verification Code';
             
             $mail->send();
-            return 200;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -79,22 +78,21 @@
 
     //If an email wass posted, the function will generate a verification code in the database.
 	if(isset($_POST['email'])){
-		$email = $_POST['email'];
+		$email = mysqli_real_escape_string($conn, $_POST['email']);
         $code = random_int(100000, 999999);
 		
 		$duplicate = duplicateCheck($email); 
 		if ($duplicate > 0){
             $result_json['statusCode'] = 201;
-		}
-		else{
+		} else {
 			$query = mysqli_query($conn, "SELECT email FROM users_verification WHERE email='$email'");
-            if(mysqli_num_rows($query) > 0) {
+            if($query) {
                 $update = mysqli_query($conn, "UPDATE users_verification SET code='$code' WHERE email='$email'");
             } else {
                 $update = mysqli_query($conn, "INSERT INTO `users_verification`(`id`, `email`, `code`) VALUES (NULL,'$email', $code)");
             }	
-            $result_json['statusCode'] = 200;
             if($update) {
+                $result_json['statusCode'] = 200;
                 verifyEmail($email, $code);
             }
 		}

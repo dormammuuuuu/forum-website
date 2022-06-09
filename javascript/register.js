@@ -37,14 +37,16 @@ $("#registration-form").submit(function (e) {
             let result = JSON.parse(JSON.stringify(response));
             if(result.statusCode == 200){
                 $(".verification").show();
-            }
-            else if(result.statusCode == 201){
+            } else if (result.statusCode == 201){
                 $("#status").show();
                 $('#status').html('User already exists!');
             }
         },
         complete:function(data){
             $(".loader-container").fadeOut();                
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
         }
     });
 });

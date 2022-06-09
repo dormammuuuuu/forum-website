@@ -18,7 +18,7 @@ function verifyEmail($recipient, $token){
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'forum.bsit@gmail.com';                     //SMTP username
-        $mail->Password   = 'forum.bsit123';                               //SMTP password
+        $mail->Password   = 'ikpltsgpfjtzsoun'; //forum.bsit123                              //SMTP password
         $mail->SMTPSecure = "tls";            
         $mail->SMTPAutoTLS = false;
         $mail->Port       = 587;                                   
