@@ -66,6 +66,7 @@
 
 #forgot-form{
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .terms-label{

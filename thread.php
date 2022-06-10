@@ -1,4 +1,4 @@
-<?php
+ <?php
    include('php-scripts/thread-scripts.php');  
 ?>
 <!DOCTYPE html>
@@ -136,8 +136,13 @@
                </div>
                <?php } ?>
             </div>
+
+
             <div class="container-2">
+                  <!-- dito raymond -->
             </div>
+
+
          </div>
       </section>
       <script src="javascript/thread.js"></script>

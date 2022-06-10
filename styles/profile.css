@@ -1,6 +1,7 @@
 .main{
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .profile-container{
@@ -11,6 +12,7 @@
     width: 100%;
     max-width: 60vw;
     height: -webkit-fill-available;
+    width: -moz-available;
     overflow-x: hidden;
 }
 

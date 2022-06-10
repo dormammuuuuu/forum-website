@@ -19,6 +19,7 @@
     margin: 0 10%;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .container {
@@ -37,6 +38,7 @@
     grid-area: content-area; 
     padding: 10px 15px;
     height: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .francis {
@@ -54,6 +56,7 @@
 
 .create-thread, .login{
     width: -webkit-fill-available;
+    width: -moz-available;
     text-align: center;
     font-size: 10px;
     background-color: var(--light);
@@ -125,6 +128,7 @@
     align-items: center ;
     justify-content: space-between  ;
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .thread-avatar{
@@ -262,6 +266,7 @@
 
 #load-more{
     width: -webkit-fill-available;
+    width: -moz-available;
     text-align: center;
     font-size: 10px;
     padding: 10px;

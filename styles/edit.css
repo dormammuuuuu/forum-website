@@ -2,6 +2,7 @@
     margin: 0 10% 5% 10%;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 100%;
     position: relative;
     z-index: 1;
@@ -46,6 +47,7 @@ html,body{
 
 .inputs{
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 30px;
     border: 1px solid var(--gray);
     margin: 10px 0;

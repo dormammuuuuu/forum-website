@@ -101,6 +101,7 @@
 
 #login-form{
     width: -webkit-fill-available;
+    width: -moz-available;
     margin: 30px 0;
     margin-bottom: 5px;
 }

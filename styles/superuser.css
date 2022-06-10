@@ -2,6 +2,7 @@
     overflow-y: scroll;
     height: 100vh;
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .tup-gif {
@@ -261,6 +262,7 @@
 
 #load-more-button{
     width: -webkit-fill-available;
+    width: -moz-available;
     background-color: transparent;
     padding: 10px 0;
     border: 1px solid rgba(255, 255, 255, .4);
@@ -275,6 +277,7 @@
 .user-container{
     background-color: var(--gray);
     width: -webkit-fill-available;
+    width: -moz-available;
     margin: 15px;
     display: flex;
     justify-content: space-between;
@@ -349,6 +352,7 @@ select::-ms-expand {
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.4);
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 100%;
     top: 0;
     left: 0;
@@ -403,6 +407,7 @@ select::-ms-expand {
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.4);
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 100%;
     top: 0;
     left: 0;
@@ -422,6 +427,7 @@ select::-ms-expand {
 
 #decline-reason{
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 200px;
     margin: 20px 0;
 }

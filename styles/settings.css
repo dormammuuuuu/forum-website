@@ -2,6 +2,7 @@
     margin: auto;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
+    width: -moz-available;
     max-width: 1000px;
     height: 70vh;
     background-color: var(--dark-secondary);
@@ -17,7 +18,6 @@
 
 .acct-navigation{
     width: 250px;
-    height: -webkit-fill-available;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -58,6 +58,10 @@
     font-size: 10px;
 }
 
+.update-bio-submit{
+    margin-top: 15px;
+}
+
 .update-details:disabled, .update-bio-submit:disabled, .update-password:disabled{
     background-color: var(--gray);
     color: var(--white);
@@ -80,6 +84,7 @@
 
 .cover-photo img{
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 200px;
     object-fit: cover;
     border-radius: 5px;
@@ -122,6 +127,7 @@
 
 #user-bio{
     width: -webkit-fill-available;
+    width: -moz-available;
     height: 30px;
     resize: none;
 }
@@ -143,6 +149,7 @@
 
 .cover-photo-buttons{
     width: -webkit-fill-available;
+    width: -moz-available;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -256,6 +263,7 @@
 
 .new-cover-preview{
     width: -webkit-fill-available;
+    width: -moz-available;
 }
 
 .modal-footer button{

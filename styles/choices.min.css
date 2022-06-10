@@ -138,6 +138,7 @@
 	display: inline-block;
 	vertical-align: top;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	padding: 7.5px 7.5px 3.75px;
 	border: 1px solid var(--gray);
 	border-radius: 2.5px;
@@ -223,6 +224,7 @@
 	z-index: 1;
 	position: absolute;
 	width: -webkit-fill-available;
+	width: -moz-available;
 	background-color: var(--light);
 	border: 1px solid #ddd;
 	top: 100%;
