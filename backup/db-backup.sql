@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 01:01 PM
+-- Generation Time: Jun 10, 2022 at 08:33 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -69,7 +69,10 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (90, 'thrd6294d8c4c9e4b', 'C62950681a916f', 'u627a6a0b58d37', '2022-05-31', '02:01:37', 'AAA', 0),
 (91, 'thrd629643d4e50ea', 'C62964ec6046eb', 'u627754a082c47', '2022-06-01', '01:22:14', 'Wow galing\n', 1),
 (92, 'thrd6298f42a3ec79', 'C6298f45a3ff3b', 'u6298f3dcd7288', '2022-06-03', '01:33:14', 'ang bastos mo naman', 1),
-(93, 'thrd6298f42a3ec79', 'C6298f461a02f5', 'u627754a082c47', '2022-06-03', '01:33:21', 'YAAAAk\n', 1);
+(93, 'thrd6298f42a3ec79', 'C6298f461a02f5', 'u627754a082c47', '2022-06-03', '01:33:21', 'YAAAAk\n', 1),
+(94, 'thrd6298f42a3ec79', 'C62a36ef0aaa0f', 'u62a36c251d916', '2022-06-11', '00:18:56', 'I Love You Benshoooocks', 0),
+(95, 'thrd62986a5934109', 'C62a36fda88767', 'u62a36c251d916', '2022-06-11', '00:22:50', 'Ano ang nauna itlog o manok?\n', 0),
+(96, 'thrd62986a5934109', 'C62a36fe333e38', 'u62a36c251d916', '2022-06-11', '00:22:59', '\n\n', 0);
 
 -- --------------------------------------------------------
 
@@ -89,6 +92,25 @@ CREATE TABLE `declined` (
 
 INSERT INTO `declined` (`id`, `thread_id`, `message`) VALUES
 (1, 'thrd6294d8c4c9e4b', 'This is a mistake');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `save`
+--
+
+CREATE TABLE `save` (
+  `id` int(11) NOT NULL,
+  `thread_id` varchar(255) NOT NULL,
+  `uid` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `save`
+--
+
+INSERT INTO `save` (`id`, `thread_id`, `uid`) VALUES
+(11, 'thrd6298f42a3ec79', 'u627754a082c47');
 
 -- --------------------------------------------------------
 
@@ -127,7 +149,8 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `status`, `thread_status`, `date_posted`, `time_posted`) VALUES
 (36, 'thrd62986aed369f2', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 2', '{\"time\":1654156013212,\"blocks\":[{\"id\":\"YbNR3YN6EV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pilipinas Kong Mahal is one of the most popular patriotic songs in the Philippines. The song was composed by Filipino musician, Francisco Santiago and lyrics by Ildefonso Santos. The English text was written by Prescott Ford Jernegan.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\",\"general\",\"lgbtq\",\"library\"]}', 1, 'open', '2022-06-02', '15:46:53'),
 (37, 'thrd62986b338d7e0', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 3', '{\"time\":1654589778146,\"blocks\":[{\"id\":\"NTuvbj99z3\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa ugoy ng Duyan\"}},{\"id\":\"pfazDYMuf_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa Ugoy ng Duyan is a Filipino lullaby. The music was composed by Lucio San Pedro while the lyrics was written by Levi Celerio. Both of them were National Artists of the Philippines and this song was their most popular collaboration.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"missingitem\",\"vandalism\"]}', 1, 'open', '2022-06-02', '15:48:03'),
-(38, 'thrd6298f42a3ec79', 'u6298f3dcd7288', 'bakit ang laki ng etits ko?', '{\"time\":1654191399654,\"blocks\":[{\"id\":\"xo2AIP58AC\",\"type\":\"header\",\"data\":{\"text\":\"wasted nanaman ako mah gang gang\",\"level\":2}},{\"id\":\"7L-HwcYPsb\",\"type\":\"paragraph\",\"data\":{\"text\":\"baby baby u r my sun and moon u make my world starts collide\"}},{\"id\":\"kjJ1VCW7Es\",\"type\":\"paragraph\",\"data\":{\"text\":\"123&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-06-03', '01:32:26');
+(38, 'thrd6298f42a3ec79', 'u6298f3dcd7288', 'bakit baliw si Francis Panaligan', '{\"time\":1654191399654,\"blocks\":[{\"id\":\"xo2AIP58AC\",\"type\":\"header\",\"data\":{\"text\":\"wasted nanaman ako mah gang gang\",\"level\":2}},{\"id\":\"7L-HwcYPsb\",\"type\":\"paragraph\",\"data\":{\"text\":\"baby baby u r my sun and moon u make my world starts collide\"}},{\"id\":\"kjJ1VCW7Es\",\"type\":\"paragraph\",\"data\":{\"text\":\"123&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-06-03', '01:32:26'),
+(39, 'thrd62a3716ba67f9', 'u62a36c251d916', 'BAKIT BASA ANG TUBIG?', '{\"time\":1654878592343,\"blocks\":[{\"id\":\"iH4q_i4SKM\",\"type\":\"paragraph\",\"data\":{\"text\":\"GUSTO KONG MAPAG ISA KASO WALA AKO KASAMA\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cie\",\"lgbtq\",\"cafa\"]}', 1, 'open', '2022-06-11', '00:29:31');
 
 -- --------------------------------------------------------
 
@@ -158,11 +181,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `cover`, `birthdate`, `privileged`, `campus`, `bio`, `account_type`, `restricted`, `restricted_reason`) VALUES
-(58, 'u627754a082c47', 'Anjo', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.png', '../assets/images/avatar/u627754a082c47-cover.png', '2000-11-18', 1, 'Manila', 'Ay wow may bio na <3', 'admin', 0, '0'),
+(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.jpg', '../assets/images/avatar/u627754a082c47-cover.jpg', '2000-11-18', 1, 'Manila', 'Ay wow may bio na <3', 'admin', 0, '0'),
 (59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
 (61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
 (62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1231-12-03', 0, 'Manila', '', 'student', 0, ''),
-(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL);
+(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL),
+(64, 'u62a35ae88f320', 'ken', 'neth', 'francispanaligan54@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-16', 0, 'Manila', '', 'student', 0, NULL),
+(65, 'u62a35c5f031e9', 'francis', 'wow', 'fff@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-14', 0, 'Manila', '', 'student', 0, NULL),
+(66, 'u62a36c251d916', 'Fae', 'Roguel', 'r.matullano00@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '../assets/images/avatar/u62a36c251d916.png', '../assets/images/avatar/u62a36c251d916-cover.jpg', '2000-09-22', 0, 'Manila', 'BAKA AKO', 'student', 0, NULL),
+(67, 'u62a371217fee6', 'fra', 'cis', 'fff15@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-07', 0, 'Manila', '', 'student', 0, NULL),
+(68, 'u62a37166db10f', 'fra', 'gege', 'femp@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-09', 0, 'Manila', '', 'student', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -176,6 +204,16 @@ CREATE TABLE `users_verification` (
   `code` varchar(255) NOT NULL,
   `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_verification`
+--
+
+INSERT INTO `users_verification` (`id`, `email`, `code`, `token`) VALUES
+(44, 'francisedian@gmail.com', '111111', NULL),
+(46, '123121232@gmail.com', '248184', NULL),
+(48, 'francis@gmail.com', '676619', NULL),
+(49, 'ffff@gmai.com', '392992', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,7 +265,9 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (62, 'C6294dab180e4f', 'u627754a082c47', 'upvote'),
 (64, 'C6298f45a3ff3b', 'u6298f3dcd7288', 'upvote'),
 (65, 'C6298f461a02f5', 'u6298f3dcd7288', 'upvote'),
-(66, 'C6298f461a02f5', 'u627754a082c47', 'upvote');
+(66, 'C6298f461a02f5', 'u627754a082c47', 'upvote'),
+(67, 'C6298f45a3ff3b', 'u62a36c251d916', 'upvote'),
+(68, 'C6298f461a02f5', 'u62a36c251d916', 'upvote');
 
 --
 -- Indexes for dumped tables
@@ -243,6 +283,12 @@ ALTER TABLE `comments`
 -- Indexes for table `declined`
 --
 ALTER TABLE `declined`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `save`
+--
+ALTER TABLE `save`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,7 +325,7 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `declined`
@@ -288,28 +334,34 @@ ALTER TABLE `declined`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `save`
+--
+ALTER TABLE `save`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `users_verification`
 --
 ALTER TABLE `users_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
