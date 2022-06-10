@@ -15,6 +15,9 @@
             do{ 
             $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$row["author"]}'");
             $data = mysqli_fetch_array($user);
+            $saved = mysqli_query($conn, "SELECT * FROM save WHERE thread_id='{$row["thread_id"]}' AND uid='{$_SESSION["uid"]}'");
+            $savedClass = (mysqli_num_rows($saved) > 0) ? 'saved' : '';
+            $savedIcon = (mysqli_num_rows($saved) > 0) ? 'bxs-star' : 'bx-star';
             if ($data){
                 $author_given_name = $data['firstname'];
                 $author_family_name = $data['lastname'];
@@ -81,8 +84,8 @@
                         <p class="thread-content-text"><?php echo jsonToHtml($row['body']) ?></p>
                     </div>
                     <div class="thread-buttons">
-                        <div class="thread-save" data-threadid="<?php echo $row['thread_id']?>">
-                            <i class='bx bx-star'></i>
+                        <div class="thread-save <?php echo $savedClass ?>" data-threadid="<?php echo $row['thread_id'] ?>">
+                            <i class='bx <?php echo $savedIcon ?>'></i>
                         </div>
                         <div class="thread-add-response <?php echo $thread_class ?>">
                             <i class='bx <?php echo $thread_icon ?>'></i>
@@ -127,10 +130,18 @@
     if(isset($_POST['savethread'])){
         $savethread = mysqli_real_escape_string($conn, $_POST['savethread']);
         $user = mysqli_real_escape_string($conn, $_SESSION['uid']);
-        $sql = mysqli_query($conn, "SELECT * FROM saved_threads WHERE thread_id='$savethread' AND user_id='$user'");
+        $sql = mysqli_query($conn, "SELECT * FROM `save` WHERE thread_id='$savethread' AND uid='$user'");
         if(mysqli_num_rows($sql) == 0){
-            $sql = mysqli_query($conn, "INSERT INTO saved_threads (thread_id, user_id) VALUES ('$savethread', '$user')");
-        
+            $sql = mysqli_query($conn, "INSERT INTO `save` (thread_id, uid) VALUES ('$savethread', '$user')");
+            $result_json['statusCode'] = 200;
+            $result_json['message'] = "Added to Saved";
+        }else{
+            $sql = mysqli_query($conn, "DELETE FROM `save` WHERE thread_id='$savethread' AND uid='$user'");
+            $result_json['statusCode'] = 202;
+            $result_json['message'] = "Removed to Saved";
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
     }
 
 ?>

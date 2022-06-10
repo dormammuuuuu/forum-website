@@ -358,6 +358,14 @@
     align-items: flex-start;
 }
 
+.saved{
+    background-color: #F94144!important;
+}
+
+.saved i {
+    color: white!important;
+}
+
 @media (prefers-color-scheme: dark){
     .create-thread, .login{
         background-color: var(--dark-secondary);

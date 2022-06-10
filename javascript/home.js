@@ -70,7 +70,14 @@ $(document).on("click", ".thread-save", (function (e) {
         },
         dataType: "json",
         success: function (response) {
-            
+            console.log(response)
+            if (response.statusCode == 200){
+                $('[data-threadid=' + thread_id + ']').addClass('saved');
+                $('[data-threadid=' + thread_id + ']').children('i').removeClass('bx-star').addClass('bxs-star');
+            } else {
+                $('[data-threadid=' + thread_id + ']').removeClass('saved');
+                $('[data-threadid=' + thread_id + ']').children('i').removeClass('bxs-star').addClass('bx-star');
+            }
         }
     });
 }));
