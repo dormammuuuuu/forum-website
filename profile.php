@@ -32,8 +32,8 @@
                             <p class="profile-name"><?php echo $data['firstname'] . ' ' . $data['lastname'] ?></p>
                             <p class="profile-type"><?php echo ucfirst($data['account_type']) ?></p>
                         </div>
-                        <p class="profile-course">Bachelor of Science in Information Technology</p>
-                        <p class="profile-campus">TUP - Manila</p>
+                        <p class="profile-campus">Technological University of the Philippines - <?php echo $data['campus'] ?></p>
+                        <p class="profile-course"><?php echo $data['bio'] ?></p>
                         <div class="message-user">
                             <i class='bx bxs-message-square-dots'></i>
                             <p>Message</p>

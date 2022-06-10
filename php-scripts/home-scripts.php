@@ -81,7 +81,7 @@
                         <p class="thread-content-text"><?php echo jsonToHtml($row['body']) ?></p>
                     </div>
                     <div class="thread-buttons">
-                        <div class="thread-save">
+                        <div class="thread-save" data-threadid="<?php echo $row['thread_id']?>">
                             <i class='bx bx-star'></i>
                         </div>
                         <div class="thread-add-response <?php echo $thread_class ?>">
@@ -124,5 +124,13 @@
         fetchThreads($limit);
     }
 
+    if(isset($_POST['savethread'])){
+        $savethread = mysqli_real_escape_string($conn, $_POST['savethread']);
+        $user = mysqli_real_escape_string($conn, $_SESSION['uid']);
+        $sql = mysqli_query($conn, "SELECT * FROM saved_threads WHERE thread_id='$savethread' AND user_id='$user'");
+        if(mysqli_num_rows($sql) == 0){
+            $sql = mysqli_query($conn, "INSERT INTO saved_threads (thread_id, user_id) VALUES ('$savethread', '$user')");
+        
+    }
 
 ?>

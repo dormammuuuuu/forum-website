@@ -57,3 +57,20 @@ $(document).on("click", "#load-more", (function () {
         }
     });
 }));
+
+$(document).on("click", ".thread-save", (function (e) {
+    e.stopPropagation();
+    let thread_id = $(this).data('threadid');
+
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/home-scripts.php",
+        data: {
+            savethread: thread_id
+        },
+        dataType: "json",
+        success: function (response) {
+            
+        }
+    });
+}));

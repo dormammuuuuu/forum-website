@@ -86,7 +86,7 @@
             $result_json['statusCode'] = 201;
 		} else {
 			$query = mysqli_query($conn, "SELECT email FROM users_verification WHERE email='$email'");
-            if($query) {
+            if(mysqli_num_rows($query) > 0){
                 $update = mysqli_query($conn, "UPDATE users_verification SET code='$code' WHERE email='$email'");
             } else {
                 $update = mysqli_query($conn, "INSERT INTO `users_verification`(`id`, `email`, `code`) VALUES (NULL,'$email', $code)");
