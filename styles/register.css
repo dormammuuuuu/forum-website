@@ -100,6 +100,8 @@
 
 #registration-form{
     width: -webkit-fill-available;
+    width: -moz-available;
+
 }
 
 .terms-label{
@@ -117,6 +119,7 @@
     font-size: 10px;
     display: block;
     width: -webkit-fill-available;
+    width: -moz-available;
     cursor: pointer;
 }
 
@@ -126,6 +129,8 @@
         justify-content: center;
         align-items: center;
         width: -webkit-fill-available;
+        width: -moz-available;
+
 }
 
 #google-signup{
@@ -145,6 +150,8 @@
     justify-content: center;
     margin: 1em 0;
     width: -webkit-fill-available;
+    width: -moz-available;
+
 }
 
 a{
@@ -168,6 +175,8 @@ a{
     align-items: center;
     justify-content: center;
     width: -webkit-fill-available;
+    width: -moz-available;
+
 }
 
 .divider hr{
@@ -332,7 +341,7 @@ a{
         }
     }
 
-    
+   
 
     .verification{
         width: 100%;
@@ -383,10 +392,12 @@ a{
 
     .card-right{
         width: -webkit-fill-available;
+        width: -moz-available;
+
     }
 
     .field input{
-        width: 150px;
+        width: 130px;
     }
 
    

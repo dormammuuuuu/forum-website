@@ -36,6 +36,7 @@ $("#registration-form").submit(function (e) {
             console.log(response);
             let result = JSON.parse(JSON.stringify(response));
             if(result.statusCode == 200){
+                $('.card-right').css('display', 'none');
                 $(".verification").show();
             } else if (result.statusCode == 201){
                 $("#status").show();
@@ -81,6 +82,7 @@ $("#verification-form").submit(function (e) {
             let result = JSON.parse(JSON.stringify(response));
             if(result.statusCode == 200){
                 $('.success').css('display', 'flex');
+                $('.success').css('width', '100%');
                 setTimeout(() => {
                     location.href = "login.php";                    
                 }, 3500);
