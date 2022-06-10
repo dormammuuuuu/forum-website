@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2022 at 08:57 PM
+-- Generation Time: Jun 10, 2022 at 01:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -158,7 +158,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `cover`, `birthdate`, `privileged`, `campus`, `bio`, `account_type`, `restricted`, `restricted_reason`) VALUES
-(58, 'u627754a082c47', 'Anjo', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.png', '../assets/images/avatar/u627754a082c47-cover.png', '2000-11-18', 1, 'Manila', '', 'admin', 0, '0'),
+(58, 'u627754a082c47', 'Anjo', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.png', '../assets/images/avatar/u627754a082c47-cover.png', '2000-11-18', 1, 'Manila', 'Ay wow may bio na <3', 'admin', 0, '0'),
 (59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
 (61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
 (62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1231-12-03', 0, 'Manila', '', 'student', 0, ''),
@@ -226,7 +226,8 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (61, 'C6294d9de15f1e', 'u627754a082c47', 'downvote'),
 (62, 'C6294dab180e4f', 'u627754a082c47', 'upvote'),
 (64, 'C6298f45a3ff3b', 'u6298f3dcd7288', 'upvote'),
-(65, 'C6298f461a02f5', 'u6298f3dcd7288', 'upvote');
+(65, 'C6298f461a02f5', 'u6298f3dcd7288', 'upvote'),
+(66, 'C6298f461a02f5', 'u627754a082c47', 'upvote');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +309,7 @@ ALTER TABLE `users_verification`
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

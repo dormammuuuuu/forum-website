@@ -58,6 +58,12 @@
         if ($uploadok == 0) {
             echo 0;
         } else {
+            foreach ($valid_extensions as $ext) {
+                $tmp_filename = $location.$_SESSION['uid'] . '.' . $ext;
+                if (file_exists($tmp_filename)) {
+                    unlink($tmp_filename);
+                }
+            }
             if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $location . $filename)) {
                 $query = mysqli_query($conn, "UPDATE users SET avatar = '$location$filename' WHERE uid = '{$_SESSION['uid']}'");
                 echo $location . $filename;
@@ -80,6 +86,12 @@
         if ($uploadok == 0) {
             echo 0;
         } else {
+            foreach ($valid_extensions as $ext) {
+                $tmp_filename = $location.$_SESSION['uid'] . '-cover.' . $ext;
+                if (file_exists($tmp_filename)) {
+                    unlink($tmp_filename);
+                }
+            }
             if (move_uploaded_file($_FILES['profile_cover']['tmp_name'], $location . $filename)) {
                 $query = mysqli_query($conn, "UPDATE users SET cover = '$location$filename' WHERE uid = '{$_SESSION['uid']}'");
                 echo $location . $filename;
@@ -88,4 +100,45 @@
             }
         }
     }
-?>
+
+    if(isset($_POST['biofield'])){
+        $bio = mysqli_real_escape_string($conn, $_POST['biofield']);
+        $query = mysqli_query($conn, "UPDATE users SET bio = '$bio' WHERE uid = '{$_SESSION['uid']}'");
+        if($query){
+            $result_json['statusCode'] = 200;
+        } else {
+            $result_json['statusCode'] = 201;
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+    }
+
+    if(isset($_POST['new_password'])){
+        $password = md5(mysqli_real_escape_string($conn, $_POST['old_password']));
+        $new_password = md5(mysqli_real_escape_string($conn, $_POST['new_password']));
+        $query = mysqli_query($conn, "SELECT password FROM users WHERE uid = '{$_SESSION['uid']}'");
+        $query = mysqli_fetch_assoc($query);
+        $old_password = $query['password'];
+
+        if ($password != $old_password){
+            $result_json['message'] = "Incorrect old password";
+            $result_json['statusCode'] = 201;      
+        } else {
+            if ($new_password == $old_password){
+                $result_json['message'] = "New password cannot be the same as the old password.";
+                $result_json['statusCode'] = 201;      
+            } else {
+                $query = mysqli_query($conn, "UPDATE users SET password = '$new_password' WHERE uid = '{$_SESSION['uid']}'");
+                if($query){
+                    $result_json['statusCode'] = 200;
+                    $result_json['message'] = "Password successfully changed.";
+                } else {
+                    $result_json['statusCode'] = 201;
+                    $result_json['message'] = "Password change failed.";
+                }
+            }
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+    }
+?> 

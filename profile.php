@@ -23,7 +23,7 @@
             <div>
                 <div class="profile-details">
                     <div class="profile-images">
-                        <img class="profile-cover" src="assets/images/avatar/default-cover.jpg" alt="">
+                        <img class="profile-cover" src="<?php echo $data['cover'] ?>" alt="">
                         <img class="profile-avatar" src="<?php echo $data['avatar'] ?>" alt="">
 
                     </div>

@@ -10,7 +10,6 @@ $(function () {
         dataType: "JSON",
         success: function (response) {
             global_user_data = response;
-            console.log(global_user_data);
             $('.acct-image').click();
         },
         error: function (error) {
@@ -29,16 +28,16 @@ $('.nav-btn').on("click", function () {
                             <div>
                                 <div class="input-field">
                                     <label class="input-label" for="fname"> First Name</label>
-                                    <input type="text" name="fname" value="${global_user_data.fname}">
+                                    <input type="text" name="fname" value="${global_user_data.fname}" required>
                                 </div>
                                 <div class="input-field">
                                     <label class="input-label" for="lname"> Last Name</label>
-                                    <input type="text" name="lname" value="${global_user_data.lname}">
+                                    <input type="text" name="lname" value="${global_user_data.lname}" required>
                                 </div>
 
                                 <div class="input-field">
                                     <label class="input-label" for="bdate"> Birthdate</label>
-                                    <input type="date" name="bdate" value="${global_user_data.birthdate}">
+                                    <input type="date" name="bdate" value="${global_user_data.birthdate}" required>
                                 </div>
                             </div>
                             <div>
@@ -52,7 +51,7 @@ $('.nav-btn').on("click", function () {
                                 </div>
                                 <div class="input-field">
                                     <label class="input-label" for="campus"> Campus</label>
-                                    <select name="campus">
+                                    <select name="campus" required>
                                         <option value="" disabled selected>Select Campus</option>
                                         <option value="Manila">Manila City</option>
                                         <option value="Taguig">Taguig City</option>
@@ -68,20 +67,21 @@ $('.nav-btn').on("click", function () {
     } else if (btn_data == 'security') {
         layout = `  <div class="security">
                         <h1>Security</h1>
-                        <form>
+                        <p class="response"></p>
+                        <form id="password-form">
                             <div class="input-field">
                                 <label class="input-label" for="password"> Password</label>
-                                <input type="password" name="password">
+                                <input type="password" name="password" required>
                             </div>
                             <div class="input-field">
                                 <label class="input-label" for="npassword"> New Password</label>
-                                <input type="password" name="npassword">
+                                <input type="password" name="npassword" required>
                             </div>
                             <div class="input-field">
                                 <label class="input-label" for="cpassword"> Confirm Password</label>
-                                <input type="password" name="cpassword">
+                                <input type="password" name="cpassword" required>
                             </div>
-                            <input class="update-details" type="submit" value="Update Password">
+                            <input class="update-password" type="submit" value="Update Password">
                         </form>
                     </div>
         `;
@@ -107,7 +107,7 @@ $('.nav-btn').on("click", function () {
                             <label class="input-label" for="bio">Bio (Optional)</label>
                             <input type="text" name="bio" id="user-bio" value="${global_user_data.bio}">
                         </div>
-                        <input type="submit" value="Submit">
+                        <input class="update-bio-submit" type="button" value="Update Bio">
                     </form>
 
         `;
@@ -116,7 +116,48 @@ $('.nav-btn').on("click", function () {
     if(btn_data == 'acct'){
         $('select').val(global_user_data.campus);
         $('.update-details').prop("disabled",true);
+    } else if (btn_data == 'image'){
+        $('.update-bio-submit').prop("disabled",true);
+    } else {
+        $('.update-password').prop("disabled",true);
     }
+});
+
+$(document).on("input", "#user-bio", function () {
+    if($(this).val() != global_user_data.bio){
+        $('.update-bio-submit').removeAttr("disabled");
+    } else {
+        $('.update-bio-submit').prop("disabled",true);
+    }
+});
+
+$(document).on("click", ".update-bio-submit", function (e) {
+    let biofield = $('#user-bio').val();
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/settings-scripts.php",
+        data: {
+            uid: global_user_data.uid,
+            biofield: biofield
+        },
+        dataType: "json",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            if (response.statusCode == 200){
+                global_user_data.bio = biofield;
+                $('.update-bio-submit').prop("disabled",true);
+            }
+        },
+        complete: function(){
+            $(".loader-superuser").hide();
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+
 });
 
 $(document).on("click", "#change-profile", function () {
@@ -187,7 +228,7 @@ $(document).on("change", "#profile-cover", function (evt) {
     }    
 });
 
-$(document).on("click",".modal-close",function () {
+$(document).on("click",".modal-close, #cancel-change-avatar, #cancel-change-cover",function () {
     $('.modal').remove();
 });
 
@@ -195,9 +236,7 @@ $(document).on("click", "#confirm-change-avatar", function (e) {
     e.preventDefault();
     let formdata = new FormData();
     let files = $("#profile-pic")[0].files[0];
-    console.log("Files: " + files);
     formdata.append("profile_pic", files);
-    console.log(formdata);
     $.ajax({
         url: '../php-scripts/settings-scripts.php',
         type: 'POST',
@@ -205,7 +244,6 @@ $(document).on("click", "#confirm-change-avatar", function (e) {
         contentType:false,
         processData:false,
         success:function(response){  
-            console.log(response);                      
             if(response!=0){
                 $('.avatar-container img').attr('src',response);
                 $('.modal').remove();
@@ -224,9 +262,7 @@ $(document).on("click", "#confirm-change-cover", function (e) {
     e.preventDefault();
     let formdata = new FormData();
     let files = $("#profile-cover")[0].files[0];
-    console.log("Files: " + files);
     formdata.append("profile_cover", files);
-    console.log(formdata);
     $.ajax({
         url: '../php-scripts/settings-scripts.php',
         type: 'POST',
@@ -234,7 +270,6 @@ $(document).on("click", "#confirm-change-cover", function (e) {
         contentType:false,
         processData:false,
         success:function(response){  
-            console.log(response);                      
             if(response!=0){
                 $('.cover-photo img').attr('src',response);
                 $('.modal').remove();
@@ -281,7 +316,6 @@ $(document).on("submit", "#acct-details-form", function (e) {
             $(".loader-superuser").show();
         },
         success: function (response) {
-            console.log(response);
             if (response.statusCode == 200){
                 global_user_data.fname = firstname;
                 global_user_data.lname = lastname;
@@ -289,6 +323,58 @@ $(document).on("submit", "#acct-details-form", function (e) {
                 global_user_data.campus = campus;
                 $('.update-details').prop("disabled", true);
             } 
+        },
+        complete: function(){
+            $(".loader-superuser").hide();
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
+$(document).on("input", "input[name='password'], input[name='cpassword'], input[name='npassword']", function () {
+    if($('input[name="password"]').val() != "" && $('input[name="cpassword"]').val() != "" && $('input[name="npassword"]').val() != ""){
+        $('.update-password').removeAttr("disabled");
+    } else {
+        $('.update-password').prop("disabled", true);
+    }
+});
+
+$(document).on("submit", "#password-form", function (e) {
+    e.preventDefault();
+    $('.response').empty();
+    let old_password = $('input[name="password"]').val();
+    let new_password = $('input[name="npassword"]').val();
+    let confirm_password = $('input[name="cpassword"]').val();
+    
+    if (new_password != confirm_password) {
+        $('.response').text("New password and confirm password do not match");
+        return;
+    }
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/settings-scripts.php",
+        data: {
+            uid: global_user_data.uid,
+            old_password: old_password,
+            new_password: new_password,
+            confirm_password: confirm_password
+        },
+        dataType: "JSON",
+        beforeSend: function(){
+            $(".loader-superuser").show();
+        },
+        success: function (response) {
+            if (response.statusCode == 200){
+                $('input[name="password"]').val("");
+                $('input[name="npassword"]').val("");
+                $('input[name="cpassword"]').val("");
+                $('.update-password').prop("disabled", true);
+                $('.response').text(response.message);
+            } else {
+                $('.response').text(response.message);
+            }
         },
         complete: function(){
             $(".loader-superuser").hide();
