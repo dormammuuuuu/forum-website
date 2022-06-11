@@ -24,11 +24,12 @@
 }
 
 #dashboard div {
-    width: 80%;
+    flex-grow: 1;
 }
 
 #dashboard p {
     font-weight: 500;
+    margin-right: 20px;
 }
 
 .dashboard-box {
@@ -87,11 +88,10 @@
 }
 
 .pending-container {
-    height: 60vh;
     border-radius: 10px;
     background-color: var(--gray-lighter);
     margin: 1em;
-    height: 100%;
+    height: auto;
 }
 
 .pending-title {
@@ -462,6 +462,12 @@ select::-ms-expand {
 .decline-reason span{
     color: var(--secondary);
 
+}
+
+.whole-container{
+    max-width: 75vw;
+    width: 100%;
+    margin: auto;
 }
 
 @media(prefers-color-scheme: dark) {

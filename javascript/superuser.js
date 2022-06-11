@@ -54,10 +54,8 @@ function renderThreads(json_response, index, filter) {
                     layout += `<button class="pending-btns approve">APPROVE</button>
                               <button class="pending-btns decline">DECLINE</button>`;
                 } else if (filter == 1){
-                    layout += `<button class="pending-btns">EDIT TAGS</button>
-                              <button class="pending-btns viewthread-btn">VIEW THREAD</button>
-                              <button class="pending-btns closethread-btn">CLOSE THREAD</button>
-                              <button class="pending-btns">MARK AS DUPLICATE THREAD</button>`;
+                    layout += `<button class="pending-btns viewthread-btn">VIEW THREAD</button>
+                              <button class="pending-btns closethread-btn">CLOSE THREAD</button>`;
                 } else if (filter == 2){
                     layout += `<button class="pending-btns viewthread-btn">VIEW THREAD</button>
                               <button class="pending-btns openthread-btn">RE-OPEN THREAD</button>`; 
@@ -343,7 +341,8 @@ $('#teacher-button').click(function () {
 });
 
 $(document).on("click", ".view-btn", function () { 
-    window.open('http://localhost/profile.php', '_blank');
+    let user = $(this).parent().attr('data-user');
+    window.open('http://localhost/profile.php?view=' + user, '_blank');
 });
 
 $(document).on("click", ".restrict-btn", function () { 

@@ -3,6 +3,7 @@
     include('db.php');
     //Load the Comments on page load.
     $firstCheck = true;
+    session_start();
     function fetchComments($tid){
         global $conn;
         $query = mysqli_query($conn, "SELECT * FROM comments WHERE thread_id='$tid' ORDER BY answer DESC");
@@ -14,7 +15,6 @@
         $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectThread['author']}'");
         $threadAuthor = mysqli_fetch_assoc($newQuery);
 
-        @session_start();
         if (!empty($data_comment)){
             do{
                 $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$data_comment["comment_author"]}'");
@@ -58,7 +58,7 @@
                             <img class="thread-avatar" src="'. $author_avatar .'" alt="">
                             <div class="details">
                                 <div class="user">
-                                    <p class="name">'. $author_given_name . " " . $author_family_name .'</p>
+                                    <p class="name" data-acct="'.$data_comment["comment_author"].'">'. $author_given_name . " " . $author_family_name .'</p>
                                     <p class="user-type">Student</p>
                                 </div>
                                 <p class="date-published" data-date="'.$data_comment['comment_id'].'"><script>$("[data-date='.$data_comment['comment_id'].']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
@@ -162,7 +162,6 @@
 
     //Insert Comment to database
     if(isset($_POST['comment'])){
-        @session_start();
         $comment = mysqli_real_escape_string($conn, $_POST['comment']);
         $threadID = mysqli_real_escape_string($conn, $_POST['threadID']);
         $commentID = uniqid('C');
@@ -229,7 +228,6 @@
     if(isset($_POST['vote'])){
         $vote = mysqli_real_escape_string($conn, $_POST['vote']);
         $commentID = mysqli_real_escape_string($conn, $_POST['commentID']);
-        @session_start();
         $uid = $_SESSION['uid'];
         $query = mysqli_query($conn, "SELECT * FROM votes WHERE comment_id = '$commentID' AND uid='$uid'");
         $data = mysqli_fetch_assoc($query);
@@ -275,7 +273,6 @@
         }
         echo json_encode($result_json);
         mysqli_close($conn);
-
     }
 
     if(isset($_POST['close'])){
@@ -297,6 +294,23 @@
             $result_json['statusCode'] = 200;
         } else {
             $result_json['statusCode'] = 201;
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+    }
+
+    if(isset($_POST['save'])){
+        $savethread = mysqli_real_escape_string($conn, $_POST['save']);
+        $user = mysqli_real_escape_string($conn, $_SESSION['uid']);
+        $sql = mysqli_query($conn, "SELECT * FROM `save` WHERE thread_id='$savethread' AND uid='$user'");
+        if(mysqli_num_rows($sql) == 0){
+            $sql = mysqli_query($conn, "INSERT INTO `save` (thread_id, uid) VALUES ('$savethread', '$user')");
+            $result_json['statusCode'] = 200;
+            $result_json['message'] = "Added to Saved";
+        }else{
+            $sql = mysqli_query($conn, "DELETE FROM `save` WHERE thread_id='$savethread' AND uid='$user'");
+            $result_json['statusCode'] = 202;
+            $result_json['message'] = "Removed to Saved";
         }
         echo json_encode($result_json);
         mysqli_close($conn);

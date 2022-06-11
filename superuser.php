@@ -25,6 +25,8 @@
         <section class="main">
             <div class="tup-gif">
             </div>
+            <div class="whole-container">
+
             <div id="dashboard">
                 <p>Dashboard</p>
                 <div>
@@ -33,14 +35,14 @@
             </div>
             <div class="dashboard-box">
                 <div class="box">
-                    <h1 class="total-title"> Total number of Users</h1>
+                    <h1 class="total-title"> Active Users</h1>
                     <div class="inside-box">
                         <h1 class="total-number" id="user-number"><?php echo $user_number ?></h1>
                         <i class='icon bx bxs-user'></i>
                     </div>
                 </div>
                 <div class="box">
-                    <h1 class="total-title"> Total number of Threads</h1>
+                    <h1 class="total-title"> Number of Threads</h1>
                     <div class="inside-box">
                         <h1 class="total-number" id="thread-number"><?php echo $thread_number ?></h1>
                         <i class='icon bx bxs-message-square-detail'></i>
@@ -95,6 +97,8 @@
                     </div>
                 </div>
             </div>
+            </div>
+
         </section>
         <script src="javascript/superuser.js"></script>
     </body>

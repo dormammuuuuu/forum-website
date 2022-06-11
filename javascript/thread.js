@@ -168,3 +168,34 @@ $('#edit-thread').click(function () {
     let threadID = $(this).parent().attr('data-thread');
     location.href = "edit.php?id=" + threadID;
 });
+
+//save thread onclick
+$('#save-thread').click(function () { 
+    let threadID = $(this).parent().attr('data-thread');
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/thread-scripts.php",
+        data: {
+            save: threadID
+        },
+        dataType: "json",
+        success: function (response) {
+            if (response.statusCode == 200){
+                $("#save-thread p").text("Unsave thread");
+            } else {
+                $("#save-thread p").text("Save thread");
+            }
+        }, 
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
+
+$(document).on("click", ".name", (function (e) {
+    e.stopPropagation();
+    let acct = $(this).data('acct');
+    window.open('profile.php?view=' + acct, '_blank');
+}));

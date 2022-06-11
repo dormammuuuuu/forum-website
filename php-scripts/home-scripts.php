@@ -35,7 +35,7 @@
                             <img class="thread-avatar" src="<?php echo $author_avatar ?>" alt="">
                             <div class="thread-details">
                                 <div class="thread-user">
-                                    <p class="thread-name"><?php echo $author_given_name . " " . $author_family_name ?></p>
+                                    <p class="thread-name" data-acct="<?php echo $row['author'] ?>"><?php echo $author_given_name . " " . $author_family_name ?></p>
                                     <p class="thread-user-type"><?php echo ucfirst($author_type) ?></p>
                                 </div>
                                 <p class="thread-published" data-date="<?php echo $row['thread_id'] ?>"><script>$("[data-date=<?php echo $row['thread_id'] ?>]").html(jQuery.timeago("<?php echo $row['date_posted'] . " " . $row['time_posted'] ?>"))</script></p>

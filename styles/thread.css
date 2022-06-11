@@ -9,7 +9,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -158,6 +158,11 @@
 }
 .name{
     font-size: 15px;
+    cursor: pointer;
+}
+
+.name:hover{
+    text-decoration: underline;
 }
 .date-published{
     font-size: 10px;
@@ -202,7 +207,7 @@
 .main-comment{
     padding: 2em;
     border-radius: 5px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 .your-comment{
     margin: 1em 1em 0 0;
@@ -271,7 +276,43 @@
 }
 
 .container-2{
-    background-color: red;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80vh;
+}
+
+footer{
+    text-align: center;
+}
+
+footer p{
+    font-size: 13px;
+    color: rgba(255, 255, 255, .3);
+}
+
+.recently-posted{
+    background-color: var(--dark-secondary);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.recently-posted ul{
+    padding-left: 20px;
+}
+
+.recently-posted li{
+    padding: 2px 0;
+}
+
+.recently-posted li a {
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+.recently-posted p{
+    padding-bottom: 5px;
 }
 
 .img_pnl img{

@@ -7,7 +7,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Threads</title>
+      <title><?php echo $data['title'] ?> | Thread</title>
       <link rel="stylesheet" href="styles/default.css">
       <link rel="stylesheet" href="styles/thread.css">
       <link rel="stylesheet" href="styles/navbar.css">
@@ -30,7 +30,7 @@
                            <img class="thread-avatar" src="<?php echo $user_data['avatar']?>" alt="">
                            <div class="details">
                               <div class="user">
-                                 <p class="name"><?php echo $user_data['firstname'] . " " . $user_data['lastname']?></p>
+                                 <p class="name" data-acct="<?php echo $data['author'] ?>"><?php echo $user_data['firstname'] . " " . $user_data['lastname']?></p>
                                  <p class="user-type">Student</p>
                               </div>
                               <p class="date-published">
@@ -48,17 +48,19 @@
                               $selectThread = mysqli_fetch_assoc($select);
                               $newQuery = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$selectThread['author']}'");
                               $threadAuthor = mysqli_fetch_assoc($newQuery);
+                              $saved = mysqli_query($conn, "SELECT * FROM `save` WHERE thread_id='$tid' AND `uid`='{$_SESSION['uid']}'");
+                              $saveThread = (mysqli_num_rows($saved) > 0) ? "Unsave thread" : "Save thread";
                               if(isset($_SESSION['uid'])){
                                  if ($_SESSION['uid'] == $threadAuthor['uid']){ 
                                     if ($selectThread['thread_status'] == "open"){?>
                                        <div id="edit-thread" class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Edit thread</p></div>
                                        <div id="close-thread" class="dropdown-item"><i class='bx bx-message-alt-x'></i><p>Close thread</p></div>
                                  <?php    } ?>
-                                 <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
+                                 <div id="save-thread" class="dropdown-item"><i class='bx bx-edit-alt' ></i><p><?php echo $saveThread ?></p></div>
                                  <div id="delete-thread" class="dropdown-item"><i class='bx bxs-trash-alt' ></i><p>Delete thread</p></div>
                                        <?php
                                        } else { ?>
-                                    <div class="dropdown-item"><i class='bx bx-edit-alt' ></i><p>Save thread</p></div>
+                                    <div id="save-thread" class="dropdown-item"><i class='bx bx-edit-alt'></i><p><?php echo $saveThread ?></p></div>
                                  <?php }
                               }
                            ?>
@@ -139,7 +141,21 @@
 
 
             <div class="container-2">
-                  <!-- dito raymond -->
+               <div class="recently-posted">
+                  <p>Recently Posted</p>
+                  <hr>
+                  <ul>
+                  <?php
+                     $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id != '$tid' AND thread_status = 'open' ORDER BY date_posted DESC LIMIT 7");
+                     while($data = mysqli_fetch_assoc($query)){
+                        echo '<li><a href="thread.php?threadid='.$data['thread_id'].'">'.$data['title'].'</a></li>';
+                     }
+                  ?>
+                  </ul>
+               </div>
+               <footer>
+                  <p>&copy; 2022 Copyright: TUP Speak!</p>
+               </footer>
             </div>
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2022 at 08:33 PM
+-- Generation Time: Jun 11, 2022 at 08:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -71,7 +71,7 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (92, 'thrd6298f42a3ec79', 'C6298f45a3ff3b', 'u6298f3dcd7288', '2022-06-03', '01:33:14', 'ang bastos mo naman', 1),
 (93, 'thrd6298f42a3ec79', 'C6298f461a02f5', 'u627754a082c47', '2022-06-03', '01:33:21', 'YAAAAk\n', 1),
 (94, 'thrd6298f42a3ec79', 'C62a36ef0aaa0f', 'u62a36c251d916', '2022-06-11', '00:18:56', 'I Love You Benshoooocks', 0),
-(95, 'thrd62986a5934109', 'C62a36fda88767', 'u62a36c251d916', '2022-06-11', '00:22:50', 'Ano ang nauna itlog o manok?\n', 0),
+(95, 'thrd62986a5934109', 'C62a36fda88767', 'u62a36c251d916', '2022-06-11', '00:22:50', 'Ano ang nauna itlog o manok?\n', 1),
 (96, 'thrd62986a5934109', 'C62a36fe333e38', 'u62a36c251d916', '2022-06-11', '00:22:59', '\n\n', 0);
 
 -- --------------------------------------------------------
@@ -110,7 +110,11 @@ CREATE TABLE `save` (
 --
 
 INSERT INTO `save` (`id`, `thread_id`, `uid`) VALUES
-(11, 'thrd6298f42a3ec79', 'u627754a082c47');
+(11, 'thrd6298f42a3ec79', 'u627754a082c47'),
+(13, 'thrd62a3716ba67f9', ''),
+(20, 'thrd62a3716ba67f9', 'u627754a082c47'),
+(22, 'thrd62986a5934109', 'u627754a082c47'),
+(23, 'thrd628138735a129', 'u627754a082c47');
 
 -- --------------------------------------------------------
 
@@ -267,7 +271,9 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (65, 'C6298f461a02f5', 'u6298f3dcd7288', 'upvote'),
 (66, 'C6298f461a02f5', 'u627754a082c47', 'upvote'),
 (67, 'C6298f45a3ff3b', 'u62a36c251d916', 'upvote'),
-(68, 'C6298f461a02f5', 'u62a36c251d916', 'upvote');
+(68, 'C6298f461a02f5', 'u62a36c251d916', 'upvote'),
+(69, 'C62a36fe333e38', 'u627754a082c47', 'downvote'),
+(70, 'C62a36fda88767', 'u627754a082c47', 'downvote');
 
 --
 -- Indexes for dumped tables
@@ -337,7 +343,7 @@ ALTER TABLE `declined`
 -- AUTO_INCREMENT for table `save`
 --
 ALTER TABLE `save`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -361,7 +367,7 @@ ALTER TABLE `users_verification`
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
