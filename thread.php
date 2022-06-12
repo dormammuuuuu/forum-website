@@ -132,7 +132,7 @@
                      <div class="submission">
                         <input type="hidden" name="thread-id" value="<?php echo $_GET['threadid']?>" id="thread-id">
                         <textarea id="user-comment" class="comment-box" placeholder="Add Response"></textarea>
-                        <input type="submit" name="submit" value="Comment" class="submit-btn" id="submit-comment">
+                        <input type="submit" name="submit" value="Comment" class="submit-btn" id="submit-comment" disabled>
                      </div>
                   </form>
                </div>

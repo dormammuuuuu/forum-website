@@ -1,0 +1,106 @@
+html{
+    overflow-y: scroll;
+}
+
+.main{
+    margin: auto;
+    margin-top: var(--navbar-height);
+    margin-bottom: var(--navbar-height);
+    width: -webkit-fill-available;
+    width: -moz-available;
+    max-width: 800px;
+    min-height: 70vh;
+    background-color: var(--dark-secondary);
+    padding: 30px;
+    position: relative;
+}
+
+.search-container{
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    height: 100%;
+}
+
+.navigation-item{
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 200px;
+}
+
+.navigation-item i {
+    font-size: 1em;
+    margin-right: 20px;
+}
+
+.navigation-item:hover{
+    background-color: rgba(0,0,0,0.4);
+}
+
+.result-container{
+    flex-grow: 1;
+    height: 100%;
+    border-left: 1px solid rgba(255,255,255,0.3);
+    padding: 0 20px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
+
+.person-container{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    background-color: var(--gray);
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.no-results{
+    height: 55vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+}
+
+.result-avatar{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.search-user-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.user-details{
+    font-size: 10px;
+    color: rgba(255,255,255,.5);
+    font-style: italic;
+}
+
+.thread-container{
+    width: -webkit-fill-available;
+    width: -moz-available;
+    background-color: var(--gray);
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}

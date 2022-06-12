@@ -199,3 +199,11 @@ $(document).on("click", ".name", (function (e) {
     let acct = $(this).data('acct');
     window.open('profile.php?view=' + acct, '_blank');
 }));
+
+$('#user-comment').on("input", function () {
+    if ($(this).val().length > 0) {
+        $('#submit-comment').removeAttr('disabled');
+    } else {
+        $('#submit-comment').prop('disabled', true);
+    }
+});

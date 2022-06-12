@@ -15,9 +15,11 @@
             do{ 
             $user = mysqli_query($conn, "SELECT * FROM users WHERE uid='{$row["author"]}'");
             $data = mysqli_fetch_array($user);
-            $saved = mysqli_query($conn, "SELECT * FROM save WHERE thread_id='{$row["thread_id"]}' AND uid='{$_SESSION["uid"]}'");
-            $savedClass = (mysqli_num_rows($saved) > 0) ? 'saved' : '';
-            $savedIcon = (mysqli_num_rows($saved) > 0) ? 'bxs-star' : 'bx-star';
+            if (isset($_SESSION['uid'])){
+                $saved = mysqli_query($conn, "SELECT * FROM save WHERE thread_id='{$row["thread_id"]}' AND uid='{$_SESSION["uid"]}'");
+                $savedClass = (mysqli_num_rows($saved) > 0) ? 'saved' : '';
+                $savedIcon = (mysqli_num_rows($saved) > 0) ? 'bxs-star' : 'bx-star';
+            }
             if ($data){
                 $author_given_name = $data['firstname'];
                 $author_family_name = $data['lastname'];
@@ -84,9 +86,12 @@
                         <p class="thread-content-text"><?php echo jsonToHtml($row['body']) ?></p>
                     </div>
                     <div class="thread-buttons">
-                        <div class="thread-save <?php echo $savedClass ?>" data-threadid="<?php echo $row['thread_id'] ?>">
-                            <i class='bx <?php echo $savedIcon ?>'></i>
-                        </div>
+                        <?php
+                        if(isset($_SESSION['uid'])){ ?>
+                            <div class="thread-save <?php echo $savedClass ?>" data-threadid="<?php echo $row['thread_id'] ?>">
+                                <i class='bx <?php echo $savedIcon ?>'></i>
+                            </div>
+                        <?php } ?>
                         <div class="thread-add-response <?php echo $thread_class ?>">
                             <i class='bx <?php echo $thread_icon ?>'></i>
                             <p><?php echo $thread_status ?></p>
