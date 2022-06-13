@@ -42,6 +42,7 @@ $('#comment-form').submit(function (e) {
                 $('#comments').empty();
             }
             $('#comments').append(response);
+            location.reload();
         },
         error: function (request, status, error) {
             console.log(request.responseText);

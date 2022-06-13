@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2022 at 08:48 PM
+-- Generation Time: Jun 13, 2022 at 08:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -72,7 +72,12 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (93, 'thrd6298f42a3ec79', 'C6298f461a02f5', 'u627754a082c47', '2022-06-03', '01:33:21', 'YAAAAk\n', 1),
 (94, 'thrd6298f42a3ec79', 'C62a36ef0aaa0f', 'u62a36c251d916', '2022-06-11', '00:18:56', 'I Love You Benshoooocks', 0),
 (95, 'thrd62986a5934109', 'C62a36fda88767', 'u62a36c251d916', '2022-06-11', '00:22:50', 'Ano ang nauna itlog o manok?\n', 1),
-(96, 'thrd62986a5934109', 'C62a36fe333e38', 'u62a36c251d916', '2022-06-11', '00:22:59', '\n\n', 0);
+(96, 'thrd62986a5934109', 'C62a36fe333e38', 'u62a36c251d916', '2022-06-11', '00:22:59', '\n\n', 0),
+(97, 'thrd62a3716ba67f9', 'C62a6f2045df98', 'u62a6eb986662e', '2022-06-13', '16:15:00', 'di ko rin po alam anong meron', 0),
+(98, 'thrd6298f42a3ec79', 'C62a6f2a4b9a4b', 'u62a6eb173f2f5', '2022-06-13', '16:17:40', 'baliw kana ba????', 0),
+(99, 'thrd62a6f1b73f27e', 'C62a6f79d63e3d', 'u627754a082c47', '2022-06-13', '16:38:53', 'wala kaming pake', 0),
+(100, 'thrd62a6f1b73f27e', 'C62a6f82e76d05', 'u62a6eb986662e', '2022-06-13', '16:41:18', 'hala bat ka naman po ganyan? :(((\n', 0),
+(101, 'thrd62a6f1b73f27e', 'C62a7213d9e07b', 'u627754a082c47', '2022-06-13', '19:36:29', 'Test Comment', 0);
 
 -- --------------------------------------------------------
 
@@ -96,6 +101,21 @@ INSERT INTO `declined` (`id`, `thread_id`, `message`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `sender` varchar(255) NOT NULL,
+  `receiver` varchar(255) NOT NULL,
+  `message` longtext NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `time` time NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `save`
 --
 
@@ -111,7 +131,6 @@ CREATE TABLE `save` (
 
 INSERT INTO `save` (`id`, `thread_id`, `uid`) VALUES
 (11, 'thrd6298f42a3ec79', 'u627754a082c47'),
-(13, 'thrd62a3716ba67f9', ''),
 (20, 'thrd62a3716ba67f9', 'u627754a082c47'),
 (22, 'thrd62986a5934109', 'u627754a082c47'),
 (23, 'thrd628138735a129', 'u627754a082c47');
@@ -154,7 +173,10 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 (36, 'thrd62986aed369f2', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 2', '{\"time\":1654156013212,\"blocks\":[{\"id\":\"YbNR3YN6EV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pilipinas Kong Mahal is one of the most popular patriotic songs in the Philippines. The song was composed by Filipino musician, Francisco Santiago and lyrics by Ildefonso Santos. The English text was written by Prescott Ford Jernegan.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\",\"general\",\"lgbtq\",\"library\"]}', 1, 'open', '2022-06-02', '15:46:53'),
 (37, 'thrd62986b338d7e0', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 3', '{\"time\":1654589778146,\"blocks\":[{\"id\":\"NTuvbj99z3\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa ugoy ng Duyan\"}},{\"id\":\"pfazDYMuf_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa Ugoy ng Duyan is a Filipino lullaby. The music was composed by Lucio San Pedro while the lyrics was written by Levi Celerio. Both of them were National Artists of the Philippines and this song was their most popular collaboration.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"missingitem\",\"vandalism\"]}', 1, 'open', '2022-06-02', '15:48:03'),
 (38, 'thrd6298f42a3ec79', 'u6298f3dcd7288', 'bakit baliw si Francis Panaligan', '{\"time\":1654191399654,\"blocks\":[{\"id\":\"xo2AIP58AC\",\"type\":\"header\",\"data\":{\"text\":\"wasted nanaman ako mah gang gang\",\"level\":2}},{\"id\":\"7L-HwcYPsb\",\"type\":\"paragraph\",\"data\":{\"text\":\"baby baby u r my sun and moon u make my world starts collide\"}},{\"id\":\"kjJ1VCW7Es\",\"type\":\"paragraph\",\"data\":{\"text\":\"123&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-06-03', '01:32:26'),
-(39, 'thrd62a3716ba67f9', 'u62a36c251d916', 'BAKIT BASA ANG TUBIG?', '{\"time\":1654878592343,\"blocks\":[{\"id\":\"iH4q_i4SKM\",\"type\":\"paragraph\",\"data\":{\"text\":\"GUSTO KONG MAPAG ISA KASO WALA AKO KASAMA\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cie\",\"lgbtq\",\"cafa\"]}', 1, 'open', '2022-06-11', '00:29:31');
+(39, 'thrd62a3716ba67f9', 'u62a36c251d916', 'BAKIT BASA ANG TUBIG?', '{\"time\":1654878592343,\"blocks\":[{\"id\":\"iH4q_i4SKM\",\"type\":\"paragraph\",\"data\":{\"text\":\"GUSTO KONG MAPAG ISA KASO WALA AKO KASAMA\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cie\",\"lgbtq\",\"cafa\"]}', 1, 'open', '2022-06-11', '00:29:31'),
+(40, 'thrd62a6f1b73f27e', 'u62a6eb986662e', 'Anong oras po ba yung open ng TUP - Manila???', '{\"time\":1655108022040,\"blocks\":[{\"id\":\"9CEkiIJDp6\",\"type\":\"paragraph\",\"data\":{\"text\":\"meron po ba sainyo na nakakaalam kung anong oras nag bubukas yung tup manila? need ko lang po kasi mag pa coc for requirements e, thank you poooo&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"registrar\",\"general\"]}', 1, 'open', '2022-06-13', '16:13:43'),
+(41, 'thrd62a6f85fa4a0d', 'u62a6eb46bc510', 'pares at mami ang masarap kainin ngayong hapon', '{\"time\":1655109726446,\"blocks\":[{\"id\":\"vzQsq43bws\",\"type\":\"paragraph\",\"data\":{\"text\":\"ako ay kakain ng pares/mami ngayon mainggit kayo mga hinamungkal\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\",\"event\"]}', 1, 'open', '2022-06-13', '16:42:07'),
+(42, 'thrd62a6f98f69366', 'u62a6f897e3940', 'Why matutulog?', '{\"time\":1655110034277,\"blocks\":[{\"id\":\"ZaoZ1_uJIN\",\"type\":\"paragraph\",\"data\":{\"text\":\"Why matutulog kung gigising din naman\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 0, 'pending', '2022-06-13', '16:47:11');
 
 -- --------------------------------------------------------
 
@@ -189,12 +211,27 @@ INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, 
 (59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
 (61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
 (62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1231-12-03', 0, 'Manila', '', 'student', 0, ''),
-(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL),
+(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '../assets/images/avatar/u6298f3dcd7288.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL),
 (64, 'u62a35ae88f320', 'ken', 'neth', 'francispanaligan54@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-16', 0, 'Manila', '', 'student', 0, NULL),
 (65, 'u62a35c5f031e9', 'francis', 'wow', 'fff@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-14', 0, 'Manila', '', 'student', 0, NULL),
 (66, 'u62a36c251d916', 'Fae', 'Roguel', 'r.matullano00@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '../assets/images/avatar/u62a36c251d916.png', '../assets/images/avatar/u62a36c251d916-cover.jpg', '2000-09-22', 0, 'Manila', 'BAKA AKO', 'student', 0, NULL),
 (67, 'u62a371217fee6', 'fra', 'cis', 'fff15@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-07', 0, 'Manila', '', 'student', 0, NULL),
-(68, 'u62a37166db10f', 'fra', 'gege', 'femp@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-09', 0, 'Manila', '', 'student', 0, NULL);
+(68, 'u62a37166db10f', 'fra', 'gege', 'femp@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-09', 0, 'Manila', '', 'student', 0, NULL),
+(69, 'u62a6eae75367f', 'Gordon', 'Newman', 'gordon.newman@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u62a6eae75367f.jpg', 'assets/images/avatar/default-cover.jpg', '1999-10-21', 0, 'Manila', 'Hello everyone!!!', 'student', 0, NULL),
+(70, 'u62a6eb173f2f5', 'Tim', 'Sutherland', 'tim.sutherland@gmail.com', '289dff07669d7a23de0ef88d2f7129e7', '../assets/images/avatar/u62a6eb173f2f5.jpg', 'assets/images/avatar/default-cover.jpg', '2008-03-08', 0, 'Manila', '', 'student', 0, NULL),
+(71, 'u62a6eb46bc510', 'Molly', 'Grant', 'molly.grant@gmail.com', 'd81f9c1be2e08964bf9f24b15f0e4900', '../assets/images/avatar/u62a6eb46bc510.jpg', 'assets/images/avatar/default-cover.jpg', '1998-09-08', 0, 'Manila', 'u r a stalker :P', 'student', 0, NULL),
+(72, 'u62a6eb986662e', 'Madeleine', 'Howard', 'madeleine.howard@gmail.com', '250cf8b51c773f3f8dc8b4be867a9a02', '../assets/images/avatar/u62a6eb986662e.jpg', 'assets/images/avatar/default-cover.jpg', '2001-06-06', 0, 'Manila', 'welcome to my profile', 'student', 0, NULL),
+(73, 'u62a6ebc80b8cc', 'Oliver', 'Carr', 'oliver.carr@gmail.com', '99c5e07b4d5de9d18c350cdf64c5aa3d', '../assets/images/avatar/u62a6ebc80b8cc.jpg', 'assets/images/avatar/default-cover.jpg', '2001-07-19', 0, 'Manila', 'idk', 'student', 0, NULL),
+(74, 'u62a6f0d542995', 'Adrian', 'Mackay', 'adrian.mackay@gmail.com', 'a2550eeab0724a691192ca13982e6ebd', '../assets/images/avatar/u62a6f0d542995.jpg', 'assets/images/avatar/default-cover.jpg', '1999-07-03', 0, 'Manila', '', 'student', 0, NULL),
+(75, 'u62a6f1c5890e3', 'Max', 'Duncan', 'max.duncan@gmail.com', '0ebb2bda4171d8c3881a68504a46b44e', '../assets/images/avatar/u62a6f1c5890e3.jpg', 'assets/images/avatar/default-cover.jpg', '2003-06-17', 0, 'Manila', '', 'student', 0, NULL),
+(76, 'u62a6f29e2f9e9', 'Sebastian', 'Allan	', 'sebastian.allan@gmail.com', '3805248410673a8be6aa4807e61fb5ae', '../assets/images/avatar/u62a6f29e2f9e9.jpg', 'assets/images/avatar/default-cover.jpg', '1999-09-09', 0, 'Manila', '', 'student', 0, NULL),
+(77, 'u62a6f36c18e21', 'Abigail', 'Newman', 'abigail.newman@gmail.com', 'bcb759b5b8ab63b06295c7434345d7a5', '../assets/images/avatar/u62a6f36c18e21.jpg', 'assets/images/avatar/default-cover.jpg', '0002-07-05', 0, 'Manila', '', 'student', 0, NULL),
+(78, 'u62a6f45f386d6', 'Irene', 'Powel', 'irene.powell@gmail.com', 'ad198a36c4a282982870e3e2e65ae3c6', '../assets/images/avatar/u62a6f45f386d6.jpg', 'assets/images/avatar/default-cover.jpg', '2000-02-08', 0, 'Manila', '', 'student', 0, NULL),
+(79, 'u62a6f6d83d666', 'Ruth', 'Baker', 'ruth.baker@gmail.com', 'f3f90bcd1ebcb7e9abb0dcc3f9d4d624', '../assets/images/avatar/u62a6f6d83d666.jpg', 'assets/images/avatar/default-cover.jpg', '1999-09-04', 0, 'Manila', '', 'student', 0, NULL),
+(80, 'u62a6f897e3940', 'Abigail', 'Duncan', 'abigail.duncan@gmail.com', '10fc579194195f4f62a622eb72368315', '../assets/images/avatar/u62a6f897e3940.png', 'assets/images/avatar/default-cover.jpg', '1997-09-27', 0, 'Manila', '', 'student', 0, NULL),
+(81, 'u62a6f9de393af', 'Amy', 'Nash', 'amy.nash@gmail.com', 'd909d4f34e7eb87cf0c72cecb98724c3', '../assets/images/avatar/u62a6f9de393af.jpg', 'assets/images/avatar/default-cover.jpg', '2003-07-11', 0, 'Manila', '', 'student', 0, NULL),
+(82, 'u62a6fa7cbb90f', 'Julian', 'Campbell', 'julian.campbell@gmail.com', '1437cb1c93b538285d005437686876be', '../assets/images/avatar/u62a6fa7cbb90f.jpeg', 'assets/images/avatar/default-cover.jpg', '1999-11-14', 0, 'Manila', '', 'student', 0, NULL),
+(83, 'u62a6fb2959999', 'Lilian', 'Welch', 'lilian.welch@gmail.com', '2ddf43d720658012a5b00deee185f350', '../assets/images/avatar/u62a6fb2959999.jpg', 'assets/images/avatar/default-cover.jpg', '2002-10-04', 0, 'Manila', '', 'student', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -273,7 +310,8 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (67, 'C6298f45a3ff3b', 'u62a36c251d916', 'upvote'),
 (68, 'C6298f461a02f5', 'u62a36c251d916', 'upvote'),
 (69, 'C62a36fe333e38', 'u627754a082c47', 'downvote'),
-(70, 'C62a36fda88767', 'u627754a082c47', 'downvote');
+(70, 'C62a36fda88767', 'u627754a082c47', 'downvote'),
+(71, 'C62a6f79d63e3d', 'u62a6eb986662e', 'downvote');
 
 --
 -- Indexes for dumped tables
@@ -289,6 +327,12 @@ ALTER TABLE `comments`
 -- Indexes for table `declined`
 --
 ALTER TABLE `declined`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -331,13 +375,19 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `declined`
 --
 ALTER TABLE `declined`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `save`
@@ -349,25 +399,25 @@ ALTER TABLE `save`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `users_verification`
 --
 ALTER TABLE `users_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

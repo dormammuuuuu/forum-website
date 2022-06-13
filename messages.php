@@ -1,3 +1,7 @@
+<?php
+    include('php-scripts/message-scripts.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,9 @@
     <link rel="stylesheet" href="styles/messages.css">
     <link rel="stylesheet" href="styles/navbar.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/jquery.timeago.js"></script>
+
 </head>
 <body>
     
@@ -24,10 +31,13 @@
                 </div>
 
                 <div class="message-list">
-                    <div class="message-card">
+                    <div class="no-messages">
+                        <p>No messages</p>
+                    </div>
+                    <!--<div class="message-card">
                         <div class="message-details">
                             <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
+                                <img class="message-avatar" src="../assets/images/avatar/default.jpg" alt="">
                                 <span class="message-name">Brenton Herry Denila Picardal</span>
                             </div>
                             <p class="message-datetime">11/18</p>
@@ -44,127 +54,25 @@
                             <p class="message-datetime">11/18</p>
                         </div>
                         <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User 1</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Last Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
             <div class="user-conversation">
                 <div class="conversation-container">
+                    <?php if (empty($firstname)) {?>
+                    <div class="start-conversation">
+                        <div>
+                        <img src="assets/images/conversation.png" alt="">
+                        <p>Start a conversation</p>
+                        </div>
+                    </div>
+                    <?php } else { ?>
                     <div class="conversation-details">
                         <div class="conversation-header">
-                            <img class="conversation-avatar" src="assets/images/avatar/brenton.jpg" alt="">
+                            <img class="conversation-avatar" src="<?php echo $avatar ?>" alt="">
                             <div>
-                                <span class="conversation-name">Brenton Herry Denila Picardal</span>
+                                <span class="conversation-name"><?php echo $firstname. " " . $lastname ?></span>
                                 <p class="conversation-status">Active now</p>
                             </div>
                         </div>
@@ -187,9 +95,11 @@
                         <input type="text" placeholder="Send a message">
                         <div class="send-button"><i class='bx bxs-send'></i></div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </section>
+    <script src="javascript/messages.js"></script>
 </body>
 </html>

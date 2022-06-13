@@ -5,7 +5,7 @@
 
     function fetchThreads($limit){
         global $conn;
-        $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') ORDER BY id DESC LIMIT $limit, 3";
+        $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') ORDER BY id DESC LIMIT $limit, 10";
         $thread = $conn->query($sql) or die ($conn->error);
         $row = $thread->fetch_assoc();
 

@@ -59,7 +59,7 @@
                             <div class="details">
                                 <div class="user">
                                     <p class="name" data-acct="'.$data_comment["comment_author"].'">'. $author_given_name . " " . $author_family_name .'</p>
-                                    <p class="user-type">Student</p>
+                                    <p class="user-type">'. ucfirst($data['account_type']) .'</p>
                                 </div>
                                 <p class="date-published" data-date="'.$data_comment['comment_id'].'"><script>$("[data-date='.$data_comment['comment_id'].']").html(jQuery.timeago("'. $data_comment['comment_date'] . " " . $data_comment['comment_time'] .'"))</script></p>
                             </div>

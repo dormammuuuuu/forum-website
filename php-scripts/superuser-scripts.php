@@ -80,7 +80,7 @@
     //Fetch Pending Threads (Initial = 2)
     if(isset($_POST['pending'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT 0,2");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -103,7 +103,7 @@
 
     if(isset($_POST['all'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT 0,2");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -130,13 +130,13 @@
         $filter = mysqli_real_escape_string($conn, $_POST['type']);
         $data = mysqli_real_escape_string($conn,$_POST['loadmore']);
         if ($filter == 0){
-            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT $data,10");
         } else if ($filter == 1) {
-            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' LIMIT $data,10");
         } else if ($filter == 2) {
-            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'student' ORDER BY lastname ASC LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'student' ORDER BY lastname ASC LIMIT $data,10");
         } else if ($filter == 3) {
-            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'teacher' ORDER BY lastname ASC LIMIT $data,2");
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'teacher' ORDER BY lastname ASC LIMIT $data,10");
 
         }
         $result = mysqli_fetch_assoc($query);
@@ -191,9 +191,9 @@
         $json_response = array();
         $data = mysqli_real_escape_string($conn,$_POST['account']);
         if ($data == 1){
-            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'student' ORDER BY lastname ASC LIMIT 0,2");
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'student' ORDER BY lastname ASC LIMIT 0,10");
         } else if ($data == 2){
-            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'teacher' ORDER BY lastname ASC LIMIT 0,2");
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'teacher' ORDER BY lastname ASC LIMIT 0,10");
         }
         $result = mysqli_fetch_assoc($query);
 
@@ -274,7 +274,7 @@
     if(isset($_POST['closed'])){
         $json_response = array();
         $data = mysqli_real_escape_string($conn,$_POST['closed']);
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'close' ORDER BY date_posted DESC LIMIT 0,5");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'close' ORDER BY date_posted DESC LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -313,7 +313,7 @@
     //load admin accounts
     if(isset($_POST['admin'])){
         $json_response = array();
-        $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'admin' ORDER BY lastname ASC LIMIT 0,5");
+        $query = mysqli_query($conn, "SELECT * FROM users WHERE account_type = 'admin' ORDER BY lastname ASC LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
         do {
@@ -364,7 +364,7 @@
     if(isset($_POST['decline'])){
         $json_response = array();
         $data = mysqli_real_escape_string($conn,$_POST['decline']);
-        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'declined' ORDER BY date_posted DESC LIMIT 0,5");
+        $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'declined' ORDER BY date_posted DESC LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
         do {
