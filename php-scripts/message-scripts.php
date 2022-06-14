@@ -3,16 +3,86 @@
     include('db.php');
     session_start();
     $firstload = true;
+
+    function fetchmessages($id){
+        $messages = array();
+        global $conn;
+        $sql = mysqli_query($conn, "SELECT * FROM messages WHERE sender = '".$_SESSION['uid']."' AND receiver = '".$id."' OR sender = '".$id."' AND receiver = '".$_SESSION['uid']."'");
+        while($row = mysqli_fetch_assoc($sql)){
+            $messages[] = $row;
+        }
+        return $messages;
+    }
+
+    function fetchlist($id){
+        $list = array();
+        $templist = array();
+        $uniquelist = array();
+        $final = array();
+        global $conn;
+        $sql = mysqli_query($conn, "SELECT DISTINCT sender,receiver FROM messages WHERE sender = '".$id."' OR receiver = '".$id."' ");
+        
+        while($row = mysqli_fetch_assoc($sql)){
+            $list[] = $row;
+        }
+
+        foreach ($list as $key) {
+            if($key['sender'] == $id){
+                $templist[] = $key['receiver'];
+            } else {
+                $templist[] = $key['sender'];
+            }
+        }
+
+        $uniquelist = array_unique($templist);
+
+        foreach ($uniquelist as $key) {
+            $sql = mysqli_query($conn, "SELECT * FROM users WHERE uid = '".$key."'");
+            $sql_message = mysqli_query($conn, "SELECT * FROM messages WHERE (sender = '".$id."' AND receiver = '".$key."') OR (sender = '".$key."' AND receiver = '".$id."') ORDER BY id DESC LIMIT 1");
+            $sql_messageResult = mysqli_fetch_assoc($sql_message);
+            while($row = mysqli_fetch_assoc($sql)){
+                $final[] = array(
+                    'uid' => $row['uid'],
+                    'firstname' => $row['firstname'],
+                    'lastname' => $row['lastname'],
+                    'avatar' => $row['avatar'],
+                    'lastmessage' => $sql_messageResult['message'],
+                    'lastmessage_date' => $sql_messageResult['date'],
+                    'lastmessage_time' => $sql_messageResult['time'],
+                    'lastmessage_seen' => $sql_messageResult['seen'],
+                );
+            }
+        }
+        return $final;
+    }
+
+    if(isset($_POST['fetchconversation'])){
+        $conversation = mysqli_real_escape_string($conn, $_POST['fetchconversation']);
+        $messages = fetchmessages($conversation);
+        echo json_encode($messages);
+        mysqli_close($conn);
+    }
+
+    if(isset($_POST['fetchlist'])){
+        $user = $_SESSION['uid'];
+        $list = fetchlist($user);
+        echo json_encode($list);
+        mysqli_close($conn);
+    }
     
     if(isset($_GET['id'])){
         if ($firstload == true){
             $id = mysqli_real_escape_string($conn, $_GET['id']);
             $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '$id'");
             $row = mysqli_fetch_array($query);
-            $firstname = $row['firstname'];
-            $lastname = $row['lastname'];
-            $avatar = $row['avatar'];
-            $firstload = false;
+            if (empty($row)){
+                header("Location: ../404.php");
+            } else {
+                $firstname = $row['firstname'];
+                $lastname = $row['lastname'];
+                $avatar = $row['avatar'];
+                $firstload = false;
+            }   
         } 
         mysqli_close($conn);
     }
@@ -37,4 +107,19 @@
         mysqli_close($conn);
     }
 
+    if(isset($_POST['message'])){
+        $sender = $_SESSION['uid'];
+        $receiver = mysqli_real_escape_string($conn, $_POST['receiver']);
+        $message = mysqli_real_escape_string($conn, $_POST['message']);
+        $sql = "INSERT INTO messages (sender, receiver, message) VALUES ('$sender', '$receiver', '$message')";
+        $query = mysqli_query($conn, $sql);
+        if ($query){
+            $result_json['message'] = "Complete";
+        } else {
+            $result_json['message'] = "Error";
+        }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+        
+    }
 ?>

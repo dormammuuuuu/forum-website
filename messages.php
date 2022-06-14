@@ -20,7 +20,7 @@
 <body>
     
     <?php include('php-scripts/navbar.php'); ?>
-
+    <input type="hidden" id="receiverID" value="<?php echo (isset($_GET['id'])) ? $_GET['id'] : "" ?>">
     <section class="main">
         <div class="message-container">
             <div class="users-list">
@@ -31,9 +31,6 @@
                 </div>
 
                 <div class="message-list">
-                    <div class="no-messages">
-                        <p>No messages</p>
-                    </div>
                     <!--<div class="message-card">
                         <div class="message-details">
                             <div class="user">
@@ -68,32 +65,34 @@
                         </div>
                     </div>
                     <?php } else { ?>
-                    <div class="conversation-details">
-                        <div class="conversation-header">
-                            <img class="conversation-avatar" src="<?php echo $avatar ?>" alt="">
-                            <div>
-                                <span class="conversation-name"><?php echo $firstname. " " . $lastname ?></span>
-                                <p class="conversation-status">Active now</p>
+                    <div class="grid-container">
+                        <div class="conversation-details">
+                            <div class="conversation-header">
+                                <img class="conversation-avatar" src="<?php echo $avatar ?>" alt="">
+                                <div>
+                                    <span class="conversation-name"><?php echo $firstname. " " . $lastname ?></span>
+                                    <p class="conversation-status">Active now</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="conversations">
-                        <div class="bubble">Natatandaan mo ba nung nagkakilala tayo, Muhaimin? <p class="message-time">12:49AM</p></div>
-                        <div class="bubble">Namimiss ko na kasi yung dati <p class="message-time">12:49AM</p></div>
-                        <div class="bubble">Titigilan ko na mag rugby para sayo <p class="message-time">12:49AM</p></div>
-                        <div class="user">
-                            <div class="bubble me">Sino ka?<p class="message-time">11:33PM</p></div>
+                        <div class="conversations">
+                            <!-- <div class="bubble">Natatandaan mo ba nung nagkakilala tayo, Muhaimin? <p class="message-time">12:49AM</p></div>
+                            <div class="bubble">Namimiss ko na kasi yung dati <p class="message-time">12:49AM</p></div>
+                            <div class="bubble">Titigilan ko na mag rugby para sayo <p class="message-time">12:49AM</p></div>
+                            <div class="user">
+                                <div class="bubble me">Sino ka?<p class="message-time">11:33PM</p></div>
+                            </div>
+                            <div class="user">
+                                <div class="bubble me">charot<p class="message-time">11:33PM</p></div>
+                            </div>
+                            <div class="user">
+                                <div class="bubble me">I miss you too, BHD Picardal my love so sweet<p class="message-time">11:33PM</p></div>
+                            </div> -->
                         </div>
-                        <div class="user">
-                            <div class="bubble me">charot<p class="message-time">11:33PM</p></div>
+                        <div class="conversation-form">
+                            <input id="input-message" type="text" placeholder="Send a message">
+                            <div class="send-button"><i class='bx bxs-send'></i></div>
                         </div>
-                        <div class="user">
-                            <div class="bubble me">I miss you too, BHD Picardal my love so sweet<p class="message-time">11:33PM</p></div>
-                        </div>
-                    </div>
-                    <div class="conversation-form">
-                        <input type="text" placeholder="Send a message">
-                        <div class="send-button"><i class='bx bxs-send'></i></div>
                     </div>
                     <?php } ?>
                 </div>
