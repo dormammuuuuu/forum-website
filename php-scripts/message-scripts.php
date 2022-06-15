@@ -33,10 +33,10 @@
                 $templist[] = $key['sender'];
             }
         }
+        unset($list);
+        $list = array_unique($templist);
 
-        $uniquelist = array_unique($templist);
-
-        foreach ($uniquelist as $key) {
+        foreach ($list as $key) {
             $sql = mysqli_query($conn, "SELECT * FROM users WHERE uid = '".$key."'");
             $sql_message = mysqli_query($conn, "SELECT * FROM messages WHERE (sender = '".$id."' AND receiver = '".$key."') OR (sender = '".$key."' AND receiver = '".$id."') ORDER BY id DESC LIMIT 1");
             $sql_messageResult = mysqli_fetch_assoc($sql_message);
@@ -52,7 +52,10 @@
                     'lastmessage_seen' => $sql_messageResult['seen'],
                 );
             }
+            mysqli_free_result($sql);
+            mysqli_free_result($sql_message);
         }
+
         return $final;
     }
 

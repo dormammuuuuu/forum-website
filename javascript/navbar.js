@@ -1,3 +1,6 @@
+$(function () {
+    $('.nav-links a[href^="' + location.pathname.split("/")[1] + '"]').parent().addClass('active');
+});
 
 $(document).on("click", ".user-avatar", function () { 
     $('.dropdown-content').toggle(function () {

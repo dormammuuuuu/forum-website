@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2022 at 09:28 PM
+-- Generation Time: Jun 15, 2022 at 05:32 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -108,7 +108,7 @@ CREATE TABLE `messages` (
   `id` int(11) NOT NULL,
   `sender` varchar(255) NOT NULL,
   `receiver` varchar(255) NOT NULL,
-  `message` longtext NOT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `time` time NOT NULL DEFAULT current_timestamp(),
   `seen` tinyint(1) NOT NULL DEFAULT 0
@@ -119,8 +119,6 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `seen`) VALUES
-(1, 'u627754a082c47', 'u627754a082c47', 'FIrst message', '2022-06-14', '18:09:23', 0),
-(2, 'u627754a082c47', 'u627754a082c47', 'FIrst message', '2022-06-14', '18:09:23', 0),
 (3, 'u627754a082c47', 'u62a36c251d916', 'Oy raymond', '2022-06-14', '18:10:04', 0),
 (4, 'u627754a082c47', 'u62a36c251d916', 'Pre', '2022-06-14', '18:19:28', 0),
 (5, 'u627754a082c47', 'u62a36c251d916', 'EH?', '2022-06-14', '18:23:42', 0),
@@ -142,7 +140,41 @@ INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `
 (21, 'u62a892ac8a7a0', 'u62a36c251d916', 'edi wow', '2022-06-14', '22:05:51', 0),
 (22, 'u62a36c251d916', 'u627754a082c47', 'Pasalamat ka pogi ka', '2022-06-14', '23:52:05', 0),
 (23, 'u627754a082c47', 'u62a36c251d916', 'RAYMOND', '2022-06-15', '02:25:24', 0),
-(24, 'u62a36c251d916', 'u627fe814b5bfd', 'Oy pre', '2022-06-15', '02:56:11', 0);
+(24, 'u62a36c251d916', 'u627fe814b5bfd', 'Oy pre', '2022-06-15', '02:56:11', 0),
+(25, 'u62a99829973b3', 'u627754a082c47', 'hi', '2022-06-15', '16:29:23', 0),
+(26, 'u62a99829973b3', 'u627754a082c47', 'pansinin mo po ako', '2022-06-15', '16:29:36', 0),
+(27, 'u627754a082c47', 'u62a99829973b3', 'hello', '2022-06-15', '16:30:50', 0),
+(28, 'u627754a082c47', 'u62a99829973b3', 'bakit ka po nagchachat?', '2022-06-15', '16:31:20', 0),
+(29, 'u62a99829973b3', 'u627754a082c47', 'nakita ko kasi profile mo pogi mo', '2022-06-15', '16:32:29', 0),
+(30, 'u62a99829973b3', 'u627754a082c47', 'sno yang kasama mo iwan mo na yan haha', '2022-06-15', '16:32:38', 0),
+(31, 'u627754a082c47', 'u62a99829973b3', 'ahh thank you', '2022-06-15', '16:32:43', 0),
+(32, 'u62a99829973b3', 'u627754a082c47', 'aq nalang pls', '2022-06-15', '16:32:47', 0),
+(33, 'u62a99829973b3', 'u627754a082c47', 'aq nalang pls', '2022-06-15', '16:32:48', 0),
+(34, 'u627754a082c47', 'u62a99829973b3', 'ahh eto ba? longganisa seller samin to e', '2022-06-15', '16:33:00', 0),
+(35, 'u62a99829973b3', 'u627754a082c47', 'ay wag kana riyan ', '2022-06-15', '16:33:30', 0),
+(36, 'u627754a082c47', 'u62a99829973b3', 'ano ba tinitinda mo?', '2022-06-15', '16:33:41', 0),
+(37, 'u62a99829973b3', 'u627754a082c47', 'human meat talaga gamit nila sa longganisa nila ', '2022-06-15', '16:33:43', 0),
+(38, 'u62a99829973b3', 'u627754a082c47', 'dito ka nalang sakin', '2022-06-15', '16:33:52', 0),
+(39, 'u627754a082c47', 'u62a99829973b3', 'ay grabe naman pala sila', '2022-06-15', '16:34:01', 0),
+(40, 'u627754a082c47', 'u62a99829973b3', 'ano ba sa inyo maam?', '2022-06-15', '16:34:08', 0),
+(41, 'u62a99829973b3', 'u627754a082c47', 'embutido sir', '2022-06-15', '16:34:44', 0),
+(42, 'u627754a082c47', 'u62a99829973b3', 'magkano po yan?', '2022-06-15', '16:35:11', 0),
+(43, 'u62a99829973b3', 'u627754a082c47', 'free muna sa unang try nyo ser kasi ang pogi mo eh ', '2022-06-15', '16:35:27', 0),
+(44, 'u627754a082c47', 'u62a99829973b3', 'ay thank you po pero wag mo na po ako bolahin', '2022-06-15', '16:36:00', 0),
+(45, 'u627754a082c47', 'u62a99829973b3', 'kuha po ako sa inyo maam', '2022-06-15', '16:36:13', 0),
+(46, 'u62a99829973b3', 'u627754a082c47', 'kunin mo na embutido ser tas iwan mo na yang ksma mu kse pangit yan haha ms mganda aq ser tsaka sulit embutido ser ', '2022-06-15', '16:36:50', 0),
+(47, 'u627754a082c47', 'u62a99829973b3', 'gegegege baka niloloko mo lang ako maam?', '2022-06-15', '16:37:40', 0),
+(48, 'u62a99829973b3', 'u627754a082c47', 'd po ser luv u ', '2022-06-15', '16:37:51', 0),
+(49, 'u627754a082c47', 'u62a99829973b3', 'reload mo sayo then send ka ulit long message check mo kung humahaba pa rin XD', '2022-06-15', '16:39:10', 0),
+(50, 'u627754a082c47', 'u62a99829973b3', 'ambilis mo naman luv u too', '2022-06-15', '16:39:34', 0),
+(51, 'u627754a082c47', 'u62a99829973b3', 'Test Enter Button', '2022-06-15', '16:41:17', 0),
+(52, 'u627754a082c47', 'u62a99829973b3', 'YEEEY WORKING NA ENTER BUTTON SA PAGSEND XD', '2022-06-15', '16:41:27', 0),
+(53, 'u627754a082c47', 'u62a891ef10a26', 'Pre suntukan?', '2022-06-15', '17:00:19', 0),
+(54, 'u627754a082c47', 'u62a891ef10a26', '😊', '2022-06-15', '17:07:50', 0),
+(57, 'u627754a082c47', 'u62a99829973b3', 'Hello. Testing lang ⭐️🌝😁😘😁👍😘😝😉😭😉😭😀😀😞🐼🐦', '2022-06-15', '19:25:51', 0),
+(81, 'u627754a082c47', 'u627754a082c47', 'Hello', '2022-06-15', '22:35:44', 0),
+(82, 'u627754a082c47', 'u627754a082c47', 'Hello', '2022-06-15', '22:38:04', 0),
+(83, 'u627754a082c47', 'u627754a082c47', 'Are you okay?', '2022-06-15', '22:38:11', 0);
 
 -- --------------------------------------------------------
 
@@ -270,7 +302,8 @@ INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, 
 (87, 'u62a89331858b2', 'Adam', 'Smith', 'adam.smith@gmail.com', '3e7b522b9756d2578d3a86d8f366be6e', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1998-04-29', 0, 'Manila', '', 'student', 0, NULL),
 (88, 'u62a89371b1385', 'Ella', 'Davies', 'ella.davies@gmail.com', 'efadcf6a697bcc011b573984dcdd3740', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1908-04-16', 0, 'Manila', '', 'student', 0, NULL),
 (89, 'u62a893a63c294', 'Keit', 'Welch', 'keith.welch@gmail.com', 'dff24e6ecbb2e7164196a1513638d4cb', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2002-09-22', 0, 'Manila', '', 'student', 0, NULL),
-(90, 'u62a89c2618d87', 'Bunny', 'Puu', 'bunnypuu@gmail.com', '1d18530344f049533d423aec88df2524', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-02-22', 0, 'Manila', '', 'student', 0, NULL);
+(90, 'u62a89c2618d87', 'Bunny', 'Puu', 'bunnypuu@gmail.com', '1d18530344f049533d423aec88df2524', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-02-22', 0, 'Manila', '', 'student', 0, NULL),
+(91, 'u62a99829973b3', 'SHARINA', 'ATIENZA', 'shrnatienza@gmail.com', 'aa42b234cb05915716c1434058fe1aee', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2001-07-26', 0, 'Manila', '', 'student', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -427,7 +460,7 @@ ALTER TABLE `declined`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `save`
@@ -445,13 +478,13 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `users_verification`
 --
 ALTER TABLE `users_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `votes`

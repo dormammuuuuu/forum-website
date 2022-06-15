@@ -12,6 +12,7 @@ const no_conversation = `
 
 let response_length = 0;
 let messagelist;
+let conversation_list = [];
 
 function fetchMessageList(){
     messagelist = setInterval(() => {
@@ -25,10 +26,14 @@ function fetchMessageList(){
                     $('.message-list').empty().append(no_messages);
                     return;
                 }
+                if (JSON.stringify(conversation_list) === JSON.stringify(response)){
+                    return;
+                }
                 $('.message-list').empty();
                 response.forEach(data => {
                     renderList(data);
                 });
+                conversation_list = response;
             }, 
             error: function (request, status, error) {
                 console.log(request.responseText);
@@ -87,6 +92,15 @@ function renderList(data) {
 
 $(function () {
     let receiverid = $('#receiverID').val();
+    window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: '../styles/assets/emojis/',
+        popupButtonClasses: 'fa fa-smile-o'
+    });
+    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+    // It can be called as many times as necessary; previously converted input fields will not be converted again
+    window.emojiPicker.discover();
     setInterval(() => {
         $.ajax({
             type: "POST",
@@ -112,6 +126,9 @@ $(function () {
                     response_length = response.length; // update response length
                 }
             },
+            complete: function () {
+                $('.loader-messages').fadeOut();
+            },
             error: function (request, status, error) {
                 console.log(request.responseText);
                 console.log(status);
@@ -123,6 +140,14 @@ $(function () {
     fetchMessageList();
 });
 
+$(document).on("keypress", ".emoji-wysiwyg-editor", function(e){
+    if (e.which === 13) {
+        e.preventDefault();
+        $('#input-message').val($(this).html());
+        $('.send-button').click();
+        console.log('clicked');
+    }
+});
 
 
 $(document).on("click", ".send-button", function () { 
@@ -138,9 +163,8 @@ $(document).on("click", ".send-button", function () {
             },
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 $('#input-message').val("");
-
+                $('.emoji-wysiwyg-editor').html("");
             },
             error: function (request, status, error) {
                 console.log(request.responseText);
@@ -153,6 +177,7 @@ $(document).on("click", ".send-button", function () {
 
 $('.message-search-input').on("input", function () {
     clearInterval(messagelist);
+    conversation_list = [];
     let search = $(this).val();
     if (search.length == 0) {
         fetchMessageList();

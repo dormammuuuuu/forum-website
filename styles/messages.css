@@ -63,6 +63,7 @@
 
 .message-card{
     max-height: 100px;
+    max-width: 300px;
     background-color: var(--light);
     padding: 10px;
     margin-bottom: 10px;
@@ -73,7 +74,7 @@
 .message{
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 300px;
+    max-width: -webkit-fill-available;
     width: 100%;
     white-space: nowrap;
     font-size: 11px;
@@ -170,12 +171,12 @@
     justify-content: space-evenly;
 }
 
-.conversation-form input{
+.conversation-form textarea{
+    position: relative;
     width: 80%;
     border-radius: 20px;
     border: none;
     padding: 10px;
-    background-color: var(--gray-light);
 }
 
 .send-button{
@@ -186,6 +187,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.send-button:hover{
+    background-color: var(--primary-dark);
 }
 
 .send-button i {

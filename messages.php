@@ -10,16 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
     <link rel="stylesheet" href="styles/default.css">
-    <link rel="stylesheet" href="styles/messages.css">
     <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/loader.css">
+    <link rel="stylesheet" href="styles/messages.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/emoji/emoji.css" rel="stylesheet">
     <script src="javascript/jquery-3.6.0.js"></script>
     <script src="javascript/jquery.timeago.js"></script>
+    <script src="javascript/emoji/config.js"></script>
+    <script src="javascript/emoji/util.js"></script>
+    <script src="javascript/emoji/jquery.emojiarea.js"></script>
+    <script src="javascript/emoji/emoji-picker.js"></script>
 
 </head>
 <body>
-    
     <?php include('php-scripts/navbar.php'); ?>
+    <div class="loader-messages">
+        <div id="loader"></div>
+    </div>
     <input type="hidden" id="receiverID" value="<?php echo (isset($_GET['id'])) ? $_GET['id'] : "" ?>">
     <section class="main">
         <div class="message-container">
@@ -90,7 +99,7 @@
                             </div> -->
                         </div>
                         <div class="conversation-form">
-                            <input id="input-message" type="text" placeholder="Send a message">
+                            <input id="input-message" data-emojiable="true" data-emoji-input="unicode" type="text" placeholder="Send a message">
                             <div class="send-button"><i class='bx bxs-send'></i></div>
                         </div>
                     </div>

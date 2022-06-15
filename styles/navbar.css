@@ -64,13 +64,13 @@ nav div{
     list-style: none;
     display: flex;
     height: -webkit-fill-available;
-    width: -moz-available;
+    height: -moz-available;
     align-items: center;
 }
 
 .nav-links{
     height: -webkit-fill-available;
-    width: -moz-available;
+    height: -moz-available;
     display: flex;
     flex-direction: column;
     justify-content: center;
