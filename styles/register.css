@@ -379,7 +379,7 @@ a{
     }
 }
 
-@media (max-width: 610px) and (min-width: 351px){
+@media (max-width: 610px) {
 
     .card-container{
         width: 75%;
@@ -403,7 +403,7 @@ a{
    
 }
 
-@media (max-width: 350px){
+@media (max-width: 525px){
     
     .card-container{
         width: 100%;

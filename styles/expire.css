@@ -1,5 +1,6 @@
 .status{
     font-size: 10em;
+    color: var(--primary);
 }
 
 .container{
@@ -34,4 +35,24 @@
     padding: 7px 13px;
     border-radius: 5px;
     border: 1px solid var(--gray);
+}
+
+@media (max-width: 500px) {
+    
+    .status{
+        font-size: 7em;
+    }
+    
+    .message{
+        font-size: 15px;
+    }
+
+    .redirect-button{
+        font-size: 10px;
+    }
+
+    .separator{
+        width: 50px;
+    }
+
 }

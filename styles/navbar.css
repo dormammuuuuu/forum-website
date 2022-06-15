@@ -57,7 +57,6 @@ nav div{
 .nav-buttons{
     height: 100%;
     position: relative;
-
 }
 
 .nav-buttons ul{
@@ -147,6 +146,21 @@ nav div{
     background-color: rgba(0,0,0,0.3);
 }
 
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger-lines{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all .3s ease-in-out;
+    background-color: #ffffff;
+
+}
+
 /* DARK MODE */
 
 @media (prefers-color-scheme: dark){
@@ -172,4 +186,47 @@ nav div{
         border-radius: 4px;
         margin: 0 20px;
     }
+}
+
+@media (max-width: 850px){
+
+  .burger{
+    display: block;
+  }
+
+  
+
+  .burger.actived .burger-lines:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+
+
+  .burger.actived .burger-lines:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-buttons{
+    position: fixed;
+    right: -100vh;
+    top: 70px;
+    gap: 0;
+    background-color: red;
+    width: 23%;
+    text-align: center;
+    height: 100vh;
+  }
+
+  .nav-buttons ul{
+    flex-direction: column;
+  }
+
+  .nav-links, .dropdown, .notification{
+    margin: .5em 0;
+  }
+
+  .nav-buttons.actived{
+    right: 0;
+  }
+
+
 }

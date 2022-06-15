@@ -35,3 +35,41 @@
     }
 }
 
+@media (max-width: 715px) {
+    .container img{
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 650px) {
+    .container img{
+        max-width: 500px;
+    }
+    .container p{
+        font-size: 12px;
+    }
+}
+@media (max-width: 515px) {
+    .container img{
+        max-width: 400px;
+    }
+
+    .container p{
+        font-size: 10px;
+    }
+
+    .container a{
+        padding: 7px 10px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 415px) {
+    .container img{
+        max-width: 300px;
+    }
+
+    .container p{
+        font-size: 10px;
+    }
+}

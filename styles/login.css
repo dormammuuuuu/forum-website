@@ -205,16 +205,9 @@ a{
 
 }
 
-@media (max-width: 900px) and (min-width: 351px){
-
-    .card-container{
-        width: 75%;
-    }
 
 
-}
-
-@media (max-width: 350px){
+@media (max-width: 525px) and (min-width: 350px){
     
     .card-container{
         width: 100%;

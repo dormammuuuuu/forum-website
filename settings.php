@@ -28,11 +28,15 @@
         </div>
 
         <div class="account-container">
+
+
             <div class="acct-navigation">
                 <p data-btn="image" class="nav-btn acct-image"><i class='icons bx bxs-user'></i> Profile</p>
                 <p data-btn="acct" class="nav-btn acct-details"><i class='icons bx bxs-user-account'></i>Account Details</p>
                 <p data-btn="security" class="nav-btn acct-security"><i class='icons bx bxs-lock' ></i>Security</p>
             </div>
+
+
             <div class="settings-interface">
             </div>
         </div>

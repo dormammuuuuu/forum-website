@@ -7,6 +7,7 @@
                 <span class="search-icon"><i class='bx bx-search'></i></span>   
             </div>
         </div>
+
         <div class="nav-buttons">
         <?php 
             include('db.php');
@@ -21,7 +22,7 @@
                 if($result['privileged'] == 1){ ?>
                     <li class="nav-links"><a href="superuser.php" target="_blank">SuperUser</a></li>
                 <?php } ?>
-                <li class="nav-links"><a href="home.php">Home</a></li>
+                <li class="nav-links active"><a href="home.php">Home</a></li>
                 <li class="nav-links"><a href="messages.php">Messages</a></li>
                 <li class="nav-links"><a href="#">Saved</a></li>
                 <div class="notification">
@@ -48,5 +49,10 @@
 
         <?php } ?>
             
+        </div>
+        <div class="burger">
+                <span class="burger-lines"></span>
+                <span class="burger-lines"></span>
+                <span class="burger-lines"></span>
         </div>
     </nav>
