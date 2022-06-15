@@ -62,7 +62,6 @@ nav div{
 .nav-buttons ul{
     list-style: none;
     display: flex;
-    height: -webkit-fill-available;
     height: -moz-available;
     align-items: center;
 }
@@ -75,10 +74,14 @@ nav div{
     justify-content: center;
 }
 
+
 .nav-links a {
     text-decoration: none;
     margin: 0 20px;
     font-size: 14px;
+}
+.nav-links a:hover{
+    color: var(--primary);
 }
 
 .notification{
@@ -188,13 +191,15 @@ nav div{
     }
 }
 
-@media (max-width: 850px){
+@media (max-width: 950px){
 
   .burger{
     display: block;
   }
 
-  
+  .burger.actived .burger-lines:nth-child(2){
+    opacity: 0;
+  }
 
   .burger.actived .burger-lines:nth-child(1){
     transform: translateY(8px) rotate(45deg);
@@ -206,14 +211,17 @@ nav div{
   }
 
   .nav-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     position: fixed;
     right: -100vh;
-    top: 70px;
+    top: 80px;
     gap: 0;
-    background-color: red;
+    background-color: var(--gray);
     width: 23%;
     text-align: center;
-    height: 100vh;
+    height: 100%;
   }
 
   .nav-buttons ul{
@@ -221,12 +229,27 @@ nav div{
   }
 
   .nav-links, .dropdown, .notification{
-    margin: .5em 0;
+    margin: .7em 0;
   }
 
   .nav-buttons.actived{
     right: 0;
   }
 
+  .search-bar{
+    max-width: 150px;
+  }
 
+}
+
+@media (max-width: 600px) {   
+    .nav-buttons{
+        width: 27%;
+    }
+}
+
+@media (max-width: 500px) {   
+    .nav-buttons{
+        width: 33%;
+    }
 }

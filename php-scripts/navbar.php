@@ -22,7 +22,7 @@
                 if($result['privileged'] == 1){ ?>
                     <li class="nav-links"><a href="superuser.php" target="_blank">SuperUser</a></li>
                 <?php } ?>
-                <li class="nav-links active"><a href="home.php">Home</a></li>
+                <li class="nav-links"><a href="home.php">Home</a></li>
                 <li class="nav-links"><a href="messages.php">Messages</a></li>
                 <li class="nav-links"><a href="#">Saved</a></li>
                 <div class="notification">
