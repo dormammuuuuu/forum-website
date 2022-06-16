@@ -7,6 +7,10 @@
     position: fixed;
 }
 
+#error{
+    font-size: 13px;
+    color: var(--primary)
+}
 
 .create-containers{
     display: flex;

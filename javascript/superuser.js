@@ -591,6 +591,7 @@ $(document).on("click", ".admin-button", function () {
 
 //create a modal for decline threads with select and textarea
 $(document).on("click", ".decline", function () { 
+    let threadID = $(this).parent().attr('data-thread');
     let modal = `<div class="modal-decline">
                     <div class="modal-decline-content">
                         <div class="modal-decline-header">
@@ -602,7 +603,7 @@ $(document).on("click", ".decline", function () {
                             <textarea id="decline-reason" placeholder="Reason for declining thread"></textarea>
                         </div>
                         <div class="modal-decline-footer">
-                            <button id="decline-thread-btn" data-thread="' + threadID + '">Decline thread</button>
+                            <button id="decline-thread-btn" data-thread="` + threadID + `">Decline thread</button>
                         </div>
                     </div>
                 </div>`;

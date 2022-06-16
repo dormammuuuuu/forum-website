@@ -338,19 +338,24 @@
 
     //decline a thread
     if(isset($_POST['declinethread'])){
-        $data = mysqli_real_escape_string($conn,$_POST['decline']);
+        $data = mysqli_real_escape_string($conn,$_POST['declinethread']);
         $reason = mysqli_real_escape_string($conn,$_POST['reason']);
-        $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'declined' WHERE thread_id = '$data'");
-        if ($query) {
-            $query = mysqli_query($conn, "INSERT INTO `declined` (`thread_id`, `message`) VALUES ('$data', '$reason')");
+        $query = mysqli_query($conn, "SELECT * FROM declined WHERE thread_id = '$data'");
+        if (mysqli_num_rows($query) > 0) {
+            $query = mysqli_query($conn, "UPDATE `declined` SET `message` = 'reason' WHERE thread_id = '$data'");
             if ($query) {
                 $result['type'] = "Thread declined successfully";
+            } else {
+                $result['type'] = "Thread declined failed";
             }
         } else {
+            $query = mysqli_query($conn, "INSERT INTO `declined` (`thread_id`, `message`) VALUES ('$data', '$reason')");
             $result['type'] = "Error declining thread";
         }
+        $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'declined' WHERE thread_id = '$data'");
         echo json_encode($result);
         mysqli_close($conn);
+
     }
 
     function getDeclineReason($thread_id){

@@ -50,6 +50,8 @@
                     'lastmessage_date' => $sql_messageResult['date'],
                     'lastmessage_time' => $sql_messageResult['time'],
                     'lastmessage_seen' => $sql_messageResult['seen'],
+                    'lastmessage_sender' => $sql_messageResult['sender'],
+                    'session_id' => $_SESSION['uid']
                 );
             }
             mysqli_free_result($sql);
@@ -61,6 +63,7 @@
 
     if(isset($_POST['fetchconversation'])){
         $conversation = mysqli_real_escape_string($conn, $_POST['fetchconversation']);
+        $query = mysqli_query($conn, "UPDATE messages SET seen = '1' WHERE sender = '$conversation' AND receiver = '{$_SESSION['uid']}' ");
         $messages = fetchmessages($conversation);
         echo json_encode($messages);
         mysqli_close($conn);
@@ -78,6 +81,7 @@
             $id = mysqli_real_escape_string($conn, $_GET['id']);
             $query = mysqli_query($conn, "SELECT * FROM users WHERE uid = '$id'");
             $row = mysqli_fetch_array($query);
+            $query = mysqli_query($conn, "UPDATE messages SET seen = '1' WHERE sender = '".$id."' AND receiver = '".$_SESSION['uid']."' ");
             if (empty($row)){
                 header("Location: ../404.php");
             } else {
@@ -114,7 +118,7 @@
         $sender = $_SESSION['uid'];
         $receiver = mysqli_real_escape_string($conn, $_POST['receiver']);
         $message = mysqli_real_escape_string($conn, $_POST['message']);
-        $sql = "INSERT INTO messages (sender, receiver, message) VALUES ('$sender', '$receiver', '$message')";
+        $sql = "INSERT INTO messages (sender, receiver, message, seen) VALUES ('$sender', '$receiver', '$message', '0')";
         $query = mysqli_query($conn, $sql);
         if ($query){
             $result_json['message'] = "Complete";

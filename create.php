@@ -25,7 +25,6 @@
     
     <?php include('php-scripts/navbar.php');?>
     <section class="main">
-        <div id="error"></div>
 
         <div class="create-containers">
             <form class="create-inputs" id="create-form">
@@ -54,6 +53,8 @@
                     <option value="lgbtq">LGBTQ+</option>
                     <option value="suspension">Suspension</option>
                 </select>
+                <div id="error"></div>
+
                 <input type="submit" id="create-submit" value="Submit Thread">
             </form>
             <div class="guide-container">

@@ -40,11 +40,29 @@
                     <div>
                         <hr>
                     </div>
+                    <label for="tags">Category: </label>
+                    <select name="tags" id="select-tags">
+                        <option value="">All</option>
+                        <option value="general">General</option>
+                        <option value="event">Event</option>
+                        <option value="registrar">Registrar</option>
+                        <option value="cos">COS</option>
+                        <option value="coe">COE</option>
+                        <option value="cafa">CAFA</option>
+                        <option value="cie">CIE</option>
+                        <option value="cit">CIT</option>
+                        <option value="library">Library</option>
+                        <option value="vandalism">Vandalism</option>
+                        <option value="bullying">Bullying</option>
+                        <option value="missingitem">Missing Item</option>
+                        <option value="lgbtq">LGBTQ+</option>
+                        <option value="suspension">Suspension</option>
+                    </select>
                 </div>
 
                 <div class="threads-container">
                     
-                    <?php fetchThreads(0); ?>
+                    <?php fetchThreads(0, ""); ?>
 
                     <!-- <div class="thread">
                         <div class="thread-title">Bakit walang ulam?</div>
@@ -77,19 +95,7 @@
             </div>
             <div class="francis">A</div>
             <div class="cielo">B</div>
-            <div class="tags">
-                <div class="tags-container">
-                    <p class="tag-header"> Tags </p>
-                    <hr>
-                    <div class="tag-links">
-                        <a href="#" class="tags-category">COS</a>
-                        <a href="#" class="tags-category">COE</a>
-                        <a href="#" class="tags-category">CIT</a>
-                        <a href="#" class="tags-category">CAFA</a>
-                        <a href="#" class="tags-category">CLA</a>
-                    </div>
-                </div>
-            </div>
+            <div class="tags">C</div>
         </div>
     </section>
     <script src="javascript/home.js"></script>

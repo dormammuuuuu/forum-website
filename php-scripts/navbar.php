@@ -1,7 +1,7 @@
     <script src="javascript/navbar.js"></script>
     <nav>
         <div>
-            <p>Logo</p>
+            <img class="speak-logo" src="assets/images/favicon.png" alt="Logo">
             <div class="search-bar">
                 <input class="nav-search" type="text" placeholder="Type to search"> 
                 <span class="search-icon"><i class='bx bx-search'></i></span>   

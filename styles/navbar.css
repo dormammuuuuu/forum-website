@@ -27,6 +27,11 @@ nav div{
     width: auto;
 }
 
+.speak-logo{
+    height: 70px;
+    width: auto;
+}
+
 .search-bar{
     display: flex;
     max-width: 250px;
@@ -62,6 +67,7 @@ nav div{
 .nav-buttons ul{
     list-style: none;
     display: flex;
+    height: -webkit-fill-available;
     height: -moz-available;
     align-items: center;
 }

@@ -3,9 +3,9 @@
     include('db.php');
     session_start();
 
-    function fetchThreads($limit){
+    function fetchThreads($limit, $category){
         global $conn;
-        $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') ORDER BY id DESC LIMIT $limit, 10";
+        $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') AND tags LIKE '%".$category."%' ORDER BY id DESC LIMIT $limit, 10";
         $thread = $conn->query($sql) or die ($conn->error);
         $row = $thread->fetch_assoc();
 
@@ -129,7 +129,15 @@
     //load more threads
     if (isset($_POST['loadmore'])){
         $limit = mysqli_real_escape_string($conn, $_POST['loadmore']);
-        fetchThreads($limit);
+        $tag = mysqli_real_escape_string($conn, $_POST['current_tag']);
+        fetchThreads($limit, $tag);
+    }
+
+    //load with respect to tags
+    if (isset($_POST['loadtags'])){
+        $tag = mysqli_real_escape_string($conn, $_POST['loadtags']);
+        $limit = 0;
+        fetchThreads($limit, $tag);
     }
 
     if(isset($_POST['savethread'])){

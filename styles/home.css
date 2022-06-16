@@ -54,6 +54,17 @@
     padding: 10px 15px;
 }
 
+#select-tags{
+    border: none;
+    background-color: var(--dark);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    padding: 10px;
+    outline: none;
+}
+
 .create-thread, .login{
     width: -webkit-fill-available;
     width: -moz-available;
@@ -93,8 +104,13 @@
     justify-content: space-between;
 }
 
-.divider p {
+.divider p, {
     margin-right: 20px;
+}
+
+.divider label {
+    margin-left: 20px;
+    font-size: 15px;
 }
 
 .divider div{

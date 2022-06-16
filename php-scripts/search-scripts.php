@@ -28,7 +28,7 @@
     if(isset($_POST['people'])){
         $json_response = array();
         $search = mysqli_real_escape_string($conn, $_POST['people']);
-        $query = "SELECT * FROM users WHERE firstname LIKE '%".$search."%' OR lastname LIKE '%".$search."%'";
+        $query = "SELECT * FROM users WHERE CONCAT(firstname, ' ', lastname) LIKE '%".$search."%'";
         $result = mysqli_query($conn, $query);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){

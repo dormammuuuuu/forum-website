@@ -40,6 +40,10 @@ $(function () {
         let tags = new Object();
         tags.selected = inputTags;
         let json_tags = JSON.stringify(tags);
+        if (json_tags.length == 15){
+            $('#error').text("Error: Select a tag");
+            return;
+        }
         editor.save().then((outputData) => {
             json_body = JSON.stringify(outputData);
             $.ajax({

@@ -16,8 +16,9 @@
 .users-list{
     padding: 20px;
     height: -webkit-fill-available;
-    width: -moz-available;
-    flex-grow: .7;
+    height: -moz-available;
+    max-width: 410px;
+    flex-grow: .9;
     flex-basis: 0vw;
 }
 
@@ -63,12 +64,22 @@
 
 .message-card{
     max-height: 100px;
-    max-width: 300px;
+    max-width: -webkit-fill-available;
+    max-width: -moz-available;
     background-color: var(--light);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     cursor: pointer;
+    overflow: hidden;
+}
+
+.not-seen p{
+    font-weight: 800;
+}
+
+.not-seen span{
+    font-weight: 800;
 }
 
 .message{
@@ -281,6 +292,11 @@
 .no-conversation p {
     color: var(--gray-lighter);
 }
+
+.active-convo{
+    background-color: #4d4c4c!important;
+}
+
 
 @media (prefers-color-scheme: dark){
     .message-card{

@@ -24,6 +24,30 @@ $('.create-thread').click(function () {
     window.location.href = "create.php";
 });
 
+$(document).on('change','#select-tags',function () {
+    let tags = $('#select-tags').val();
+    let loadmore_btn = $('#load-more');
+    if (loadmore_btn.length > 0){
+        loadmore_btn.remove();
+    }
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/home-scripts.php",
+        data: {
+            loadtags: tags,
+        },
+        dataType: "html",
+        success: function (response) {
+            $('.threads-container').empty().append(response);
+            $('.threads-container').append('<button id="load-more">Load More</button>');
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(status);
+            console.log(error);
+        }
+    });
+});
 
 $(document).on('click','.thread',function (e) { 
     e.preventDefault();
@@ -34,6 +58,7 @@ $(document).on('click','.thread',function (e) {
     //load more button
 $(document).on("click", "#load-more", (function () { 
     let loadmore_btn = $('#load-more');
+    let tags = $('#select-tags').val();
     if (loadmore_btn.length > 0){
         loadmore_btn.remove();
     }
@@ -43,7 +68,8 @@ $(document).on("click", "#load-more", (function () {
         type: "post",
         url: "../php-scripts/home-scripts.php",
         data: {
-            loadmore: count
+            loadmore: count,
+            current_tag: tags
         },
         dataType: "html",
         success: function (response) {
