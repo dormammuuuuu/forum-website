@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2022 at 08:49 PM
+-- Generation Time: Jun 17, 2022 at 09:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -220,7 +220,14 @@ INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `
 (154, 'u62a891ef10a26', 'u62a99829973b3', 'Ediwaw', '2022-06-16', '18:59:51', 0),
 (155, 'u627754a082c47', 'u62a891ef10a26', '👀👀👀', '2022-06-16', '19:00:16', 1),
 (156, 'u62a891ef10a26', 'u62a36c251d916', 'Beh si ben may kabet, juskoday', '2022-06-16', '19:00:16', 0),
-(157, 'u62a891ef10a26', 'u62a36c251d916', 'sana si jake na lang jinowa mo', '2022-06-16', '19:01:48', 0);
+(157, 'u62a891ef10a26', 'u62a36c251d916', 'sana si jake na lang jinowa mo', '2022-06-16', '19:01:48', 0),
+(158, 'u627754a082c47', 'u6298f3dcd7288', 'France', '2022-06-17', '02:58:33', 0),
+(159, 'u62a891ef10a26', 'u627754a082c47', 'Anjo', '2022-06-17', '15:34:36', 1),
+(160, 'u62a891ef10a26', 'u627754a082c47', 'JO', '2022-06-17', '15:43:09', 1),
+(161, 'u62a891ef10a26', 'u627754a082c47', 'pansinin mo ko pls', '2022-06-17', '15:45:52', 1),
+(162, 'u62a891ef10a26', 'u627754a082c47', 'Oy', '2022-06-17', '15:46:08', 1),
+(163, 'u62a891ef10a26', 'u627754a082c47', 'Pre', '2022-06-17', '15:46:18', 1),
+(164, 'u627754a082c47', 'u62a891ef10a26', 'Pre', '2022-06-17', '15:48:26', 1);
 
 -- --------------------------------------------------------
 
@@ -273,9 +280,9 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 (26, 'thrd62834f012bf4e', 'u627a6a0b58d37', 'Sample Thread #2', '{\"time\":1653925286953,\"blocks\":[{\"id\":\"K7hWnKrqpV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pangalawang Sample Thread\"}},{\"id\":\"j7ccdLlFPl\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sample Sample SampleAAAAA\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-05-17', '15:30:09'),
 (32, 'thrd628e63c369854', 'u627754a082c47', 'Editted Thread', '{\"time\":1653919992441,\"blocks\":[{\"id\":\"GD-Q2boFVf\",\"type\":\"paragraph\",\"data\":{\"text\":\"Ito ang thread na inedit ko.\"}},{\"id\":\"YgOt53Qijh\",\"type\":\"paragraph\",\"data\":{\"text\":\"Thank you &lt;3\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\",\"lgbtq\",\"cos\"]}', 1, 'open', '2022-05-26', '01:13:39'),
 (33, 'thrd6294d8c4c9e4b', 'u627754a082c47', 'New Thread Wow ', '{\"time\":1653987520357,\"blocks\":[{\"id\":\"Whv56xWkax\",\"type\":\"paragraph\",\"data\":{\"text\":\"Latest Thread&nbsp;\"}},{\"id\":\"h5BQeSfBt0\",\"type\":\"paragraph\",\"data\":{\"text\":\"WOWOWOW Latest\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 0, 'declined', '2022-05-30', '22:46:28'),
-(35, 'thrd62986a5934109', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS', '{\"time\":1654155865196,\"blocks\":[{\"id\":\"bdSbLlsbH_\",\"type\":\"paragraph\",\"data\":{\"text\":\"\\\"Lupang Hinirang\\\", originally titled in Spanish as \\\"Marcha Nacional Filipina\\\" and commonly known by its incipit \\\"Bayang Magiliw\\\", is the national anthem of the Philippines. Its music was composed in 1898 by Julián Felipe, and the lyrics were adopted from the Spanish poem \\\"Filipinas\\\", written by José Palma in 1899.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"bullying\",\"cafa\",\"cie\",\"cit\",\"coe\"]}', 1, 'open', '2022-06-02', '15:44:25'),
-(36, 'thrd62986aed369f2', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 2', '{\"time\":1654156013212,\"blocks\":[{\"id\":\"YbNR3YN6EV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pilipinas Kong Mahal is one of the most popular patriotic songs in the Philippines. The song was composed by Filipino musician, Francisco Santiago and lyrics by Ildefonso Santos. The English text was written by Prescott Ford Jernegan.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\",\"general\",\"lgbtq\",\"library\"]}', 1, 'open', '2022-06-02', '15:46:53'),
-(37, 'thrd62986b338d7e0', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 3', '{\"time\":1654589778146,\"blocks\":[{\"id\":\"NTuvbj99z3\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa ugoy ng Duyan\"}},{\"id\":\"pfazDYMuf_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa Ugoy ng Duyan is a Filipino lullaby. The music was composed by Lucio San Pedro while the lyrics was written by Levi Celerio. Both of them were National Artists of the Philippines and this song was their most popular collaboration.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"missingitem\",\"vandalism\"]}', 1, 'open', '2022-06-02', '15:48:03');
+(35, 'thrd62986a5934109', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS', '{\"time\":1654155865196,\"blocks\":[{\"id\":\"bdSbLlsbH_\",\"type\":\"paragraph\",\"data\":{\"text\":\"\\\"Lupang Hinirang\\\", originally titled in Spanish as \\\"Marcha Nacional Filipina\\\" and commonly known by its incipit \\\"Bayang Magiliw\\\", is the national anthem of the Philippines. Its music was composed in 1898 by Julián Felipe, and the lyrics were adopted from the Spanish poem \\\"Filipinas\\\", written by José Palma in 1899.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"bullying\",\"cafa\",\"cie\",\"cit\",\"coe\"]}', 1, 'close', '2022-06-02', '15:44:25'),
+(36, 'thrd62986aed369f2', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 2', '{\"time\":1654156013212,\"blocks\":[{\"id\":\"YbNR3YN6EV\",\"type\":\"paragraph\",\"data\":{\"text\":\"Pilipinas Kong Mahal is one of the most popular patriotic songs in the Philippines. The song was composed by Filipino musician, Francisco Santiago and lyrics by Ildefonso Santos. The English text was written by Prescott Ford Jernegan.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\",\"general\",\"lgbtq\",\"library\"]}', 1, 'close', '2022-06-02', '15:46:53'),
+(37, 'thrd62986b338d7e0', 'u627754a082c47', 'Sample Thread Para Matest yung COLORS PART 3', '{\"time\":1654589778146,\"blocks\":[{\"id\":\"NTuvbj99z3\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa ugoy ng Duyan\"}},{\"id\":\"pfazDYMuf_\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sa Ugoy ng Duyan is a Filipino lullaby. The music was composed by Lucio San Pedro while the lyrics was written by Levi Celerio. Both of them were National Artists of the Philippines and this song was their most popular collaboration.&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"missingitem\",\"vandalism\"]}', 1, 'close', '2022-06-02', '15:48:03');
 INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `status`, `thread_status`, `date_posted`, `time_posted`) VALUES
 (38, 'thrd6298f42a3ec79', 'u6298f3dcd7288', 'bakit baliw si Francis Panaligan', '{\"time\":1654191399654,\"blocks\":[{\"id\":\"xo2AIP58AC\",\"type\":\"header\",\"data\":{\"text\":\"wasted nanaman ako mah gang gang\",\"level\":2}},{\"id\":\"7L-HwcYPsb\",\"type\":\"paragraph\",\"data\":{\"text\":\"baby baby u r my sun and moon u make my world starts collide\"}},{\"id\":\"kjJ1VCW7Es\",\"type\":\"paragraph\",\"data\":{\"text\":\"123&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-06-03', '01:32:26'),
 (39, 'thrd62a3716ba67f9', 'u62a36c251d916', 'BAKIT BASA ANG TUBIG?', '{\"time\":1654878592343,\"blocks\":[{\"id\":\"iH4q_i4SKM\",\"type\":\"paragraph\",\"data\":{\"text\":\"GUSTO KONG MAPAG ISA KASO WALA AKO KASAMA\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cie\",\"lgbtq\",\"cafa\"]}', 1, 'open', '2022-06-11', '00:29:31'),
@@ -317,7 +324,7 @@ INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, 
 (59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
 (61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
 (62, 'u627fe814b5bfd', 'Francis', 'Panaligan', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1231-12-03', 0, 'Manila', '', 'student', 0, ''),
-(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '../assets/images/avatar/u6298f3dcd7288.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 0, 'Manila', '', 'student', 0, NULL),
+(63, 'u6298f3dcd7288', 'David', 'Uy', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '../assets/images/avatar/u6298f3dcd7288.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 1, 'Manila', '', 'admin', 0, NULL),
 (64, 'u62a35ae88f320', 'ken', 'neth', 'francispanaligan54@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-16', 0, 'Manila', '', 'student', 0, NULL),
 (65, 'u62a35c5f031e9', 'francis', 'wow', 'fff@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-14', 0, 'Manila', '', 'student', 0, NULL),
 (66, 'u62a36c251d916', 'Fae', 'Roguel', 'r.matullano00@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '../assets/images/avatar/u62a36c251d916.png', '../assets/images/avatar/u62a36c251d916-cover.jpg', '2000-09-22', 0, 'Manila', 'BAKA AKO', 'student', 0, NULL),
@@ -338,7 +345,7 @@ INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, 
 (81, 'u62a6f9de393af', 'Amy', 'Nash', 'amy.nash@gmail.com', 'd909d4f34e7eb87cf0c72cecb98724c3', '../assets/images/avatar/u62a6f9de393af.jpg', 'assets/images/avatar/default-cover.jpg', '2003-07-11', 0, 'Manila', '', 'student', 0, NULL),
 (82, 'u62a6fa7cbb90f', 'Julian', 'Campbell', 'julian.campbell@gmail.com', '1437cb1c93b538285d005437686876be', '../assets/images/avatar/u62a6fa7cbb90f.jpeg', 'assets/images/avatar/default-cover.jpg', '1999-11-14', 0, 'Manila', '', 'student', 0, NULL),
 (83, 'u62a6fb2959999', 'Lilian', 'Welch', 'lilian.welch@gmail.com', '2ddf43d720658012a5b00deee185f350', '../assets/images/avatar/u62a6fb2959999.jpg', 'assets/images/avatar/default-cover.jpg', '2002-10-04', 0, 'Manila', '', 'student', 0, NULL),
-(84, 'u62a891ef10a26', 'Raymond', 'Matullano', 'raymond.matullano@tup.edu.ph', '6965855794ac95f891d8172059bd5cd5', '../assets/images/avatar/u62a891ef10a26.jpg', '../assets/images/avatar/u62a891ef10a26-cover.jpg', '2000-09-22', 0, 'Manila', 'Minsan Oo, Minsan Hindi', 'student', 0, NULL),
+(84, 'u62a891ef10a26', 'Raymond', 'Matullano', 'raymond.matullano@tup.edu.ph', '6965855794ac95f891d8172059bd5cd5', '../assets/images/avatar/u62a891ef10a26.jpg', '../assets/images/avatar/u62a891ef10a26-cover.jpg', '2000-09-22', 1, 'Manila', 'Minsan Oo, Minsan Hindi', 'admin', 0, NULL),
 (85, 'u62a892ac8a7a0', 'Christian', 'Pullman', 'christian.pullman@gmail.com', '7a519571b67279d9e76688779719cbcb', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1984-05-16', 0, 'Manila', '', 'student', 0, NULL),
 (86, 'u62a892fa11c6d', 'Donna', 'Simpson', 'donna.simpson@gmail.com', '25c594da40a5650bb9470a0d2122ddc0', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2003-06-07', 0, 'Manila', '', 'student', 0, NULL),
 (87, 'u62a89331858b2', 'Adam', 'Smith', 'adam.smith@gmail.com', '3e7b522b9756d2578d3a86d8f366be6e', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1998-04-29', 0, 'Manila', '', 'student', 0, NULL),
@@ -425,7 +432,7 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (67, 'C6298f45a3ff3b', 'u62a36c251d916', 'upvote'),
 (68, 'C6298f461a02f5', 'u62a36c251d916', 'upvote'),
 (69, 'C62a36fe333e38', 'u627754a082c47', 'downvote'),
-(70, 'C62a36fda88767', 'u627754a082c47', 'downvote'),
+(70, 'C62a36fda88767', 'u627754a082c47', 'upvote'),
 (71, 'C62a6f79d63e3d', 'u62a6eb986662e', 'downvote');
 
 --
@@ -502,7 +509,7 @@ ALTER TABLE `declined`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `save`

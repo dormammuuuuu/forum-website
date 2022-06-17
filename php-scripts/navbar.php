@@ -23,7 +23,10 @@
                     <li class="nav-links"><a href="superuser.php" target="_blank">SuperUser</a></li>
                 <?php } ?>
                 <li class="nav-links"><a href="home.php">Home</a></li>
-                <li class="nav-links"><a href="messages.php">Messages</a></li>
+                <li class="nav-links" id="nav-messages">
+                    <a href="messages.php">Messages</a>
+                    <div class="notification-message"></div>
+                </li>
                 <li class="nav-links"><a href="#">Saved</a></li>
                 <div class="notification">
                     <span>

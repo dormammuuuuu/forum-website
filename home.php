@@ -93,9 +93,24 @@
 
                 </div>
             </div>
-            <div class="francis">A</div>
+            <div class="status">
+                <div>
+                    <p class="status-label">Questions</p>
+                    <p class="status-num"><?php echo $questions ?></p>
+                </div>
+                <div>
+                    <p class="status-label">Answers</p>
+                    <p class="status-num"><?php echo $answers ?></p>
+                </div>
+                <div>
+                    <p class="status-label">Users</p>
+                    <p class="status-num"><?php echo $users ?></p>
+                </div>
+                <div class="lines"></div>
+                <div class="lines second"></div>
+            </div>
             <div class="cielo">B</div>
-            <div class="tags">C</div>
+            <div class="ramino">C</div>
         </div>
     </section>
     <script src="javascript/home.js"></script>

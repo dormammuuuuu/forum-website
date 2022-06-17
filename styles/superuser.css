@@ -6,12 +6,12 @@
 }
 
 .tup-gif {
-    background-image: url('../assets/images/TUP.gif');
-    min-height: 400px;
+    background-image: url(../assets/images/TUP.gif);
+    min-height: 500px;
     background-attachment: fixed;
-    background-position: top;
+    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 #dashboard {

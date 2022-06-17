@@ -3,6 +3,21 @@
     include('db.php');
     session_start();
 
+    $query = "SELECT COUNT(id) FROM threads WHERE thread_status NOT IN ('pending','declined')";
+    $result = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($result);
+    $questions = $data['COUNT(id)'];
+
+    $query = "SELECT COUNT(id) FROM comments";
+    $result = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($result);
+    $answers = $data['COUNT(id)'];
+
+    $query = "SELECT COUNT(id) FROM users";
+    $result = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($result);
+    $users = $data['COUNT(id)'];
+
     function fetchThreads($limit, $category){
         global $conn;
         $sql = "SELECT * FROM threads WHERE thread_status NOT IN ('pending','declined') AND tags LIKE '%".$category."%' ORDER BY id DESC LIMIT $limit, 10";
