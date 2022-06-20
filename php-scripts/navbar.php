@@ -27,7 +27,6 @@
                     <a href="messages.php">Messages</a>
                     <div class="notification-message"></div>
                 </li>
-                <li class="nav-links"><a href="#">Saved</a></li>
                 <div class="notification">
                     <span>
                         <i class='bx bxs-bell'></i>

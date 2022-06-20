@@ -28,7 +28,6 @@ $(function () {
             datatype: "json",
             success: function(response) {
                 let data = JSON.parse(response);
-                console.log(data);
                 let notification_message = data[0].message;
                 let notif_indicator = data[0].notification;
                 data.shift();
@@ -58,8 +57,6 @@ $(function () {
 
                 notif_message = notification_message;
                 notification_tmp = data;
-                console.log(notification_tmp);
-                console.log(notif_message);
             },
             error: function(data) {
                 console.log(data);
@@ -139,7 +136,6 @@ $(document).on("click", ".list-container", function(e){
 });
 
 function renderNotification(data) {
-    console.log(data);
     for (let i = 0; i < data.length; i++) {
         let timestamp = jQuery.timeago(data[i].timestamp);
         let notification_response;
