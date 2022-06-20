@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2022 at 09:07 PM
+-- Generation Time: Jun 20, 2022 at 02:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -78,7 +78,12 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (100, 'thrd62a6f1b73f27e', 'C62a6f82e76d05', 'u62a6eb986662e', '2022-06-13', '16:41:18', 'hala bat ka naman po ganyan? :(((\n', 0),
 (101, 'thrd62a6f1b73f27e', 'C62a7213d9e07b', 'u627754a082c47', '2022-06-13', '19:36:29', 'Test Comment', 0),
 (102, 'thrd62a8a1b5b5821', 'C62aa0ae72013a', 'u627754a082c47', '2022-06-16', '00:37:59', 'Si Ka.... nvmd', 0),
-(103, 'thrd62a6f98f69366', 'C62aa20446ad56', 'u627754a082c47', '2022-06-16', '02:09:08', 'Bakit walang sagot sa tanong kung bakit ka mahalaga?', 0);
+(103, 'thrd62a6f98f69366', 'C62aa20446ad56', 'u627754a082c47', '2022-06-16', '02:09:08', 'Bakit walang sagot sa tanong kung bakit ka mahalaga?', 0),
+(104, 'thrd628e63c369854', 'C62af0a178e8a1', 'u62a891ef10a26', '2022-06-19', '19:35:51', 'Idol ko si Francis Panaligan', 0),
+(105, 'thrd62af3ad7a51f8', 'C62af52d05592c', 'u6298f3dcd7288', '2022-06-20', '00:46:08', 'Di ako unggoy. Isa akong rare breed ni Godzilla', 0),
+(106, 'thrd62af3ad7a51f8', 'C62b058b5dc819', 'u62a891ef10a26', '2022-06-20', '19:23:33', 'Nice', 0),
+(107, 'thrd62a8a1b5b5821', 'C62b060ffb5323', 'u627754a082c47', '2022-06-20', '19:58:55', 'Edi wow', 0),
+(108, 'thrd62af3ad7a51f8', 'C62b066a568e51', 'u62a891ef10a26', '2022-06-20', '20:23:01', 'Test', 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +108,8 @@ INSERT INTO `declined` (`id`, `thread_id`, `message`) VALUES
 (4, '\' + threadID + \'', 'reason'),
 (5, '\' + threadID + \'', 'reason'),
 (6, '\' + threadID + \'', 'reason'),
-(7, 'thrd628e63c369854', 'Duplicate Thread');
+(7, 'thrd628e63c369854', 'Duplicate Thread'),
+(8, 'thrd62af468bdad93', 'Walang kwenta');
 
 -- --------------------------------------------------------
 
@@ -227,7 +233,49 @@ INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `
 (161, 'u62a891ef10a26', 'u627754a082c47', 'pansinin mo ko pls', '2022-06-17', '15:45:52', 1),
 (162, 'u62a891ef10a26', 'u627754a082c47', 'Oy', '2022-06-17', '15:46:08', 1),
 (163, 'u62a891ef10a26', 'u627754a082c47', 'Pre', '2022-06-17', '15:46:18', 1),
-(164, 'u627754a082c47', 'u62a891ef10a26', 'Pre', '2022-06-17', '15:48:26', 1);
+(164, 'u627754a082c47', 'u62a891ef10a26', 'Pre', '2022-06-17', '15:48:26', 1),
+(165, 'u62a891ef10a26', 'u627754a082c47', 'Jo', '2022-06-19', '00:57:03', 1),
+(166, 'u62a891ef10a26', 'u627754a082c47', 'Anjo', '2022-06-20', '19:22:59', 1),
+(167, 'u62a891ef10a26', 'u627754a082c47', 'Hoy', '2022-06-20', '19:42:29', 1),
+(168, 'u62a891ef10a26', 'u627754a082c47', 'Test', '2022-06-20', '19:45:38', 1),
+(169, 'u62a891ef10a26', 'u627754a082c47', 'Tol', '2022-06-20', '19:46:23', 1),
+(170, 'u62a891ef10a26', 'u627754a082c47', 'Pre', '2022-06-20', '19:46:33', 1),
+(171, 'u62a891ef10a26', 'u627754a082c47', 'pre', '2022-06-20', '19:47:09', 1),
+(172, 'u62a891ef10a26', 'u627754a082c47', 'OY', '2022-06-20', '19:47:17', 1),
+(173, 'u627754a082c47', 'u62a891ef10a26', 'uy', '2022-06-20', '19:50:54', 1),
+(174, 'u62a891ef10a26', 'u627754a082c47', 'Pre', '2022-06-20', '20:14:21', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `id` int(11) NOT NULL,
+  `thread_id` varchar(255) NOT NULL,
+  `target_user` varchar(255) NOT NULL,
+  `notif_author` varchar(255) NOT NULL,
+  `notification_type` varchar(50) NOT NULL,
+  `seen` tinyint(1) DEFAULT 0,
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `thread_id`, `target_user`, `notif_author`, `notification_type`, `seen`, `timestamp`) VALUES
+(1, 'thrd628138735a129', 'u627754a082c47', 'u627a6a0b58d37', 'respond', 1, '2022-06-19 00:52:10'),
+(2, 'thrd628138735a129', 'u627754a082c47', 'u6298f3dcd7288', 'respond', 1, '2022-06-19 03:03:57'),
+(3, 'thrd628e63c369854', 'u627754a082c47', 'u62a891ef10a26', 'respond', 1, '2022-06-19 19:35:51'),
+(4, 'thrd62af14f28a6ac', 'u627754a082c47', 'system', 'approve', 1, '2022-06-19 20:29:36'),
+(5, 'thrd62af3ad7a51f8', 'u627754a082c47', 'system', 'approve', 1, '2022-06-19 23:03:57'),
+(6, 'thrd62af468bdad93', 'u627754a082c47', 'system', 'declined', 1, '2022-06-20 00:44:08'),
+(7, 'thrd62af3ad7a51f8', 'u627754a082c47', 'u6298f3dcd7288', 'respond', 1, '2022-06-20 00:46:08'),
+(8, 'thrd62af3ad7a51f8', 'u627754a082c47', 'u62a891ef10a26', 'respond', 1, '2022-06-20 19:23:33'),
+(9, 'thrd62a8a1b5b5821', 'u62a891ef10a26', 'u627754a082c47', 'respond', 1, '2022-06-20 19:58:55'),
+(10, 'thrd62af3ad7a51f8', 'u627754a082c47', 'u62a891ef10a26', 'respond', 1, '2022-06-20 20:23:01');
 
 -- --------------------------------------------------------
 
@@ -289,7 +337,10 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 (40, 'thrd62a6f1b73f27e', 'u62a6eb986662e', 'Anong oras po ba yung open ng TUP - Manila???', '{\"time\":1655108022040,\"blocks\":[{\"id\":\"9CEkiIJDp6\",\"type\":\"paragraph\",\"data\":{\"text\":\"meron po ba sainyo na nakakaalam kung anong oras nag bubukas yung tup manila? need ko lang po kasi mag pa coc for requirements e, thank you poooo&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"registrar\",\"general\"]}', 1, 'open', '2022-06-13', '16:13:43'),
 (41, 'thrd62a6f85fa4a0d', 'u62a6eb46bc510', 'pares at mami ang masarap kainin ngayong hapon', '{\"time\":1655109726446,\"blocks\":[{\"id\":\"vzQsq43bws\",\"type\":\"paragraph\",\"data\":{\"text\":\"ako ay kakain ng pares/mami ngayon mainggit kayo mga hinamungkal\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\",\"event\"]}', 1, 'open', '2022-06-13', '16:42:07'),
 (42, 'thrd62a6f98f69366', 'u62a6f897e3940', 'Why matutulog?', '{\"time\":1655110034277,\"blocks\":[{\"id\":\"ZaoZ1_uJIN\",\"type\":\"paragraph\",\"data\":{\"text\":\"Why matutulog kung gigising din naman\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 1, 'open', '2022-06-13', '16:47:11'),
-(43, 'thrd62a8a1b5b5821', 'u62a891ef10a26', 'Gusto ko pa pero ayaw mo na :(', '{\"time\":1655218617730,\"blocks\":[{\"id\":\"5VPj1mFf17\",\"type\":\"paragraph\",\"data\":{\"text\":\"Isang round pa please -_-\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[]}', 1, 'open', '2022-06-14', '22:56:53');
+(43, 'thrd62a8a1b5b5821', 'u62a891ef10a26', 'Gusto ko pa pero ayaw mo na :(', '{\"time\":1655218617730,\"blocks\":[{\"id\":\"5VPj1mFf17\",\"type\":\"paragraph\",\"data\":{\"text\":\"Isang round pa please -_-\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[]}', 1, 'open', '2022-06-14', '22:56:53'),
+(46, 'thrd62af14f28a6ac', 'u627754a082c47', 'Sample Thread for Notification', '{\"time\":1655641330555,\"blocks\":[{\"id\":\"F49HrIaNKJ\",\"type\":\"paragraph\",\"data\":{\"text\":\"Ito ay sample thread\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cit\",\"coe\"]}', 1, 'open', '2022-06-19', '20:22:10'),
+(47, 'thrd62af3ad7a51f8', 'u627754a082c47', 'Kung papipiliin ka kung anong hayop ang kamukha mo, bakit unggoy?', '{\"time\":1655651031668,\"blocks\":[{\"id\":\"Ip49ya6dDU\",\"type\":\"paragraph\",\"data\":{\"text\":\"Curious lang po ako...\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 1, 'open', '2022-06-19', '23:03:51'),
+(48, 'thrd62af468bdad93', 'u627754a082c47', 'Ang thread na ito ay nakatadhana na madecline.', '{\"time\":1655654027888,\"blocks\":[{\"id\":\"AtX1CpDO7N\",\"type\":\"paragraph\",\"data\":{\"text\":\"Wala lang sample lang\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\"]}', 0, 'declined', '2022-06-19', '23:53:47');
 
 -- --------------------------------------------------------
 
@@ -458,6 +509,12 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `save`
 --
 ALTER TABLE `save`
@@ -497,19 +554,25 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `declined`
 --
 ALTER TABLE `declined`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+
+--
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `save`
@@ -521,7 +584,7 @@ ALTER TABLE `save`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -14,13 +14,13 @@
 
 .create-containers{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     margin: auto;
 }
 
 .create-containers > div{
-    margin: 10px;
+    margin: 0 10px;
     height: 100%;
 }
 
@@ -64,7 +64,8 @@
     width: 100%;
     background-color: var(--light);
     cursor: pointer;
-    margin: 10px;
+    margin: 0 10px;
+    margin-bottom: 10px;
     max-width: 25vw;
 }
 

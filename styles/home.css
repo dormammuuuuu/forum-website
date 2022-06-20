@@ -61,7 +61,6 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 100;
 }
 
 .second{
@@ -146,7 +145,7 @@
     justify-content: space-between;
 }
 
-.divider p, {
+.divider p {
     margin-right: 20px;
 }
 
@@ -341,6 +340,7 @@
     border: 1px solid var(--gray);
     background-color: transparent;
     margin-right:10px; 
+    margin-bottom: 20px;
 }
 
 .thread-author-details{

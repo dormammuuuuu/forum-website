@@ -177,8 +177,12 @@
 
     if(isset($_POST['approve'])){
         $approve = mysqli_real_escape_string($conn, $_POST['approve']);
+        $target_query = mysqli_query($conn, "SELECT author FROM threads WHERE thread_id = '$approve'");
+        $target = mysqli_fetch_array($target_query);
+        $target_uid = $target['author'];
         $query = mysqli_query($conn, "UPDATE `threads` SET `status` = 1, `thread_status` = 'open' WHERE thread_id = '$approve'");
         if ($query){
+            $query = mysqli_query($conn, "INSERT INTO `notification`(`thread_id`, `target_user`, `notif_author`, `notification_type`) VALUES ('$approve', '$target_uid','system','approve')");
             $response['message_console'] = "Complete";
         } else {
             $response['message_console'] = "Error";
@@ -341,6 +345,9 @@
         $data = mysqli_real_escape_string($conn,$_POST['declinethread']);
         $reason = mysqli_real_escape_string($conn,$_POST['reason']);
         $query = mysqli_query($conn, "SELECT * FROM declined WHERE thread_id = '$data'");
+        $user = mysqli_query($conn, "SELECT author FROM threads WHERE thread_id = '$data'");
+        $user = mysqli_fetch_assoc($user);
+        $user = $user['author'];
         if (mysqli_num_rows($query) > 0) {
             $query = mysqli_query($conn, "UPDATE `declined` SET `message` = 'reason' WHERE thread_id = '$data'");
             if ($query) {
@@ -353,6 +360,7 @@
             $result['type'] = "Error declining thread";
         }
         $query = mysqli_query($conn, "UPDATE `threads` SET `thread_status` = 'declined' WHERE thread_id = '$data'");
+        $query = mysqli_query($conn, "INSERT INTO `notification`(`thread_id`, `target_user`, `notif_author`, `notification_type`) VALUES ('$data', '$user','system','declined')");
         echo json_encode($result);
         mysqli_close($conn);
 

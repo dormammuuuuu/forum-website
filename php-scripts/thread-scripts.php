@@ -167,11 +167,11 @@
         $commentID = uniqid('C');
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_id = '$threadID'");
         $data = mysqli_fetch_assoc($query);
+        $targetAuthor = $data['author'];
 
         if ($data){
             if ($data['thread_status'] == "open"){
                 $query = mysqli_query($conn, "INSERT INTO `comments`(`thread_id`, `comment_id`, `comment_author`, `comment`) VALUES ('$threadID','$commentID','{$_SESSION['uid']}','$comment')");
-            
                 if ($query){
                     $query = mysqli_query($conn, "SELECT * FROM comments WHERE comment_id='$commentID'");
                     $data_comment = mysqli_fetch_array($query);
@@ -183,6 +183,10 @@
                             $family_name = $data['lastname'];
                             $avatar = $data['avatar'];
                         } 
+                        if ($_SESSION['uid'] !== $targetAuthor){
+                            $query = mysqli_query($conn, "INSERT INTO `notification`(`thread_id`, `target_user`, `notif_author`, `notification_type`) VALUES ('$threadID', '$targetAuthor','{$_SESSION['uid']}','respond')");
+                        }
+                        
                         echo '
                         <div class="main-comment">
                             <div class="author-comment">

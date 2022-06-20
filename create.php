@@ -66,31 +66,31 @@
                     <div class="guide-expanded">
                         <p>Summarize the problem</p>
                         <ul>
-                            <li>Include the details about your goal</li>
-                            <li>Describe expected and actual result</li>
-                            <li>Include any error messages</li>
+                            <li>Include the details about your thread</li>
+                            <li>Add important informations related to it</li>
+                            <li>Select appropriate tags.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="guide" data-number="2">
                     <div class="guide-card">
-                        <p class="guide-step">Step 2: Lorem Ipsum</p>
+                        <p class="guide-step">Step 2: Submit your thread</p>
                         <i class='dropdown-icon bx bx-chevron-down'></i>
                     </div>
                     <div class="guide-expanded">
-                        <p class="dropdown-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid aliquam veritatis dolor veniam dicta incidunt sequi, facere iusto, laborum ipsa mollitia quis optio et maiores laudantium beatae, ullam dignissimos.</p>
+                        <p class="dropdown-title">Administratos will check your thread for errors and if it is worth to be posted at the threads.</p>
                         
                     </div>
                 </div>
 
                 <div class="guide" data-number="3">
                     <div class="guide-card">
-                        <p class="guide-step">Step 3: Lorem Ipsum</p>
+                        <p class="guide-step">Step 3: Wait for the notification</p>
                         <i class='dropdown-icon bx bx-chevron-down'></i>
                     </div>
                     <div class="guide-expanded">
-                        <p class="dropdown-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis aliquid aliquam veritatis dolor veniam dicta incidunt sequi, facere iusto, laborum ipsa mollitia quis optio et maiores laudantium beatae, ullam dignissimos.</p>
+                        <p class="dropdown-title">You will be notified if your thread was accepted or not. If not, you may still update and resubmit it.</p>
                         
                     </div>
                 </div>

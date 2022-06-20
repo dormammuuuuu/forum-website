@@ -32,6 +32,15 @@
                     <span>
                         <i class='bx bxs-bell'></i>
                     </span>
+                    <div class="notification-indicator"></div>
+                    <div class="notification-dropdown">
+                        <div class="notification-header">
+                            <h1>Notifications</h1>
+                            <i class='bx bx-list-check' id="read-all" title="Mark all as read"></i>
+                        </div>
+                        <div class="notification-list">
+                        </div>
+                    </div>
                 </div>
                 <div class="dropdown">
                     <img class="user-avatar" src="<?php echo $result['avatar'] ?>">
