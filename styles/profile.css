@@ -1,28 +1,29 @@
 .main{
     margin-top: calc(50px + var(--navbar-height));
+    margin-bottom: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
     width: -moz-available;
 }
 
+body{
+    overflow-y: scroll;
+}
+
 .profile-container{
-    position: fixed;
+    position: relative;
     z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: auto;
     width: 100%;
     max-width: 60vw;
     height: -webkit-fill-available;
     width: -moz-available;
-    overflow-x: hidden;
-}
-
-.profile-container div{
-    border-radius: 10px;
+    overflow: hidden;
 }
 
 .profile-details{
     background-color: var(--light);
     position: relative;
+    border-radius: 7px;
     overflow: hidden;
 }
 
@@ -62,8 +63,10 @@
 }
 
 .profile-course{
+    font-style: italic;
     font-weight: 300;
     font-size: 15px;
+    margin: 10px 0;
 }
 
 .profile-campus{
@@ -99,6 +102,55 @@
     color: var(--secondary);
 }
 
+#profile-view{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 35px;
+}
+
+.panel{
+    flex-grow: 1;
+    height: 200px;
+} 
+
+.left{
+    margin-right: 20px;
+    min-height: 60vh;
+    height: fit-content;
+    max-width: 560px;
+}
+
+.right{
+    max-width: 350px;
+}
+
+.panel-detailed-view{
+    background-color: var(--dark-secondary);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.create-btn{
+    text-align: center;
+    cursor: pointer;
+    padding: 7px 0;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+}
+
+.create-btn:hover{
+    background-color: var(--secondary);
+    color: var(--dark-secondary);
+}
+
 .message-user i {
     margin-right: 5px;
     color: var(--secondary);
@@ -108,6 +160,222 @@
     color: var(--secondary);
 }
 
+.panel-menu{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--gray);
+    border-radius: none;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.panel-menu button{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+.panel-menu button:hover{
+    background: rgba(255,255,255,.2);
+}
+
+.panel-menu button.active{
+    font-weight: 600;
+    color: var(--secondary);
+    background-color: rgba(255, 126, 126, 0.1);
+}
+
+#panel-content{
+    height: 100%;
+}
+
+.no-thread{
+    display: flex;
+    height: -webkit-fill-available;
+    height: -moz-available;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-thread p{
+    font-size: 13px;
+    color: var(--gray-lighter);
+}
+
+.thread-content {
+    background-color: white;
+    border-radius: 7px;
+    max-width: 560px;
+    padding: 1em;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.thread-thread-title h1 {
+    color: var(--gray-dark);
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.thread-author {
+    display: flex;
+    align-items: center;
+}
+
+.thread-thread-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.thread-details {
+    margin: 0 20px;
+}
+
+.thread-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.thread-user-type {
+    font-size: 10px;
+    padding: 4px 10px;
+    margin: 0 10px;
+    border-radius: 15px;
+    border: 1px solid var(--gray-dark);
+    color: var(--gray-dark);
+}
+
+.thread-name {
+    color: var(--gray-dark);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.thread-date-published {
+    color: var(--gray-dark);
+    font-size: 10px;
+}
+
+.thread-main-threads {
+    color: var(--gray-dark);
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.thread-main-threads ol, .thread-main-threads ul {
+    padding: 1em 0;
+    padding-left: 2em;
+}
+
+.thread-buttons{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.thread-save, .thread-add-response{
+    height: 20px;
+    width: fit-content;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background-color: var(--gray-light);
+    margin-right: 10px;
+    color: gray;
+}
+
+.thread-add-response{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.thread-add-response i,  .thread-save i{
+    color: gray;
+    font-size: 15px;
+}
+
+.thread-add-response i{
+    margin-right: 10px;
+}
+
+.pending-thread{
+    margin-top: 15px;
+}
+
+.pending-thread p{
+    font-size: 12px;
+    color: var(--gray-lighter);
+
+}
+
+.closed i {
+    color: rgb(130, 230, 97)!important;
+}
+
+.closed {
+    border: 1px solid rgb(130, 230, 97)!important;
+}
+
+.closed p{
+    color: rgb(130, 230, 97)!important;
+}
+
+.open i {
+    color: rgba(255, 255, 255, 0.65)!important;
+}
+
+.open {
+    border: 1px solid rgba(255, 255, 255, 0.65)!important;
+}
+
+.open p{
+    color: rgba(255, 255, 255, 0.65)!important;
+}
+
+.saved{
+    background-color: #F94144!important;
+}
+
+.saved i {
+    color: white!important;
+}
+
+.declined-thread{
+    margin-top: 15px;
+}
+
+.declined-thread p{
+    font-size: 13px;
+    color:#F94144;
+}
+
+.declined-thread button{
+    margin: 10px 0;
+    margin-right: 5px;
+    padding: 0.5em 1em 0.5em 1em;
+    color: var(--light);
+    transition: .5s;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+.declined-thread button:hover{
+    color: var(--primary);
+    background-color: var(--gray-dark);
+    border-radius: 5px;
+}
+
 @media (prefers-color-scheme: dark){
     .profile-details{
         background-color: var(--dark-secondary);
@@ -115,5 +383,29 @@
 
     .profile-avatar{
         border: 8px solid var(--dark-secondary);
+    }
+
+    .thread-save, .thread-add-response{
+        background-color: var(--gray);
+    }
+
+    .thread-add-response i,  .thread-save i{
+        color: gray;
+    }
+
+    .thread-thread-title h1,
+    .thread-user-type,
+    .thread-name,
+    .thread-date-published,
+    .thread-main-threads {
+        color: var(--light);
+    }
+
+    .thread-user-type {
+        border: 1px solid var(--light);
+    }
+
+    .thread-content {
+        background-color: var(--dark-secondary);
     }
 }

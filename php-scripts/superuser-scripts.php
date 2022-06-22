@@ -83,19 +83,22 @@
         $query = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'pending' LIMIT 0,10");
         $result = mysqli_fetch_assoc($query);
 
-        do {
-            $userdata = getUserData($result['author']);
-            $json_response[] = array(
-                'title' => $result['title'], 
-                'firstname' => $userdata['firstname'],
-                'lastname' => $userdata['lastname'],
-                'avatar' => $userdata['avatar'],
-                'thread_id' => $result['thread_id'], 
-                'body' => $result['body'], 
-                'date' => $result['date_posted'], 
-                'time' => $result['time_posted']
-            );
-        } while ($result = mysqli_fetch_assoc($query));
+        if (!empty($result)){
+            do {
+                $userdata = getUserData($result['author']);
+                $json_response[] = array(
+                    'title' => $result['title'], 
+                    'firstname' => $userdata['firstname'],
+                    'lastname' => $userdata['lastname'],
+                    'avatar' => $userdata['avatar'],
+                    'thread_id' => $result['thread_id'], 
+                    'body' => $result['body'], 
+                    'date' => $result['date_posted'], 
+                    'time' => $result['time_posted']
+                );
+            } while ($result = mysqli_fetch_assoc($query));
+        }
+        
 
         echo json_encode($json_response);
         mysqli_close($conn);

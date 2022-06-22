@@ -50,7 +50,8 @@
     grid-area: francis;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-evenly;
+    background-color: var(--dark-secondary);
 }
 
 .lines{
@@ -72,7 +73,7 @@
     text-align: center;
     padding: 20px 0;
     flex-grow: 1;
-    background-color: var(--dark-secondary);
+    max-width: 135px;
 }
 
 .status-num{

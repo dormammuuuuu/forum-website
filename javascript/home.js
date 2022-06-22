@@ -73,8 +73,12 @@ $(document).on("click", "#load-more", (function () {
         },
         dataType: "html",
         success: function (response) {
-            $('.threads-container').append(response);
-            $('.threads-container').append('<button id="load-more">Load More</button>');
+            if (response.length === 0){
+                loadmore_btn.remove();
+            } else {
+                $('.threads-container').append(response);
+                $('.threads-container').append('<button id="load-more">Load More</button>');
+            }
         },
         error: function (request, status, error) {
             console.log(request.responseText);

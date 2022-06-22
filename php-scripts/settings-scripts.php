@@ -3,6 +3,10 @@
     include('db.php');
 
     session_start();
+
+    if(!isset($_SESSION['uid'])){
+        header('Location: login.php');
+    }
     
     if (isset($_POST['fetch_data'])) {
         $uid = $_SESSION['uid'];

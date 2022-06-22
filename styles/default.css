@@ -30,8 +30,14 @@
 
 html,body{
     scroll-behavior: smooth;
-    overflow-y: hidden;
+    overflow: hidden;
     background: #cecece;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main{
+    height: max-content;
 }
 
 ::-webkit-scrollbar-track{

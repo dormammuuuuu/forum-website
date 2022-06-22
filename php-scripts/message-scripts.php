@@ -61,6 +61,10 @@
         return $final;
     }
 
+    if(!isset($_SESSION['uid'])){
+        header('Location: login.php');
+    }
+
     if(isset($_POST['fetchconversation'])){
         $conversation = mysqli_real_escape_string($conn, $_POST['fetchconversation']);
         $query = mysqli_query($conn, "UPDATE messages SET seen = '1' WHERE sender = '$conversation' AND receiver = '{$_SESSION['uid']}' ");
@@ -98,7 +102,7 @@
     if(isset($_POST['searchuser'])){
         $json_array = array();
         $searchterm = mysqli_real_escape_string($conn, $_POST['searchuser']);
-        $sql = "SELECT * FROM users WHERE firstname LIKE '%".$searchterm."%' or lastname LIKE '%".$searchterm."%'";
+        $sql = "SELECT * FROM users WHERE CONCAT(firstname, ' ', lastname) LIKE '%".$searchterm."%'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
         

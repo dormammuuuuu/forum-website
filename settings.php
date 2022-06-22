@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/settings.css">
     <link rel="stylesheet" href="styles/loader.css">
     <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/jquery.timeago.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>

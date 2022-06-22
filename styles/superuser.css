@@ -471,6 +471,15 @@ select::-ms-expand {
     margin: auto;
 }
 
+.no-pending{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: var(--gray-lighter);
+}
+
 @media(prefers-color-scheme: dark) {
 
     .pending-container,

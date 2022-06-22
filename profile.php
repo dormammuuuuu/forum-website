@@ -14,6 +14,7 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="javascript/jquery-3.6.0.js"></script>
     <script src="javascript/jquery.timeago.js"></script>
+    <script src="javascript/editorjsToHTML.js"></script>
 </head>
 <body>
     
@@ -34,15 +35,43 @@
                         </div>
                         <p class="profile-campus">Technological University of the Philippines - <?php echo $data['campus'] ?></p>
                         <p class="profile-course"><?php echo $data['bio'] ?></p>
-                        <div class="message-user">
-                            <i class='bx bxs-message-square-dots'></i>
-                            <p>Message</p>
-                        </div>
+                        <?php if ($_SESSION['uid'] !== $_GET['view']) {?>
+                            <div class="message-user">
+                                <i class='bx bxs-message-square-dots'></i>
+                                <p>Message</p>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div id="profile-view">
+                <div class="panel left">
+                    <div class="panel-menu">
+                        <button data-btn="all">All threads</button>
+                        <?php if ($_SESSION['uid'] === $_GET['view']) {?>
+                            <button data-btn="saved">Saved threads</button>
+                            <button data-btn="pending">Pending threads</button>
+                            <button data-btn="declined">Declined threads</button>
+                        <?php } ?>
+                    </div>
+                    <div id="panel-content">
+                    </div>
+                </div>
+                
+                <div class="panel right">
+                    <div class="create-btn" href="create.php">Start a new thread</div>
+                    <div class="panel-detailed-view">
+                        <h1>User Summary</h1>
+                        <p>Threads: 0</p>
+                        <p>Comments: 0</p>
+                        <p>Votes: 0</p>
                     </div>
                 </div>
             </div>
         </div>
+       
     </section>
+
     <script src="javascript/profile.js"></script>
 </body>
 </html>

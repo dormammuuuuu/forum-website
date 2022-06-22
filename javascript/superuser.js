@@ -18,7 +18,7 @@ $(function () {
             }
         });
     }, 1000);
-    $('#pending-button').click();
+    $('#all-button').click();
 });
 
 function renderThreads(json_response, index, filter) {
@@ -140,14 +140,18 @@ $('#pending-button').click(function () {
             $(".loader-superuser").show();
         },
         success: function (response) {
-            for (let index = 0; index < response.length; index++) {
-                let layout = renderThreads(response, index, 0);
-                $('.pending-threads').append(layout);    
-            }
-            if (loadbutton.length == 0){
-                $('.pending-container').append('<button data-num="0" id="load-more-button">Load more</button>');
+            if (response.length === 0){
+                $('.pending-threads').append('<div class="no-pending">No pending threads</div>');
             } else {
-                $('#load-more-button').attr('data-num', 0);
+                for (let index = 0; index < response.length; index++) {
+                    let layout = renderThreads(response, index, 0);
+                    $('.pending-threads').append(layout);    
+                }
+                if (loadbutton.length == 0){
+                    $('.pending-container').append('<button data-num="0" id="load-more-button">Load more</button>');
+                } else {
+                    $('#load-more-button').attr('data-num', 0);
+                }
             }
         },
         complete:function(data){

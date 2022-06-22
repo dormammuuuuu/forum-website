@@ -67,18 +67,7 @@
                 <div class="container">
                     <div class="pending-container">
                         <h1 class="pending-title">Pending Threads</h1>
-                        <!-- <div class="pending-nav">
-                            <ul id="pending-cate">
-                               <li>COS</li>
-                               <li>CIE</li>
-                               <li>COE</li>
-                               <li>CAFA</li>
-                               <li>CLA</li>
-                               <li>CIT</li>
-                            </ul>
-                            </div> -->
                         <div class="pending-threads">
-                            <?php ?>
                         </div>
                     </div>
                 </div>

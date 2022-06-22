@@ -93,6 +93,7 @@
 
                 </div>
             </div>
+
             <div class="status">
                 <div>
                     <p class="status-label">Questions</p>
@@ -106,8 +107,8 @@
                     <p class="status-label">Users</p>
                     <p class="status-num"><?php echo $users ?></p>
                 </div>
-                <div class="lines"></div>
-                <div class="lines second"></div>
+                <span class="lines"></span>
+                <span class="lines second"></span>
             </div>
             <div class="cielo">B</div>
             <div class="ramino">C</div>
