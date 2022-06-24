@@ -6,6 +6,53 @@ const no_thread = `
     </div>
 `;
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function renderTags(tags){
+        let tmp = JSON.parse(tags);
+        let layout = ``;
+        let out_tag;
+        for (let index = 0; index < tmp.selected.length; index++) {
+            switch (tmp.selected[index]) {
+                case 'cos':
+                    out_tag = "COS";
+                    break;
+                case 'coe':
+                    out_tag = "COE";
+                    break;
+                case 'cafa':
+                    out_tag = "CAFA";
+                    break;
+                case 'cie':
+                    out_tag = "CIE";
+                    break;
+                case 'cit':
+                    out_tag = "CIT";
+                    break; 
+                case 'lgbtq':
+                    out_tag = "LGBTQ+";
+                    break;
+                case 'missingitem':
+                    out_tag = "Missing Item";
+                    break;      
+                default:
+                    out_tag = capitalizeFirstLetter(tmp.selected[index]);
+                    break;
+            }
+            layout += `<span class="tag">${out_tag}</span>`;
+        }
+        return layout;
+/*
+        foreach(tags as $key => $value){
+            for($i = 0; $i < count($value); $i++){
+                $class = $value[$i];
+                
+            }
+        }*/
+}
+
 function renderThreads(data, btn) {
     const edjsParser = edjsHTML();
     let body_data = edjsParser.parse(JSON.parse(data.body));
@@ -16,6 +63,7 @@ function renderThreads(data, btn) {
     let statusClass = (data.status === "open") ? "open" : "closed";
     let statusIcon = (data.status === "open") ? "bxs-message-square-add" : "bxs-message-square-x";
     let statusText = (data.status === "open") ? "Open for discussion" : "Thread Closed";
+    let tags_layout = renderTags(data.tags);
     let layout = `
         <div class="thread-content" data-thread="${data.thread_id}" >
             <div class="thread-thread-title">
@@ -33,8 +81,11 @@ function renderThreads(data, btn) {
             </div>
             <div class="thread-content-text">
                 <div class="thread-main-threads">${final_body}</div>
-            </div>`;
-            
+            </div>
+            <div class="tags-container">
+                <p>Tags: ${tags_layout}</p>
+            </div>
+            `;
             if (btn !== 'pending' && btn !== 'declined'){
                 layout += `
                 <div class="thread-buttons">
@@ -50,17 +101,18 @@ function renderThreads(data, btn) {
             } else if (btn === 'pending'){
                 layout += `
                 
-                <div class="pending-thread">
+                <div class="pending-thread" data-declined="${data.thread_id}">
                     <p>Waiting for admin approval...</p>
+                    <button class="cancel-thread">Cancel</button>
                 </div>
                 `;
             } else {
                 layout += `
                 <div class="declined-thread">
                     <p>Reason for decline: ${data.reason}</p>
-                    <div>
-                        <button>Edit and Submit</button>
-                        <button>Cancel</button>
+                    <div data-declined="${data.thread_id}">
+                        <button class="declined-edit">Edit and Submit</button>
+                        <button class="cancel-thread">Cancel</button>
                     </div>
                 </div>
                 `;
@@ -78,11 +130,16 @@ $(function () {
         return decodeURI(results[1]) || 0;
     }
     user_profileID = $.urlParam('view');
-    $('[data-btn="declined"]').click();
+    $('[data-btn="all"]').click();
 });
 
 $(document).on("click", ".message-user", function () {
     window.open("/messages.php?id=" + user_profileID, "_blank");
+});
+
+$(document).on("click", ".person", function () {
+    let user = $(this).data("user");
+    window.open("/profile.php?view=" + user, "_blank");
 });
 
 $(document).on("click", ".panel-menu button", function(){
@@ -151,4 +208,34 @@ $(document).on("click", ".thread-save", (function (e) {
 $('.create-btn').on("click", function () {
     location.href = "create.php";
 });
+
+$(document).on("click", ".declined-edit", (function (e) {
+    e.stopPropagation();
+    let thread_id = $(this).parent().data('declined');
+    location.href = "edit.php?id=" + thread_id;
+}));
+
+$(document).on("click", ".cancel-thread", (function (e) {
+    e.stopPropagation();
+    let thread_id = $(this).parent().data('declined');    
+    $.ajax({
+        type: "post",
+        url: "../php-scripts/profile-scripts.php",
+        data: {
+            cancel: thread_id
+        },
+        dataType: "json",
+        success: function (response) {
+            console.log(response)
+            if (response.statusCode == 200){
+                location.reload();
+            }
+        },
+        error: function (error) {
+            console.log(error.responseText);
+        }
+    });
+}));
+
+
 

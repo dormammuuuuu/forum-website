@@ -77,7 +77,7 @@
                     
                     echo'
                     </div>
-                    <p id="main-answer"> '.$data_comment['comment'].'</p>
+                    <p class="main-answer"> '.$data_comment['comment'].'</p>
                     <div class="response" data-comment="'.$data_comment['comment_id'].'">';
                         
                         if(isset($_SESSION['uid'])){
@@ -93,6 +93,9 @@
                         }
 
                         echo'
+                        <div class="report-button">
+                            <i class="bx bx-flag"></i><span>Report</span>
+                        </div>
                         <div class="vote-button" data-vote="upvote">
                            <i data-icon="u'.$data_comment['comment_id'].'" class="'.$upvote_class.'"></i><span class="comment-upvote">'.$upvotes.'</span>
                         </div>
@@ -201,7 +204,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p id="main-answer"> '.$comment.'</p>
+                            <p class="main-answer"> '.$comment.'</p>
                             <div class="response" data-comment="'.$data_comment['comment_id'].'">
                                 <div class="vote-button" data-vote="upvote">
                                 <i data-icon="u'.$data_comment['comment_id'].'" class="bx bx-like"></i><span class="comment-upvote">0</span>
@@ -294,6 +297,10 @@
     if(isset($_POST['delete'])){
         $deleteID = mysqli_real_escape_string($conn, $_POST['delete']);
         $query = mysqli_query($conn, "DELETE FROM `threads` WHERE thread_id='$deleteID'");
+        $query = mysqli_query($conn, "DELETE FROM `threads` WHERE thread_id='$deleteID'");
+        $query = mysqli_query($conn, "DELETE FROM `comments` WHERE thread_id='$deleteID'");
+        $query = mysqli_query($conn, "DELETE FROM `save` WHERE thread_id='$deleteID'");
+        $query = mysqli_query($conn, "DELETE FROM `notification` WHERE thread_id='$deleteID'");
         if ($query){
             $result_json['statusCode'] = 200;
         } else {

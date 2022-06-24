@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/choices.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <script src="javascript/jquery-3.6.0.js"></script>
+    <script src="javascript/jquery.timeago.js"></script>
     <script src="javascript/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@2.6.2/dist/bundle.min.js"></script>

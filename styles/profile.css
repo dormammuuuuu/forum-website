@@ -104,14 +104,13 @@ body{
 
 #profile-view{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     margin-top: 35px;
 }
 
 .panel{
     flex-grow: 1;
-    height: 200px;
 } 
 
 .left{
@@ -126,15 +125,20 @@ body{
 }
 
 .panel-detailed-view{
+    border-radius: 5px ;
     background-color: var(--dark-secondary);
     padding: 20px;
     margin-top: 20px;
 }
 
+.panel-detailed-view p{
+    font-size: 13px;
+}
+
 .create-btn{
     text-align: center;
     cursor: pointer;
-    padding: 7px 0;
+    padding: 9px 0;
     width: -webkit-fill-available;
     width: -moz-available;
     text-decoration: none;
@@ -144,6 +148,12 @@ body{
     background-color: transparent;
     border: 1px solid var(--secondary);
     color: var(--secondary);
+}
+
+.right-heading{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .create-btn:hover{
@@ -358,7 +368,7 @@ body{
     color:#F94144;
 }
 
-.declined-thread button{
+.declined-thread button, .cancel-thread{
     margin: 10px 0;
     margin-right: 5px;
     padding: 0.5em 1em 0.5em 1em;
@@ -370,10 +380,62 @@ body{
     cursor: pointer;
 }
 
-.declined-thread button:hover{
+.declined-thread button:hover, .cancel-thread:hover{
     color: var(--primary);
     background-color: var(--gray-dark);
     border-radius: 5px;
+}
+
+.tags-container{
+    margin: 15px 0;
+}
+
+.tags-container p{
+    font-size: 12px;
+}
+
+.tag{
+    font-size: 12px;
+    font-style: italic;
+    color: var(--gray-lighter);
+    margin-right: 5px;
+}
+
+.panel-people{
+    border-radius: 5px ;
+    margin-top: 20px;
+    background-color: var(--dark-secondary);
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--gray);
+    padding: 20px;
+}
+
+.person{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px ;
+}
+
+.person:hover{
+    background-color: rgba(255, 126, 126, 0.1);
+}
+
+.person img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 15px;
+}
+
+.person-campus{
+    font-size: 12px;
+    color: var(--gray-lighter);
 }
 
 @media (prefers-color-scheme: dark){

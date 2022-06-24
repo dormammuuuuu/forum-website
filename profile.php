@@ -59,12 +59,31 @@
                 </div>
                 
                 <div class="panel right">
-                    <div class="create-btn" href="create.php">Start a new thread</div>
+                    <?php if ($_SESSION['uid'] === $_GET['view']) {?>
+                        <div class="create-btn" href="create.php">Start a new thread</div>
+                    <?php } ?>
                     <div class="panel-detailed-view">
-                        <h1>User Summary</h1>
-                        <p>Threads: 0</p>
-                        <p>Comments: 0</p>
-                        <p>Votes: 0</p>
+                        <h3 class="right-heading">User Summary</h3>
+                        <p>Threads: <?php echo $threads ?></p>
+                        <p>Comments: <?php echo $comments ?></p>
+                        <p>Votes: <?php echo $saves ?></p>
+                    </div>
+                    <div class="panel-people">
+                        <h3 class="right-heading">People you might know</h3>
+                        <?php 
+                            $people = mysqli_query($conn, "SELECT * FROM users WHERE uid != '$_SESSION[uid]' ORDER BY RAND() LIMIT 5");
+                            while ($person = $people->fetch_assoc()) {
+                                echo '
+                                    <div class="person" data-user="'. $person['uid'] .'">
+                                        <img src="' . $person['avatar'] . '" alt="">
+                                        <div>
+                                            <p>' . $person['firstname'] . ' ' . $person['lastname'] . '</p>
+                                            <p class="person-campus">TUP - ' . $person['campus'] . '</p>
+                                        </div>
+
+                                    </div>';
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 .main{
-    margin: 0 2%;
+    margin: 0 auto;
     margin-top: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;
     width: -moz-available;
@@ -13,7 +13,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 80vw;
+    max-width: 70vw;
     width: 100%;
 }
 
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    width: 60vw;
+    width: 50vw;
 }
 
 .container-1 {
@@ -57,6 +57,8 @@
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .tags{
@@ -205,7 +207,7 @@
 }
 
 .main-comment{
-    padding: 2em;
+    padding: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -253,7 +255,7 @@
     margin-top: 15px;
 }
 
-.vote-button, .correct-button{
+.vote-button, .correct-button, .report-button{
     padding: 10px 15px;
     margin: 0 5px;
     display: flex;
@@ -271,11 +273,11 @@
     background-color: rgba(255,0,0,.1)!important;
 }
 
-.vote-button:hover, .correct-button:hover{
+.vote-button:hover, .correct-button:hover , .report-button:hover{
     background-color: rgba(0, 0, 0, .3);
 }
 
-.vote-button span, .correct-button span{
+.vote-button span, .correct-button span, .report-button span{
     font-size: 10px;
     color: var(--gray-lighter);
     margin: 0 5px;
@@ -351,6 +353,57 @@ footer p{
     border: 1px solid red;
     padding: 10px;
     font-size: 13px;
+}
+
+
+#report-modal{
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: -webkit-fill-available;
+    width: -moz-available;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.modal-content{
+    background-color: var(--gray);
+    width: fit-content;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.report-select{
+    background: var(--gray);
+    padding: 7px 13px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.report-comment{
+    background: var(--primary);
+    padding: 7px 13px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.report:hover{
+    background: var(--primary-dark);
 }
 
 @media (prefers-color-scheme: dark){

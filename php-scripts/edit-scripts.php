@@ -31,12 +31,7 @@
                 'tags' => $thread_id['tags'],
                 'author' => $thread_id['author']
             );
-        } else {
-            
-        }
-        //create an array
-        
-
+        } 
         //sending json string through ajax and encoding array to json string and
         echo json_encode($thread_data);
         mysqli_close($conn);
@@ -50,7 +45,13 @@
         $thread_id = $_POST['editID'];
         $author = $_SESSION['uid'];
 
-        $sql = "UPDATE `threads` SET `title` = '$title', `body` = '$body', `tags` = '$tags' WHERE `thread_id` = '$thread_id'";
+        //Check declined threads
+        $query = mysqli_query($conn, "SELECT thread_id FROM `declined` WHERE `thread_id` = '$thread_id'");
+        if (mysqli_num_rows($query) > 0){
+            $query = mysqli_query($conn, "DELETE FROM `declined` WHERE `thread_id` = '$thread_id'");
+        }
+
+        $sql = "UPDATE `threads` SET `title` = '$title', `body` = '$body', `tags` = '$tags', thread_status = 'pending' WHERE `thread_id` = '$thread_id'";
         $query = mysqli_query($conn, $sql);
         if($query){
             $response['status'] = "success";

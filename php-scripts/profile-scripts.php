@@ -32,6 +32,19 @@
         $id = mysqli_real_escape_string($conn, $_GET['view']);
         $query = mysqli_query($conn, "SELECT * FROM users WHERE uid='$id'");
         $data = mysqli_fetch_array($query);
+
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM threads WHERE author='$id' AND thread_status NOT IN ('declined', 'pending')");
+        $data2 = mysqli_fetch_assoc($query);
+        $threads = $data2['COUNT(id)'];
+
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM comments WHERE comment_author='$id'");
+        $data2 = mysqli_fetch_assoc($query);
+        $comments = $data2['COUNT(id)'];
+
+        $query = mysqli_query($conn, "SELECT COUNT(id) FROM save WHERE uid='$id'");
+        $data2 = mysqli_fetch_assoc($query);
+        $saves = $data2['COUNT(id)'];
+
         mysqli_close($conn);
     }
 
@@ -42,16 +55,16 @@
 
         switch($thread){
             case 'all':
-                $status = "SELECT title, body, date_posted, time_posted, author, thread_id, thread_status FROM threads WHERE thread_status IN ('open', 'close') AND author = '{$userprofile}' ORDER BY id DESC LIMIT 0,10";
+                $status = "SELECT title, body, date_posted, time_posted, author, tags, thread_id, thread_status FROM threads WHERE thread_status IN ('open', 'close') AND author = '{$userprofile}' ORDER BY id DESC LIMIT 0,10";
                 break;
             case 'saved':
-                $status = "SELECT title, body, date_posted, time_posted, author, thread_id, thread_status FROM threads WHERE thread_status IN ('open', 'close') AND thread_id IN (SELECT thread_id FROM save WHERE uid = '{$userprofile}') ORDER BY id DESC LIMIT 0,10";
+                $status = "SELECT title, body, date_posted, time_posted, author, tags, thread_id, thread_status FROM threads WHERE thread_status IN ('open', 'close') AND thread_id IN (SELECT thread_id FROM save WHERE uid = '{$userprofile}') ORDER BY id DESC LIMIT 0,10";
                 break;
             case 'pending':
-                $status = "SELECT title, body, date_posted, time_posted, author, thread_id, thread_status FROM threads WHERE thread_status = 'pending' AND author = '{$_SESSION['uid']}' ORDER BY id DESC LIMIT 0,10";
+                $status = "SELECT title, body, date_posted, time_posted, author, tags, thread_id, thread_status FROM threads WHERE thread_status = 'pending' AND author = '{$_SESSION['uid']}' ORDER BY id DESC LIMIT 0,10";
                 break;
             case 'declined':
-                $status = "SELECT title, body, date_posted, time_posted, author, thread_id, thread_status FROM threads WHERE thread_status = 'declined' AND author = '{$_SESSION['uid']}' ORDER BY id DESC LIMIT 0,10";
+                $status = "SELECT title, body, date_posted, time_posted, author, tags, thread_id, thread_status FROM threads WHERE thread_status = 'declined' AND author = '{$_SESSION['uid']}' ORDER BY id DESC LIMIT 0,10";
                 break;
         }
 
@@ -71,6 +84,7 @@
                     'type' => $userdata['user_type'],
                     'thread_id' => $result['thread_id'], 
                     'body' => $result['body'], 
+                    'tags' => $result['tags'], 
                     'date' => $result['date_posted'], 
                     'time' => $result['time_posted'],
                     'saved' => $saved,
@@ -96,6 +110,20 @@
             $result_json['statusCode'] = 202;
             $result_json['message'] = "Removed to Saved";
         }
+        echo json_encode($result_json);
+        mysqli_close($conn);
+    }
+
+    //cancel thread
+    if(isset($_POST['cancel'])){
+        $cancel = mysqli_real_escape_string($conn, $_POST['cancel']);
+        
+        $sql = mysqli_query($conn, "DELETE FROM `threads` WHERE thread_id='$cancel'");
+        $sql = mysqli_query($conn, "DELETE FROM `comments` WHERE thread_id='$cancel'");
+        $sql = mysqli_query($conn, "DELETE FROM `save` WHERE thread_id='$cancel'");
+        $sql = mysqli_query($conn, "DELETE FROM `notification` WHERE thread_id='$cancel'");
+        $result_json['statusCode'] = 200;
+        $result_json['message'] = "Thread Cancelled";
         echo json_encode($result_json);
         mysqli_close($conn);
     }

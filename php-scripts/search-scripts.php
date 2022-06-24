@@ -51,7 +51,7 @@
     if(isset($_POST['threads'])){
         $json_response = array();
         $search = mysqli_real_escape_string($conn, $_POST['threads']);
-        $query = "SELECT * FROM threads WHERE title LIKE '%".$search."%'";
+        $query = "SELECT * FROM threads WHERE thread_status NOT IN ('declined', 'pending') AND title LIKE '%".$search."%'";
         $result = mysqli_query($conn, $query);
         $resultCheck = mysqli_num_rows($result);
         if($resultCheck > 0){

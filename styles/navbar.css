@@ -149,6 +149,8 @@ nav div{
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
+    object-fit: cover;
+    object-position: center;
 }
 
 .active{

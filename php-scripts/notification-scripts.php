@@ -7,7 +7,7 @@
         global $conn;
         $query = mysqli_query($conn, "SELECT title FROM threads WHERE thread_id = '$tid'");
         $row = mysqli_fetch_assoc($query);
-        $out['title'] = $row['title'];
+        $out = $row['title'];
         return $out;
     }
 
@@ -47,7 +47,7 @@
             $user = fetchUserData($data['notif_author']);
             $json_response[] = array(
                 'type' => $data['notification_type'],
-                'thread_title' => $thread['title'],
+                'thread_title' => $thread,
                 'fullname' => $user['fullname'],
                 'avatar' => $user['avatar'],
                 'timestamp' => $data['timestamp'],
