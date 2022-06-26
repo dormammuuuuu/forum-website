@@ -6,7 +6,7 @@ nav{
     height: var(--navbar-height);
     display: flex;
     align-items: center;
-    background-color: var(--card-bg);
+    background-color: #2d3748;
     justify-content: space-between;
     padding: 0 10%;
     position: fixed;
@@ -67,7 +67,6 @@ nav div{
 .nav-buttons ul{
     list-style: none;
     display: flex;
-    height: -webkit-fill-available;
     height: -moz-available;
     align-items: center;
 }
@@ -250,6 +249,14 @@ nav div{
     display: flex;
 }
 
+.search-bar .open{
+    width: 100%;
+    max-width: 150px;
+}
+input[type=text].active{
+    display:block; 
+}
+
 .dropdown-content a{
     display: block  ;
     font-size: 13px;
@@ -295,13 +302,11 @@ nav div{
     }
     
     
-    .search-bar{
-        background-color: var(--gray);
+    .search-bar, .notification{
+        background-color: #1a2230;
     }
 
-    .notification{
-        background: var(--gray);
-    }
+   
 }
 
 @media (max-width: 950px){
@@ -350,19 +355,71 @@ nav div{
   }
 
   .search-bar{
-    max-width: 150px;
+   max-width: 250px;
+  }
+  .notification{
+    position: inherit;
+  }
+  .notification-dropdown{
+    right: 0;
+    top: 0;
   }
 
 }
+@media(max-width: 805px){
+    .nav-buttons{
+        width: 28%;
+    }
+}
+
 
 @media (max-width: 600px) {   
     .nav-buttons{
         width: 27%;
     }
+    .search-bar{
+        max-width: 150px;
+      }
+
 }
 
 @media (max-width: 500px) {   
     .nav-buttons{
         width: 33%;
     }
+    .speak-logo{
+        height: 50px;
+    }
+}
+
+@media (max-width: 399px) {
+    
+    input[type=text]{
+        display: none;
+    }
+    
+    .search-bar{
+        max-width: 25px;
+    }
+
+    .search-icon{
+        cursor: pointer;
+    }    
+   
+    .speak-logo{
+        height: 40px;
+    }
+
+    .search-bar.act{
+        max-width: 200px; 
+        
+    }
+    .speak-logo.act{
+        
+        display: none;
+    }
+    input[type=text].act{
+        display:block; 
+    }
+    
 }

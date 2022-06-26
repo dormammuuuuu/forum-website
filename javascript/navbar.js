@@ -9,6 +9,16 @@ $(function () {
     $('.nav-links a[href^="' + location.pathname.split("/")[1] + '"]').parent().addClass('active');
     const burger = document.querySelector(".burger"); 
     const navBtn = document.querySelector(".nav-buttons");
+    const bar = document.querySelector(".search-bar");
+    const logo = document.querySelector(".speak-logo");
+    const searchText = document.querySelector("input[type=text]");
+
+    bar.addEventListener("click", () =>{
+        bar.classList.toggle("act");
+        logo.classList.toggle("act");
+        searchText.classList.toggle("act");
+    });
+
     burger.addEventListener("click", () =>{
         burger.classList.toggle("actived");     
         navBtn.classList.toggle("actived");
@@ -66,6 +76,14 @@ $(function () {
    
 });
 
+
+
+$(document).on("click", ".search-bar", function (){
+    let width = $(window).width();
+    if(width > 399){
+        return;
+    }  
+});
 
 $(document).on("click", ".user-avatar", function () { 
     $('.notification-dropdown').hide();

@@ -62,7 +62,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
-    background-color: var(--dark-secondary);
+    background-color: #2d3748;
 }
 
 .lines{
@@ -98,7 +98,7 @@
 }
 
 .like {
-    background-color: var(--dark-secondary);
+    background-color: #2d3748;
     margin: 15px 0;
     padding: 10px;
     border-radius: 7px;
@@ -115,7 +115,7 @@ footer p{
 
 #select-tags{
     border: none;
-    background-color: var(--dark);
+    background-color: #1a2230;
     color: white;
     font-size: 13px;
     font-weight: bold;
@@ -271,6 +271,7 @@ footer p{
     display: flex;
     align-items: center;
     margin-top: 20px;
+    
 }
 
 .thread-save, .thread-add-response{
@@ -301,7 +302,7 @@ footer p{
 
 .tags-container{
     border-radius: 5px;
-    background-color: var(--light);
+    background-color: #2d3748;
 }
 
 .tag-header{
@@ -489,12 +490,10 @@ footer p{
 
 
 @media (prefers-color-scheme: dark){
-    .create-thread, .login{
-        background-color: var(--dark-secondary);
-    }
 
-    .thread{
-        background-color: var(--dark-secondary);
+
+    .thread,.create-thread, .login{
+        background-color: #2d3748;
     }
 
     .thread-user-type{
@@ -502,18 +501,74 @@ footer p{
     }
 
     .thread-save, .thread-add-response{
-        background-color: var(--gray);
+        background-color: #1a2230;
     }
 
     .thread-add-response i,  .thread-save i{
         color: gray;
     }
 
-    .tags-container{
-        background-color: var(--dark-secondary);
-    }
+    
 
     .tags-category{
         border: 1px solid var(--light); 
+    }
+}
+
+@media (max-width: 950px){
+    body{
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .container{
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+    .threads-container{
+        overflow-y: hidden;
+    }
+    .status{
+        display: none;
+    }
+    .content-more{
+        padding: 10px 15px;
+    }
+    .content-area, .content-more{
+        max-width: 100%;
+    }
+    footer{
+        margin-bottom: 1em;
+    }
+}
+
+@media (max-width: 550px){
+    .thread-name{
+        font-size: 12px;
+    }
+    .thread-user-type{
+        font-size: 7px;
+    }
+    .thread-tags{
+        font-size: 7px;
+    }
+    .tags-container{
+        flex-wrap: wrap;
+    }
+    .thread-avatar{
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .divider p, .divider label, #select-tags{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tags-container{
+        display: none;
     }
 }

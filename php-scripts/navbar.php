@@ -34,6 +34,7 @@
                     <div class="notification-indicator"></div>
                     <div class="notification-dropdown">
                         <div class="notification-header">
+                            <i class='bx bx-chevron-right'></i>
                             <h1>Notifications</h1>
                             <i class='bx bx-list-check' id="read-all" title="Mark all as read"></i>
                         </div>
