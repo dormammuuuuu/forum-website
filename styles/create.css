@@ -1,6 +1,6 @@
 .main{
     margin: 0 10%;
-    margin-top: calc(50px + var(--navbar-height));
+    margin-top: calc(25px + var(--navbar-height));
     width: -webkit-fill-available;
     width: -moz-available;
     height: 100%;
@@ -119,7 +119,7 @@
 .codex-editor--narrow .ce-toolbox,
 .ce-conversion-toolbar, .ce-settings, .ce-settings__button,
 .ce-toolbar__settings-btn, .cdx-button {
-    background: var(--gray);
+    background: #1a2230;
     color: black!important;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .ce-popover{
-    background-color: var(--gray);
+    background-color: #1a2230;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 3px 3px rgba(0,0,0,.3);
@@ -165,11 +165,22 @@
 }
 
 @media (prefers-color-scheme: dark){
-    .create-inputs{
-        background-color: var(--dark-secondary);
+    .create-inputs, .guide{
+        background-color: #2d3748;
+    }  
+}
+@media (max-width: 950px) {
+    body{
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
-
-    .guide{
-        background-color: var(--dark-secondary);
+    .guide-container{
+        display: none;
+    }
+    .create-inputs{
+        width: 100%;
+    }
+    .main{
+        position: relative;
     }
 }

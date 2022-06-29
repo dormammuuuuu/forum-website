@@ -163,7 +163,7 @@ nav div{
 .dropdown-content, .notification-dropdown{
     position: absolute;
     top: calc(var(--navbar-height) - 15px);
-    background-color: var(--gray);
+    background-color: #1a202c;
     min-width: 150px;
     right: 0;
     display: none;
@@ -249,13 +249,7 @@ nav div{
     display: flex;
 }
 
-.search-bar .open{
-    width: 100%;
-    max-width: 150px;
-}
-input[type=text].active{
-    display:block; 
-}
+
 
 .dropdown-content a{
     display: block  ;
@@ -311,6 +305,8 @@ input[type=text].active{
 
 @media (max-width: 950px){
 
+    
+
   .burger{
     display: block;
   }
@@ -336,11 +332,13 @@ input[type=text].active{
     right: -100vh;
     top: 80px;
     gap: 0;
-    background-color: var(--gray);
+    background-color:#2d3748 ;
     width: 23%;
     text-align: center;
     height: 100%;
+    box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
   }
+
 
   .nav-buttons ul{
     flex-direction: column;
@@ -365,6 +363,7 @@ input[type=text].active{
     top: 0;
   }
 
+  
 }
 @media(max-width: 805px){
     .nav-buttons{
@@ -375,7 +374,7 @@ input[type=text].active{
 
 @media (max-width: 600px) {   
     .nav-buttons{
-        width: 27%;
+        width: 33%;
     }
     .search-bar{
         max-width: 150px;
@@ -385,18 +384,29 @@ input[type=text].active{
 
 @media (max-width: 500px) {   
     .nav-buttons{
-        width: 33%;
+        width: 40%;
     }
     .speak-logo{
         height: 50px;
     }
 }
 
-@media (max-width: 399px) {
-    
-    input[type=text]{
-        display: none;
+@media (max-width: 370px) {
+    .notification-dropdown{
+        min-width: 250px;
     }
+
+    .notification-header h1{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 399px) {
+    .nav-buttons{
+        width: 55%;
+    }
+    
+    
     
     .search-bar{
         max-width: 25px;
@@ -414,8 +424,7 @@ input[type=text].active{
         max-width: 200px; 
         
     }
-    .speak-logo.act{
-        
+    .speak-logo.act{ 
         display: none;
     }
     input[type=text].act{

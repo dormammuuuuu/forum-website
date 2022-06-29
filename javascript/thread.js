@@ -22,6 +22,8 @@ $(function () {
     });
 });
 
+
+
 $('#comment-form').submit(function (e) { 
     e.preventDefault();
     let inputComment = $('#user-comment').val();
@@ -52,7 +54,18 @@ $('#comment-form').submit(function (e) {
     });
 });
 
-
+$(function (){ 
+    setInterval(() => {
+        let width = $(window).width();
+        if(width < 400){
+            $(".correct-status").empty().append("<i class='bx bx-check-double'></i>");
+        }else
+        {
+            $(".correct-status").empty().append("Correct");
+        }
+    }, 500);
+   
+});
 
 $(function () {
     if ($('#comments').children().length == 0 ) {

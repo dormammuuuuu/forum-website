@@ -9,11 +9,12 @@ $(function () {
     $('.nav-links a[href^="' + location.pathname.split("/")[1] + '"]').parent().addClass('active');
     const burger = document.querySelector(".burger"); 
     const navBtn = document.querySelector(".nav-buttons");
+    const icon = document.querySelector(".search-icon");
     const bar = document.querySelector(".search-bar");
     const logo = document.querySelector(".speak-logo");
     const searchText = document.querySelector("input[type=text]");
 
-    bar.addEventListener("click", () =>{
+    icon.addEventListener("click", () =>{
         bar.classList.toggle("act");
         logo.classList.toggle("act");
         searchText.classList.toggle("act");
@@ -85,6 +86,8 @@ $(document).on("click", ".search-bar", function (){
     }  
 });
 
+
+
 $(document).on("click", ".user-avatar", function () { 
     $('.notification-dropdown').hide();
     $('.dropdown-content').toggle(function () {
@@ -94,12 +97,15 @@ $(document).on("click", ".user-avatar", function () {
     });
 });
 
+
+
 $(document).on("click", ".notification", function () {
     $('.dropdown-content').hide();
     $('.notification-dropdown').toggle(function () {
         $(".notification-dropdown").addClass("active");
     }, function () {
         $(".notification-dropdown").removeClass("active");
+        
     });
 });
 

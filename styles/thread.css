@@ -288,7 +288,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80vh;
+    height: 50vh;
 }
 
 footer{
@@ -407,18 +407,91 @@ footer p{
 }
 
 @media (prefers-color-scheme: dark){
-   .titles, .main-threads, .main-comment{
-    background-color: var(--dark-secondary);
+   .titles, .main-threads, .main-comment, .threads, .recently-posted{
+    background-color: #2d3748;
    }
    .user-type{
     border: 1px solid var(--gray-light);
    }
    
-    .threads{
-        background-color: var(--dark-secondary);
-    }
-
     .dropdown-menu{
         background-color: var(--dark-secondary);
+    }
+}
+
+@media (max-width: 900px) {
+    body{
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    .container-1{
+        overflow-y: visible;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+        width: 100%;
+    }
+    .container-2{
+        overflow: visible;
+    }
+    footer{
+        margin: 1.5em;
+    }
+}
+
+@media (max-width: 550px) {
+    .thread-avatar{
+        width: 35px;
+        height: 35px;
+    }
+    .name, .divider p{
+        font-size: 13px;
+    }
+    .date-published, .user-type, .correct-status {
+        font-size: 8px;
+    } 
+    .main-threads p{
+        font-size: 12px;
+    }
+    .main-answer{
+        font-size: 11px;
+    }
+    .container{
+        max-width: 85vw;
+    }
+}
+
+@media (max-width: 450px){
+    .container{
+        max-width: 90vw;
+    }
+    .comment-box{
+        font-size: 12px;
+    }
+    .submit-btn{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 399px){
+    .correct-status{
+        font-size: 15px;
+    }
+}
+@media (max-width: 350px){
+    .response{
+        justify-content: center;
+    }
+}
+@media (max-width: 299px){
+    .correct-status{
+        font-size: 12px;
+    }
+    .author-comment{
+        justify-content: space-around;
     }
 }
