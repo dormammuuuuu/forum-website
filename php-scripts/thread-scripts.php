@@ -93,9 +93,6 @@
                         }
 
                         echo'
-                        <div class="report-button">
-                            <i class="bx bx-flag"></i><span>Report</span>
-                        </div>
                         <div class="vote-button" data-vote="upvote">
                            <i data-icon="u'.$data_comment['comment_id'].'" class="'.$upvote_class.'"></i><span class="comment-upvote">'.$upvotes.'</span>
                         </div>

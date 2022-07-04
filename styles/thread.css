@@ -87,7 +87,6 @@
 .author-info{
     display: flex;
     align-items: center;
-    padding-bottom: 1em;
 }
 
 .dropdown-container{
@@ -202,7 +201,7 @@
 
 
 .main-answer{
-    padding-top: 1em;
+    padding-top: 2em;
     font-size: 13px;
 }
 
@@ -466,6 +465,15 @@ footer p{
 }
 
 @media (max-width: 450px){
+   .threads{
+        padding: 1em;
+    }
+    .correct-status {
+        padding: 1px 5px;
+    }
+    .details {
+        margin: 0 10px;
+    }
     .container{
         max-width: 90vw;
     }
@@ -477,7 +485,7 @@ footer p{
     }
 }
 
-@media (max-width: 399px){
+@media (max-width: 400px){
     .correct-status{
         font-size: 15px;
     }
@@ -487,7 +495,7 @@ footer p{
         justify-content: center;
     }
 }
-@media (max-width: 299px){
+@media (max-width: 300px){
     .correct-status{
         font-size: 12px;
     }

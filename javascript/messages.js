@@ -117,6 +117,17 @@ function renderList(data) {
     $('.message-list').append(layout);
 }
 
+function responsiveMessageList(){
+    let width = $(window).width();
+    if (width < 1000){
+        $('#side-list').append($('.users-list').children());
+        $('.users-list').hide();
+    } else {
+        $('.users-list').append($('#side-list').children());
+        $('.users-list').show();
+    }
+}
+
 
 $(function () {
 
@@ -126,9 +137,10 @@ $(function () {
         assetsPath: '../styles/assets/emojis/',
         popupButtonClasses: 'fa fa-smile-o'
     });
-    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-    // It can be called as many times as necessary; previously converted input fields will not be converted again
+    
+    responsiveMessageList();
+    $(window).resize(responsiveMessageList);
+
     window.emojiPicker.discover();
     setInterval(() => {
         $.ajax({
@@ -175,6 +187,10 @@ $(document).on("keypress", ".emoji-wysiwyg-editor", function(e){
         $('#input-message').val($(this).text());
         $('.send-button').click();
     }
+});
+
+$(document).on("click", "#sidelist-button", function(e){
+    $('.side-button').show();
 });
 
 
@@ -237,3 +253,4 @@ $(document).on('click', '.message-card', function () {
     let uid = $(this).data('uid');
     location.href = "messages.php?id=" + uid;
 });
+

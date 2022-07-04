@@ -339,7 +339,6 @@
     }
 
     .main{
-        scroll-behavior: smooth;
         overflow-y: scroll;
     }
 
@@ -349,6 +348,21 @@
     .heading-details{
         text-align: center;
         font-size: 15px;
+    }
+}
+
+@media (max-width: 420px){
+    .user-details{
+        flex-direction: column;
+    }
+
+    .user-details div {
+        margin-right: 0;
+    }
+
+    .input-field input, .input-field select {
+        max-width: -webkit-fill-available;
+        max-width: moz-available;
     }
 }
 

@@ -1,4 +1,4 @@
-.main{
+    .main{
     margin-top: calc(50px + var(--navbar-height));
     margin-bottom: calc(50px + var(--navbar-height));
     width: -webkit-fill-available;

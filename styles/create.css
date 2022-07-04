@@ -181,6 +181,7 @@
         width: 100%;
     }
     .main{
-        position: relative;
+        margin: 0 10px;
+        margin-top: calc(25px + var(--navbar-height));
     }
 }

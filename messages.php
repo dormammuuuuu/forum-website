@@ -30,6 +30,13 @@
         <div id="loader"></div>
     </div>
     <input type="hidden" id="receiverID" value="<?php echo (isset($_GET['id'])) ? $_GET['id'] : "" ?>">
+    <div class="side-button">
+        <div id="side-list">
+        </div>
+    </div>
+    <div id="sidelist-button">
+        <i class='bx bx-chevron-right'></i>
+    </div>
     <section class="main">
         <div class="message-container">
             <div class="users-list">
@@ -40,27 +47,6 @@
                 </div>
 
                 <div class="message-list">
-                    <!--<div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="../assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Brenton Herry Denila Picardal</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div>
-
-                    <div class="message-card">
-                        <div class="message-details">
-                            <div class="user">
-                                <img class="message-avatar" src="assets/images/avatar/default.jpg" alt="">
-                                <span class="message-name">Test User</span>
-                            </div>
-                            <p class="message-datetime">11/18</p>
-                        </div>
-                        <p class="message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At pariatur vel eligendi nam quod quos neque</p>
-                    </div> -->
                 </div>
             </div>
 

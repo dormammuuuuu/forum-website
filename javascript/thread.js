@@ -214,37 +214,6 @@ $(document).on("click", ".name", (function (e) {
     window.open('profile.php?view=' + acct, '_blank');
 }));
 
-$(document).on("click", ".report-button", (function (e) {
-    alert('wow');
-    let modal = `
-            <div id="report-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <h2>Report Comment</h2>
-                </div>
-                <div class="modal-body">
-                    <div class="report-container">
-                        <div class="report-title">Choose a reason for reporting</div>
-                        <select class="report-select">
-                            <option value="1" selected>Posting Spam</option>
-                            <option value="2">Using inappropriate words</option>
-                            <option value="3">Using plagiarized work</option>
-                            <option value="4">Posting harmful/abusive posts/threads</option>
-                            <option value="5">Spreading false information</option>
-                            <option value="6">Sexual Violence/Nudity</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-user="" data-report= "" class="report-comment">Report User</button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    $('body').append(modal);
-}));
 
 $(document).on('click','.close',function () { 
     $('#report-modal').hide();
