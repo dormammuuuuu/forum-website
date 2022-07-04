@@ -121,6 +121,19 @@ function renderThreads(data, btn) {
     return layout;
 }
 
+function responsiveUserList(){
+    let width = $(window).width();
+    if (width < 1000){
+        $('.panel-people-l').show();
+        $('.panel-people-l').append($('.panel-people').children());
+        $('.panel-people').hide();
+    } else {
+        $('.panel-people').show();
+        $('.panel-people').append($('.panel-people-l').children());
+        $('.panel-people-l').hide();
+    }
+}
+
 $(function () {
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -130,7 +143,13 @@ $(function () {
         return decodeURI(results[1]) || 0;
     }
     user_profileID = $.urlParam('view');
+    if (user_profileID === null || user_profileID === 0){
+        location.href = "404.php";
+    }
     $('[data-btn="all"]').click();
+
+    responsiveUserList();
+    $(window).resize(responsiveUserList);
 });
 
 $(document).on("click", ".message-user", function () {

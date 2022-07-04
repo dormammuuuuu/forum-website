@@ -140,7 +140,7 @@
 	width: -webkit-fill-available;
 	width: -moz-available;
 	padding: 7.5px 7.5px 3.75px;
-	border: 1px solid var(--gray);
+	border: 1px solid #717171;
 	border-radius: 2.5px;
 	font-size: 14px;
 	overflow: hidden

@@ -56,6 +56,8 @@
                     </div>
                     <div id="panel-content">
                     </div>
+                    <div class="panel-people-l">
+                    </div>
                 </div>
                 
                 <div class="panel right">

@@ -343,6 +343,7 @@ nav div{
 
   .nav-buttons ul{
     flex-direction: column;
+    height: auto;
   }
 
   .nav-links, .dropdown, .notification{

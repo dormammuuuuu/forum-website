@@ -5,7 +5,7 @@
     width: -moz-available;
     max-width: 1000px;
     height: 70vh;
-    background-color: var(--dark-secondary);
+    background-color: #2D3748;
     padding: 30px;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .update-details:disabled, .update-bio-submit:disabled, .update-password:disabled{
-    background-color: var(--gray);
+    background-color: #1A2230;
     color: var(--white);
     cursor: not-allowed;
 }
@@ -192,8 +192,7 @@
 .input-field input, .input-field select{
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 5px 5px;
-    background-color: transparent;
-    background-color: var(--dark-secondary);
+    background-color: #1A2230;
     max-width: 300px;
     margin-top: 10px;
 }
@@ -210,8 +209,7 @@
 .input-field-bio input{
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 2px 5px;
-    background-color: transparent;
-    background-color: var(--dark-secondary);
+    background-color: #1A2230;
 }
 
 .avatar-form{
@@ -348,6 +346,12 @@
     .heading-details{
         text-align: center;
         font-size: 15px;
+    }
+
+    .main{
+        height: calc(100% - (var(--navbar-height) * 2));
+        margin-top: calc(10px + var(--navbar-height));
+        margin-bottom: calc(var(--navbar-height));
     }
 }
 
