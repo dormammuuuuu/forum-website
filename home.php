@@ -88,7 +88,11 @@
                     <div class="like">
                         <p class="heading">Threads you might like</p>
                         <?php
-                            $thread_list = mysqli_query($conn, "SELECT * FROM threads WHERE author != '$_SESSION[uid]' AND thread_status = 'open' ORDER BY RAND() LIMIT 5");
+                            if(isset($_SESSION['uid'])){
+                                $thread_list = mysqli_query($conn, "SELECT * FROM threads WHERE author != '$_SESSION[uid]' AND thread_status = 'open' ORDER BY RAND() LIMIT 5");
+                            } else {
+                                $thread_list = mysqli_query($conn, "SELECT * FROM threads WHERE thread_status = 'open' ORDER BY RAND() LIMIT 5");
+                            }
                             while ($result = $thread_list->fetch_assoc()) {
                                 $count = mysqli_query($conn, "SELECT COUNT(id) FROM comments WHERE thread_id = '$result[thread_id]'");
                                 $count = $count->fetch_assoc();
