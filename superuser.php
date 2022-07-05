@@ -74,15 +74,21 @@
                 <div class="container-1">
                     <div class="list-user">
                         <h1 class="list-user-title">Manage</h1>
-                        <ul id="list-cate">
-                            <li id="all-button">Current Threads</li>
-                            <li id="pending-button">Pending Threads</li>
-                            <li id="closed-button">Closed Threads</li>
-                            <li id="declined-button">Declined Threads</li>
-                            <li id="student-button">Students</li>
-                            <li id="teacher-button">Teachers</li>
-                            <li id="admin-button">Administrators</li>
-                        </ul>
+                        <div class="parent-manage">
+                            <div class="btn_direction">
+                                    <button id="slideLeft" type="button"><</button>
+                                    <button id="slideRight" type="button">></button>
+                            </div>
+                            <ul id="list-cate">
+                                <li id="all-button">Current Threads</li>
+                                <li id="pending-button">Pending Threads</li>
+                                <li id="closed-button">Closed Threads</li>
+                                <li id="declined-button">Declined Threads</li>
+                                <li id="student-button">Students</li>
+                                <li id="teacher-button">Teachers</li>
+                                <li id="admin-button">Administrators</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

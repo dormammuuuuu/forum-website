@@ -204,7 +204,7 @@
     transition: .5s;
     border-radius: 5px;
     border: none;
-    background-color: var(--dark-secondary);
+    background-color: #da0037;
 }
 
 .pending-btns:hover {
@@ -273,6 +273,10 @@
 
 #load-more-button:hover{
     background-color: rgba(255, 255, 255, .2);
+}
+
+.btn_direction{
+    display: none;
 }
 
 .user-container{
@@ -485,7 +489,7 @@ select::-ms-expand {
     .pending-container,
     .box,
     .list-user {
-        background-color: var(--dark-secondary);
+        background-color: #2d3748;
     }
 
     .total-title,
@@ -509,6 +513,106 @@ select::-ms-expand {
     .pending-content,
     #pending-cate li,
     #list-cate li {
-        background-color: var(--gray);
+        background-color: #3b475c;
+    }
+}
+
+
+@media (max-width: 1274px) {
+    .total-title{
+        font-size: 15px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 1010px) {
+    .icon{
+        font-size: 0;
+    }
+
+    .box{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: .7em;
+    }
+    .total-number{
+        font-size: 2em;
+    }
+
+    .wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .container-1{
+        position: relative;
+        height: auto;
+    }
+
+    #list-cate{
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+    }
+
+    #list-cate{
+        position: relative;
+        width: 100%;
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+
+    #list-cate::-webkit-scrollbar{
+        display: none;
+    }
+
+
+    .btn_direction{
+        display: flex;
+        position: absolute;
+        justify-content: space-between;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+    .parent-manage{
+        position: relative;
+        width:100%;
+    }
+
+    #list-cate li{
+        scroll-snap-align: start;
+    }
+
+    #slideLeft, #slideRight{
+        background-color: #da0037;
+        border: none;
+        padding: .7em .5em;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 865px) {
+    .dashboard-box{
+        grid-template-columns: 1fr 1fr;
+    }
+    .box{
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-box{
+        gap: 5%;
+    }
+    .whole-container{
+        max-width: 100vw;
     }
 }

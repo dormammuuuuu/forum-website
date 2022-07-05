@@ -21,6 +21,16 @@ $(function () {
     $('#all-button').click();
 });
 
+const buttonRight = document.getElementById('slideRight');
+    const buttonLeft = document.getElementById('slideLeft');
+
+    buttonRight.onclick = function () {
+      document.getElementById('list-cate').scrollLeft += 350;
+    };
+    buttonLeft.onclick = function () {
+      document.getElementById('list-cate').scrollLeft -= 350;
+    };
+
 function renderThreads(json_response, index, filter) {
     const edjsParser = edjsHTML();
     let body_data = edjsParser.parse(JSON.parse(json_response[index].body));
