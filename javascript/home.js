@@ -115,5 +115,5 @@ $(document).on("click", ".thread-save", (function (e) {
 $(document).on("click", ".thread-name", (function (e) {
     e.stopPropagation();
     let acct = $(this).data('acct');
-    window.open('profile.php?view=' + acct, '_blank');
+    window.open('profile.php?view=' + acct, '_self');
 }));

@@ -80,7 +80,6 @@
 	if(isset($_POST['email'])){
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
         $code = random_int(100000, 999999);
-		$code = 111111;
 		$duplicate = duplicateCheck($email); 
 		if ($duplicate > 0){
             $result_json['statusCode'] = 201;

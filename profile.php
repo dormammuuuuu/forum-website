@@ -35,7 +35,9 @@
                         </div>
                         <p class="profile-campus">Technological University of the Philippines - <?php echo $data['campus'] ?></p>
                         <p class="profile-course"><?php echo $data['bio'] ?></p>
-                        <?php if ($_SESSION['uid'] !== $_GET['view']) {?>
+                        <?php
+                            $id = $_SESSION['uid'] ?: "";
+                            if ($id !== $_GET['view']) {?>
                             <div class="message-user">
                                 <i class='bx bxs-message-square-dots'></i>
                                 <p>Message</p>
@@ -48,7 +50,7 @@
                 <div class="panel left">
                     <div class="panel-menu">
                         <button data-btn="all">All threads</button>
-                        <?php if ($_SESSION['uid'] === $_GET['view']) {?>
+                        <?php if (@$_SESSION['uid'] === $_GET['view']) {?>
                             <button data-btn="saved">Saved threads</button>
                             <button data-btn="pending">Pending threads</button>
                             <button data-btn="declined">Declined threads</button>
@@ -61,7 +63,7 @@
                 </div>
                 
                 <div class="panel right">
-                    <?php if ($_SESSION['uid'] === $_GET['view']) {?>
+                    <?php if (@$_SESSION['uid'] === $_GET['view']) {?>
                         <div class="create-btn" href="create.php">Start a new thread</div>
                     <?php } ?>
                     <div class="panel-detailed-view">
@@ -73,7 +75,8 @@
                     <div class="panel-people">
                         <h3 class="right-heading">People you might know</h3>
                         <?php 
-                            $people = mysqli_query($conn, "SELECT * FROM users WHERE uid != '$_SESSION[uid]' ORDER BY RAND() LIMIT 5");
+                            $uid = @$_SESSION['uid'] ?: "";
+                            $people = mysqli_query($conn, "SELECT * FROM users WHERE uid != '$uid' ORDER BY RAND() LIMIT 5");
                             while ($person = $people->fetch_assoc()) {
                                 echo '
                                     <div class="person" data-user="'. $person['uid'] .'">

@@ -72,7 +72,7 @@
 .person-container{
     width: -webkit-fill-available;
     width: -moz-available;
-    background-color: #1a2230;
+    background-color: #3B475C;
     display: flex;
     align-items: center;
     padding: 15px;
@@ -113,7 +113,7 @@
 .thread-container{
     width: -webkit-fill-available;
     width: -moz-available;
-    background-color: #1a2230;
+    background-color: #3B475C;
     display: flex;
     align-items: center;
     padding: 15px;

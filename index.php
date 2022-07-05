@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="styles/index.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <script src="javascript/jquery-3.6.0.js"></script>
+        <script src="javascript/jquery.timeago.js"></script>
     </head>
     <body class="container">
 

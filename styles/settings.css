@@ -192,9 +192,12 @@
 .input-field input, .input-field select{
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 5px 5px;
-    background-color: #1A2230;
     max-width: 300px;
     margin-top: 10px;
+}
+
+.input-field select{
+    background-color: #2D3748;
 }
 
 .input-field-bio{
@@ -209,7 +212,6 @@
 .input-field-bio input{
     border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 2px 5px;
-    background-color: #1A2230;
 }
 
 .avatar-form{

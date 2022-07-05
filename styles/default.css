@@ -14,16 +14,16 @@
     --secondary: #f16e8f;
     --student: #ACDF87;
     --gray: #444444;
-    --gray-dark: #171717;
-    --gray-light: #EDEDED;
+    --gray-dark: #ebebeb;
+    --gray-light: #1A2230;
     --gray-lighter: rgb(190, 190, 190);
     --card-bg: #ffffff;
     --card-secondary: rgb(172, 172, 172);
     --dark: #1A1A1B;
     --dark-secondary: #343434;
-    --input-border: rgba(0,0,0,.3);
+    --input-border: rgba(220, 220, 220, 0.3);
     --link-color: #2E88FE;
-    --light: #fff;
+    --light: #2D3748;
     --light-color: #000;
     --dark-color: #fff;
 }
@@ -31,7 +31,7 @@
 html,body{
     scroll-behavior: smooth;
     overflow: hidden;
-    background: #cecece;
+    background: #1A202C;
     height: 100vh;
     width: 100vw;
 }
@@ -89,10 +89,6 @@ hr{
         --card-bg: var(--dark-secondary);
         --card-secondary: rgb(19, 19, 19);
         --input-border: rgba(255,255,255,.4);
-    }
-
-    html,body{
-        background: #1a202c;
     }
 
     input[type=date i]::-webkit-calendar-picker-indicator {

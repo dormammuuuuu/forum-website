@@ -501,9 +501,6 @@ footer p{
         background-color: #2d3748;
     }
 
-    .thread-user-type{
-        border: 1px solid var(--gray-light)
-    }
 
     .thread-save, .thread-add-response{
         background-color: #1a2230;

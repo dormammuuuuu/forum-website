@@ -375,11 +375,11 @@ body{
     margin: 10px 0;
     margin-right: 5px;
     padding: 0.5em 1em 0.5em 1em;
-    color: var(--light);
+    color: white;
     transition: .5s;
     border-radius: 5px;
     border: none;
-    background-color: #1A2230;
+    background-color: var(--primary);
     cursor: pointer;
 }
 

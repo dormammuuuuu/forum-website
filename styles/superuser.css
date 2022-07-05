@@ -89,7 +89,7 @@
 
 .pending-container {
     border-radius: 7px;
-    background-color: var(--gray-lighter);
+    background-color: #2D3748;
     margin: 1em;
     height: auto;
     padding-bottom: 5px;
@@ -129,7 +129,7 @@
 }
 
 .pending-content {
-    background-color: white;
+    background-color: #3B475C;
     height: 50%;
     margin: 1em;
     border-radius: 7px;
@@ -200,7 +200,6 @@
 .pending-btns {
     margin: 1em .5em 1em .5em;
     padding: .5em 1em .5em 1em;
-    color: var(--light);
     transition: .5s;
     border-radius: 5px;
     border: none;
@@ -246,7 +245,7 @@
     margin: .5em;
     font-weight: 400;
     font-size: 15px;
-    background-color: var(--light);
+    background-color: #3B475C;
     border-radius: 7px;
     transition: .5s;
 }
@@ -280,7 +279,7 @@
 }
 
 .user-container{
-    background-color: var(--gray);
+    background-color: #3B475C;
     width: -webkit-fill-available;
     width: -moz-available;
     margin: 15px;
@@ -328,7 +327,7 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: var(--dark-secondary);
+    background: var(--primary);
 }
 
 .restricted{
@@ -484,38 +483,6 @@ select::-ms-expand {
     color: var(--gray-lighter);
 }
 
-@media(prefers-color-scheme: dark) {
-
-    .pending-container,
-    .box,
-    .list-user {
-        background-color: #2d3748;
-    }
-
-    .total-title,
-    .pending-title,
-    #pending-cate li,
-    .pending-thread-title h1,
-    .pending-user-type,
-    .pending-name,
-    .pending-date-published,
-    .pending-main-threads,
-    .list-user-title,
-    #list-cate li,
-    .bxs-user {
-        color: var(--light);
-    }
-
-    .pending-user-type {
-        border: 1px solid var(--light);
-    }
-
-    .pending-content,
-    #pending-cate li,
-    #list-cate li {
-        background-color: #3b475c;
-    }
-}
 
 
 @media (max-width: 1274px) {

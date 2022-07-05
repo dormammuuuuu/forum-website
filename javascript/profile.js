@@ -158,7 +158,7 @@ $(document).on("click", ".message-user", function () {
 
 $(document).on("click", ".person", function () {
     let user = $(this).data("user");
-    window.open("/profile.php?view=" + user, "_blank");
+    window.open("/profile.php?view=" + user, "_self");
 });
 
 $(document).on("click", ".panel-menu button", function(){
