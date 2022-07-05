@@ -6,23 +6,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Landing Page</title>
         <link rel="stylesheet" href="styles/default.css">
-        <link rel="stylesheet" href="styles/index.css">
         <link rel="stylesheet" href="styles/navbar.css">
+        <link rel="stylesheet" href="styles/index.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <script src="javascript/jquery-3.6.0.js"></script>
     </head>
     <body class="container">
 
-           
+                <?php include 'php-scripts/navbar.php'; ?>
                 <div class="first-div">
-                   <div class="main-intro">
+                    <div>
+                        <h1 class="landing-header">Discover new <br>friends and learn</h1>
+                        <p class="landing-paragraph">A place where you can ask questions </br>and interact with others who can </br>provide insightful responses.</p>
+                        <button type="button" id="index" class="btn_start">Get Started!</button>
+                    </div>
+                    <div class="landing-image">
+                        <img src="assets/images/landing-page.png" alt="">
+                    </div>
+                   <!-- <div class="main-intro">
                         <h1 id="main-title">TUP Speak</h1>
                         <p>A platform for learning and sharing information. A place where you can ask questions and interact with others who can provide insightful responses.</p>
                         <button type="button" id="index" class="btn_start">Get Started!</button>
                     </div>
 
                    <div class="main-img">
-                   </div>
+                   </div> -->
+
                 </div>
 
                 <div class="second-div">

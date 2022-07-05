@@ -27,7 +27,7 @@
 
     if(isset($_POST['loadnotifications'])){
         $json_response = array();
-        $uid = $_SESSION['uid'];
+        $uid = @$_SESSION['uid'] ?: "";
         $query = "SELECT COUNT(id) FROM messages WHERE receiver = '$uid' AND seen = '0'";
         $result = mysqli_query($conn, $query);
         $data = mysqli_fetch_assoc($result);

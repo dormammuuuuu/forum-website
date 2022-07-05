@@ -2,7 +2,25 @@
     height: 100vh;
     width: -webkit-fill-available;   
     width: -moz-available;
+}
 
+nav{
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    background-color: transparent;
+
+}
+
+.search-bar {
+    display: none;
+}
+
+.navbar-scrolled{
+    background-color: #2d3748;
+    -webkit-box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 30%);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 30%);
 }
 
 html,body{
@@ -21,7 +39,26 @@ html,body{
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-image: linear-gradient(to bottom, var(--dark), var(--dark), var(--dark-secondary));
+    background-image: linear-gradient(to bottom, #1A202C, #1A202C, #2D3748);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.landing-image img{
+    height: 80vh;
+    opacity: 0;
+    animation: FadeInImg 2s;
+}
+
+.landing-header {
+    opacity: 0;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.landing-paragraph{
+    opacity: 0;
 }
 
 .main-intro{
@@ -73,35 +110,18 @@ html,body{
     transform: scale(1.1);
 }
 
-
-.main-img{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -10%;
-    background-image: url(../assets/images/logo.png);
-    min-height: 100%; 
-    width: 100%;
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 1000px;
-    opacity: 0;
-    animation: FadeInImg 2s;
-}
-
 @keyframes FadeInImg{
     from{
-        transform: translate(10%, -50%);
+        transform: translateX(50%);
     }
     to{
-        transform: translateX(0);
-        transform: translate(0, -50%);
+        transform: translateX(0%);
     }
 }
 
 .second-div{ 
     position: relative;
-    background-color: var(--dark-secondary);
+    background-color: #2d3748;
     height: 60vh;
     padding: 0 1em 0 1em;
 }
@@ -112,12 +132,13 @@ html,body{
     height: 100%;
     align-items: center;
 }
-.cards{  
+.cards{
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--dark);
+    background-color: #1A202C;
     height: 60%;
     margin: 2em;
     overflow: hidden;
@@ -195,7 +216,7 @@ html,body{
     align-items: center;
     justify-content: space-evenly;
     padding: 1em 0;
-    background-color: var(--dark-secondary);
+    background-color: #2D3748;
     height: 55vh;
     opacity: 0;
     position: relative;
@@ -204,7 +225,7 @@ html,body{
 }
 
 .objective-div:nth-child(odd){
-    background-color: var(--dark);
+    background-color: #1A202C;
 }
 
 .objective-div.open{
@@ -247,7 +268,7 @@ html,body{
     justify-content: center;
     align-content: center;
     margin: 1em;
-    background-color: var(--dark);
+    background-color: #1A202C;
     border-radius: 100%;
     overflow: visible ;
     width: 400px;
@@ -255,13 +276,13 @@ html,body{
 }
 
 .objective-container:nth-child(odd){
-    background-color: var(--dark-secondary);
+    background-color: #2d3748;
 }
 
 .status-div{
     height: 30vh;
-    background-color: var(--dark-secondary);
-    background-image: linear-gradient(to bottom, var(--dark-secondary),  var(--dark));
+    background-color: #1A202C;
+    background-image: linear-gradient(to bottom, #2D3748,  #1A202C);
 }
 
 .status-container{
@@ -289,20 +310,23 @@ html,body{
 
 .contact-us{
     height: 60%;
-    background-color: var(--dark);
-    padding: 0 5em;
+    background-color: #1A202C;
 }
 
 .container-contact-us{
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
     height: 100%;
+    padding: 10px;
 }
 
 .send-us{
+    max-width: 650px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 2em;
 }
 
 .contact-title{
@@ -353,7 +377,8 @@ html,body{
 }
 
 .contacts{
-    padding: 2em;
+    max-width: 500px;
+    width: 100%;
 }
 
 .contact-title{
@@ -371,13 +396,13 @@ html,body{
 
 .footer-container{
     height: 25vh;
-    background-image: linear-gradient(to bottom, var(--dark), var(--dark-secondary));
+    background-image: linear-gradient(to bottom, #1A202C, #2D3748);
     margin-top: 2em; 
 }
 
 .footer-socmed{
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     padding: 1em;
 }
 
@@ -388,4 +413,128 @@ html,body{
 
 .footer-container p{
     text-align: center;
+}
+
+@media (max-width: 1000px){
+    .landing-header {
+        font-size: 40px;
+    }
+    .landing-image img {
+        height: 60vh;
+    }
+
+    .cards {
+        margin: 10px;
+        padding: 1em;
+    }
+
+    .cards h1 {
+        margin: 10px 0;
+        font-size: 15px;
+    }
+
+    .cards p {
+        margin: 0 10px;
+        font-size: 12px;
+    }
+
+    .card-img {
+        height: 100px;
+    }    
+}
+
+@media (max-width: 850px){
+    .objective-div {
+        flex-direction: column;
+        height: fit-content;
+    } 
+
+    .main-obj-desc {
+        text-align: center;
+    }
+
+    .obj-desc {
+        text-align: center;
+        font-size: 13px;
+        margin: 2em;
+        margin-top: 1em;
+    }
+}
+
+@media (max-width: 750px){
+    .landing-image img {
+        display: none;
+    }
+
+    .landing-header {
+        font-size: 30px;
+    }
+
+    .cards {
+        height: 300px;
+    }
+
+    .second-div {
+        height: auto;
+    }
+
+    .second-obj-desc {
+        grid-template-columns: 1fr;
+    } 
+
+    .cards h1 {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    .cards p {
+        margin: 0 10px;
+        font-size: 17px;
+    }
+
+    .card-img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 650px){
+    .contact-us{
+        padding: 2em;
+        height: auto;
+    }
+
+    .container-contact-us{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 550px) {
+    .obj-title {
+        font-size: 30px;
+    }
+
+    .objective-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .contact-name {
+        margin: 1em 0;
+    }
+    
+    .message-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .status-title{
+        font-size: 13px;
+        color: white;
+    }
+}
+
+@media (max-width: 350px){
+    .second-div {
+        padding: 0;
+    }
 }
