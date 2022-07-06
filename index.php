@@ -158,7 +158,6 @@
                             </div>
 
                         </div>
-
                     </div>
                 </div>
 
@@ -175,9 +174,6 @@
                     </div>
                 </footer>
 
-
-          
-        
         <script src="javascript/index.js"></script>
 
     </body>

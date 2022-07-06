@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 05:40 PM
+-- Generation Time: Jul 06, 2022 at 04:17 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -43,8 +43,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comment_date`, `comment_time`, `comment`, `answer`) VALUES
-(67, 'thrd628138735a129', 'C6281397a3bb70', 'u627754a082c47', '2022-05-16', '01:33:46', 'I love TUP <3 kahit ang sakit sakit na ', 1),
-(68, 'thrd628138735a129', 'C62813d50c5d9e', 'u627a6a0b58d37', '2022-05-16', '01:50:08', 'Nice one angas mo naman', 0),
+(67, 'thrd628138735a129', 'C6281397a3bb70', 'u627754a082c47', '2022-05-16', '01:33:46', 'I love TUP <3 kahit ang sakit sakit na ', 0),
+(68, 'thrd628138735a129', 'C62813d50c5d9e', 'u627a6a0b58d37', '2022-05-16', '01:50:08', 'Nice one angas mo naman', 1),
 (109, 'thrd62b08e3e5f7ad', 'C62b095f4c2912', 'u627754a082c47', '2022-06-20', '23:44:52', 'May bayad po ang pagkuha niyan. Nasa around 100 po ata nung kumuha ako for my scholarship.', 0),
 (110, 'thrd62b097454d4be', 'C62b09a1debf35', 'u62a6f897e3940', '2022-06-21', '00:02:37', 'Mostly sa mga freshmen ang unang itinuturo ay ang C programming ', 0),
 (111, 'thrd62b097454d4be', 'C62b1bfbfaadda', 'u627754a082c47', '2022-06-21', '20:55:27', 'C programming kapag freshmen. Magandang foundation din ang C language kasi ang ibang language ay almost same lang sila.', 0),
@@ -64,7 +64,12 @@ INSERT INTO `comments` (`id`, `thread_id`, `comment_id`, `comment_author`, `comm
 (125, 'thrd62b4790bb6537', 'C62b485bc6a62d', 'u62a6f897e3940', '2022-06-23', '23:24:44', 'Alam ko pwede po kayo manghiram, mag fill up lang po kayo ng form before nyo po maiuwi yung book na hihiramin nyo po', 1),
 (126, 'thrd62b47166a0101', 'C62b48f1252ddf', 'u627754a082c47', '2022-06-24', '00:04:34', 'Tama! Check mo lang po muna sa OSA kung may nagsurrender. Kung wala po, manalangin na lang po yung next na masusuggest ko', 0),
 (127, 'thrd62b4790bb6537', 'C62b48f862f8c2', 'u627fe814b5bfd', '2022-06-24', '00:06:30', 'Sa pagkakaalam ko po bawal ilabas ang mga books sa library. Kung pwede man po, may kailangan ka ata isurrender na gamit mo in exchange para sa book na gusto mo kunin.', 1),
-(128, 'thrd62b4790bb6537', 'C62b490b14bcdf', 'u62a6ebc80b8cc', '2022-06-24', '00:11:29', 'Thank you sa pag sagot <3 ', 0);
+(128, 'thrd62b4790bb6537', 'C62b490b14bcdf', 'u62a6ebc80b8cc', '2022-06-24', '00:11:29', 'Thank you sa pag sagot <3 ', 0),
+(132, 'thrd62b4636b33b11', 'C62c44cccee563', 'u6298f3dcd7288', '2022-07-05', '22:38:04', 'hello', 0),
+(133, 'thrd62b475614fe31', 'C62c45a8192351', 'u62a891ef10a26', '2022-07-05', '23:36:33', 'sali din tropa ko dyan ihh', 0),
+(135, 'thrd62c446e9c68f4', 'C62c519630a81d', 'u62b08c116a8fe', '2022-07-06', '13:10:59', 'Raymond Matullano po name nya', 0),
+(136, 'thrd62c52f3487603', 'C62c532803f4bf', 'u62a36c251d916', '2022-07-06', '14:58:08', 'ay ako din sis sana po may makasagot, salamat', 0),
+(137, 'thrd62c52f3487603', 'C62c532a345259', 'u6298f3dcd7288', '2022-07-06', '14:58:43', '9:00 AM to 3:00 PM po ata kasi 3:00 PM po nag cclose yung cashier', 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +90,9 @@ CREATE TABLE `declined` (
 INSERT INTO `declined` (`id`, `thread_id`, `message`) VALUES
 (9, 'thrd62b0a37da9081', 'Walang laman\n'),
 (11, 'thrd62b3522742454', 'No reason for declining'),
-(12, 'thrd62b4462097c8a', 'Wala lang');
+(13, 'thrd62b4462097c8a', 'Nonsense post\n'),
+(14, 'thrd62c461bcdf7e8', 'Walang kwenta'),
+(15, 'thrd62c53a00e6575', 'Wala lang');
 
 -- --------------------------------------------------------
 
@@ -201,8 +208,8 @@ INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `
 (153, 'u62a891ef10a26', 'u6298f3dcd7288', 'Tara shabu', '2022-06-16', '18:59:33', 1),
 (154, 'u62a891ef10a26', 'u62a99829973b3', 'Ediwaw', '2022-06-16', '18:59:51', 0),
 (155, 'u627754a082c47', 'u62a891ef10a26', '👀👀👀', '2022-06-16', '19:00:16', 1),
-(156, 'u62a891ef10a26', 'u62a36c251d916', 'Beh si ben may kabet, juskoday', '2022-06-16', '19:00:16', 0),
-(157, 'u62a891ef10a26', 'u62a36c251d916', 'sana si jake na lang jinowa mo', '2022-06-16', '19:01:48', 0),
+(156, 'u62a891ef10a26', 'u62a36c251d916', 'Beh si ben may kabet, juskoday', '2022-06-16', '19:00:16', 1),
+(157, 'u62a891ef10a26', 'u62a36c251d916', 'sana si jake na lang jinowa mo', '2022-06-16', '19:01:48', 1),
 (158, 'u627754a082c47', 'u6298f3dcd7288', 'France', '2022-06-17', '02:58:33', 1),
 (159, 'u62a891ef10a26', 'u627754a082c47', 'Anjo', '2022-06-17', '15:34:36', 1),
 (160, 'u62a891ef10a26', 'u627754a082c47', 'JO', '2022-06-17', '15:43:09', 1),
@@ -243,7 +250,30 @@ INSERT INTO `messages` (`id`, `sender`, `receiver`, `message`, `date`, `time`, `
 (195, 'u62a6ebc80b8cc', 'u627754a082c47', 'boss', '2022-06-23', '22:45:12', 1),
 (196, 'u62a6ebc80b8cc', 'u627754a082c47', 'pareply naman sa post ko', '2022-06-23', '22:45:18', 1),
 (197, 'u62a6ebc80b8cc', 'u627754a082c47', 'I love you ❤️', '2022-06-23', '22:45:25', 1),
-(198, 'u627754a082c47', 'u62a6ebc80b8cc', 'Sino ka?', '2022-06-24', '01:06:06', 0);
+(198, 'u627754a082c47', 'u62a6ebc80b8cc', 'Sino ka?', '2022-06-24', '01:06:06', 0),
+(199, 'u627754a082c47', 'u62a6ebc80b8cc', 'Pre', '2022-07-04', '22:59:46', 0),
+(200, 'u627754a082c47', 'u6298f3dcd7288', 'France Pogi', '2022-07-04', '23:00:04', 1),
+(201, 'u6298f3dcd7288', 'u627754a082c47', 'may sinend akong bug sa gc', '2022-07-05', '15:54:54', 1),
+(202, 'u6298f3dcd7288', 'u627754a082c47', 'oy', '2022-07-05', '15:55:37', 1),
+(203, 'u6298f3dcd7288', 'u627754a082c47', 'anong oras dry run?', '2022-07-05', '15:55:44', 1),
+(204, 'u627754a082c47', 'u62b08c60c99ad', 'Cielo', '2022-07-05', '17:01:52', 1),
+(205, 'u627754a082c47', 'u6298f3dcd7288', 'gabi mamaya', '2022-07-05', '17:03:17', 1),
+(206, 'u627754a082c47', 'u6298f3dcd7288', 'Suntukan', '2022-07-05', '21:44:58', 1),
+(207, 'u6298f3dcd7288', 'u627754a082c47', 'sige now', '2022-07-05', '22:38:39', 1),
+(208, 'u627754a082c47', 'u62b08c116a8fe', 'Pre', '2022-07-05', '23:58:45', 1),
+(209, 'u62b08c116a8fe', 'u627754a082c47', 'bakit?', '2022-07-05', '23:59:08', 1),
+(210, 'u62b08c116a8fe', 'u627754a082c47', 'baby anjo', '2022-07-05', '23:59:31', 1),
+(211, 'u627754a082c47', 'u62b08c116a8fe', '😍❤️😔☺️😘😄😄😭😉🙈😳', '2022-07-06', '00:00:02', 1),
+(212, 'u62b08c116a8fe', 'u627754a082c47', 'anjo isang sign of the pogi', '2022-07-06', '00:07:43', 1),
+(213, 'u62b08c60c99ad', 'u627754a082c47', 'jerico?', '2022-07-06', '00:10:28', 1),
+(214, 'u62b08c116a8fe', 'u627754a082c47', 'BABY ISANG SIGN OF THE POGI MUNA', '2022-07-06', '14:46:21', 1),
+(215, 'u62a36c251d916', 'u62c53648c0947', 'kuyang pogi saan ka pong college?', '2022-07-06', '15:16:23', 0),
+(216, 'u62b08c60c99ad', 'u62c53648c0947', 'Hi, BSIT-3C po ba section nyo?', '2022-07-06', '15:21:50', 0),
+(217, 'u6298f3dcd7288', 'u62c53648c0947', 'JOHN LAPPAY ANG SARAP MO', '2022-07-06', '15:33:16', 1),
+(218, 'u62b08c116a8fe', 'u62c53648c0947', 'FRANCIS ISANG SIGN OF THE POGI', '2022-07-06', '15:34:47', 1),
+(219, 'u62c53648c0947', 'u62b08c116a8fe', '❤️😔😔💋', '2022-07-06', '15:35:09', 1),
+(220, 'u6298f3dcd7288', 'u62c53648c0947', 'JEPPPOOOOOOOOOYYY HIHIHIHIHI', '2022-07-06', '15:35:13', 0),
+(221, 'u62c53648c0947', 'u627754a082c47', 'Pogi', '2022-07-06', '15:35:23', 1);
 
 -- --------------------------------------------------------
 
@@ -270,13 +300,13 @@ INSERT INTO `notification` (`id`, `thread_id`, `target_user`, `notif_author`, `n
 (12, 'thrd62b08e3e5f7ad', 'u62b08c116a8fe', 'u627754a082c47', 'respond', 1, '2022-06-20 23:44:52'),
 (13, 'thrd62b097454d4be', 'u62b08c116a8fe', 'system', 'approve', 1, '2022-06-20 23:57:20'),
 (14, 'thrd62b097454d4be', 'u62b08c116a8fe', 'u62a6f897e3940', 'respond', 1, '2022-06-21 00:02:37'),
-(15, 'thrd62b0a37da9081', 'u62b08c60c99ad', 'system', 'declined', 0, '2022-06-21 20:52:14'),
+(15, 'thrd62b0a37da9081', 'u62b08c60c99ad', 'system', 'declined', 1, '2022-06-21 20:52:14'),
 (16, 'thrd62b097454d4be', 'u62b08c116a8fe', 'u627754a082c47', 'respond', 1, '2022-06-21 20:55:27'),
 (17, 'thrd62b1c2c46518f', 'u62a891ef10a26', 'system', 'approve', 1, '2022-06-21 21:08:29'),
 (18, 'thrd62b1dca07cbdd', 'u62a6fa7cbb90f', 'system', 'approve', 0, '2022-06-22 16:09:04'),
 (19, 'thrd62b309bc68854', 'u627754a082c47', 'system', 'approve', 1, '2022-06-22 20:23:30'),
-(21, 'thrd62b40a8887872', 'u62a891ef10a26', 'system', 'approve', 0, '2022-06-23 14:40:25'),
-(22, 'thrd62b1c2c46518f', 'u62a891ef10a26', 'u62a892ac8a7a0', 'respond', 0, '2022-06-23 14:45:48'),
+(21, 'thrd62b40a8887872', 'u62a891ef10a26', 'system', 'approve', 1, '2022-06-23 14:40:25'),
+(22, 'thrd62b1c2c46518f', 'u62a891ef10a26', 'u62a892ac8a7a0', 'respond', 1, '2022-06-23 14:45:48'),
 (23, 'thrd62b40f34221ea', 'u62a892ac8a7a0', 'system', 'approve', 0, '2022-06-23 15:04:47'),
 (24, 'thrd62b4102a7e5e3', 'u62a893a63c294', 'system', 'approve', 0, '2022-06-23 15:04:53'),
 (25, 'thrd62b410bcea7f3', 'u62a892fa11c6d', 'system', 'approve', 0, '2022-06-23 15:05:59'),
@@ -301,7 +331,21 @@ INSERT INTO `notification` (`id`, `thread_id`, `target_user`, `notif_author`, `n
 (47, 'thrd62b47166a0101', 'u62a6eae75367f', 'u62a6f6d83d666', 'respond', 0, '2022-06-23 23:22:51'),
 (48, 'thrd62b4790bb6537', 'u62a6ebc80b8cc', 'u62a6f897e3940', 'respond', 0, '2022-06-23 23:24:44'),
 (49, 'thrd62b47166a0101', 'u62a6eae75367f', 'u627754a082c47', 'respond', 0, '2022-06-24 00:04:34'),
-(50, 'thrd62b4790bb6537', 'u62a6ebc80b8cc', 'u627fe814b5bfd', 'respond', 1, '2022-06-24 00:06:30');
+(50, 'thrd62b4790bb6537', 'u62a6ebc80b8cc', 'u627fe814b5bfd', 'respond', 1, '2022-06-24 00:06:30'),
+(57, 'thrd62b4462097c8a', 'u627754a082c47', 'system', 'declined', 1, '2022-07-05 02:04:08'),
+(58, 'thrd62b4636b33b11', 'u62a6f6d83d666', 'u6298f3dcd7288', 'respond', 0, '2022-07-05 22:38:04'),
+(60, 'thrd62b475614fe31', 'u62a6eb46bc510', 'u62a891ef10a26', 'respond', 0, '2022-07-05 23:36:33'),
+(63, 'thrd62c3f8901da45', 'u62b08c60c99ad', 'system', 'approve', 1, '2022-07-05 23:50:04'),
+(64, 'thrd62c446e9c68f4', 'u62a36c251d916', 'system', 'approve', 0, '2022-07-05 23:50:07'),
+(65, 'thrd62c45aa3031e5', 'u62a891ef10a26', 'system', 'approve', 0, '2022-07-05 23:50:09'),
+(67, 'thrd62b42eb0a8160', 'u6298f3dcd7288', 'system', 'approve', 1, '2022-07-05 23:52:41'),
+(68, 'thrd62c446e9c68f4', 'u62a36c251d916', 'u62b08c116a8fe', 'respond', 0, '2022-07-06 13:10:59'),
+(70, 'thrd62c52e97b8c4a', 'u62b08c60c99ad', 'system', 'approve', 1, '2022-07-06 14:47:39'),
+(71, 'thrd62c52f3487603', 'u62b08c60c99ad', 'system', 'approve', 1, '2022-07-06 14:48:10'),
+(72, 'thrd62c52f3487603', 'u62b08c60c99ad', 'u62a36c251d916', 'respond', 1, '2022-07-06 14:58:08'),
+(73, 'thrd62c52f3487603', 'u62b08c60c99ad', 'u6298f3dcd7288', 'respond', 1, '2022-07-06 14:58:43'),
+(77, 'thrd62c461bcdf7e8', 'u62b08c116a8fe', 'system', 'declined', 0, '2022-07-06 15:37:24'),
+(78, 'thrd62c53a00e6575', 'u62c53648c0947', 'system', 'declined', 0, '2022-07-06 15:37:38');
 
 -- --------------------------------------------------------
 
@@ -321,8 +365,20 @@ CREATE TABLE `save` (
 
 INSERT INTO `save` (`id`, `thread_id`, `uid`) VALUES
 (25, 'thrd628138735a129', 'u62b08c60c99ad'),
-(26, 'thrd628138735a129', 'u627754a082c47'),
-(40, 'thrd62b1dca07cbdd', 'u627754a082c47');
+(40, 'thrd62b1dca07cbdd', 'u627754a082c47'),
+(43, 'thrd62b4790bb6537', 'u62b08c60c99ad'),
+(44, 'thrd62b475614fe31', 'u62b08c60c99ad'),
+(45, 'thrd62b473e4ac124', 'u62b08c60c99ad'),
+(49, 'thrd628138735a129', 'u627754a082c47'),
+(51, 'thrd62b4790bb6537', 'u62c456ad05064'),
+(53, 'thrd62b475614fe31', 'u62a891ef10a26'),
+(54, 'thrd62b473e4ac124', 'u62a891ef10a26'),
+(55, 'thrd62b1c2c46518f', 'u62a891ef10a26'),
+(57, 'thrd62b4790bb6537', 'u62a891ef10a26'),
+(59, 'thrd62b309bc68854', 'u62b08c60c99ad'),
+(62, 'thrd62c52f3487603', 'u62c53648c0947'),
+(66, 'thrd62c52f3487603', 'u627754a082c47'),
+(67, 'thrd62c52e97b8c4a', 'u627754a082c47');
 
 -- --------------------------------------------------------
 
@@ -361,13 +417,25 @@ INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `st
 INSERT INTO `threads` (`id`, `thread_id`, `author`, `title`, `body`, `tags`, `status`, `thread_status`, `date_posted`, `time_posted`) VALUES
 (62, 'thrd62b415d40510c', 'u62a89331858b2', 'CR :(', '{\"time\":1655969237838,\"blocks\":[{\"id\":\"9Z12RA5QMS\",\"type\":\"paragraph\",\"data\":{\"text\":\"Kapag di talaga kayo tumigil sa pagsusulat ng kung ano ano sa C.R, sasabihin ko sa USG students kung sino sino kayo. hmp.\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"vandalism\"]}', 1, 'open', '2022-06-23', '15:27:16'),
 (63, 'thrd62b418f172c2e', 'u62a89371b1385', ':)', '{\"time\":1655970035241,\"blocks\":[{\"id\":\"VrvFIp9P4j\",\"type\":\"paragraph\",\"data\":{\"text\":\"Shout out nga pala don sa mga guy na taga COE na laging binubully yung frenny kong Gay tuwing napapadaan kami. Kala niyo naman ampopogi niyo e mukha naman kayong mga garapata na napisa, ang yayabang niyo. tse!\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"bullying\",\"lgbtq\",\"coe\"]}', 1, 'open', '2022-06-23', '15:40:33'),
-(66, 'thrd62b42eb0a8160', 'u6298f3dcd7288', 'Registrar CTC', '{\"time\":1655975601799,\"blocks\":[{\"id\":\"JrP6qHCjlG\",\"type\":\"paragraph\",\"data\":{\"text\":\"May nakakaalam po ba kung mag kano mag pa certified true copy and on that day din po ba pwedeng makuha yung pina CTC???<br>\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"general\",\"registrar\"]}', 1, 'open', '2022-06-23', '17:13:20'),
-(67, 'thrd62b4462097c8a', 'u627754a082c47', 'Thread na idedecline', '{\"time\":1655981600606,\"blocks\":[{\"id\":\"pgB7pv65vN\",\"type\":\"header\",\"data\":{\"text\":\"WOWOOW\",\"level\":2}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"cos\",\"event\"]}', 0, 'declined', '2022-06-23', '18:53:20'),
+(66, 'thrd62b42eb0a8160', 'u6298f3dcd7288', 'Registrar CTC', '{\"time\":1657035971999,\"blocks\":[{\"id\":\"JrP6qHCjlG\",\"type\":\"paragraph\",\"data\":{\"text\":\"May nakakaalam po ba kung mag kano mag pa certified true copy and on that day din po ba pwedeng makuha yung pina CTC????<br>\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"registrar\"]}', 1, 'open', '2022-06-23', '17:13:20'),
+(67, 'thrd62b4462097c8a', 'u627754a082c47', 'Thread na idedecline', '{\"time\":1656954675613,\"blocks\":[{\"id\":\"pgB7pv65vN\",\"type\":\"header\",\"data\":{\"text\":\"WOWOOW\",\"level\":2}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"event\"]}', 0, 'declined', '2022-06-23', '18:53:20'),
 (69, 'thrd62b4636b33b11', 'u62a6f6d83d666', 'TRANSFER', '{\"time\":1655989105111,\"blocks\":[{\"id\":\"fIGrK7wVqh\",\"type\":\"paragraph\",\"data\":{\"text\":\"Ano po need na requirements para sa mga mag ta-transfer from other school to TUP po? And any idea kung makukuha po yung same course sa TUP. Thank you po :)\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\",\"registrar\"]}', 1, 'open', '2022-06-23', '20:58:19'),
 (70, 'thrd62b47166a0101', 'u62a6eae75367f', 'Missing Cellphone', '{\"time\":1655992679874,\"blocks\":[{\"id\":\"r3I7NtmrOc\",\"type\":\"paragraph\",\"data\":{\"text\":\"Baka po may nakapulot or nakakuha ng iPhone Xs sa may COE po sa labas lang nong may guard po baka pwede po ako ichat kahit yung sim nalang po ibalik and yung picture sa likod nong phone po :(\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"coe\",\"missingitem\"]}', 1, 'open', '2022-06-23', '21:57:58'),
 (71, 'thrd62b473e4ac124', 'u62a6eb986662e', 'Uniform', '{\"time\":1655993317929,\"blocks\":[{\"id\":\"c9lSaVs8jY\",\"type\":\"paragraph\",\"data\":{\"text\":\"sa mga girl dyan baka may alam kayo kung saan pwede bumili ng uniform (top) natin kasi hindi na kaysa yung saakin e hahahaha&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"general\"]}', 1, 'open', '2022-06-23', '22:08:36'),
 (72, 'thrd62b475614fe31', 'u62a6eb46bc510', 'Cheerleading ', '{\"time\":1655993698576,\"blocks\":[{\"id\":\"gY65dSLQgV\",\"type\":\"paragraph\",\"data\":{\"text\":\"tanong ko lang po kung may cheerleading or kasali po ba yung TUP when it comes to cheerleading competitions po??? kung meron po kasi balak ko po sana mag try out :))&nbsp;\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"event\",\"general\"]}', 1, 'open', '2022-06-23', '22:14:57'),
-(73, 'thrd62b4790bb6537', 'u62a6ebc80b8cc', 'Books from Library', '{\"time\":1655994636969,\"blocks\":[{\"id\":\"lpAVvCqAPN\",\"type\":\"paragraph\",\"data\":{\"text\":\"pwede po ba mag labas ng libro galing sa library? like around school lang naman?\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"library\"]}', 1, 'close', '2022-06-23', '22:30:35');
+(73, 'thrd62b4790bb6537', 'u62a6ebc80b8cc', 'Books from Library', '{\"time\":1655994636969,\"blocks\":[{\"id\":\"lpAVvCqAPN\",\"type\":\"paragraph\",\"data\":{\"text\":\"pwede po ba mag labas ng libro galing sa library? like around school lang naman?\"}}],\"version\":\"2.24.3\"}', '{\"selected\":[\"library\"]}', 1, 'open', '2022-06-23', '22:30:35'),
+(77, 'thrd62c3f8901da45', 'u62b08c60c99ad', 'School Calendar', '{\"time\":1657010321505,\"blocks\":[{\"id\":\"Y6E5r8aJ0M\",\"type\":\"paragraph\",\"data\":{\"text\":\"HI! May nakakaalam po ba kung kailan start ng enrollment for sy 2022-2023?\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"event\",\"cafa\",\"cit\",\"cos\",\"cie\"]}', 1, 'open', '2022-07-05', '16:38:40'),
+(78, 'thrd62c446e9c68f4', 'u62a36c251d916', 'Crush!', '{\"time\":1657030378674,\"blocks\":[{\"id\":\"g0TnfVstB5\",\"type\":\"paragraph\",\"data\":{\"text\":\"Baka may nakaka kilala don sa guy ng COS ang pogi mo kuyaaaa :D tangkad mo po, papicture!\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"general\"]}', 1, 'open', '2022-07-05', '22:12:57'),
+(81, 'thrd62c45aa3031e5', 'u62a891ef10a26', 'Crush', '{\"time\":1657035426611,\"blocks\":[{\"id\":\"baMiJ27Rhd\",\"type\":\"paragraph\",\"data\":{\"text\":\"ang bango mo\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\"]}', 1, 'open', '2022-07-05', '23:37:07'),
+(82, 'thrd62c461bcdf7e8', 'u62b08c116a8fe', 'bakit pa matutulog kung gigising din naman', '{\"time\":1657037243591,\"blocks\":[{\"id\":\"AEfoyetVkm\",\"type\":\"paragraph\",\"data\":{\"text\":\":)\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"general\"]}', 0, 'declined', '2022-07-06', '00:07:24'),
+(83, 'thrd62c46226b590b', 'u62b08c60c99ad', 'COS', '{\"time\":1657037351983,\"blocks\":[{\"id\":\"76u4Ki0YuY\",\"type\":\"paragraph\",\"data\":{\"text\":\"Inaayos padin ba yung computer lab sa cos?\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\"]}', 0, 'pending', '2022-07-06', '00:09:10'),
+(85, 'thrd62c52e97b8c4a', 'u62b08c60c99ad', 'COS', '{\"time\":1657089687458,\"blocks\":[{\"id\":\"Nr4wbdDmq2\",\"type\":\"paragraph\",\"data\":{\"text\":\"anong floor po yung laboratory ng chemistry?\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\"]}', 1, 'close', '2022-07-06', '14:41:27'),
+(86, 'thrd62c52ef66cd6a', 'u6298f3dcd7288', 'Hello Test Test', '{\"time\":1657089781840,\"blocks\":[{\"id\":\"36r2cDO1IW\",\"type\":\"paragraph\",\"data\":{\"text\":\".\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"missingitem\"]}', 0, 'pending', '2022-07-06', '14:43:02'),
+(87, 'thrd62c52efccae4d', 'u62b08c116a8fe', 'BAKIT?', '{\"time\":1657089787396,\"blocks\":[{\"id\":\"zUqK0fE30J\",\"type\":\"paragraph\",\"data\":{\"text\":\"BAKIT NEED PA MATULOG KUNG GIGISING DIN NAMAN?\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"general\"]}', 0, 'pending', '2022-07-06', '14:43:08'),
+(88, 'thrd62c52f3487603', 'u62b08c60c99ad', 'TUP-MANILA', '{\"time\":1657089844237,\"blocks\":[{\"id\":\"w3Hk1hZI5-\",\"type\":\"paragraph\",\"data\":{\"text\":\"Hi po! may nakakaalam po ba ano oras nag oopen registrar saka what time nag cclos??\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"registrar\",\"general\"]}', 1, 'open', '2022-07-06', '14:44:04'),
+(89, 'thrd62c52f6b2bbd5', 'u62b08c60c99ad', 'TUP-MANILA', '{\"time\":1657089898871,\"blocks\":[],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\"]}', 0, 'pending', '2022-07-06', '14:44:59'),
+(90, 'thrd62c52fa2650de', 'u62b08c60c99ad', 'COS', '{\"time\":1657089954102,\"blocks\":[{\"id\":\"O6Dlaog8WI\",\"type\":\"paragraph\",\"data\":{\"text\":\"ang panget ng francis ng cos\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\",\"bullying\"]}', 0, 'pending', '2022-07-06', '14:45:54'),
+(92, 'thrd62c53a00e6575', 'u62c53648c0947', 'Sample', '{\"time\":1657092608937,\"blocks\":[{\"id\":\"W3xfbYoJVr\",\"type\":\"paragraph\",\"data\":{\"text\":\"Sample\"}}],\"version\":\"2.25.0\"}', '{\"selected\":[\"cos\"]}', 0, 'declined', '2022-07-06', '15:30:08');
 
 -- --------------------------------------------------------
 
@@ -398,14 +466,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, `avatar`, `cover`, `birthdate`, `privileged`, `campus`, `bio`, `account_type`, `restricted`, `restricted_reason`) VALUES
-(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627754a082c47.jpg', '../assets/images/avatar/u627754a082c47-cover.jpg', '2000-11-18', 1, 'Manila', 'Ay wow may bio na <3', 'admin', 0, '0'),
+(58, 'u627754a082c47', 'Jerico', 'Victoria', 'jericovic64@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '../assets/images/avatar/u627754a082c47.jpg', '../assets/images/avatar/u627754a082c47-cover.jpg', '2000-11-18', 1, 'Manila', 'Ay wow may bio na <3', 'admin', 0, '0'),
 (59, 'u627a6a0b58d37', 'Jerico', 'Victoria', 'jerico.victoria@tup.edu.ph', '', 'https://lh3.googleusercontent.com/a/AATXAJxIWhnHJ95llxkqm0xfUZKrwzjP-rl2Pc594uHp=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'student', 0, NULL),
 (61, 'u627e6c58bccf1', 'stream', 'hub', 'streamhubemail@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AOh14Gj0eJWzFoHWkZUooFNblbjkn0TGEOUGlaSs4vTW=s96-c', 'assets/images/avatar/default-cover.jpg', '0000-00-00', 0, 'Manila', '', 'teacher', 0, ''),
 (62, 'u627fe814b5bfd', 'Elle Dehino', '-Yap', 'jericovic65@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u627fe814b5bfd.jpg', '../assets/images/avatar/u627fe814b5bfd-cover.jpeg', '1231-12-03', 0, 'Manila', 'Darryl Yap I LOVE YOU! MAHALIN MO KO PLS...', 'teacher', 0, ''),
-(63, 'u6298f3dcd7288', 'Francis Edian', 'Panaligan', 'francisedianpanaligan@gmail.com', 'c6f057b86584942e415435ffb1fa93d4', '../assets/images/avatar/u6298f3dcd7288.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 1, 'Manila', '', 'admin', 0, NULL),
+(63, 'u6298f3dcd7288', 'Francis Edian', 'Panaligan', 'francisedianpanaligan@gmail.com', '698d51a19d8a121ce581499d7b701668', '../assets/images/avatar/u6298f3dcd7288.jpg', 'assets/images/avatar/default-cover.jpg', '2000-08-16', 1, 'Manila', '', 'admin', 0, NULL),
 (64, 'u62a35ae88f320', 'ken', 'neth', 'francispanaligan54@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-16', 0, 'Manila', '', 'student', 0, NULL),
 (65, 'u62a35c5f031e9', 'francis', 'wow', 'fff@gmail.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-14', 0, 'Manila', '', 'student', 0, NULL),
-(66, 'u62a36c251d916', 'Fae', 'Roguel', 'r.matullano00@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '../assets/images/avatar/u62a36c251d916.png', '../assets/images/avatar/u62a36c251d916-cover.jpg', '2000-09-22', 0, 'Manila', 'BAKA AKO', 'teacher', 0, NULL),
+(66, 'u62a36c251d916', 'Peypey', 'Miguel', 'r.matullano00@gmail.com', 'bb6a96e709181abec59a92aa15927734', '../assets/images/avatar/u62a36c251d916.png', '../assets/images/avatar/u62a36c251d916-cover.png', '1998-02-25', 0, 'Taguig', 'BAKA AKO', 'teacher', 0, NULL),
 (67, 'u62a371217fee6', 'fra', 'cis', 'fff15@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-06-07', 0, 'Manila', '', 'student', 0, ''),
 (68, 'u62a37166db10f', 'fra', 'gege', 'femp@gmai.com', '698d51a19d8a121ce581499d7b701668', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1999-06-09', 0, 'Manila', '', 'student', 0, NULL),
 (69, 'u62a6eae75367f', 'Gordon', 'Newman', 'gordon.newman@gmail.com', '202cb962ac59075b964b07152d234b70', '../assets/images/avatar/u62a6eae75367f.jpg', 'assets/images/avatar/default-cover.jpg', '1999-10-21', 0, 'Manila', 'Hello everyone!!!', 'student', 0, NULL),
@@ -428,11 +496,12 @@ INSERT INTO `users` (`id`, `uid`, `firstname`, `lastname`, `email`, `password`, 
 (86, 'u62a892fa11c6d', 'Donna', 'Simpson', 'donna.simpson@gmail.com', '25c594da40a5650bb9470a0d2122ddc0', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2003-06-07', 0, 'Manila', '', 'student', 0, NULL),
 (87, 'u62a89331858b2', 'Adam', 'Smith', 'adam.smith@gmail.com', '3e7b522b9756d2578d3a86d8f366be6e', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1998-04-29', 0, 'Manila', '', 'student', 0, NULL),
 (88, 'u62a89371b1385', 'Ella', 'Davies', 'ella.davies@gmail.com', 'efadcf6a697bcc011b573984dcdd3740', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '1908-04-16', 0, 'Manila', '', 'student', 0, NULL),
-(89, 'u62a893a63c294', 'Keit', 'Welch', 'keith.welch@gmail.com', 'dff24e6ecbb2e7164196a1513638d4cb', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2002-09-22', 0, 'Manila', '', 'teacher', 0, NULL),
+(89, 'u62a893a63c294', 'Keit', 'Welch', 'keith.welch@gmail.com', 'dff24e6ecbb2e7164196a1513638d4cb', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2002-09-22', 0, 'Manila', '', 'student', 0, NULL),
 (90, 'u62a89c2618d87', 'Bunny', 'Puu', 'bunnypuu@gmail.com', '1d18530344f049533d423aec88df2524', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-02-22', 0, 'Manila', '', 'student', 0, NULL),
 (91, 'u62a99829973b3', 'SHARINA', 'ATIENZA', 'shrnatienza@gmail.com', 'aa42b234cb05915716c1434058fe1aee', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2001-07-26', 0, 'Manila', '', 'student', 0, NULL),
-(92, 'u62b08c116a8fe', 'Ramino Jake', 'Santos', 'RaminoSantos@gmail.com', '202cb962ac59075b964b07152d234b70', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2000-10-30', 0, 'Manila', 'Bakit matutulog kung gigising lang din naman', 'student', 0, NULL),
-(93, 'u62b08c60c99ad', 'Cielo', 'Dehino ', 'cielodehino@gmail.com', 'd439bf0c0cc7fb6d52f8d8c9b403e63d', 'assets/images/avatar/default.jpg', 'assets/images/avatar/default-cover.jpg', '2001-05-07', 0, 'Manila', '', 'teacher', 0, '');
+(92, 'u62b08c116a8fe', 'Ramino', 'Santos', 'RaminoSantos@gmail.com', '250cf8b51c773f3f8dc8b4be867a9a02', '../assets/images/avatar/u62b08c116a8fe.jpg', 'assets/images/avatar/default-cover.jpg', '2000-10-30', 0, 'Manila', 'Bakit matutulog kung gigising lang din naman', 'student', 0, NULL),
+(93, 'u62b08c60c99ad', 'Cielo May', 'Enriquez', 'cielodehino@gmail.com', '36336040fd5484cc423452fc2ecd00fe', '../assets/images/avatar/u62b08c60c99ad.jpg', '../assets/images/avatar/u62b08c60c99ad-cover.jpg', '2001-05-07', 0, 'Manila', ':)', 'teacher', 0, ''),
+(96, 'u62c53648c0947', 'Franciscan', 'Matullano', 'forum.bsit@gmail.com', 'e165d4f2174b66a7d1a95cb204d296eb', '../assets/images/avatar/u62c53648c0947.jpg', '../assets/images/avatar/u62c53648c0947-cover.jpg', '2001-12-15', 0, 'Manila', 'Francis Pogi', 'student', 0, '');
 
 -- --------------------------------------------------------
 
@@ -446,6 +515,14 @@ CREATE TABLE `users_verification` (
   `code` varchar(255) NOT NULL,
   `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users_verification`
+--
+
+INSERT INTO `users_verification` (`id`, `email`, `code`, `token`) VALUES
+(78, 'RaminoSantos@gmail.com', '0', 'ab66c36083546da5ac8d24fe3cdf86c1'),
+(82, 'jericovic64@gmail.com', '0', '3d8f221daa04369efbb1d539a454cf36');
 
 -- --------------------------------------------------------
 
@@ -477,7 +554,12 @@ INSERT INTO `votes` (`id`, `comment_id`, `uid`, `status`) VALUES
 (85, 'C62b472483f263', 'u6298f3dcd7288', 'upvote'),
 (87, 'C62b474967cd0d', 'u62a6f897e3940', 'upvote'),
 (89, 'C62b4854b4885b', 'u62a6f897e3940', 'upvote'),
-(90, 'C62b4854b4885b', 'u627754a082c47', 'upvote');
+(90, 'C62b4854b4885b', 'u627754a082c47', 'upvote'),
+(92, 'C62b095f4c2912', 'u62b08c60c99ad', 'upvote'),
+(95, 'C62b485bc6a62d', '', 'upvote'),
+(96, 'C62b485bc6a62d', 'u627754a082c47', 'upvote'),
+(97, 'C62b48f862f8c2', 'u627754a082c47', 'upvote'),
+(98, 'C6281397a3bb70', 'u627754a082c47', 'upvote');
 
 --
 -- Indexes for dumped tables
@@ -547,55 +629,55 @@ ALTER TABLE `votes`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `declined`
 --
 ALTER TABLE `declined`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `save`
 --
 ALTER TABLE `save`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `users_verification`
 --
 ALTER TABLE `users_verification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

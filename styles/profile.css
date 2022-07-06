@@ -441,28 +441,6 @@ body{
     color: var(--gray-lighter);
 }
 
-@media (prefers-color-scheme: dark){
-
-    .thread-save, .thread-add-response{
-        background-color: #1A2230;
-    }
-
-    .thread-add-response i,  .thread-save i{
-        color: gray;
-    }
-
-    .thread-thread-title h1,
-    .thread-user-type,
-    .thread-name,
-    .thread-date-published,
-    .thread-main-threads {
-        color: var(--light);
-    }
-
-    .thread-user-type {
-        border: 1px solid var(--light);
-    }
-}
 
 @media (max-width: 920px){
     .main{

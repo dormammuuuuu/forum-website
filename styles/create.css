@@ -34,7 +34,7 @@
     width: -webkit-fill-available;
     width: -moz-available;
     height: 30px;
-    border: 1px solid var(--gray);
+    border: 1px solid #717171;
     margin: 10px 0;
 }
 
@@ -110,7 +110,7 @@
 
 #editorjs{
     margin-top: 10px;
-    border: 1px solid var(--gray);
+    border: 1px solid #717171;
     max-height: 30vh;
     overflow-y: scroll;
 }
