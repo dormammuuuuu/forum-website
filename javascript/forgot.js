@@ -58,6 +58,7 @@ $("#password-form").submit(function (e) {
                 let result = JSON.parse(JSON.stringify(response));
                 if(result.statusCode == 200){
                     $(".success").css('display','flex');
+                    $('.success').css('width', '100%');
                     $(".success h1").html('Password changed!');
                     $(".success p").html('Your password was successfully changed');
                     setTimeout(() => {

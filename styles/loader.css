@@ -161,7 +161,7 @@
 
 @media (prefers-color-scheme: dark){
     .loader-container{
-        background-color: var(--dark-secondary);
+        background-color: #2d3748;
     }
 
     #loader, #loader:before, #loader:after{
